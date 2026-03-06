@@ -25,7 +25,7 @@
 # a new language translation. It reads the en-us.yaml file, translates all values
 # into the requested language, and opens a Pull Request with the new locale file.
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"3e2f77f8523ee2a5c45e33df7e4e32a801c5a1e603c4dc41e0fd10138a7891a2","compiler_version":"v0.51.4"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"e487078eb955aa709d644318ad9baad7eb0f15d208a2ed2862b7491166e88005","compiler_version":"v0.51.4"}
 
 name: "Add New Language Translation"
 "on":
@@ -33,7 +33,7 @@ name: "Add New Language Translation"
     types:
     - opened
     - reopened
-  # skip-if-no-match: is:issue number:${{ github.event.issue.number }} in:title "[ADD]" # Skip-if-no-match processed as search check in pre-activation job
+  # skip-if-no-match: is:issue number:${{ github.event.issue.number }} in:title ADD # Skip-if-no-match processed as search check in pre-activation job
 
 permissions: {}
 
@@ -1192,7 +1192,7 @@ jobs:
         id: check_skip_if_no_match
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
-          GH_AW_SKIP_QUERY: "is:issue number:${{ github.event.issue.number }} in:title \"[ADD]\""
+          GH_AW_SKIP_QUERY: "is:issue number:${{ github.event.issue.number }} in:title ADD"
           GH_AW_WORKFLOW_NAME: "Add New Language Translation"
           GH_AW_SKIP_MIN_MATCHES: "1"
         with:

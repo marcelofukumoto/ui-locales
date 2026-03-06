@@ -7,7 +7,7 @@ description: |
 on:
   issues:
     types: [opened, reopened]
-  skip-if-no-match: 'is:issue number:${{ github.event.issue.number }} in:title "[ADD]"'
+  skip-if-no-match: 'is:issue number:${{ github.event.issue.number }} in:title ADD'
 
 permissions:
   contents: read

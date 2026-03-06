@@ -27,7 +27,7 @@
 # similar issues in the same file and across other language files, opening
 # separate PRs for each.
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"77cddec83e39203f2a08f268fa428036443e5615b70c4e5a33fc3885c448061e","compiler_version":"v0.51.4"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"6fb3a818cbf1f076b1392278fca95cf8b676cf464457c1641c0f520f71aa4b1a","compiler_version":"v0.51.4"}
 
 name: "Fix Translation Error"
 "on":
@@ -35,7 +35,7 @@ name: "Fix Translation Error"
     types:
     - opened
     - reopened
-  # skip-if-no-match: is:issue number:${{ github.event.issue.number }} in:title "[FIX]" # Skip-if-no-match processed as search check in pre-activation job
+  # skip-if-no-match: is:issue number:${{ github.event.issue.number }} in:title FIX # Skip-if-no-match processed as search check in pre-activation job
 
 permissions: {}
 
@@ -1092,7 +1092,7 @@ jobs:
         id: check_skip_if_no_match
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
-          GH_AW_SKIP_QUERY: "is:issue number:${{ github.event.issue.number }} in:title \"[FIX]\""
+          GH_AW_SKIP_QUERY: "is:issue number:${{ github.event.issue.number }} in:title FIX"
           GH_AW_WORKFLOW_NAME: "Fix Translation Error"
           GH_AW_SKIP_MIN_MATCHES: "1"
         with:
