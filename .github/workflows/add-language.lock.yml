@@ -25,7 +25,7 @@
 # a new language translation. It reads the en-us.yaml file, translates all values
 # into the requested language, and opens a Pull Request with the new locale file.
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"e487078eb955aa709d644318ad9baad7eb0f15d208a2ed2862b7491166e88005","compiler_version":"v0.51.4"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"5b9e87ed4c43a5ec01e50dd6148c740ab9c044ca596ce43e60cffbc0839af7e2","compiler_version":"v0.51.4"}
 
 name: "Add New Language Translation"
 "on":
@@ -33,7 +33,6 @@ name: "Add New Language Translation"
     types:
     - opened
     - reopened
-  # skip-if-no-match: is:issue number:${{ github.event.issue.number }} in:title ADD # Skip-if-no-match processed as search check in pre-activation job
 
 permissions: {}
 
@@ -45,7 +44,7 @@ run-name: "Add New Language Translation"
 jobs:
   activation:
     needs: pre_activation
-    if: needs.pre_activation.outputs.activated == 'true'
+    if: (needs.pre_activation.outputs.activated == 'true') && (startsWith(github.event.issue.title, '[ADD]'))
     runs-on: ubuntu-slim
     permissions:
       contents: read
@@ -1167,9 +1166,10 @@ jobs:
             await main();
 
   pre_activation:
+    if: startsWith(github.event.issue.title, '[ADD]')
     runs-on: ubuntu-slim
     outputs:
-      activated: ${{ (steps.check_membership.outputs.is_team_member == 'true') && (steps.check_skip_if_no_match.outputs.skip_no_match_check_ok == 'true') }}
+      activated: ${{ steps.check_membership.outputs.is_team_member == 'true' }}
       matched_command: ''
     steps:
       - name: Setup Scripts
@@ -1187,19 +1187,6 @@ jobs:
             const { setupGlobals } = require('/opt/gh-aw/actions/setup_globals.cjs');
             setupGlobals(core, github, context, exec, io);
             const { main } = require('/opt/gh-aw/actions/check_membership.cjs');
-            await main();
-      - name: Check skip-if-no-match query
-        id: check_skip_if_no_match
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
-        env:
-          GH_AW_SKIP_QUERY: "is:issue number:${{ github.event.issue.number }} in:title ADD"
-          GH_AW_WORKFLOW_NAME: "Add New Language Translation"
-          GH_AW_SKIP_MIN_MATCHES: "1"
-        with:
-          script: |
-            const { setupGlobals } = require('/opt/gh-aw/actions/setup_globals.cjs');
-            setupGlobals(core, github, context, exec, io);
-            const { main } = require('/opt/gh-aw/actions/check_skip_if_no_match.cjs');
             await main();
 
   safe_outputs:
