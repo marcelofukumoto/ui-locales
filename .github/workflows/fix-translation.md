@@ -9,7 +9,8 @@ description: |
 on:
   issues:
     types: [opened, reopened]
-  skip-if-no-match: 'is:issue number:${{ github.event.issue.number }} in:title FIX'
+
+if: startsWith(github.event.issue.title, '[FIX]')
 
 permissions:
   contents: read
