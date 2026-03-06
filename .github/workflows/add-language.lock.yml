@@ -21,11 +21,11 @@
 #
 # For more information: https://github.github.com/gh-aw/introduction/overview/
 #
-# This workflow is triggered when a GitHub issue requests a new language translation.
-# It reads the en-us.yaml file, translates all values into the requested language,
-# and opens a Pull Request with the new locale file.
+# This workflow is triggered when a GitHub issue with [ADD] in the title requests
+# a new language translation. It reads the en-us.yaml file, translates all values
+# into the requested language, and opens a Pull Request with the new locale file.
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"478788b18dc80502a0d5ad6c809f9c3aa8641a0d157f352f4fd8f9ad82e475b0","compiler_version":"v0.51.4"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"3e2f77f8523ee2a5c45e33df7e4e32a801c5a1e603c4dc41e0fd10138a7891a2","compiler_version":"v0.51.4"}
 
 name: "Add New Language Translation"
 "on":
@@ -33,6 +33,7 @@ name: "Add New Language Translation"
     types:
     - opened
     - reopened
+  # skip-if-no-match: is:issue number:${{ github.event.issue.number }} in:title "[ADD]" # Skip-if-no-match processed as search check in pre-activation job
 
 permissions: {}
 
@@ -971,7 +972,7 @@ jobs:
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           WORKFLOW_NAME: "Add New Language Translation"
-          WORKFLOW_DESCRIPTION: "This workflow is triggered when a GitHub issue requests a new language translation.\nIt reads the en-us.yaml file, translates all values into the requested language,\nand opens a Pull Request with the new locale file."
+          WORKFLOW_DESCRIPTION: "This workflow is triggered when a GitHub issue with [ADD] in the title requests\na new language translation. It reads the en-us.yaml file, translates all values\ninto the requested language, and opens a Pull Request with the new locale file."
           HAS_PATCH: ${{ steps.collect_output.outputs.has_patch }}
         with:
           script: |
@@ -1168,7 +1169,7 @@ jobs:
   pre_activation:
     runs-on: ubuntu-slim
     outputs:
-      activated: ${{ steps.check_membership.outputs.is_team_member == 'true' }}
+      activated: ${{ (steps.check_membership.outputs.is_team_member == 'true') && (steps.check_skip_if_no_match.outputs.skip_no_match_check_ok == 'true') }}
       matched_command: ''
     steps:
       - name: Setup Scripts
@@ -1186,6 +1187,19 @@ jobs:
             const { setupGlobals } = require('/opt/gh-aw/actions/setup_globals.cjs');
             setupGlobals(core, github, context, exec, io);
             const { main } = require('/opt/gh-aw/actions/check_membership.cjs');
+            await main();
+      - name: Check skip-if-no-match query
+        id: check_skip_if_no_match
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          GH_AW_SKIP_QUERY: "is:issue number:${{ github.event.issue.number }} in:title \"[ADD]\""
+          GH_AW_WORKFLOW_NAME: "Add New Language Translation"
+          GH_AW_SKIP_MIN_MATCHES: "1"
+        with:
+          script: |
+            const { setupGlobals } = require('/opt/gh-aw/actions/setup_globals.cjs');
+            setupGlobals(core, github, context, exec, io);
+            const { main } = require('/opt/gh-aw/actions/check_skip_if_no_match.cjs');
             await main();
 
   safe_outputs:

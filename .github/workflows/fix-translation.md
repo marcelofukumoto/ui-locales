@@ -1,24 +1,28 @@
 ---
 description: |
-  This workflow is triggered when a GitHub issue reports a translation error —
-  a specific word or phrase that is wrong in a specific language file.
-  It fixes the reported translation, then optionally checks for similar issues
-  in the same file and across other language files, opening separate PRs for each.
+  This workflow is triggered when a GitHub issue with [FIX] in the title reports
+  a translation error — a specific word or phrase that is wrong in a specific
+  language file. It fixes the reported translation, then optionally checks for
+  similar issues in the same file and across other language files, opening
+  separate PRs for each.
 
 on:
   issues:
     types: [opened, reopened]
+  skip-if-no-match: 'is:issue number:${{ github.event.issue.number }} in:title "[FIX]"'
 
 permissions:
   contents: read
   issues: read
   pull-requests: read
+  discussions: read
 
 network: defaults
 
 tools:
   github:
     lockdown: false
+  bash: true
 
 safe-outputs:
   create-pull-request:
@@ -31,13 +35,18 @@ safe-outputs:
 
 When a GitHub issue reports a wrong word or phrase in a translation file, fix it and optionally find and fix similar issues in the same file and other language files — each as a separate Pull Request.
 
+## Learnings discussion
+
+Before doing anything else, search for a discussion in this repository with the title `[learnings] Add New Language Translation`. This discussion accumulates knowledge from previous runs.
+
+- If it exists, **read it carefully** — it may contain notes about structural pitfalls, placeholder patterns, and common translation mistakes that are relevant to your fix.
+- If it does not exist, that is fine — proceed without it.
+
 ## Trigger condition
 
-Only act if the issue:
-- Reports a translation mistake, wrong word, incorrect phrase, or bad translation in a specific language
-- Identifies (explicitly or implicitly) the language, the wrong text, and ideally the correct replacement
+Only act if the issue title starts with `[FIX]` and the body reports a translation mistake — a wrong word, incorrect phrase, or bad translation — identifying the language, the wrong text, and ideally the correct replacement.
 
-If the issue is not a translation fix request, do nothing and stop.
+If the issue does not meet these criteria, do nothing and stop.
 
 ## Control flags
 
@@ -62,13 +71,15 @@ Default behaviour (no flags): do all three steps.
 
 3. Find the exact line(s) containing the wrong text and replace with the correct translation.
 
-4. Open **PR #1**:
+4. **Validate the file** after the fix: use bash to parse the YAML and confirm no duplicate keys, no structural breakage, and all placeholders are still intact. Fix any issues before proceeding.
+
+5. Open **PR #1**:
    - File changed: `pkg/ui-locales/l10n/<locale-code>.yaml`
    - Title: `fix(<locale-code>): correct "<wrong text>" → "<correct text>"`
    - Body: references the issue, explains the specific fix, closes the issue
    - Label: `translations`, `fix`, `automated`
 
-5. Add a comment to the issue confirming PR #1 was opened, with a link.
+6. Add a comment to the issue confirming PR #1 was opened, with a link.
 
 ---
 
