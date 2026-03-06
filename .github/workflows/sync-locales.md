@@ -14,22 +14,34 @@ permissions:
   contents: read
   issues: read
   pull-requests: read
+  discussions: read
 
 network: defaults
+
+timeout-minutes: 60
 
 tools:
   github:
     lockdown: false
+  bash: true
 
 safe-outputs:
   create-pull-request:
     title-prefix: "chore: "
     labels: [translations, automated]
+  add-comment: {}
 ---
 
 # Sync Locales from rancher/dashboard
 
 Keep the `en-us.yaml` translation file in sync with the upstream `rancher/dashboard` repository, and update all other language files to reflect any changes.
+
+## Learnings discussion
+
+Before doing anything else, search for a discussion in this repository with the title `[learnings] Add New Language Translation`. This discussion accumulates knowledge from previous runs.
+
+- If it exists, **read it carefully** — it contains chunking strategies, known structural pitfalls, and tips that apply when updating existing translation files.
+- If it does not exist, that is fine — proceed without it.
 
 ## What to do
 
@@ -47,16 +59,20 @@ Keep the `en-us.yaml` translation file in sync with the upstream `rancher/dashbo
    b. Find all other language files in `pkg/ui-locales/l10n/` (any `.yaml` file that is not `en-us.yaml`, e.g. `pt-br.yaml`, `ja-jp.yaml`, `fr-fr.yaml`, etc.).
 
    c. For each other language file:
-      - **New keys** added to `en-us.yaml`: translate the new English values into that language and add them to the language file at the correct location in the YAML structure.
-      - **Removed keys** in `en-us.yaml`: remove the same keys from the language file.
-      - **Changed values** in `en-us.yaml`: re-translate the updated English value into that language and update it in the language file.
-      - Preserve all placeholders, ICU message format syntax, HTML tags, and YAML structure exactly — only translate the human-readable text portions.
+      - **New keys** added to `en-us.yaml`: translate the new English values into that language and add them at the **exact same position** in the YAML structure (same nesting level, same order relative to sibling keys)
+      - **Removed keys** in `en-us.yaml`: remove the same keys from the language file
+      - **Changed values** in `en-us.yaml`: re-translate the updated English value into that language and update it in the language file
+      - Preserve all placeholders, ICU message format syntax, HTML tags, and YAML structure exactly — only translate the human-readable text portions
+      - **Do NOT invent keys** that do not exist in `en-us.yaml`
+      - **Do NOT duplicate keys** — every key must appear exactly once at its nesting level
 
-   d. Open a single Pull Request that includes:
+   d. **Validate each updated language file** using bash: parse the YAML to confirm no duplicate keys, verify exact key parity with the new `en-us.yaml`, and check that all placeholders are preserved. Fix any issues before proceeding.
+
+   e. Open a single Pull Request that includes:
       - The updated `pkg/ui-locales/l10n/en-us.yaml`
       - All updated language files
       - Title: `chore: sync en-us.yaml from rancher/dashboard and update translations`
-      - A body that summarizes: what changed in `en-us.yaml`, and which language files were updated
+      - A body that summarizes: what changed in `en-us.yaml`, which language files were updated, and validation results for each file
       - Labels: `translations`, `automated`
 
 ## Style

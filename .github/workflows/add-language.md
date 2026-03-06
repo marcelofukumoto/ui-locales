@@ -22,6 +22,7 @@ timeout-minutes: 60
 tools:
   github:
     lockdown: false
+  bash: true
 
 safe-outputs:
   create-pull-request:
@@ -63,27 +64,39 @@ If the issue does not meet these criteria, do nothing and stop.
 3. **Read the full contents** of `pkg/ui-locales/l10n/en-us.yaml` from this repository.
 
 4. **Translate all string values** in chunks to stay within output limits. Rules:
-   - Preserve the exact YAML structure, keys, and nesting — do not change any key names
+   - **Mirror the source exactly**: the output file must have the exact same keys, in the exact same order, at the exact same nesting depth as `en-us.yaml` — only leaf values change
+   - **Do NOT invent keys**: never add keys that do not exist in `en-us.yaml`
+   - **Do NOT skip keys**: every key in `en-us.yaml` must appear in the output
+   - **Do NOT duplicate keys**: every key must appear exactly once at its nesting level — YAML forbids duplicate keys and parsers will reject the file
    - Preserve all placeholders as-is: `{variableName}`, `{count, plural, ...}`, `&hellip;`, HTML tags like `<b>`, `<a href=...>`, `<code>`, etc.
    - Preserve all ICU message format syntax (plurals, selects) — only translate the human-readable text portions inside them
-   - Do not translate YAML comments (lines starting with `#`)
-   - Empty values should remain empty
+   - Do not translate YAML comments (lines starting with `#`) — preserve them in the same positions
+   - Empty values must remain empty; special values like `'—'` must be preserved exactly
+   - If a key's value is a mapping (has children) in `en-us.yaml`, it must also be a mapping in the output — never flatten a nested structure into a scalar
    - Use chunking sizes and strategies noted in the learnings discussion (if available), otherwise split at top-level YAML keys to keep each chunk manageable
 
-5. **Open a Pull Request** that:
+5. **Self-validate before opening the PR**. Use bash to write and run a validation script that checks:
+   - The output file is valid YAML (no parse errors, no duplicate keys)
+   - Every key in `en-us.yaml` exists in the output and vice-versa (exact key parity)
+   - Key order matches `en-us.yaml`
+   - All placeholders (`{...}`, `&hellip;`, HTML tags) from `en-us.yaml` are present in the corresponding translated values
+   - If any issues are found, fix them and re-validate until the file is clean
+
+6. **Open a Pull Request** that:
    - Creates the new file at `pkg/ui-locales/l10n/<locale-code>.yaml` with the translated content
    - Has the title: `feat: add <Language Name> (<locale-code>) translation`
    - Has a body that mentions the issue number, the language added, and a note that the translation was AI-generated and should be reviewed by a native speaker
+   - Includes the validation results (total keys, any issues found and fixed)
    - References and closes the original issue
 
-6. **Add a comment** to the original issue letting the requester know a PR has been opened with the translation, linking to it, and noting it needs native speaker review before merging.
+7. **Add a comment** to the original issue letting the requester know a PR has been opened with the translation, linking to it, noting it needs native speaker review before merging, and that `/verify-translation` can be run on the PR for additional structural checks.
 
 ## Update learnings discussion
 
 After completing the work (or after hitting any significant obstacle), update the learnings discussion with what you learned during this run. This is the most important step for improving future runs.
 
-- **If the discussion already exists**: update its body using `update_discussion`, replacing the old content with an improved version that incorporates new observations.
-- **If the discussion does not exist**: create it using `create_discussion` with title `[learnings] Add New Language Translation`.
+- **If the discussion already exists**: update its body using `update_discussion`, **merging** your new observations into the existing content — do not discard previous learnings, incorporate them
+- **If the discussion does not exist**: create it using `create_discussion` with title `[learnings] Add New Language Translation`
 
 The discussion body should be written in Markdown and cover:
 
