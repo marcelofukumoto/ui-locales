@@ -32,8 +32,7 @@ safe-outputs:
     category: general
     labels: [translations, automated]
   update-discussion:
-    body: true
-    title: false
+    body:
     target: "*"
 ---
 
