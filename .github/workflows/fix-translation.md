@@ -1,13 +1,15 @@
 ---
 description: |
-  This workflow is triggered when a GitHub issue reports a translation error —
-  a specific word or phrase that is wrong in a specific language file.
-  It fixes the reported translation, then optionally checks for similar issues
-  in the same file and across other language files, opening separate PRs for each.
+  This workflow is triggered when a GitHub issue with [FIX] in the title reports
+  a translation error — a specific word or phrase that is wrong in a specific
+  language file. It fixes the reported translation, then optionally checks for
+  similar issues in the same file and across other language files, opening
+  separate PRs for each.
 
 on:
   issues:
     types: [opened, reopened]
+  skip-if-no-match: 'is:issue number:${{ github.event.issue.number }} in:title "[FIX]"'
 
 permissions:
   contents: read
@@ -33,11 +35,9 @@ When a GitHub issue reports a wrong word or phrase in a translation file, fix it
 
 ## Trigger condition
 
-Only act if the issue:
-- Reports a translation mistake, wrong word, incorrect phrase, or bad translation in a specific language
-- Identifies (explicitly or implicitly) the language, the wrong text, and ideally the correct replacement
+Only act if the issue title starts with `[FIX]` and the body reports a translation mistake — a wrong word, incorrect phrase, or bad translation — identifying the language, the wrong text, and ideally the correct replacement.
 
-If the issue is not a translation fix request, do nothing and stop.
+If the issue does not meet these criteria, do nothing and stop.
 
 ## Control flags
 

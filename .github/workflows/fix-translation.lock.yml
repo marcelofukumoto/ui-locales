@@ -21,12 +21,13 @@
 #
 # For more information: https://github.github.com/gh-aw/introduction/overview/
 #
-# This workflow is triggered when a GitHub issue reports a translation error —
-# a specific word or phrase that is wrong in a specific language file.
-# It fixes the reported translation, then optionally checks for similar issues
-# in the same file and across other language files, opening separate PRs for each.
+# This workflow is triggered when a GitHub issue with [FIX] in the title reports
+# a translation error — a specific word or phrase that is wrong in a specific
+# language file. It fixes the reported translation, then optionally checks for
+# similar issues in the same file and across other language files, opening
+# separate PRs for each.
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"e9573af3726b65d0be8fa424569bb315b145be174e27d1dac2e912dd3c4282b1","compiler_version":"v0.51.4"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"d9e8682e1f5ef9f8115b63dc5b0d64ba02e5f94c7f363e171ef232d3beefd6f2","compiler_version":"v0.51.4"}
 
 name: "Fix Translation Error"
 "on":
@@ -34,6 +35,7 @@ name: "Fix Translation Error"
     types:
     - opened
     - reopened
+  # skip-if-no-match: is:issue number:${{ github.event.issue.number }} in:title "[FIX]" # Skip-if-no-match processed as search check in pre-activation job
 
 permissions: {}
 
@@ -871,7 +873,7 @@ jobs:
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           WORKFLOW_NAME: "Fix Translation Error"
-          WORKFLOW_DESCRIPTION: "This workflow is triggered when a GitHub issue reports a translation error —\na specific word or phrase that is wrong in a specific language file.\nIt fixes the reported translation, then optionally checks for similar issues\nin the same file and across other language files, opening separate PRs for each."
+          WORKFLOW_DESCRIPTION: "This workflow is triggered when a GitHub issue with [FIX] in the title reports\na translation error — a specific word or phrase that is wrong in a specific\nlanguage file. It fixes the reported translation, then optionally checks for\nsimilar issues in the same file and across other language files, opening\nseparate PRs for each."
           HAS_PATCH: ${{ steps.collect_output.outputs.has_patch }}
         with:
           script: |
@@ -1066,7 +1068,7 @@ jobs:
   pre_activation:
     runs-on: ubuntu-slim
     outputs:
-      activated: ${{ steps.check_membership.outputs.is_team_member == 'true' }}
+      activated: ${{ (steps.check_membership.outputs.is_team_member == 'true') && (steps.check_skip_if_no_match.outputs.skip_no_match_check_ok == 'true') }}
       matched_command: ''
     steps:
       - name: Setup Scripts
@@ -1084,6 +1086,19 @@ jobs:
             const { setupGlobals } = require('/opt/gh-aw/actions/setup_globals.cjs');
             setupGlobals(core, github, context, exec, io);
             const { main } = require('/opt/gh-aw/actions/check_membership.cjs');
+            await main();
+      - name: Check skip-if-no-match query
+        id: check_skip_if_no_match
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          GH_AW_SKIP_QUERY: "is:issue number:${{ github.event.issue.number }} in:title \"[FIX]\""
+          GH_AW_WORKFLOW_NAME: "Fix Translation Error"
+          GH_AW_SKIP_MIN_MATCHES: "1"
+        with:
+          script: |
+            const { setupGlobals } = require('/opt/gh-aw/actions/setup_globals.cjs');
+            setupGlobals(core, github, context, exec, io);
+            const { main } = require('/opt/gh-aw/actions/check_skip_if_no_match.cjs');
             await main();
 
   safe_outputs:

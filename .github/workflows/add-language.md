@@ -1,12 +1,13 @@
 ---
 description: |
-  This workflow is triggered when a GitHub issue requests a new language translation.
-  It reads the en-us.yaml file, translates all values into the requested language,
-  and opens a Pull Request with the new locale file.
+  This workflow is triggered when a GitHub issue with [ADD] in the title requests
+  a new language translation. It reads the en-us.yaml file, translates all values
+  into the requested language, and opens a Pull Request with the new locale file.
 
 on:
   issues:
     types: [opened, reopened]
+  skip-if-no-match: 'is:issue number:${{ github.event.issue.number }} in:title "[ADD]"'
 
 permissions:
   contents: read
@@ -49,11 +50,9 @@ Before doing anything else, search for a discussion in this repository with the 
 
 ## Trigger condition
 
-Only act if the issue:
-- Has a title or body that clearly requests a new language translation to be added
-- Mentions a specific language name (e.g. "Portuguese", "Japanese", "French") and/or a locale code (e.g. `pt-br`, `ja-jp`, `fr-fr`)
+Only act if the issue title starts with `[ADD]` and the body clearly requests a new language translation mentioning a specific language name (e.g. "Portuguese", "Japanese", "French") and/or a locale code (e.g. `pt-br`, `ja-jp`, `fr-fr`).
 
-If the issue is not a translation request, do nothing and stop.
+If the issue does not meet these criteria, do nothing and stop.
 
 ## What to do
 
