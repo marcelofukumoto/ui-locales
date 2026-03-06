@@ -1,0 +1,4242 @@
+# Brazilian Portuguese translations for Rancher UI
+# Translated from en-us.yaml by GitHub Copilot
+# Please review this AI-generated translation before merging
+
+generic:
+  # Special stuff
+  loading: Carregando&hellip;
+  saving: Salvando&hellip;
+  created: Criado&hellip;
+  remove: Excluir
+  add: Adicionar
+  cancel: Cancelar
+  close: Fechar
+  confirm: Confirmar
+  confirmUpdate: Confirmar atualização
+  continue: Continuar
+  create: Criar
+  customize: Personalizar
+  delete: Excluir
+  download: Baixar
+  done: Concluído
+  edit: Editar
+  enable: Ativar
+  errorTitle: 'Ocorreu um erro'
+  error: Erro
+  info: Informação
+  emptyState: 'Nenhum item para exibir'
+  filter: Filtrar
+  finish: Finalizar
+  hide: Ocultar
+  import: Importar
+  install: Instalar
+  learnMore: Saiba mais
+  moreInfo: Mais informações
+  name: Nome
+  'no': Não
+  noData: Nenhum dado disponível
+  'null': Nenhum
+  'none': Nenhum
+  optional: 'Opcional'
+  ok: OK
+  preview: Visualizar
+  previous: Anterior
+  refresh: Atualizar
+  register: Registrar
+  remove: Remover
+  reset: Redefinir
+  restart: Reiniciar
+  retry: Tentar novamente
+  save: Salvar
+  search: Buscar
+  show: Mostrar
+  showAll: Mostrar tudo
+  submit: Enviar
+  tags: Tags
+  toggle: Alternar
+  unavailable: Indisponível
+  update: Atualizar
+  updateAvailable: Atualização disponível
+  upgrade: Atualizar
+  upload: Carregar
+  'yes': Sim
+  resourceDetail: Detalhe do Recurso
+  created: Criado
+  namespace: Namespace
+  next: Próximo
+  back: Voltar
+  
+  actions:
+    activate: Ativar
+    addSshKey: Adicionar Chave SSH
+    cancelExpiry: Cancelar Expiração
+    changePassword: Alterar Senha
+    clone: Clonar
+    cordon: Bloquear
+    createNodeTemplate: Criar Modelo de Nó
+    deactivate: Desativar
+    delete: Excluir
+    disable: Desativar
+    disableAutoRepair: Desativar Reparo Automático
+    disableAutoUpgrade: Desativar Atualização Automática
+    downloadKubeconfig: Baixar Kubeconfig
+    edit: Editar
+    editConfig: Editar Configuração
+    editYaml: Editar YAML
+    enableAutoRepair: Ativar Reparo Automático
+    enableAutoUpgrade: Ativar Atualização Automática
+    pause: Pausar
+    promote: Promover
+    restore: Restaurar
+    resume: Retomar
+    rotate: Rotacionar
+    shell: Shell
+    uncordon: Desbloquear
+    viewInApi: Ver na API
+    resetPassword: Redefinir Senha
+    refreshGroup: Atualizar Grupo
+
+  address: Endereço
+  addLabel: Adicionar Rótulo
+  all: Tudo
+  annotations: Anotações
+  anyNode: 'Qualquer nó'
+  appCrashedTitle: Aplicação encerrada inesperadamente
+  appCrashedBody: 'Algo deu errado. <a href="">Por favor, recarregue</a> a página.'
+  apply: Aplicar
+  assigned: Atribuído
+  available: Disponível
+  certExpiry: Expiração do Certificado
+  clickToShow: 'Clique para mostrar'
+  collapsed: Recolhido
+  comingSoon: Em breve
+  containerName: Nome do Contêiner
+  count: Contagem
+  cpuLimit: Limite de CPU
+  cpuReservation: Reserva de CPU
+  created: Criado
+  date: Data
+  default: Padrão
+  defaultResource: Recurso padrão
+  description: Descrição
+  displayName: Nome de exibição
+  duration: Duração
+  emptyOrDash: '-'
+  endpoint: Endpoint
+  etcd: etcd
+  expanded: Expandido
+  expires: Expira
+  failedValidation: 'Falha na validação'
+  for: para
+  fullLabel: Rótulos completos
+  host: Host
+  hostname: Nome do host
+  inactive: Inativo
+  indeterminate: Indeterminado
+  instructions: Instruções
+  image: Imagem
+  imageSize: Tamanho da imagem
+  imageTag: Tag da imagem
+  internet: Internet
+  'in': em
+  keyValueCopy: 'Copiado para a área de transferência'
+  labels: Rótulos
+  lastHeard: Última comunicação
+  lastUpdated: Última atualização
+  length: Comprimento
+  limit: Limite
+  listOf: Lista de
+  listOfOptions: Lista de opções
+  location: Localização
+  maxLabel: Máx
+  memoryLimit: Limite de memória
+  memoryReservation: Reserva de memória
+  minLabel: Mín
+  missing: Ausente
+  moreActions: Mais ações
+  multiline: Multilinha
+  'new': Novo
+  newer: Mais recente
+  no: Não
+  nodeName: Nome do nó
+  not: não
+  notReady: Não pronto
+  'of': de
+  ok: OK
+  older: Mais antigo
+  openUrl: Abrir URL
+  operatorLabel: Operador
+  or: ou
+  osLabel: SO
+  outOfDate: Desatualizado
+  owner: Proprietário
+  pause: Pausar
+  pods: Pods
+  policy: Política
+  preview: Pré-visualização
+  profile: Perfil
+  range: Intervalo
+  ready: Pronto
+  recently: Recentemente
+  request: Solicitação
+  reservation: Reserva
+  resource: Recurso
+  resources: Recursos
+  restart: Reiniciar
+  role: Papel
+  roles: Papéis
+  running: Em execução
+  select: Selecionar
+  sortBy: Ordenar por
+  stateLabel: Estado
+  stopped: Parado
+  storageClass: Classe de armazenamento
+  submit: Enviar
+  success: Sucesso
+  tableHeaders: Cabeçalhos de tabela
+  target: Destino
+  timezone: Fuso horário
+  title: Título
+  total: Total
+  type: Tipo
+  undefined: Indefinido
+  unregister: Cancelar registro
+  unreachable: Inacessível
+  upgradeAvailable: Atualização disponível
+  used: Usado
+  username: Nome de usuário
+  uuid: UUID
+  value: Valor
+  vendor: Fornecedor
+  warning: Aviso
+  weight: Peso
+  workload: Carga de trabalho
+  yes: Sim
+  
+  resourceQuota:
+    helpText: 'Aqui você pode definir o limite de recursos para um namespace.'
+  
+  clusterNotReady: 'Cluster não está pronto'
+  readyToUse: Pronto para uso
+  
+  resourceType:
+    configMap: Mapa de Configuração
+    dockerCredential: Credencial Docker
+    managedCert: Certificado Gerenciado
+    namespacedSecret: Secret com Namespace
+    opaque: Opaco
+    secret: Secret
+    serviceAccountToken: Token de Conta de Serviço
+    sshAuth: Autenticação SSH
+    tlsCertificate: Certificado TLS
+
+  table:
+    noData: Nenhum dado para exibir
+    noDataWithFilters: Nenhum dado para exibir que corresponda aos filtros aplicados
+
+  sortableTable:
+    noRows: 'Não há linhas para exibir'
+    noRowsWithFilter: 'Não há linhas que correspondam aos filtros ativos'
+    paging:
+      generic: '{pages, plural, =1 {1 Página} other {{pages} Páginas}}'
+      workload: '{pages, plural, =1 {1 Página} other {{pages} Páginas}}'
+    count:
+      selected: '{count, plural, =1 {{count} selecionado} other {{count} selecionados}}'
+      total: '{count, plural, =1 {{count} item} other {{count} itens}}'
+    actionAvailability:
+      some: 'Ações disponíveis somente para alguns recursos selecionados'
+      none: 'Nenhuma ação disponível para os recursos selecionados'
+      
+  # Copy To Clipboard
+  copyToClipboard:
+    label: Copiar para a área de transferência
+    copied: Copiado
+    tooltip:
+      copy: Copiar para a área de transferência
+      copied: Copiado
+
+  comboBox:
+    placeholder: Escolha uma opção
+    create: 'Criar "{option}"'
+    noOptions: Sem opções
+    label: 'Selecionar ou criar {label}'
+    selectGroup: Selecionar grupo
+    
+tabs:
+  overview: Visão geral
+  
+graph:
+  noData: Nenhum dado disponível
+  noMetrics: Nenhuma métrica disponível
+  loading: Carregando dados...
+
+locale:
+  none: Sem preferência
+  en-us: English
+  zh-hans: 中文（简体）
+  pt-br: Português (Brasil)
+
+# Navigation
+nav:
+  userMenu:
+    header: Utilizador
+    help: Ajuda
+    feedback: Feedback
+    community: Comunidade
+    docs: Documentação
+    forums: Fóruns
+    slack: Slack
+    issues: Reportar um Problema
+    getStarted: Primeiros Passos
+    commercialSupport: Suporte Comercial
+    login: Entrar
+    logout: Sair
+    account: Conta e Chaves API
+    
+  ns:
+    all: Todos os Namespaces
+    allProjects: Todos os Projetos e Namespaces
+    clusterLevel: Somente Nível de Cluster
+    notInAProject: Não está em um Projeto
+    userCreated: Namespaces de Usuário
+    system: Namespaces do Sistema
+    fromProject: '{project}'
+    allFrom: Tudo de {name}
+    
+  group:
+    overview: Visão geral
+    apps: Apps & Marketplace
+    auth: Auth & Security
+    cluster: Cluster
+    events: Eventos
+    fleet: Fleet
+    global: Global
+    globalSettings: Configurações Globais
+    logging: Logging
+    monitoring: Monitoramento
+    namespaces: Namespaces
+    network: Redes
+    nodes: Nós
+    policy: Políticas
+    rbac: RBAC
+    serviceDiscovery: Descoberta de Serviços
+    storage: Armazenamento
+    workloads: Cargas de Trabalho
+    tools: Ferramentas
+    
+  resourceGroup:
+    cluster: Recursos do Cluster
+    clusterNotReady: Cluster Não Pronto
+
+  header:
+    clusterSwitcher:
+      label: Selecionar cluster
+    search:
+      label: Buscar
+      placeholder: Buscar recursos
+    namespaceFilter:
+      label: Filtrar por namespace
+
+  product:
+    apps: Apps & Marketplace
+    auth: Auth
+    cluster: Cluster
+    config: Configuração
+    epinio: Epinio
+    explorer: Explorador de Cluster
+    fleet: Fleet
+    global: Configurações Globais
+    home: Home
+    manager: Gerenciador de Cluster
+    multiCluster: Gerenciamento Multi-Cluster
+    rancher: Rancher
+    settings: Configurações
+    
+product:
+  apps: Apps & Marketplace
+  auth: Auth & Security
+  cloudCredentials: Credenciais de Nuvem
+  cluster: Cluster
+  config: Configuração
+  globalSettings: Configurações Globais
+  home: Home
+  manager: Gerenciador de Cluster
+  multiCluster: Gerenciamento Multi-Cluster
+  rancher: Rancher
+  settings: Configurações
+
+suffix:
+  amps: A
+  bits: b
+  bitsPerSec: b/s
+  bytes: B
+  bytesPerSec: B/s
+  celsius: °C
+  cores: núcleos
+  count: '{value}'
+  cpuMillicores: m
+  days: d
+  fahrenheit: °F
+  gigabits: Gb
+  gigabitPerSec: Gb/s
+  gigabytes: GB
+  gigabytesPerSec: GB/s
+  hertz: Hz
+  hours: h
+  kilobits: Kb
+  kilobitPerSec: Kb/s
+  kilobytes: KB
+  kilobytesPerSec: KB/s
+  megabits: Mb
+  megabitPerSec: Mb/s
+  megabytes: MB
+  megabytesPerSec: MB/s
+  megahertz: MHz
+  milliamps: mA
+  milliseconds: ms
+  milliwatts: mW
+  minutes: min
+  months: meses
+  nanoseconds: ns
+  none: Nenhum
+  percent: '%'
+  petabytes: PB
+  rpm: rpm
+  seconds: s
+  terabytes: TB
+  volts: V
+  watts: W
+  weeks: sem
+  years: anos
+
+layouts:
+  loading: Carregando&hellip;
+  error: Ocorreu um erro ao carregar o layout.
+  unauthenticated: Você precisa estar autenticado para acessar esta página.
+
+about:
+  versions:
+    title: Versões
+    detail: Versões detalhadas de todos os componentes do Rancher
+    rancherEe: Rancher (EE)
+    rancher: Rancher
+    rancherAgent: Rancher Agent
+    fleet: Fleet
+    fleetAgent: Fleet Agent
+    gitjob: GitJob
+    norman: Norman
+    steve: Steve
+    apiServer: Servidor de API
+    provisioningCapi: CAPI de Provisionamento
+    tunnelServer: Servidor de Túnel
+    webhookReceiver: Receptor de Webhook
+    k8s: Kubernetes
+    k3s: k3s
+    rke2: RKE2
+    etcd: ETCD
+    os: Sistema Operacional
+    docker: Docker
+    helm: Helm
+    kubectl: Kubectl
+    machine: machine
+  clickHere: Clique aqui
+  learnMore: 'para saber mais'
+  title: 'Sobre o Rancher'
+  description: 'Informações sobre a versão do Rancher e seus componentes.'
+  bugsAndIssues:
+    title: 'Bugs e Problemas'
+    linkLabel: 'Reportar um Bug'
+  apiLink:
+    title: 'Links da API'
+    linkLabel: 'API Explorer'
+  github:
+    title: 'GitHub'
+  oidcClientID:
+    title: 'Client ID do OIDC do Servidor de API'
+    copyButton: 'Copiar Client ID'
+    linkLabel: 'Ver Mais'
+  oidcClientSecret:
+    title: 'Segredo do Client OIDC do Servidor de API'
+    copyButton: 'Copiar Segredo do Client'
+    linkLabel: 'Ver Mais'
+  ssoButton: 'Baixar Tokens OIDC'
+  accessKey: 'Chave de Acesso'
+  secretKey: 'Chave Secreta'
+  copyButton: 'Copiar'
+  token: 'Token'
+  kubeconfig: 'Kubeconfig'
+
+accountAndKeys:
+  title: Conta e Chaves API
+  changePassword: Alterar Senha
+  apiKeys: Chaves API
+  apiKeyDescription: 'As chaves API são o principal meio de autenticação na API do Rancher.'
+  apiKeyNote: 'Nota: '
+  apiKeyNotice: 'As credenciais abaixo são de acesso único. Você não poderá vê-las novamente depois de fechar esta caixa de diálogo.'
+  expired: '(Expirado)'
+  expires: Expira
+  generate: Criar uma Chave API
+  keyName: 'Nome da Chave'
+  noDescription: 'Sem descrição'
+  deleteConfirm: 'Tem certeza que deseja excluir esta chave de API?'
+  tokenCount:
+    label: '{count, plural, =0 {Nenhuma Chave API} =1 {1 Chave API} other {{count} Chaves API}}'
+  noKeys: 'Sem chaves API para exibir.'
+  
+addClusterMemberDialog:
+  title: Adicionar Membro ao Cluster
+
+addonConfigConfirmation:
+  title: Confirmar Configuração de Addon
+  body: 'Tem certeza de que deseja salvar esta configuração?'
+  
+addProjectMemberDialog:
+  title: Adicionar Membro ao Projeto
+
+authConfig:
+  common:
+    defaultRole:
+      label: Papel Padrão para Novos Usuários
+      description: 'Selecione o papel padrão para novos usuários ao realizarem o login pela primeira vez.'
+    accessMode:
+      label: Autorização
+      required: 'Apenas usuários e membros de grupos autorizados podem fazer login'
+      restricted: 'Apenas usuários e membros de grupos em clusters e projetos podem fazer login'
+      unrestricted: 'Qualquer usuário válido pode fazer login'
+    allowedPrincipalIds:
+      label: Usuários e Grupos Autorizados
+    certificate:
+      label: Certificado CA
+      prompt: Colar um certificado CA
+      detail: 'O certificado CA que você forneceu não é válido. Por favor, verifique e tente novamente.'
+    clientId:
+      label: Client ID
+    clientSecret:
+      label: Client Secret
+    disabledNotice: Autenticação {authProvider} está desativada.
+    enabledNotice: Autenticação {authProvider} está ativada.
+    buttonText:
+      enabled: 'Desativar {authProvider}'
+      disabled: 'Ativar {authProvider}'
+    testAndEnable: 'Testar e Ativar'
+    saveAndEnable: 'Salvar e Ativar'
+    bannerContent: 'Você está autenticado atualmente via: {providerName}'
+    save: Salvar
+    configure: Configurar
+    test: Testar
+    settings: Configurações
+    addGroupOrUser: 'Adicionar grupo ou usuário'
+    roles:
+      title: Papéis
+    restrictedAccess: Acesso Restrito
+    bannerText: 'O provedor de autenticação {authProvider} está {status}.'
+    principalConfirmation:
+      title: Confirmar
+      body: 'Tem certeza de que deseja alterar o provedor de autenticação para {authProvider}?'
+    disableConfirmation:
+      title: Desativar Autenticação {authProvider}?
+      body: 'Tem certeza de que deseja desativar a autenticação {authProvider}?'
+      disable: Desativar
+
+  github:
+    title: GitHub
+    description: Autentica com uma conta do GitHub
+    clientId:
+      label: Client ID
+    clientSecret:
+      label: Client Secret
+    callbackUrl:
+      label: URL de Callback
+    enterprise:
+      label: GitHub Enterprise
+      host:
+        label: Host do GitHub Enterprise
+    organizations:
+      label: Organizações
+    teams:
+      label: Times
+    users:
+      label: Usuários
+    
+  gitlab:
+    title: GitLab
+    description: Autentica com uma conta do GitLab
+    
+  activedirectory:
+    title: Active Directory
+    description: Autentica com Active Directory
+    host:
+      label: Hostname
+    port:
+      label: Porta
+    tls:
+      label: Usar TLS Seguro
+    cert:
+      label: Certificado CA
+    defaultLoginDomain:
+      label: Domínio de Login Padrão
+    serviceAccountUsername:
+      label: Nome de Usuário da Conta de Serviço
+    serviceAccountPassword:
+      label: Senha da Conta de Serviço
+    userSearchBase:
+      label: Base de Busca de Usuários
+    userSearchFilter:
+      label: Filtro de Busca de Usuários
+    groupSearchBase:
+      label: Base de Busca de Grupos
+    groupSearchFilter:
+      label: Filtro de Busca de Grupos
+    startTLS:
+      label: Usar StartTLS
+    userLoginAttribute:
+      label: Atributo de Login do Usuário
+    userNameAttribute:
+      label: Atributo de Nome do Usuário
+    userMemberAttribute:
+      label: Atributo de Membro do Usuário
+    userObjectClass:
+      label: Classe de Objeto do Usuário
+    userEnabledAttribute:
+      label: Atributo de Habilitado do Usuário
+    userSearchAttribute:
+      label: Atributo de Busca do Usuário
+    groupMemberMappingAttribute:
+      label: Atributo de Mapeamento de Membro do Grupo
+    groupMemberUserAttribute:
+      label: Atributo de Usuário Membro do Grupo
+    groupDNAttribute:
+      label: Atributo DN do Grupo
+    groupNameAttribute:
+      label: Atributo de Nome do Grupo
+    groupObjectClass:
+      label: Classe de Objeto do Grupo
+    groupSearchAttribute:
+      label: Atributo de Busca do Grupo
+    connectionTimeout:
+      label: Tempo de Conexão (ms)
+    searchTimeout:
+      label: Tempo de Busca
+
+  openldap:
+    title: OpenLDAP
+    description: Autentica com OpenLDAP
+    
+  freeipa:
+    title: FreeIPA
+    description: Autentica com FreeIPA
+    
+  saml:
+    title: Autenticação SAML
+    description: Autentica com provedor SAML
+    
+  keycloak:
+    title: Keycloak (SAML)
+    description: Autentica com Keycloak usando SAML
+
+  okta:
+    title: Okta (SAML)
+    description: Autentica com Okta usando SAML
+
+  ping:
+    title: Ping Identity (SAML)
+    description: Autentica com Ping Identity usando SAML
+    
+  adfs:
+    title: AD FS (SAML)
+    description: Autentica com AD FS usando SAML
+    
+  azuread:
+    title: Azure AD
+    description: Autentica com Azure Active Directory
+    tenantId:
+      label: ID do Tenant
+    applicationId:
+      label: ID da Aplicação
+    applicationSecret:
+      label: Segredo da Aplicação
+    rancherUrl:
+      label: URL do Rancher
+    endpoint:
+      label: Endpoint do Azure AD
+    graphEndpoint:
+      label: Endpoint do Microsoft Graph
+    tokenEndpoint:
+      label: Endpoint do Token
+    authEndpoint:
+      label: Endpoint de Autenticação
+
+  googleoauth:
+    title: Google OAuth
+    description: Autentica com uma conta do Google
+    oauthCredentials:
+      clientId:
+        label: Client ID
+      clientSecret:
+        label: Client Secret
+    adminEmail:
+      label: E-mail do Administrador
+    domain:
+      label: Domínio
+    serviceAccountCredentials:
+      label: Credenciais da Conta de Serviço
+      projectId:
+        label: ID do Projeto
+      projectName:
+        label: Nome do Projeto
+      
+  oidc:
+    title: OIDC (OpenID Connect)
+    description: Autentica com um provedor OpenID Connect
+    rancherUrl:
+      label: URL do Rancher
+    issuer:
+      label: URL do Emissor
+    clientId:
+      label: Client ID
+    clientSecret:
+      label: Client Secret
+    privateKeyFile:
+      label: Arquivo de Chave Privada
+    jwksUrl:
+      label: URL JWKS
+    authEndpoint:
+      label: Endpoint de Autenticação
+    tokenEndpoint:
+      label: Endpoint do Token
+    userInfoEndpoint:
+      label: Endpoint de Informações do Usuário
+    scope:
+      label: Escopo
+    groupsClaim:
+      label: Claim de Grupos
+
+  cognito:
+    title: Cognito (OIDC)
+    description: Autentica com AWS Cognito usando OIDC
+
+  googleoidc:
+    title: Google OAuth (OIDC)
+    description: Autentica com Google usando OIDC
+
+  shibboleth:
+    title: Shibboleth (SAML)
+    description: Autentica com Shibboleth usando SAML
+
+  keycloakoidc:
+    title: Keycloak (OIDC)
+    description: Autentica com Keycloak usando OIDC
+    
+  local:
+    title: Local
+    description: Autenticação com usuários locais
+
+authGroups:
+  title: Grupos de Autenticação
+  noGroups: Nenhum grupo para exibir
+  addGroup: Adicionar Grupo
+  group: Grupo
+  removeGroup: Remover Grupo
+  
+assignTo:
+  title: Atribuir a
+  header: 'Atribuir {resource}'
+  user: Usuário
+  group: Grupo
+  role: Papel
+  searchPlaceholder: 'Buscar por nome ou ID...'
+  
+asyncButton:
+  default:
+    action: Confirmar
+    waiting: Aguardando&hellip;
+    success: Concluído
+    error: Erro
+  copy:
+    action: Copiar
+    waiting: Copiando&hellip;
+    success: Copiado!
+    error: Erro ao copiar
+  buttonCopied:
+    action: Copiar
+    waiting: Copiando&hellip;
+    success: Copiado!
+    error: Erro ao copiar
+  copyToClipboard:
+    action: Copiar para a Área de Transferência
+    waiting: Copiando&hellip;
+    success: Copiado!
+    error: Erro ao copiar
+  activate:
+    action: Ativar
+    waiting: Ativando&hellip;
+    success: Ativado
+    error: Erro ao ativar
+  deactivate:
+    action: Desativar
+    waiting: Desativando&hellip;
+    success: Desativado
+    error: Erro ao desativar
+  create:
+    action: Criar
+    waiting: Criando&hellip;
+    success: Criado
+    error: Erro ao criar
+  delete:
+    action: Excluir
+    waiting: Excluindo&hellip;
+    success: Excluído
+    error: Erro ao excluir
+  deprovision:
+    action: Desprovisionar
+    waiting: Desprovisionando&hellip;
+    success: Desprovisionado
+    error: Erro ao desprovisionar
+  disable:
+    action: Desativar
+    waiting: Desativando&hellip;
+    success: Desativado
+    error: Erro ao desativar
+  disconnected:
+    action: Conectar
+    waiting: Conectando&hellip;
+    success: Conectado
+    error: Erro ao conectar
+  done:
+    action: Concluído
+    waiting: Aguardando&hellip;
+    success: Concluído
+    error: Erro
+  download:
+    action: Baixar
+    waiting: Baixando&hellip;
+    success: Baixado
+    error: Erro ao baixar
+  edit:
+    action: Editar
+    waiting: Editando&hellip;
+    success: Editado
+    error: Erro ao editar
+  enable:
+    action: Ativar
+    waiting: Ativando&hellip;
+    success: Ativado
+    error: Erro ao ativar
+  error:
+    action: Ocorreu um erro
+    waiting: Aguardando&hellip;
+    success: Erro
+    error: Erro
+  finish:
+    action: Concluir
+    waiting: Concluindo&hellip;
+    success: Concluído
+    error: Erro ao concluir
+  generate:
+    action: Gerar
+    waiting: Gerando&hellip;
+    success: Gerado
+    error: Erro ao gerar
+  import:
+    action: Importar
+    waiting: Importando&hellip;
+    success: Importado
+    error: Erro ao importar
+  install:
+    action: Instalar
+    waiting: Instalando&hellip;
+    success: Instalado
+    error: Erro ao instalar
+  launch:
+    action: Lançar
+    waiting: Lançando&hellip;
+    success: Lançado
+    error: Erro ao lançar
+  link:
+    action: Vincular
+    waiting: Vinculando&hellip;
+    success: Vinculado
+    error: Erro ao vincular
+  patch:
+    action: Aplicar Patch
+    waiting: Aplicando Patch&hellip;
+    success: Patch Aplicado
+    error: Erro ao aplicar patch
+  pause:
+    action: Pausar
+    waiting: Pausando&hellip;
+    success: Pausado
+    error: Erro ao pausar
+  promote:
+    action: Promover
+    waiting: Promovendo&hellip;
+    success: Promovido
+    error: Erro ao promover
+  provision:
+    action: Provisionar
+    waiting: Provisionando&hellip;
+    success: Provisionado
+    error: Erro ao provisionar
+  reconnect:
+    action: Reconectar
+    waiting: Reconectando&hellip;
+    success: Reconectado
+    error: Erro ao reconectar
+  redeploy:
+    action: Reimplantar
+    waiting: Reimplantando&hellip;
+    success: Reimplantado
+    error: Erro ao reimplantar
+  refresh:
+    action: Atualizar
+    waiting: Atualizando&hellip;
+    success: Atualizado
+    error: Erro ao atualizar
+  register:
+    action: Registrar
+    waiting: Registrando&hellip;
+    success: Registrado
+    error: Erro ao registrar
+  remove:
+    action: Remover
+    waiting: Removendo&hellip;
+    success: Removido
+    error: Erro ao remover
+  reset:
+    action: Redefinir
+    waiting: Redefinindo&hellip;
+    success: Redefinido
+    error: Erro ao redefinir
+  restart:
+    action: Reiniciar
+    waiting: Reiniciando&hellip;
+    success: Reiniciado
+    error: Erro ao reiniciar
+  restore:
+    action: Restaurar
+    waiting: Restaurando&hellip;
+    success: Restaurado
+    error: Erro ao restaurar
+  resume:
+    action: Retomar
+    waiting: Retomando&hellip;
+    success: Retomado
+    error: Erro ao retomar
+  rotate:
+    action: Rotacionar
+    waiting: Rotacionando&hellip;
+    success: Rotacionado
+    error: Erro ao rotacionar
+  save:
+    action: Salvar
+    waiting: Salvando&hellip;
+    success: Salvo
+    error: Erro ao salvar
+  scale:
+    action: Escalar
+    waiting: Escalando&hellip;
+    success: Escalado
+    error: Erro ao escalar
+  send:
+    action: Enviar
+    waiting: Enviando&hellip;
+    success: Enviado
+    error: Erro ao enviar
+  start:
+    action: Iniciar
+    waiting: Iniciando&hellip;
+    success: Iniciado
+    error: Erro ao iniciar
+  stop:
+    action: Parar
+    waiting: Parando&hellip;
+    success: Parado
+    error: Erro ao parar
+  submit:
+    action: Enviar
+    waiting: Enviando&hellip;
+    success: Enviado
+    error: Erro ao enviar
+  terminate:
+    action: Encerrar
+    waiting: Encerrando&hellip;
+    success: Encerrado
+    error: Erro ao encerrar
+  uninstall:
+    action: Desinstalar
+    waiting: Desinstalando&hellip;
+    success: Desinstalado
+    error: Erro ao desinstalar
+  unregister:
+    action: Cancelar Registro
+    waiting: Cancelando Registro&hellip;
+    success: Registro Cancelado
+    error: Erro ao cancelar registro
+  upgrade:
+    action: Atualizar
+    waiting: Atualizando&hellip;
+    success: Atualizado
+    error: Erro ao atualizar
+
+backupRestoreOperator:
+  title: Backup e Restauração
+  header: Configuração do Backup
+  tableHeaders:
+    size: Tamanho
+    location: Localização
+    resourceSet: Conjunto de Recursos
+  s3:
+    title: S3 ou Compatível com S3
+    protocol:
+      label: Protocolo
+    endpoint:
+      label: Endpoint
+      placeholder: Endpoint de armazenamento S3
+    endpointCa:
+      label: CA do Endpoint
+    insecureTLSSkipVerify:
+      label: Ignorar verificação TLS (inseguro)
+    bucket:
+      label: Nome do Bucket
+      placeholder: Nome do bucket S3
+    region:
+      label: Região
+      placeholder: Região do bucket S3
+    folder:
+      label: Pasta
+      placeholder: Pasta no bucket S3
+    credentialSecret:
+      label: Segredo de Credencial
+      add:
+        label: Adicionar Segredo de Credencial
+  backupSchedule:
+    title: Agendamento de Backup
+    header: Cronograma
+    retentionCount:
+      label: Contagem de Retenção
+    schedule:
+      label: Cronograma
+    immediate: Executar o backup imediatamente
+    notImmediate: Aguardar o próximo cronograma
+  targetLocation:
+    label: Localização do Destino
+    local: Local
+    s3: S3 Compatível
+  status:
+    label: Status
+    complete: Completo
+    inProgress: Em Progresso
+  resourceSet:
+    label: Conjunto de Recursos
+  encryptionConfig:
+    label: Configuração de Criptografia
+    placeholder: Selecione a configuração de criptografia
+  backup:
+    header: Backup
+    title: Backup
+    create:
+      title: Criar Backup
+    edit:
+      title: Editar Backup
+    detail:
+      title: Detalhes do Backup
+  restore:
+    title: Restaurar
+    header: Restauração
+    create:
+      title: Criar Restauração
+    fromFile: Restaurar do Arquivo
+    backup: Restaurar do Backup
+    selectBackup: Selecionar backup do qual restaurar
+    selectBackupHelpText: 'Digite o nome do backup do qual restaurar ou selecione um da lista abaixo.'
+    backupName:
+      label: Nome do Backup
+    sourceFileLocation:
+      label: Localização do Arquivo de Origem
+    migrationCluster:
+      label: Migrar para um cluster diferente
+    migrationNote: 'Nota: Para restaurar em um cluster diferente, você precisará copiar o arquivo de backup para o novo cluster.'
+  encryptionSecret:
+    label: Secret de Criptografia
+
+catalog:
+  charts:
+    title: Gráficos
+    header: 'Gráficos'
+    searchPlaceholder: 'Buscar gráfico...'
+    noCharts: Nenhum gráfico disponível
+    viewMore: 'Ver mais'
+    showAll: 'Mostrar todos os gráficos'
+    categories:
+      all: Todas as Categorias
+    sortBy:
+      label: Ordenar por
+      featured: Em Destaque
+      nameAscending: Nome A-Z
+      nameDescending: Nome Z-A
+    filter:
+      all: Todos
+      repositories: Repositórios
+      categories: Categorias
+      chart: Gráfico
+      deprecated: Obsoleto
+      externalLink: Link Externo
+      workload: Carga de Trabalho
+      apps: Apps
+      tools: Ferramentas
+    more:
+      label: 'Ver mais de {provider}'
+    readMore: Leia mais
+    helmRepository:
+      label: Repositório Helm
+
+  apps:
+    title: Apps Instalados
+    header: 'Apps Instalados'
+    searchPlaceholder: 'Buscar aplicativo...'
+    noApps: Nenhum app instalado
+    table:
+      namespace: Namespace
+      chart: Gráfico
+      lastDeployed: Última Implantação
+    deleteConfirm: 'Tem certeza de que deseja excluir este aplicativo?'
+    notes: Notas
+    readme: README
+    values: Valores
+    deprecatedWarning: 'Este gráfico está obsoleto.'
+    
+  install:
+    title: Instalar Gráfico
+    header: '{chart}'
+    steps:
+      metadata:
+        label: Metadados
+      values:
+        label: Valores
+      review:
+        label: Revisar
+    action:
+      install: Instalar
+      update: Atualizar
+    namespace:
+      label: Namespace
+      newNamespace: Criar novo namespace
+    name:
+      label: Nome
+    version:
+      label: Versão
+    chartVersions:
+      label: 'Versões ({total})'
+    defaultVersion: 'Padrão: {version}'
+    helmOptions:
+      title: Opções Helm
+      wait:
+        label: Aguardar
+        description: 'Aguardar até que todos os recursos estejam prontos antes de marcar como bem-sucedido'
+      cleanupOnFail:
+        label: Limpar em caso de falha
+        description: 'Permitir a exclusão de novos recursos criados nesta instalação em caso de falha na atualização'
+      openApiValidation:
+        label: Validação OpenAPI
+        description: 'Forçar a validação da saída renderizada com o esquema OpenAPI'
+      noHooks:
+        label: Sem Hooks
+        description: 'Impedir que hooks sejam executados durante a instalação'
+    editValues:
+      title: Editar Valores
+    upgradeAvailable: 'Versão {version} disponível'
+    
+  repositories:
+    title: Repositórios
+    header: 'Repositórios de Aplicativos'
+    addRepository: 'Adicionar Repositório'
+    create:
+      title: Criar Repositório
+    table:
+      url: URL
+      branch: Branch
+      helmCompatibility: Compatibilidade Helm
+    type:
+      label: Tipo
+      git: Git
+      http: URL HTTP(S)
+      oci: OCI
+    url:
+      label: URL
+    branch:
+      label: Branch
+    username:
+      label: Nome de Usuário
+    password:
+      label: Senha
+    basicAuth:
+      label: Autenticação
+      usernameLabel: Nome de Usuário
+      passwordLabel: Senha
+    caBundle:
+      label: Bundle CA
+    insecurePlainHttp:
+      label: HTTP Simples Inseguro
+    insecureSkipTlsVerify:
+      label: Ignorar Verificação TLS (inseguro)
+    helmCompatibility:
+      label: Compatibilidade Helm
+    showAdvanced: Mostrar Opções Avançadas
+    
+  chart:
+    searchPlaceholder: 'Buscar...'
+    info:
+      title: Informações do Gráfico
+      home: Início
+      description: Descrição
+      keywords: Palavras-chave
+      annotations: Anotações
+    versions:
+      title: Versões Disponíveis
+    deprecated: Obsoleto
+    
+  action:
+    moreInfo: 'Mais informações sobre {name}'
+    
+changePassword:
+  title: Alterar Senha
+  subtext: Alterar a senha para esta conta.
+  current:
+    label: Senha atual
+  confirm:
+    label: Confirmar nova senha
+  new:
+    label: Nova senha
+  submit: Salvar nova senha
+  errors:
+    match: As senhas não correspondem
+
+chartHeading:
+  version: 'v{version}'
+  versionDetail: 'Versão do Gráfico: {version}'
+
+compliance:
+  title: Conformidade
+  scan:
+    title: Varredura
+    create:
+      title: Criar Varredura
+    table:
+      state: Estado
+      profile: Perfil
+      benchmark: Benchmark
+      total: Total
+      pass: Aprovado
+      fail: Reprovado
+      skip: Ignorado
+      warn: Aviso
+      notApplicable: Não aplicável
+    status:
+      pass: Aprovado
+      fail: Reprovado
+      skip: Ignorado
+      warn: Aviso
+      notApplicable: Não aplicável
+      notTested: Não testado
+    detail:
+      title: Detalhes da Varredura
+      checks:
+        title: Verificações
+        searchPlaceholder: Buscar verificação...
+      overview:
+        title: Visão geral
+        lastScan: Última varredura
+        nextScan: Próxima varredura
+        profile: Perfil
+        benchmark: Benchmark
+      nodes:
+        title: Nós
+        results: Resultados dos Nós
+    lastScan: Última varredura
+    nextScan: Próxima varredura
+    notScheduled: Não agendada
+    
+  scheduledScan:
+    title: Varredura Agendada
+    create:
+      title: Criar Varredura Agendada
+    scanProfile:
+      label: Perfil de Varredura
+    cronSchedule:
+      label: Cronograma Cron
+      enable: Ativar cronograma
+      testExpression: Testar expressão
+    retentionCount:
+      label: Número de Relatórios para Reter
+    suspend:
+      label: Suspender
+      
+  scanProfile:
+    title: Perfil de Varredura
+    create:
+      title: Criar Perfil de Varredura
+    benchmarkVersion:
+      label: Versão do Benchmark
+    tests:
+      title: Testes
+
+cluster:
+  provider:
+    amazoneks:
+      label: Amazon EKS
+      shortLabel: EKS
+    azureaks:
+      label: Azure AKS
+      shortLabel: AKS
+    googlegke:
+      label: Google GKE
+      shortLabel: GKE
+    custom:
+      label: Personalizado
+      shortLabel: Personalizado
+    import:
+      label: Importar
+      shortLabel: Importar
+    k3s:
+      label: K3s
+    rke:
+      label: RKE
+    rke2:
+      label: RKE2
+      
+  tableHeaders:
+    kubernetesVersion: Versão do Kubernetes
+    provider: Provedor
+    nodes: Nós
+    explorers: Exploradores
+    
+  list:
+    assignTo: Atribuir ao Projeto
+
+  dashboard:
+    title: Painel do Cluster
+    glance:
+      nodesMonitoring: Nós
+      version: Versão
+    
+  nodeDriver:
+    header: 'Driver de Nó: {name}'
+    
+  about:
+    version:
+      title: Versão do Cluster
+      
+  configureTip: Configurar este cluster com o RKE
+  
+  actions:
+    edit: Editar
+    shell: Shell do Cluster
+    kubeconfig: Baixar KubeConfig
+    copy: Copiar KubeConfig para Área de Transferência
+    explore: Explorar Cluster
+    delete: Excluir Cluster
+    rotateCerts: Rotacionar Certificados
+    saveAsRKETemplate: Salvar como Modelo RKE
+    rotateEncryptionKey: Rotacionar Chave de Criptografia
+    snapshotNow: Criar Snapshot Agora
+    
+  badges:
+    driver:
+      label: Driver
+    provider:
+      label: Provedor
+    kubeVersion:
+      label: Kubernetes
+    
+  certInfo:
+    title: Informações do Certificado
+    expirationDays:
+      label: '{count, plural, =1 {Expira em 1 dia} other {Expira em {count} dias}}'
+    certName:
+      label: Certificado
+    certExpiry:
+      label: Expira em
+    sans:
+      label: SANs
+      
+  cloudProvider:
+    label: Provedor de Nuvem
+
+  containerRuntime:
+    label: Ambiente de Execução de Contêiner
+
+  dns:
+    label: DNS
+
+  ingress:
+    label: Ingress Provider
+    
+  network:
+    label: Rede
+
+  advanced:
+    title: Avançado
+    agentEnv:
+      label: Variáveis de Ambiente do Agente
+    agentEnvTip: Insira variáveis de ambiente a serem passadas para o agente
+    labels:
+      label: Rótulos do Cluster
+    memberRoles:
+      label: Papéis de Membro
+
+  addons:
+    title: Addons
+    
+  nodes:
+    title: Nós
+    notReady: Não prontos
+    ready: Prontos
+    total: Total
+    
+  members:
+    title: Membros
+    
+  kubeConfigExpiry:
+    label: Expiração do KubeConfig
+    
+  rke2:
+    title: Opções do RKE2
+    etcd:
+      title: Configuração etcd
+      disableSnapshots:
+        label: Desativar Snapshots
+      snapshotScheduleCron:
+        label: Cronograma de Snapshot (Cron)
+      snapshotRetain:
+        label: Retenção de Snapshots
+      snapshotDir:
+        label: Diretório de Snapshot
+      s3:
+        enabled:
+          label: Habilitar Backup S3
+        endpoint:
+          label: Endpoint
+        endpointCASecret:
+          label: CA do Endpoint
+        skipSSLVerify:
+          label: Pular Verificação SSL
+        bucket:
+          label: Bucket
+        region:
+          label: Região
+        folder:
+          label: Pasta
+        cloudCredentialName:
+          label: Credencial de Nuvem
+    networking:
+      title: Rede
+      clusterCidr:
+        label: CIDR do Cluster
+      serviceCidr:
+        label: CIDR do Serviço
+      clusterDns:
+        label: DNS do Cluster
+      clusterDomain:
+        label: Domínio do Cluster
+    upgrade:
+      title: Atualização
+      strategy:
+        label: Estratégia de Atualização
+      drain:
+        enabled:
+          label: Dragar nós antes da atualização
+        timeout:
+          label: Timeout do Drain (s)
+        gracePeriod:
+          label: Período de Graça (s)
+        skipWaitForDeleteTimeout:
+          label: Pular espera por timeout de exclusão
+      maxUnavailable:
+        label: Máximo Indisponível
+      maxSurge:
+        label: Máximo de Sobrecarga
+      concurrency:
+        label: Simultaneidade
+    labels:
+      title: Rótulos e Anotações
+      clusterLabels: Rótulos do Cluster
+      clusterAnnotations: Anotações do Cluster
+    machinePools:
+      title: Pools de Máquinas
+      addPool: Adicionar Pool
+      deletePool: Excluir Pool
+      poolName:
+        label: Nome do Pool
+      poolDescription:
+        label: Descrição do Pool
+      quantity:
+        label: Quantidade
+      roles:
+        label: Papéis
+        etcd: etcd
+        controlPlane: Plano de Controle
+        worker: Worker
+      drainBeforeDelete:
+        label: Drenar antes de excluir
+      hostnameLengthLimit:
+        label: Limite de Tamanho do Hostname
+    machineSelectorConfig:
+      title: Configuração do Seletor de Máquina
+    machineGlobalConfig:
+      title: Configuração Global do Servidor
+    agentEnv:
+      title: Variáveis de Ambiente do Agente
+    chartValues:
+      title: Valores do Gráfico de Componente
+    systemAgent:
+      title: Configuração do Agente de Sistema
+    labels:
+      title: Rótulos e Taints
+    addons:
+      title: Addons
+      description: 'Gráficos adicionais a instalar no cluster'
+      addAddon: Adicionar Addon
+    registries:
+      title: Registros
+      description: Configuração de espelhamento e autenticação de registros de contêiner
+  
+  k3s:
+    title: Opções do K3s
+    
+  snapshot:
+    title: Snapshots
+    actions:
+      restore: Restaurar Snapshot
+    table:
+      location: Localização
+      snapshotFile: Arquivo de Snapshot
+      createdAt: Criado em
+    
+  import:
+    title: Importar Cluster
+    whatHappens: 'O que acontece quando você importa?'
+    step1:
+      header: 'Passo 1: Crie o Cluster no Rancher'
+      body: 'Crie o cluster no Rancher com o nome desejado'
+    step2:
+      header: 'Passo 2: Execute o Comando Abaixo'
+      body: 'Execute este comando para registrar seu cluster Kubernetes existente no Rancher.'
+    command:
+      existing: 'Cluster existente com menos de 100 nós'
+      existingLarge: 'Cluster existente com mais de 100 nós'
+      windows: 'Cluster existente com nós Windows'
+    notReady: 'Nota: Este cluster ainda não está pronto. Depois de executar o comando de importação, este cluster ficará ativo em breve.'
+    insecure: |
+      Se você receber a mensagem "certificate signed by unknown authority", o seu servidor Rancher está usando um certificado auto-assinado. Execute o comando abaixo em vez disso.
+    clusterRoleBindings:
+      detail: 'A importação de um cluster Kubernetes registra-o com o Rancher Server sem instalar o agente Rancher no cluster. Você precisará usar "kubectl" para importar o cluster manualmente.'
+
+  nodes:
+    title: Nós
+    
+  notCreated: Este cluster ainda não foi criado.
+  
+  noDashboard: 'Nenhum painel está disponível para este cluster.'
+  
+  monitoring:
+    title: Monitoramento
+    
+  loggingTitle: Logging
+  
+  istioTitle: Istio
+  
+  oidcConfig:
+    title: Configuração OIDC
+    
+  rotate:
+    title: Rotacionar Certificados
+    all:
+      label: Rotacionar todos os certificados
+    services:
+      label: Rotacionar certificados de serviços específicos
+    components:
+      label: Componentes
+
+clusterIndexPage:
+  resourceGauge:
+    nodesReady: Nós Prontos
+    pods: Pods
+    coreMt: Núcleos
+    ram: RAM
+  resourceCountGauge:
+    pods: Pods
+    deployments: Implantações
+    statefulsets: StatefulSets
+    daemonsets: DaemonSets
+    jobs: Jobs
+    services: Serviços
+    ingresses: Ingresses
+    pvcs: Claims de Volume Persistente
+    namespaces: Namespaces
+    nodes: Nós
+  hardwareResourceGauge:
+    cpu: CPU
+    memory: Memória
+    storage: Armazenamento
+  header:
+    dashboard: Painel
+    events: Eventos
+  detail:
+    glance:
+      provider: Provedor
+      version: Versão
+      created: Criado
+      cni: CNI
+  systemComponents:
+    title: Componentes do Sistema
+  gatekeeper:
+    title: OPA/Gatekeeper
+  more:
+    title: 'Ver mais {type}'
+  nodesReady: '{nodes, plural, =1 {1 Nó Pronto} other {{nodes} Nós Prontos}}'
+  nodesTotal: '{nodes, plural, =1 {de 1 Nó} other {de {nodes} Nós}}'
+  workloadCounts:
+    deployments: '{count, plural, =0 {Sem Implantações} =1 {1 Implantação} other {{count} Implantações}}'
+    pods: '{count, plural, =0 {Sem Pods} =1 {1 Pod} other {{count} Pods}}'
+    statefulsets: '{count, plural, =0 {Sem StatefulSets} =1 {1 StatefulSet} other {{count} StatefulSets}}'
+    daemonsets: '{count, plural, =0 {Sem DaemonSets} =1 {1 DaemonSet} other {{count} DaemonSets}}'
+    jobs: '{count, plural, =0 {Sem Jobs} =1 {1 Job} other {{count} Jobs}}'
+    cronjobs: '{count, plural, =0 {Sem CronJobs} =1 {1 CronJob} other {{count} CronJobs}}'
+  nodeConditions:
+    ready: Pronto
+    diskPressure: Pressão de Disco
+    memoryPressure: Pressão de Memória
+    pidPressure: Pressão de PID
+    networkUnavailable: Rede Indisponível
+
+configmap:
+  tabs:
+    data: Dados
+    binaryData: Dados Binários
+
+containerResourceLimit:
+  label: Limites de Recurso do Contêiner
+  requestsLimitsHelp: 'Defina reservas e limites de recursos para um contêiner.'
+  cpuReservation: Reserva de CPU
+  cpuLimit: Limite de CPU
+  memoryReservation: Reserva de Memória
+  memoryLimit: Limite de Memória
+  gpuReservation: Reserva de GPU
+  defaultsFrom: Padrões de {name}
+  defaultsTo: Padrão para valores de {name}
+  helpText: 'Defina os limites de recursos para contêineres nesta implantação.'
+  helpTextDetail: 'Especifique os limites de recursos do contêiner para este pod.'
+
+resource:
+  defaultEditHelp: 'Edite o YAML abaixo para modificar o recurso.'
+
+codeMirror:
+  tangleError: Erro de Análise de YAML
+
+cruResource:
+  protip: 'Dica: Você também pode editar o YAML diretamente. Para editar o YAML, clique em <b>Editar YAML</b>.'
+  edit: Editar como YAML
+  create: Criar
+
+providers:
+  cluster:
+    none: Sem Provedor de Nuvem
+    
+drivers:
+  cluster:
+    title: Drivers de Cluster
+    header: 'Drivers de Cluster'
+    builtin: Integrado
+    addDriver: Adicionar Driver
+    noDrivers: Nenhum driver de cluster para exibir
+    actions:
+      activate: Ativar
+      deactivate: Desativar
+      refresh: Atualizar Metadados
+    table:
+      state: Estado
+      downloadUrl: URL de Download
+      uiUrl: URL da Interface
+      checksum: Checksum
+    create:
+      title: Adicionar Driver de Cluster
+    url:
+      label: URL de Download
+      placeholder: 'https://exemplo.com/driver'
+    checksum:
+      label: Checksum
+      placeholder: SHA256
+    uiUrl:
+      label: URL da Interface do Usuário
+      placeholder: URL da interface personalizada (opcional)
+    whitelist:
+      label: Lista de Permissões de Domínio de UI
+    
+  nodeDriver:
+    title: Drivers de Nó
+    header: 'Drivers de Nó'
+    builtin: Integrado
+    addDriver: Adicionar Driver
+    noDrivers: Nenhum driver de nó para exibir
+    active: Ativo
+    inactive: Inativo
+
+detailText:
+  namespace: 'Namespace: {name}'
+  project: 'Projeto: {name}'
+  
+drainNode:
+  title: Drenar Nó
+  protip: 'Opcionalmente, você pode especificar parâmetros para o processo de drenagem.'
+  deleteLocalData:
+    label: Excluir Dados Locais
+    description: 'Continuar mesmo que haja pods usando emptyDir (dados locais que serão excluídos quando o nó for drenado)'
+  force:
+    label: Forçar
+    description: 'Continuar mesmo que haja pods não gerenciados por um ReplicationController, ReplicaSet, Job, DaemonSet ou StatefulSet'
+  gracePeriod:
+    label: Período de Graça
+    description: 'Período de tempo em segundos dado a cada pod para terminar normalmente. Se negativo, será usado o período de graça padrão do pod.'
+  ignoreDaemonSets:
+    label: Ignorar DaemonSets
+    description: 'Ignorar pods gerenciados por DaemonSet'
+  skipWaitForDeleteTimeout:
+    label: Pular Espera por Exclusão
+    description: 'Se o pod está sendo excluído há mais de N segundos, pular a espera pelo pod'
+  timeout:
+    label: Timeout
+    description: 'Tempo de espera em segundos antes de desistir'
+
+dynamicContent:
+  resource:
+    header: Recursos
+    noResources: Nenhum recurso disponível
+    selected: '{count, plural, =1 {1 recurso} other {{count} recursos}}'
+    filters:
+      all: Todos
+      label: Filtrar
+  addItem:
+    label: Adicionar Item
+  noData: Nenhum dado disponível
+  table:
+    noRows: 'Nenhuma linha para exibir'
+  
+etcdInfoBanner:
+  message: "Este cluster está usando etcd como armazenamento de dados. Recomendamos fazer backups regulares do etcd."
+  link: Configurar Backup
+
+fleet:
+  tableHeaders:
+    repoName: Nome do Repositório
+    repoUrl: URL do Repositório
+    bundles: Bundles
+    resources: Recursos
+    gitRepo: Repositório Git
+  
+  clusters:
+    title: Clusters
+    header: 'Clusters da Fleet'
+    create:
+      title: Criar Cluster da Fleet
+    table:
+      state: Estado
+      name: Nome
+      namespaces: Namespaces
+      nodes: Nós
+      lastSeen: Visto pela Última Vez
+    noAgents: Nenhum agente registrado.
+    
+  clusterGroups:
+    title: Grupos de Clusters
+    header: 'Grupos de Clusters da Fleet'
+    create:
+      title: Criar Grupo de Clusters
+    noGroups: Nenhum grupo de cluster para exibir
+    
+  gitRepos:
+    title: Repositórios Git
+    header: Repositórios Git
+    create:
+      title: Criar Repositório Git
+    table:
+      clustersReady: Clusters Prontos
+      clustersDesired: Clusters Desejados
+      bundlesReady: Bundles Prontos
+      bundlesDesired: Bundles Desejados
+      resourcesReady: Recursos Prontos
+      resourcesDesired: Recursos Desejados
+    noRepos: Nenhum repositório Git para exibir
+    
+  bundle:
+    title: Bundle
+    header: Bundles
+    table:
+      state: Estado
+      name: Nome
+      gitRepo: Repositório Git
+      deploymentResource: Recurso de Implantação
+      clustersReady: Clusters Prontos
+      
+  bundleDeployment:
+    title: Implantação de Bundle
+    header: 'Implantações de Bundle'
+    
+  advanced:
+    title: Avançado
+    yaml: YAML
+    
+  clusterRegistrationToken:
+    title: Token de Registro do Cluster
+    
+  namespaces:
+    title: Namespaces
+    
+  repos:
+    title: Repositórios
+    header: 'Repositórios de Apps'
+    
+  workspace:
+    title: Workspace
+    
+  config:
+    header: Configuração da Fleet
+    
+  dashboard:
+    header: Painel da Fleet
+    
+  newBundle:
+    title: Novo Bundle
+    
+  resources:
+    title: Recursos
+    header: Recursos
+    
+  createCluster:
+    label: Criar Cluster
+    
+  importCluster:
+    label: Importar Cluster
+    
+  gitrepo:
+    title: Repositório Git
+    header: 'Repositório Git'
+    create:
+      title: Criar Repositório Git
+    revision:
+      label: Revisão
+    branch:
+      label: Branch
+      placeholder: main
+    commit:
+      label: Commit
+    repo:
+      label: URL do Repositório
+    paths:
+      label: Caminhos
+    helmRepoURLRegex:
+      label: Regex de URL do Repositório Helm
+    helmSecretName:
+      label: Nome do Segredo Helm
+    helmSecretNameForPassCredentials:
+      label: Nome do Segredo Helm para Passar Credenciais
+    pollingInterval:
+      label: Intervalo de Polling
+    insecureSkipTLSVerify:
+      label: Pular Verificação TLS (inseguro)
+    caBundle:
+      label: Bundle CA
+    credentials:
+      label: Credenciais
+    targets:
+      label: Alvos
+      all: Todos os Clusters
+      cluster: Cluster
+      clusterGroup: Grupo de Clusters
+      advanced: Avançado
+      name:
+        label: Nome do Target
+      clusterName:
+        label: Cluster
+      clusterGroup:
+        label: Grupo de Clusters
+      clusterSelector:
+        label: Seletor de Cluster
+      clusterGroupSelector:
+        label: Seletor de Grupo de Clusters
+    correctDrift:
+      label: Corrigir Desvio
+    keepResources:
+      label: Manter Recursos
+      description: 'Manter recursos no cluster downstream quando este recurso GitRepo ou Bundle for excluído'
+    deleteNamespace:
+      label: Excluir Namespace
+      description: 'Excluir namespace quando este GitRepo ou Bundle for removido'
+    forceSyncGeneration:
+      label: Forçar Geração de Sincronização
+    paused:
+      label: Pausado
+
+footer:
+  learnMore: Saiba mais
+  copyright: 'Rancher Labs, Inc. Todos os direitos reservados.'
+
+gatekeeperConstraint:
+  title: Restrições do Gatekeeper
+  header: 'Restrições'
+  tableHeaders:
+    enforcementAction: Ação de Execução
+    violations: Violações
+  violations:
+    title: Violações
+    kind: Tipo
+    name: Nome
+    namespace: Namespace
+    message: Mensagem
+  enforcementAction:
+    deny: Negar
+    dryrun: Simulação
+    warn: Aviso
+  template:
+    label: Modelo
+
+gatekeeperIndex:
+  title: OPA Gatekeeper
+  violations:
+    title: Violações
+    searchPlaceholder: Buscar violações...
+  constraints:
+    title: Restrições
+  templates:
+    title: Modelos de Restrição
+  install: Instalar Gatekeeper
+  notInstalled: OPA Gatekeeper não está instalado neste cluster.
+
+gatekeeperInstall:
+  title: Instalar OPA Gatekeeper
+
+glance:
+  version:
+    label: Versão do Kubernetes
+  provider:
+    label: Provedor
+  created:
+    label: Criado
+  location:
+    label: Localização
+  nodes:
+    label: 'Nós'
+  pausedDescription: 'Este cluster está pausado.'
+  nodePool:
+    label: Pool de Nós
+  cni:
+    label: CNI
+
+clusterBadge:
+  readOnly: Somente Leitura
+  local: Local
+  hosted: Hospedado
+  
+grafanaDashboard:
+  none: Nenhum painel Grafana para exibir.
+  title: Painéis Grafana
+
+graphOptions:
+  addSeries: Adicionar série
+  removeAllSeries: Remover todas as séries
+  selectMetrics: Selecionar métricas
+
+growl:
+  default:
+    title: Notificação
+  success:
+    title: Sucesso
+  info:
+    title: Informação
+  warning:
+    title: Aviso
+  error:
+    title: Erro
+  tip:
+    title: Dica
+  fromServer:
+    title: Erro do Servidor
+
+hpa:
+  title: Autoscaler de Pod Horizontal
+  header: Autoscalers de Pod Horizontal
+  create:
+    title: Criar HPA
+  table:
+    minReplicas: Réplicas Mínimas
+    maxReplicas: Réplicas Máximas
+    currentReplicas: Réplicas Atuais
+    desiredReplicas: Réplicas Desejadas
+  tabs:
+    overview: Visão Geral
+    metrics: Métricas
+  minReplicas:
+    label: Réplicas Mínimas
+  maxReplicas:
+    label: Réplicas Máximas
+  metrics:
+    title: Métricas
+    resource:
+      title: Recurso
+      name:
+        label: Nome do Recurso
+      targetAverageUtilization:
+        label: Utilização Média Alvo (%)
+      targetAverageValue:
+        label: Valor Médio Alvo
+    pods:
+      title: Pods
+      metricName:
+        label: Nome da Métrica
+      targetAverageValue:
+        label: Valor Médio Alvo
+    object:
+      title: Objeto
+      metricName:
+        label: Nome da Métrica
+      targetValue:
+        label: Valor Alvo
+      describedObject:
+        label: Objeto Descrito
+        kind:
+          label: Tipo
+        name:
+          label: Nome
+    external:
+      title: Externo
+      metricName:
+        label: Nome da Métrica
+      targetValue:
+        label: Valor Alvo
+      targetAverageValue:
+        label: Valor Médio Alvo
+
+import:
+  title: Importar YAML
+  action: Importar
+  importActionLabel: Leia apenas os recursos do YAML, sem fazer alterações
+  namespace: Namespace
+  defaultNamespace: Namespace padrão
+  warning: "Aviso"
+  warningMessage: "Ao aplicar este YAML, você pode substituir configurações que o Rancher gerencia. Isso pode causar comportamento inesperado."
+  
+auditPolicy:
+  title: Política de Auditoria
+  header: 'Política de Auditoria'
+
+ingress:
+  title: Ingresses
+  header: Ingresses
+  create:
+    title: Criar Ingress
+  tabs:
+    rules: Regras
+    certificates: Certificados
+    labels: Rótulos e Anotações
+  rules:
+    title: Regras
+    add: Adicionar Regra
+    hostname:
+      label: Nome do Host
+      placeholder: 'ex: meusite.exemplo.com'
+    requestHost:
+      label: Host da Solicitação
+      placeholder: 'ex: meusite.exemplo.com'
+    path:
+      label: Caminho
+      placeholder: 'ex: /api'
+    targetService:
+      label: Serviço de Destino
+    port:
+      label: Porta
+    workload:
+      label: Carga de Trabalho
+    noRules: Nenhuma regra adicionada
+    default: Regra padrão
+    notRancher: Não gerenciado pelo Rancher
+    type:
+      title: Tipo de Regra
+    asLabel: Como Rótulo
+  certificates:
+    title: Certificados
+    add: Adicionar Certificado
+    certificate:
+      label: Certificado
+    secret:
+      label: Secret
+    hosts:
+      label: Hosts
+    noHosts: Nenhum host adicionado
+    noRules: Nenhuma regra de certificado adicionada
+    defaultCert: Certificado Padrão
+  ingressClass:
+    label: Classe do Ingress
+  defaultBackend:
+    label: Backend Padrão
+    targetService:
+      label: Serviço Padrão
+    port:
+      label: Porta
+
+internalExternalIP:
+  title: IPs Internos/Externos
+  internal: IP Interno
+  external: IP Externo
+
+istio:
+  title: Istio
+  header: Istio
+  install:
+    title: Instalar Istio
+  tabs:
+    graph: Grafo
+    metrics: Métricas
+    jaeger: Jaeger
+    kiali: Kiali
+  kiali:
+    title: Kiali
+  jaeger:
+    title: Jaeger
+  notInstalled: Istio não está instalado neste cluster.
+
+itemCard:
+  unavailable: Indisponível
+
+jwt:
+  title: Autenticação JWT
+  header: 'Autenticação JWT'
+  create:
+    title: Criar Configuração JWT
+
+labels:
+  title: Rótulos e Anotações
+  annotations: Anotações
+  labels: Rótulos
+  add:
+    label: Adicionar Rótulo
+  addAnnotation:
+    label: Adicionar Anotação
+  noLabels: Nenhum rótulo para exibir
+  noAnnotations: Nenhuma anotação para exibir
+
+labelSelect:
+  expression: Expressão de Seletor
+  key: Chave
+  value: Valor
+  operator: Operador
+  addExpression: Adicionar Expressão
+  operators:
+    In: Em
+    NotIn: Não em
+    Exists: Existe
+    DoesNotExist: Não existe
+    Equals: Igual a
+    NotEquals: Diferente de
+
+labeledSelect:
+  noOptions: Sem opções disponíveis
+  typeToSearch: Digite para buscar...
+  
+landing:
+  title: Home
+  clusters:
+    title: Clusters
+    none: Nenhum cluster disponível
+    header: 'Bem-vindo ao Rancher'
+    description: 'Gerencie todos os seus clusters Kubernetes a partir de um único lugar.'
+    import: 'Importar Cluster'
+    create: 'Criar Cluster'
+    manage: 'Gerenciar Clusters'
+    count: '{count, plural, =0 {Sem clusters} =1 {1 Cluster} other {{count} Clusters}}'
+  home: Home
+  about: Sobre
+  learnMore: Saiba mais
+  gettingStarted: Primeiros Passos
+  support: Suporte
+  community: Comunidade
+
+logging:
+  title: Logging
+  header: Logging
+  install:
+    title: Instalar Logging
+  notInstalled: Logging não está instalado neste cluster.
+  overview:
+    title: Visão Geral
+    clusterFlow:
+      title: Flows de Cluster
+      description: 'Os flows de cluster enviam logs para outputs de cluster.'
+    clusterOutput:
+      title: Outputs de Cluster
+      description: 'Os outputs de cluster coletam logs de flows de cluster.'
+    flow:
+      title: Flows
+      description: 'Os flows enviam logs para outputs.'
+    output:
+      title: Outputs
+      description: 'Os outputs coletam logs de flows.'
+  clusterFlow:
+    title: Flows de Cluster
+    create:
+      title: Criar Flow de Cluster
+    filters:
+      title: Filtros
+    match:
+      label: Corresponder Registros
+      addNamespace: Adicionar Namespace
+      addLabel: Adicionar Filtro de Rótulo
+    outputs:
+      label: Outputs
+  clusterOutput:
+    title: Outputs de Cluster
+    create:
+      title: Criar Output de Cluster
+    loggers:
+      title: Loggers
+  flow:
+    title: Flows
+    create:
+      title: Criar Flow
+    match:
+      label: Corresponder Registros
+    outputs:
+      label: Outputs
+    filters:
+      title: Filtros
+  output:
+    title: Outputs
+    create:
+      title: Criar Output
+    loggers:
+      title: Loggers
+    types:
+      elasticsearch: Elasticsearch
+      opensearch: OpenSearch
+      kafka: Kafka
+      fluentd: Fluentd
+      s3: S3
+      loki: Grafana Loki
+      cloudwatch: CloudWatch
+      datadog: Datadog
+      splunkHec: Splunk HEC
+      sumologic: Sumo Logic
+      syslog: Syslog
+      gcs: Google Cloud Storage
+      azureStorage: Azure Storage
+      logz: Logz.io
+      file: Arquivo
+      stdout: Stdout
+      null: Nulo
+  fluentbit:
+    title: Configuração do Fluentbit
+
+longhorn:
+  title: Longhorn
+  header: Longhorn
+  install: Instalar Longhorn
+  dashboard: Painel Longhorn
+  notInstalled: Longhorn não está instalado neste cluster.
+
+neuvector:
+  title: NeuVector
+  header: NeuVector
+  install: Instalar NeuVector
+  dashboard: Painel NeuVector
+  notInstalled: NeuVector não está instalado neste cluster.
+
+login:
+  title: Entrar no Rancher
+  header: Bem-vindo ao Rancher
+  useLocal: Usar conta local
+  useOther: Usar outro provedor
+  useLocalAuth: Usar autenticação local
+  submit: Entrar
+  username:
+    label: Nome de Usuário
+    placeholder: Nome de usuário
+  password:
+    label: Senha
+    placeholder: Senha
+  bootstrapAdmin:
+    title: 'Bem-vindo! Por favor, crie a senha do administrador'
+    header: 'Crie a senha do administrador'
+    currentPasswordLabel: Senha atual
+    newPasswordLabel: Nova senha
+    confirmPasswordLabel: Confirmar senha
+    description: 'Esta será a senha para o usuário <b>admin</b>.'
+    submit: Continuar
+  firstLogin:
+    title: 'Por favor, configure o servidor Rancher'
+    telemetry:
+      prompt: 'Posso analisar recursos para melhorar o Rancher?'
+      detail: 'O Rancher pode periodicamente coletar dados anonimizados sobre o uso de recursos para melhorar o produto.'
+    serverUrl:
+      prompt: 'Qual é a URL do servidor Rancher?'
+      detail: 'Esta é a URL que os nós do cluster usarão para registrar no Rancher. Se você mudar de ideia mais tarde, isso pode ser alterado nas Configurações Globais.'
+      label: 'URL do Servidor Rancher'
+      placeholder: 'https://meu-servidor-rancher.exemplo.com'
+      error: 'Por favor, insira uma URL de servidor válida'
+  error:
+    invalidCredentials: 'Nome de usuário ou senha inválidos'
+    serverError: 'Ocorreu um erro ao tentar fazer login'
+  provider:
+    label: 'Provedor de Autenticação'
+  useOneLogin: Entrar com {providerName}
+  or: ou
+  
+logout:
+  title: Saindo
+  header: Você saiu
+  description: 'Você foi desconectado com sucesso do Rancher.'
+  login: Entrar novamente
+
+managementNode:
+  title: Nós de Gerenciamento
+  nodesReady: '{count, plural, =1 {1 Nó Pronto} other {{count} Nós Prontos}}'
+  
+members:
+  title: Membros
+  header: Membros
+  create:
+    title: Adicionar Membro
+  noMembers: Nenhum membro para exibir
+  detail:
+    title: 'Detalhe do Membro'
+  clusterPermissions:
+    title: Permissões do Cluster
+  projectPermissions:
+    title: Permissões do Projeto
+  tableHeaders:
+    user: Usuário
+    roles: Papéis
+  role:
+    noRoles: Nenhum papel disponível
+    label: Papel
+    custom: Personalizado
+  addMember: Adicionar Membro
+  updateMember: Atualizar Membro
+
+membershipEditor:
+  add: Adicionar
+  noMembers: Nenhum membro adicionado
+  members: Membros
+  member:
+    label: Membro
+    placeholder: Buscar por nome de usuário, e-mail ou grupo
+  role: Papel
+  update: Atualizar
+  remove: Remover
+  you: (você)
+
+monitoring:
+  title: Monitoramento
+  header: Monitoramento
+  install:
+    title: Instalar Monitoramento
+  notInstalled: Monitoramento não está instalado neste cluster.
+  overview:
+    title: Visão Geral
+  tabs:
+    graphs: Gráficos
+    alertManager: Gerenciador de Alertas
+    prometheusRules: Regras do Prometheus
+    servicemonitors: Monitores de Serviço
+    podmonitors: Monitores de Pod
+    probes: Probes
+  alertmanager:
+    title: Gerenciador de Alertas
+    endpoint: Endpoint
+    replicas: Réplicas
+    version: Versão
+  prometheus:
+    title: Prometheus
+    endpoint: Endpoint
+    replicas: Réplicas
+    version: Versão
+    storageClass:
+      label: Classe de Armazenamento
+    storageSize:
+      label: Tamanho do Armazenamento
+    retentionSize:
+      label: Tamanho de Retenção
+    retentionTime:
+      label: Tempo de Retenção
+    requestsCpu:
+      label: Reserva de CPU
+    requestsMemory:
+      label: Reserva de Memória
+    limitsCpu:
+      label: Limite de CPU
+    limitsMemory:
+      label: Limite de Memória
+  grafana:
+    title: Grafana
+    endpoint: Endpoint
+    replicas: Réplicas
+    version: Versão
+    storageClass:
+      label: Classe de Armazenamento
+    storageSize:
+      label: Tamanho do Armazenamento
+
+monitoringReceiver:
+  title: Receptores
+  header: Receptores
+  create:
+    title: Criar Receptor
+  types:
+    email: E-mail
+    slack: Slack
+    pagerduty: PagerDuty
+    opsgenie: OpsGenie
+    webhook: Webhook
+    victorops: VictorOps
+    wechat: WeChat
+    custom: Personalizado
+  email:
+    defaultTo:
+      label: Endereço de E-mail Padrão (Para)
+    from:
+      label: Endereço de E-mail (De)
+    smarthost:
+      label: Servidor SMTP
+    requireTLS:
+      label: Exigir TLS
+    authUsername:
+      label: Nome de Usuário de Autenticação
+    authPassword:
+      label: Senha de Autenticação
+    authIdentity:
+      label: Identidade de Autenticação
+  slack:
+    apiUrl:
+      label: URL da API do Slack
+    channel:
+      label: Canal
+    httpConfig:
+      label: Configuração HTTP
+    username:
+      label: Nome de Usuário
+    iconEmoji:
+      label: Emoji do Ícone
+    iconUrl:
+      label: URL do Ícone
+    linkNames:
+      label: Nomes de Links
+    sendResolved:
+      label: Enviar Resolvido
+    title:
+      label: Título
+    text:
+      label: Texto
+    color:
+      label: Cor
+  pagerduty:
+    integrationKey:
+      label: Chave de Integração
+    url:
+      label: URL
+    sendResolved:
+      label: Enviar Resolvido
+  webhook:
+    url:
+      label: URL
+    sendResolved:
+      label: Enviar Resolvido
+    httpConfig:
+      label: Configuração HTTP
+
+alertmanagerConfigReceiver:
+  title: Receptor
+  types:
+    email: E-mail
+    slack: Slack
+    pagerduty: PagerDuty
+    opsgenie: OpsGenie
+    webhook: Webhook
+  
+monitoringRoute:
+  title: Rotas
+  header: Rotas
+  create:
+    title: Criar Rota
+  receiver:
+    label: Receptor
+  matchers:
+    label: Corresponders
+    type: Tipo
+    name:
+      label: Nome
+    value:
+      label: Valor
+    isRegex:
+      label: É Regex?
+    isEqual:
+      label: É Igual?
+  groupBy:
+    label: Agrupar por
+    placeholder: Adicionar etiqueta de agrupamento
+  groupWait:
+    label: Espera do Grupo
+  groupInterval:
+    label: Intervalo do Grupo
+  repeatInterval:
+    label: Intervalo de Repetição
+  continue:
+    label: Continuar
+  muteTimeIntervals:
+    label: Intervalos de Silêncio
+
+moveModal:
+  title: Mover para Projeto
+  to: Destino
+  noProjects: Nenhum projeto disponível
+
+nameNsDescription:
+  name:
+    label: Nome
+    placeholder: 'ex: meu-recurso'
+  description:
+    label: Descrição
+    placeholder: Descrição opcional
+  namespace:
+    label: Namespace
+    placeholder: Selecione um namespace
+  project:
+    label: Projeto
+
+namespace:
+  title: Namespaces
+  header: Namespaces
+  create:
+    title: Criar Namespace
+  detail:
+    title: Detalhes do Namespace
+  containerResourceLimit:
+    label: Limites de Recurso de Contêiner Padrão
+  resourceQuota:
+    label: Cotas de Recurso
+  table:
+    project: Projeto
+    resourceQuota: Cotas de Recurso
+  projectLabel: 'Projeto: {name}'
+  noProject: Sem projeto
+
+namespaceFilter:
+  allNamespaces: Todos os Namespaces
+  userNamespaces: Namespaces de Usuário
+
+namespaceList:
+  title: Lista de Namespaces
+  
+navLink:
+  editLink: 'Editar link de navegação'
+  
+networkpolicy:
+  title: Políticas de Rede
+  header: Políticas de Rede
+  create:
+    title: Criar Política de Rede
+  tabs:
+    ingress: Ingress
+    egress: Egress
+    labels: Rótulos e Anotações
+  policyTypes:
+    label: Tipos de Política
+    ingress: Ingress
+    egress: Egress
+  ingress:
+    title: Regras de Ingress
+    add: Adicionar Regra de Ingress
+    noRules: Nenhuma regra de ingress
+    ports: Portas
+    from: De
+  egress:
+    title: Regras de Egress
+    add: Adicionar Regra de Egress
+    noRules: Nenhuma regra de egress
+    ports: Portas
+    to: Para
+  podSelector:
+    label: Seletor de Pod
+
+node:
+  title: Nós
+  header: Nós
+  detail:
+    title: 'Nó: {name}'
+    tab:
+      pods: Pods
+      conditions: Condições
+      info: Informações
+      images: Imagens
+    conditions:
+      status: Status
+      message: Mensagem
+      type: Tipo
+      transition: Transição
+    info:
+      system: Sistema
+      cpu: CPU
+      memory: Memória
+      pods: Pods
+    resourceUsage:
+      header: Uso de Recurso
+  tableHeaders:
+    pods: Pods
+    cpu: CPU
+    memory: Memória
+    disk: Disco
+    ipAddress: IP
+    version: Versão
+    roles: Papéis
+    os: SO
+    containerRuntime: Ambiente de Execução de Contêiner
+  status:
+    ready: Pronto
+    notReady: Não pronto
+    unschedulable: Não agendável
+  cordon: Bloquear
+  uncordon: Desbloquear
+  drain: Drenar
+  roles:
+    all: Todos os Papéis
+    etcd: etcd
+    controlPlane: Plano de Controle
+    worker: Worker
+  
+notificationCenter:
+  title: Central de Notificações
+  
+persistentVolume:
+  title: Volumes Persistentes
+  header: Volumes Persistentes
+  create:
+    title: Criar Volume Persistente
+  tabs:
+    volume: Volume
+    customize: Personalizar
+    labels: Rótulos e Anotações
+  accessModes:
+    label: Modos de Acesso
+    ReadWriteOnce: Leitura/Escrita (uma vez)
+    ReadOnlyMany: Somente Leitura (vários)
+    ReadWriteMany: Leitura/Escrita (vários)
+    ReadWriteOncePod: Leitura/Escrita (um pod)
+  storageClass:
+    label: Classe de Armazenamento
+  volumeMode:
+    label: Modo do Volume
+    filesystem: Sistema de Arquivos
+    block: Bloco
+  reclaimPolicy:
+    label: Política de Recuperação
+    retain: Reter
+    delete: Excluir
+    recycle: Reciclar
+  capacity:
+    label: Capacidade
+  source:
+    label: Fonte do Volume
+  nfs:
+    header: NFS
+    server:
+      label: Servidor
+    path:
+      label: Caminho
+    readOnly:
+      label: Somente Leitura
+  hostPath:
+    header: Host Path
+    path:
+      label: Caminho
+    type:
+      label: Tipo
+  local:
+    header: Local
+    path:
+      label: Caminho
+  csi:
+    header: CSI
+    driver:
+      label: Driver
+    volumeHandle:
+      label: Handle do Volume
+    fsType:
+      label: Tipo do Sistema de Arquivos
+    readOnly:
+      label: Somente Leitura
+
+persistentVolumeClaim:
+  title: Claims de Volume Persistente
+  header: Claims de Volume Persistente
+  create:
+    title: Criar Claim de Volume Persistente
+  tabs:
+    pvc: Claim
+    labels: Rótulos e Anotações
+  accessModes:
+    label: Modos de Acesso
+  requestedStorage:
+    label: Armazenamento Solicitado
+    placeholder: 'ex: 10Gi'
+  volumeMode:
+    label: Modo do Volume
+    filesystem: Sistema de Arquivos
+    block: Bloco
+  storageClass:
+    label: Classe de Armazenamento
+  volumeName:
+    label: Nome do Volume
+  source:
+    label: Origem
+    new: Novo
+    existing: Existente
+  existingVolume:
+    label: Volume Existente
+
+podDisruptionBudget:
+  title: Orçamentos de Interrupção de Pod
+  header: Orçamentos de Interrupção de Pod
+  create:
+    title: Criar Orçamento de Interrupção de Pod
+  selector:
+    label: Seletor de Pod
+  maxUnavailable:
+    label: Máximo Indisponível
+  minAvailable:
+    label: Mínimo Disponível
+
+inactivity:
+  title: Tempo de Inatividade
+  message: 'Sua sessão expirou por inatividade. Por favor, entre novamente.'
+  
+plugins:
+  title: Extensões
+  header: Extensões
+  install:
+    title: Instalar Extensão
+  noPlugins: Nenhuma extensão para exibir
+  table:
+    name: Nome
+    version: Versão
+    state: Estado
+    author: Autor
+  enable: Ativar
+  disable: Desativar
+  uninstall: Desinstalar
+
+podSecurityAdmission:
+  title: Padrões de Segurança de Pod
+  header: Padrões de Segurança de Pod
+  namespaceDefault:
+    title: Padrão de Namespace
+  template:
+    title: Modelo de Segurança de Pod
+  policy:
+    label: Política
+    privileged: Privilegiado
+    baseline: Linha de Base
+    restricted: Restrito
+  level:
+    label: Nível
+  version:
+    label: Versão
+  enforce:
+    label: Aplicar
+  audit:
+    label: Auditoria
+  warn:
+    label: Avisar
+
+prefs:
+  title: Preferências
+  header: Preferências
+  save: Salvar Preferências
+  theme:
+    label: Tema
+    auto: Automático
+    light: Claro
+    dark: Escuro
+  locale:
+    label: Idioma
+  keymap:
+    label: Mapa de Teclas
+    default: Padrão
+    emacs: Emacs
+    vim: Vim
+  helmCharts:
+    label: Incluir Pré-lançamento de Gráficos Helm
+    tooltip: 'Exibir versões de pré-lançamento (alfa, beta, rc) dos gráficos Helm'
+  pageSize:
+    label: Tamanho da Página
+  dateFormat:
+    label: Formato de Data
+  timeFormat:
+    label: Formato de Hora
+  datesInUserTimezone:
+    label: Datas no Fuso Horário do Usuário
+    description: Exibir datas no fuso horário do usuário em vez do UTC
+  showDescription:
+    label: Mostrar Descrições em Títulos de Página
+  hideDescription:
+    label: Ocultar Descrições em Títulos de Página
+  advanced:
+    label: Avançado
+  confirmOnLeave:
+    label: 'Confirmar ao sair de um formulário com alterações não salvas'
+  showTips:
+    label: Mostrar Dicas
+  tableHeaders:
+    label: Cabeçalhos de Tabela
+  tableHeadersDefault:
+    label: Cabeçalhos de Tabela Padrão
+  fontSize:
+    label: Tamanho da Fonte
+    tooltip: Tamanho da fonte no editor de código
+
+principal:
+  title: Principal
+
+probe:
+  title: Probes
+  liveness: Probe de Liveness
+  readiness: Probe de Readiness
+  startup: Probe de Startup
+  type:
+    none: Nenhum
+    tcp: Porta TCP
+    http: Requisição HTTP
+    exec: Executar Comando
+  command:
+    label: Comando
+    placeholder: 'ex: /bin/sh -c echo ok'
+  path:
+    label: Caminho
+    placeholder: '/healthz'
+  port:
+    label: Porta
+  host:
+    label: Host
+  scheme:
+    label: Esquema
+  headers:
+    label: Cabeçalhos HTTP Personalizados
+  initialDelay:
+    label: Atraso Inicial (s)
+  period:
+    label: Período (s)
+  successThreshold:
+    label: Limiar de Sucesso
+  failureThreshold:
+    label: Limiar de Falha
+  timeoutSeconds:
+    label: Timeout (s)
+
+project:
+  title: Projetos
+  header: Projetos
+  create:
+    title: Criar Projeto
+  detail:
+    title: 'Projeto: {name}'
+  resourceQuota:
+    title: Cotas de Recurso do Projeto
+  containerResourceLimit:
+    title: Limites de Recurso de Contêiner Padrão
+  members:
+    title: Membros do Projeto
+  namespaces:
+    title: Namespaces do Projeto
+
+projectMembers:
+  title: Membros do Projeto
+  header: Membros do Projeto
+  add: Adicionar Membro
+  
+projectNamespaces:
+  title: Namespaces do Projeto
+  header: Namespaces do Projeto
+  
+prometheusRule:
+  title: Regras do Prometheus
+  header: Regras do Prometheus
+  create:
+    title: Criar Regra do Prometheus
+  groups:
+    title: Grupos de Regras
+    add: Adicionar Grupo
+    name:
+      label: Nome do Grupo
+    interval:
+      label: Intervalo
+  rules:
+    title: Regras
+    add: Adicionar Regra
+    name:
+      label: Nome
+    expr:
+      label: Expressão
+    for:
+      label: Por
+    severity:
+      label: Severidade
+    labels:
+      label: Rótulos
+    annotations:
+      label: Anotações
+    message:
+      label: Mensagem
+  recordingRules:
+    title: Regras de Gravação
+
+promptForceRemove:
+  title: 'Forçar Remoção de {name}?'
+  protip: 'Forçar a remoção é irreversível. Apenas use isso se você não conseguir excluir normalmente.'
+  selfHelpLink: Como resolver problemas de remoção
+  confirm: 'Tenho certeza de que quero forçar a remoção de {name}'
+
+promptScaleMachineDown:
+  title: Reduzir Máquinas?
+  question: 'Você deseja reduzir o pool de máquinas "{name}"?'
+  
+promptSlo:
+  title: 'Escalar?'
+  one: 'Reduzir a escala para {num} réplica?'
+  many: 'Reduzir a escala para {num} réplicas?'
+  
+promptRemove:
+  title: '{type}: {name}?'
+  attemptingToRemove: 'Você está tentando excluir o {type}'
+  andOthers: 'e {count} outros'
+  protip: 'Não foi possível excluir. Por favor, verifique se há dependências.'
+  deleteConfig: 'Excluir config {name}'
+  
+promptRemoveApp:
+  title: 'Excluir {name}?'
+  body: 'Tem certeza que deseja excluir este aplicativo?'
+  
+promptRestore:
+  title: Restaurar
+  question: 'Deseja restaurar {resource} "{name}"?'
+  
+promptRollback:
+  title: Reverter
+  question: 'Deseja reverter {resource} "{name}" para a revisão {version}?'
+  
+promptRedeploy:
+  title: Reimplantar
+  question: 'Deseja reimplantar {resource} "{name}"?'
+  
+promptRotateEncryptionKey:
+  title: Rotacionar Chave de Criptografia
+  warning: 'Esta ação rotacionará a chave de criptografia de dados em repouso para o cluster. Certifique-se de ter um backup de dados do etcd antes de prosseguir.'
+  confirm: 'Sim, rotacionar a chave de criptografia'
+  
+rancherAlertingDrivers:
+  title: Drivers de Alerta
+  header: Drivers de Alerta
+
+rbac:
+  title: Controle de Acesso Baseado em Papéis (RBAC)
+  header: RBAC
+  globalRole:
+    title: Papéis Globais
+    header: Papéis Globais
+    create:
+      title: Criar Papel Global
+    detail:
+      title: 'Papel Global: {name}'
+  globalRoleBinding:
+    title: Vinculações de Papéis Globais
+  roleTemplate:
+    title: Modelos de Papéis
+    header: Modelos de Papéis
+    create:
+      title: Criar Modelo de Papel
+  role:
+    title: Papéis
+    header: Papéis
+    create:
+      title: Criar Papel
+  clusterRoleBinding:
+    title: Vinculações de Papéis de Cluster
+    header: Vinculações de Papéis de Cluster
+    create:
+      title: Criar Vinculação de Papel de Cluster
+  roleBinding:
+    title: Vinculações de Papéis
+    header: Vinculações de Papéis
+    create:
+      title: Criar Vinculação de Papel
+
+resourceDetail:
+  header:
+    name: Nome
+    namespace: Namespace
+    type: Tipo
+    labels: Rótulos
+    annotations: Anotações
+    created: Criado
+    owner: Proprietário
+    conditions: Condições
+  masthead:
+    yaml: YAML
+    events: Eventos
+    metrics: Métricas
+  detailTop:
+    readOnly: Somente Leitura
+  tabs:
+    conditions: Condições
+    events: Eventos
+    labels: Rótulos e Anotações
+    pods: Pods
+    related: Relacionados
+    resourcemanager: Gerenciador de Recurso
+  condition:
+    message: Mensagem
+    status: Status
+    transition: Transição
+    type: Tipo
+    unknown: Unknown
+    'true': 'True'
+    'false': 'False'
+  event:
+    involvedObject: Objeto Envolvido
+    count: Contagem
+    message: Mensagem
+    reason: Razão
+    type: Tipo
+    firstSeen: Primeiro Visto
+    lastSeen: Último Visto
+    source: Fonte
+    warning: Aviso
+    normal: Normal
+  
+resourceList:
+  head:
+    create: Criar
+    createFromYaml: Criar do YAML
+    createResource: Criar {resource}
+    import: Importar YAML
+    export: Exportar YAML
+  noData:
+    label: Não há {resourceName} para exibir.
+    recommendations:
+      label: 'Recomendações:'
+      item: Criar um novo {resourceName}
+
+resourceLoadingIndicator:
+  label: Carregando recursos...
+  
+resourceTable:
+  groupLabel:
+    namespace: 'Namespace: {name}'
+    project: 'Projeto: {name}'
+    notInAProject: 'Sem Projeto'
+    noNamespace: 'Sem Namespace'
+    none: Outros
+  
+resourceTabs:
+  tabs:
+    events: Eventos
+    conditions: Condições
+    labels: Rótulos e Anotações
+    related: Recursos Relacionados
+    
+resourceYaml:
+  buttons:
+    save: Salvar
+    diff: Mostrar Diff
+    revert: Reverter
+    close: Fechar
+  unavailable: Edição de YAML não disponível neste contexto.
+  errors:
+    invalidYaml: YAML inválido
+    
+secret:
+  title: Secrets
+  header: Secrets
+  create:
+    title: Criar Secret
+  tabs:
+    data: Dados
+    labels: Rótulos e Anotações
+  type:
+    label: Tipo do Secret
+    generic: Opaco
+    dockerCredential: Credencial Docker
+    serviceAccountToken: Token de Conta de Serviço
+    ssh: Autenticação SSH
+    tls: Certificado TLS
+    basic: Autenticação Básica
+  data:
+    add:
+      label: Adicionar
+    remove:
+      label: Remover
+    show: Mostrar
+    hide: Ocultar
+    key:
+      label: Chave
+    value:
+      label: Valor
+  registry:
+    address:
+      label: Endereço do Registro
+      custom: Personalizado
+    username:
+      label: Nome de Usuário
+    password:
+      label: Senha
+    auth:
+      label: Auth
+  ssh:
+    privateKey:
+      label: Chave SSH Privada
+    publicKey:
+      label: Chave SSH Pública
+  tls:
+    privateKey:
+      label: Chave Privada (TLS)
+    crt:
+      label: Certificado (TLS)
+  basic:
+    username:
+      label: Nome de Usuário
+    password:
+      label: Senha
+  serviceAccountToken:
+    info: 'Este token de conta de serviço foi criado automaticamente pelo Kubernetes.'
+
+selectOrCreateAuthSecret:
+  label: Credenciais
+  addNewCredential: Adicionar novas credenciais
+  noCredentials: Sem credenciais
+  system: Sistema
+  
+serviceAccount:
+  title: Contas de Serviço
+  header: Contas de Serviço
+  create:
+    title: Criar Conta de Serviço
+  secrets:
+    label: Secrets Montados Automaticamente
+  imagePullSecrets:
+    label: Image Pull Secrets
+  automountServiceAccountToken:
+    label: Montar Token Automaticamente
+
+servicePorts:
+  title: Portas de Serviço
+  header: Portas de Serviço
+  nodePort:
+    label: NodePort
+  port:
+    label: Porta
+  targetPort:
+    label: Porta de Destino
+  protocol:
+    label: Protocolo
+  name:
+    label: Nome
+  add:
+    label: Adicionar Porta
+
+serviceTypes:
+  ClusterIP: IP do Cluster
+  ExternalName: Nome Externo
+  LoadBalancer: Balanceador de Carga
+  NodePort: NodePort
+  
+servicesPage:
+  title: Serviços
+  noEndpoints: Sem Endpoints
+
+setup:
+  title: Configuração
+  useExisting: Usar Existente
+  new: Novo
+  
+sortableTable:
+  noRows: Não há linhas para exibir
+  noRowsWithFilter: Não há linhas que correspondam aos filtros ativos
+  
+storageClass:
+  title: Classes de Armazenamento
+  header: Classes de Armazenamento
+  create:
+    title: Criar Classe de Armazenamento
+  provisioner:
+    label: Provisionador
+  reclaimPolicy:
+    label: Política de Recuperação
+    delete: Excluir
+    retain: Reter
+    recycle: Reciclar
+  volumeBindingMode:
+    label: Modo de Vinculação de Volume
+    immediate: Imediato
+    waitForFirstConsumer: Aguardar Primeiro Consumidor
+  allowVolumeExpansion:
+    label: Permitir Expansão de Volume
+  allowedTopologies:
+    label: Topologias Permitidas
+
+tableHeaders:
+  name: Nome
+  state: Estado
+  namespace: Namespace
+  age: Idade
+  image: Imagem
+  type: Tipo
+  version: Versão
+  description: Descrição
+  cluster: Cluster
+  project: Projeto
+  node: Nó
+  nodePool: Pool de Nós
+  pods: Pods
+  nodes: Nós
+  cpu: CPU
+  memory: Memória
+  endpoint: Endpoint
+  ready: Pronto
+  phase: Fase
+  replicas: Réplicas
+  selector: Seletor
+  storageClass: Classe de Armazenamento
+  accessMode: Modo de Acesso
+  capacity: Capacidade
+  volumeName: Volume
+  secretName: Secret
+  user: Usuário
+  role: Papel
+  lastLogin: Último Login
+  source: Fonte
+  target: Destino
+  targetPort: Porta de Destino
+  port: Porta
+  protocol: Protocolo
+  serviceType: Tipo de Serviço
+  clusterIp: IP do Cluster
+  externalIp: IP Externo
+  bundlesReady: Bundles Prontos
+  clustersReady: Clusters Prontos
+  repoName: Repositório
+  repoUrl: URL do Repositório
+  nodePoolSize: Tamanho do Pool
+  created: Criado
+  expires: Expira
+  duration: Duração
+  driver: Driver
+  size: Tamanho
+  location: Localização
+  bucket: Bucket
+  provider: Provedor
+  keys: Chaves
+  status: Status
+  chart: Gráfico
+  chartName: Nome do Gráfico
+  chartVersion: Versão do Gráfico
+  appVersion: Versão do App
+  ingressClass: Classe do Ingress
+  cpuLimit: Limite de CPU
+  memoryLimit: Limite de Memória
+  cpuReservation: Reserva de CPU
+  memoryReservation: Reserva de Memória
+  lastSeen: Último Visto
+  message: Mensagem
+  reason: Razão
+  count: Contagem
+  os: SO
+  internalIp: IP Interno
+  externalIp: IP Externo
+  lastHeard: Última Comunicação
+  address: Endereço
+  value: Valor
+  available: Disponível
+  used: Usado
+  connections: Conexões
+  activeConnections: Conexões Ativas
+  weight: Peso
+  host: Host
+  hostHeader: Cabeçalho Host
+  certExpiry: Expiração do Certificado
+  success: Sucesso
+  tableState: Estado
+  sslExpiry: Expiração do SSL
+  
+target:
+  createService: Criar Serviço
+  label: Destino
+  
+user:
+  title: Usuários
+  header: Usuários
+  create:
+    title: Criar Usuário
+  detail:
+    title: 'Usuário: {name}'
+  form:
+    username:
+      label: Nome de Usuário
+    name:
+      label: Nome de Exibição
+    description:
+      label: Descrição
+    password:
+      label: Senha
+    mustChangePassword:
+      label: Forçar mudança de senha no próximo login
+    enabled:
+      label: Ativado
+  noUsers: Nenhum usuário para exibir
+  
+validation:
+  required: '"{key}" é obrigatório'
+  requiredOrOverride: '"{key}" é obrigatório ou deve ser substituído'
+  noType: Nenhum tipo especificado para o recurso
+  noStore: Nenhum armazenamento encontrado para tipo {type}
+  invalidChars: '"{key}" contém caracteres inválidos'
+  k8s:
+    identifier: 'Deve consistir de caracteres alfanuméricos, "-", "_" ou ".", deve começar e terminar com um caractere alfanumérico'
+    qualifiedName: 'Deve ser um nome válido qualificado do Kubernetes'
+    dns:
+      hostname: 'Deve consistir de segmentos DNS menores, cada um começando e terminando com um alfanumérico e contendo apenas alfanuméricos e "-"'
+      label: 'Deve consistir de segmentos DNS menores, cada um começando e terminando com um alfanumérico e contendo apenas alfanuméricos e "-", e ter 63 caracteres ou menos'
+    annotations: 'Deve ser uma chave de anotação válida no formato [prefix/]name, onde o prefixo é opcional e deve ser um subdomínio DNS, e o nome deve consistir de caracteres alfanuméricos, "-", "_" ou "."'
+  required: '"{key}" é obrigatório'
+  minLength: '"{key}" deve ter pelo menos {minLength} caracteres'
+  maxLength: '"{key}" deve ter no máximo {maxLength} caracteres'
+  min: '"{key}" deve ser pelo menos {min}'
+  max: '"{key}" deve ser no máximo {max}'
+  matching: '"{key}" deve corresponder a "{otherKey}"'
+  notNull: '"{key}" não pode ser nulo'
+  number: '"{key}" deve ser um número'
+  positiveNumber: '"{key}" deve ser um número positivo'
+  ports:
+    name:
+      required: 'O nome da porta é necessário'
+      invalid: 'Nome de porta inválido'
+      unique: 'O nome da porta deve ser único dentro de um serviço'
+    nodePort:
+      invalid: 'O NodePort deve ser um número entre 30000 e 32767'
+    containerPort:
+      required: 'A porta do contêiner é necessária'
+      invalid: 'Porta de contêiner inválida'
+    hostPort:
+      invalid: 'A porta do host deve ser um número entre 1 e 65535'
+  service:
+    ports:
+      required: 'Pelo menos uma porta é necessária'
+  certExpiry: 'O certificado expirou ou expirará em breve'
+  groups:
+    nameRequired: 'O nome do grupo é necessário'
+  clusterIp:
+    invalid: 'O IP do cluster é inválido'
+  externalName:
+    valid: 'O nome externo deve ser um nome DNS válido'
+  hostname: 'Deve ser um hostname válido'
+  url: 'Deve ser uma URL válida'
+
+carousel:
+  previous: Anterior
+  next: Próximo
+  
+wizard:
+  title: Assistente
+  back: Voltar
+  next: Próximo
+  finish: Concluir
+  cancel: Cancelar
+  steps:
+    label: Passo {step} de {totalSteps}
+
+sideWindow:
+  header: Painel Lateral
+
+wm:
+  title: Gerenciador de Janelas
+  
+workload:
+  title: Cargas de Trabalho
+  header: Cargas de Trabalho
+  create:
+    title: Criar Carga de Trabalho
+  container:
+    titles:
+      container: Contêiner
+      resources: Recursos
+      env: Variáveis de Ambiente
+      volumes: Volumes
+      command: Comando
+      networking: Rede
+      security: Segurança
+      healthCheck: Verificação de Integridade
+      scheduling: Agendamento
+    name:
+      label: Nome do Contêiner
+      placeholder: 'ex: meu-contêiner'
+    image:
+      label: Imagem do Contêiner
+      placeholder: 'ex: nginx:latest'
+    imagePullPolicy:
+      label: Política de Pull da Imagem
+      ifNotPresent: Se não presente
+      always: Sempre
+      never: Nunca
+    ports:
+      label: Portas
+    resources:
+      label: Recursos
+      requestsCpu:
+        label: Reserva de CPU
+      requestsMemory:
+        label: Reserva de Memória
+      limitsCpu:
+        label: Limite de CPU
+      limitsMemory:
+        label: Limite de Memória
+    allowPrivilegeEscalation:
+      label: Permitir Escalada de Privilégio
+    privileged:
+      label: Privilegiado
+    readOnlyRootFilesystem:
+      label: Sistema de Arquivos Raiz Somente Leitura
+    runAsNonRoot:
+      label: Executar como Não-Root
+    runAsUser:
+      label: Executar como Usuário
+    capabilities:
+      label: Capacidades
+      add:
+        label: Adicionar
+      drop:
+        label: Remover
+    env:
+      label: Variáveis de Ambiente
+      add: Adicionar
+    command:
+      label: Comando
+      add: Adicionar
+    args:
+      label: Argumentos
+      add: Adicionar
+    workingDir:
+      label: Diretório de Trabalho
+    stdin:
+      label: Stdin
+    stdinOnce:
+      label: Stdin Uma Vez
+    tty:
+      label: TTY
+    volumeMount:
+      name:
+        label: Nome
+      mountPath:
+        label: Caminho de Montagem
+      subPath:
+        label: Sub-caminho
+      readOnly:
+        label: Somente Leitura
+  podLabels:
+    label: Rótulos do Pod
+  podAnnotations:
+    label: Anotações do Pod
+  scheduling:
+    title: Agendamento
+    affinity:
+      label: Afinidade
+    tolerations:
+      label: Tolerâncias
+    priority:
+      label: Prioridade
+    nodeSelector:
+      label: Seletor de Nó
+  upgradePolicy:
+    title: Política de Atualização
+    strategy:
+      label: Estratégia
+      RollingUpdate: Atualização Contínua
+      Recreate: Recriar
+      OnDelete: Ao Excluir
+    maxSurge:
+      label: Máximo de Sobrecarga
+    maxUnavailable:
+      label: Máximo Indisponível
+    minReadySeconds:
+      label: Segundos Mínimos Prontos
+    progressDeadlineSeconds:
+      label: Prazo de Progresso (s)
+  tabs:
+    containers: Contêineres
+    initContainers: Contêineres de Inicialização
+    labels: Rótulos e Anotações
+    networking: Rede
+    nodeScheduling: Agendamento de Nó
+    scaling: Escalonamento
+    securityContext: Contexto de Segurança
+    storage: Armazenamento
+    upgradePolicy: Política de Atualização
+  replicas:
+    label: Réplicas
+  serviceAccount:
+    label: Conta de Serviço
+  automountServiceAccountToken:
+    label: Montar Token de Conta de Serviço
+  dnsPolicy:
+    label: Política de DNS
+    ClusterFirst: Primeiro o Cluster
+    ClusterFirstWithHostNet: Primeiro o Cluster com HostNet
+    Default: Padrão
+    None: Nenhum
+  hostIPC:
+    label: IPC do Host
+  hostNetwork:
+    label: Rede do Host
+  hostPID:
+    label: PID do Host
+  shareProcessNamespace:
+    label: Compartilhar Namespace de Processo
+  terminationGracePeriod:
+    label: Período de Graça para Encerramento (s)
+  imagePullSecrets:
+    label: Image Pull Secrets
+  activeDeadlineSeconds:
+    label: Prazo Ativo (s)
+  restartPolicy:
+    label: Política de Reinício
+    Always: Sempre
+    OnFailure: Em Caso de Falha
+    Never: Nunca
+  completions:
+    label: Conclusões
+  parallelism:
+    label: Paralelismo
+  backoffLimit:
+    label: Limite de Backoff
+  schedule:
+    label: Cronograma
+  suspend:
+    label: Suspender
+  concurrencyPolicy:
+    label: Política de Simultaneidade
+    Allow: Permitir
+    Forbid: Proibir
+    Replace: Substituir
+  successfulJobsHistoryLimit:
+    label: Limite do Histórico de Jobs com Sucesso
+  failedJobsHistoryLimit:
+    label: Limite do Histórico de Jobs com Falha
+
+model:
+  cluster:
+    badge:
+      local: Local
+      provisioning: Provisionando
+      updating: Atualizando
+      imported: Importado
+      hosted: Hospedado
+      
+typeDescription:
+  management.cattle.io.cluster: Um cluster Kubernetes gerenciado pelo Rancher
+  management.cattle.io.node: Um nó em um cluster gerenciado pelo Rancher
+  management.cattle.io.project: Um agrupamento de namespaces dentro de um cluster
+  management.cattle.io.user: Um usuário local ou federado com acesso ao Rancher
+  management.cattle.io.globalrolebinding: Vinculação de um papel global a um usuário
+  management.cattle.io.clusterroletemplatebinding: Vinculação de papel em nível de cluster para um usuário
+  management.cattle.io.projectroletemplatebinding: Vinculação de papel em nível de projeto para um usuário
+  provisioning.cattle.io.cluster: Um cluster Kubernetes criado ou importado
+  catalog.cattle.io.clusterrepo: Um repositório de gráficos Helm em nível de cluster
+  catalog.cattle.io.operation: Uma operação em andamento no catálogo de aplicativos
+  catalog.cattle.io.app: Um gráfico Helm instalado
+  
+typeLabel:
+  activedirectory: Active Directory
+  azuread: Azure AD
+  cognito: Cognito
+  freeipa: FreeIPA
+  github: GitHub
+  gitlab: GitLab
+  googleoauth: Google OAuth
+  keycloak: Keycloak (SAML)
+  keycloakoidc: Keycloak (OIDC)
+  local: Local
+  okta: Okta
+  openldap: OpenLDAP
+  ping: Ping Identity
+  saml: SAML
+  shibboleth: Shibboleth
+
+oidcclient:
+  title: Clientes OIDC
+
+action:
+  activate: Ativar
+  addSshKey: Adicionar Chave SSH
+  cancelExpiry: Cancelar Expiração
+  changePassword: Alterar Senha
+  clone: Clonar
+  cordon: Bloquear
+  createNodeTemplate: Criar Modelo de Nó
+  deactivate: Desativar
+  delete: Excluir
+  disable: Desativar
+  disableAutoRepair: Desativar Reparo Automático
+  disableAutoUpgrade: Desativar Atualização Automática
+  downloadKubeconfig: Baixar Kubeconfig
+  edit: Editar
+  editConfig: Editar Configuração
+  editYaml: Editar YAML
+  enableAutoRepair: Ativar Reparo Automático
+  enableAutoUpgrade: Ativar Atualização Automática
+  pause: Pausar
+  promote: Promover
+  restore: Restaurar
+  resume: Retomar
+  rotate: Rotacionar
+  shell: Shell
+  uncordon: Desbloquear
+  viewInApi: Ver na API
+  resetPassword: Redefinir Senha
+  refreshGroup: Atualizar Grupo
+  rotateEncryptionKey: Rotacionar Chave de Criptografia
+
+unit:
+  immense: '{value}{unit}'
+  
+
+workloadPorts:
+  name:
+    label: Nome
+  containerPort:
+    label: Porta do Contêiner
+  protocol:
+    label: Protocolo
+  hostPort:
+    label: Porta do Host
+  hostIp:
+    label: IP do Host
+  add: Adicionar Porta
+
+podAffinity:
+  title: Afinidade de Pod
+  helpText: Expressões de afinidade
+  affinityTitle: Afinidade
+  antiAffinityTitle: Anti-afinidade
+  nodeAffinity: Afinidade de Nó
+  podAffinity: Afinidade de Pod
+  podAntiAffinity: Anti-afinidade de Pod
+  required: Obrigatório
+  preferred: Preferido
+  addRule: Adicionar Regra
+  namespaces: Namespaces
+  topologyKey: Chave de Topologia
+  whenUnsatisfiable: Quando Insatisfatório
+  labelSelector: Seletor de Rótulo
+
+keyValue:
+  addRow: Adicionar
+  noData: Nenhum dado para exibir
+  protip: 'Você pode colar vários pares chave=valor neste campo'
+  readFromFile: Ler do Arquivo
+  concealValue: Ocultar valor
+
+registryMirror:
+  title: Espelhos de Registro
+  endpoints:
+    label: Endpoints
+    add: Adicionar Endpoint
+  add: Adicionar Espelho
+  
+registryMirrorRewrite:
+  title: Regravações do Espelho
+  find:
+    label: Encontrar
+  replace:
+    label: Substituir
+  add: Adicionar Regravação
+
+registryConfig:
+  title: Credenciais de Autenticação do Registro
+  add: Adicionar Autenticação
+  hostname:
+    label: Nome do Host
+  username:
+    label: Nome de Usuário
+  password:
+    label: Senha
+  tls:
+    label: Configuração TLS
+    cert:
+      label: Certificado do Cliente
+    key:
+      label: Chave do Cliente
+    ca:
+      label: CA
+    insecureSkipVerify:
+      label: Pular Verificação Insegura
+
+advancedSettings:
+  title: Configurações Avançadas
+  header: Configurações
+  warning: 'Alterações nessas configurações podem causar comportamento inesperado no Rancher. Proceda com cuidado.'
+  
+featureFlags:
+  title: Feature Flags
+  header: Feature Flags
+  warning: 'Ativar recursos experimentais pode causar comportamento inesperado. Proceda com cuidado.'
+  
+performance:
+  title: Desempenho
+  header: Configurações de Desempenho
+
+banner:
+  title: Banners de UI
+  header: Banners de UI
+  enable:
+    label: Ativar
+  color:
+    label: Cor
+  text:
+    label: Texto
+  headerBanner:
+    label: Banner de Cabeçalho
+  footerBanner:
+    label: Banner de Rodapé
+  loginBanner:
+    label: Banner de Login
+  consent:
+    label: Requer Consentimento
+
+branding:
+  title: Marca
+  header: Configurações de Marca
+  privateLabelName:
+    label: Nome da Marca Privada
+    placeholder: Rancher
+  logo:
+    label: Logo
+    tip: 'Carregue um logo para substituir o logo do Rancher no cabeçalho de navegação de nível superior. A altura da imagem deve ser de 21 pixels com largura máxima de 200 pixels. Tamanho máximo do arquivo: 20KB. Formatos aceitos: JPEG, PNG, SVG.'
+    lightPreview: Pré-visualização do Tema Claro
+    darkPreview: Pré-visualização do Tema Escuro
+    uploadLight: Carregar Logo Claro
+    uploadDark: Carregar Logo Escuro
+    useCustom: Usar Logo Personalizado
+  banner:
+    label: Banner
+    tip: 'Carregue uma imagem para substituir o banner padrão do Rancher na página do Painel. Recomendamos usar uma imagem SVG com proporção 6:1. O tamanho padrão da imagem é 4197x633. Tamanho máximo do arquivo: 200KB. Formatos aceitos: JPEG, PNG, SVG.'
+    lightPreview: Pré-visualização do Tema Claro
+    darkPreview: Pré-visualização do Tema Escuro
+    uploadLight: Carregar Banner Claro
+    uploadDark: Carregar Banner Escuro
+    useCustom: Usar Banner Personalizado
+  loginBackground:
+    label: Plano de Fundo do Login
+    tip: 'Carregue uma imagem para substituir o plano de fundo padrão do Rancher na página de Login. Recomendamos usar uma imagem SVG com proporção 7:8. O tamanho padrão da imagem é 683x768. Tamanho máximo do arquivo: 200KB. Formatos aceitos: JPEG, PNG, SVG.'
+    lightPreview: Pré-visualização do Tema Claro
+    darkPreview: Pré-visualização do Tema Escuro
+    uploadLight: Carregar Plano de Fundo Claro
+    uploadDark: Carregar Plano de Fundo Escuro
+    useCustom: Usar Plano de Fundo Personalizado
+  favicon:
+    label: Favicon
+    tip: 'Carregue um ícone para substituir o favicon do Rancher na aba do navegador. Tamanho máximo do arquivo: 20KB.'
+    preview: Pré-visualização do Favicon
+    upload: Carregar Favicon
+    useCustom: Usar Favicon Personalizado
+  options:
+    default: Tema Rancher Padrão
+    suse: Tema SUSE
+    custom: Definir Tema Personalizado
+  uiPL:
+    label: Marca Privada
+  color:
+    label: Cor Principal
+    tip: Você pode substituir a cor principal usada em toda a interface por uma cor personalizada de sua escolha.
+    useCustom: Usar Cor Personalizada
+  linkColor:
+    label: Cor do Link
+    tip: Você pode substituir a cor do link usada em toda a interface por uma cor personalizada de sua escolha.
+    useCustom: Usar Cor de Link Personalizada
+    example: Exemplo de Link
+
+notifications:
+  header: Notificações personalizadas
+  menuLabel: 'Notificações Personalizadas'
+  loginError:
+    header: Banner de Falha no Login
+    showCheckboxLabel: Mostrar erro de login personalizado
+    messageLabel: Texto a exibir
+
+resourceQuota:
+  banner: Limite o consumo de recursos em um projeto para tipos de recursos padrão (ex. Limite de CPU) e personalizados. Para tipos de recursos personalizados, você precisa fornecer o identificador de recurso manualmente. Quer saber mais sobre cotas de recursos? Leia nossa <a href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas" target="_blank" rel="noopener noreferrer nofollow">documentação <i class="icon icon-external-link"></i></a><span class="sr-only">Abre em uma nova aba</span>
+  label: Cotas de Recursos
+  headers:
+    limit: Limite
+    namespaceDefaultLimit: Limite Padrão do Namespace
+    projectLimit: Limite do Projeto
+    projectResourceAvailability: Disponibilidade de Recurso do Projeto
+    resourceType: Tipo de Recurso
+    resourceIdentifier: Identificador de Recurso
+  helpText: Configure quanto dos recursos o namespace como um todo pode consumir.
+  helpTextDetail: A quantidade de recursos que o namespace como um todo pode consumir.
+  helpTextHarvester: VMs precisam reservar sobrecarga adicional de memória.
+  custom: Personalizado
+  resourceIdentifier:
+    placeholder: ex. configmaps
+    tooltip: Selecione 'Personalizado' na lista 'Tipo de Recurso' e insira o identificador de recurso (ex. requests.nvidia.com/gpu) para adicionar cotas de recursos personalizadas.
+  configMaps: Mapas de Configuração
+  limitsCpu: Limite de CPU
+  limitsMemory: Limite de Memória
+  persistentVolumeClaims: Claims de Volume Persistente
+  pods: Pods
+  replicationControllers: Controladores de Replicação
+  requestsCpu: Reserva de CPU
+  requestsMemory: Reserva de Memória
+  requestsStorage: Reserva de Armazenamento
+  secrets: Secrets
+  services: Serviços
+  servicesLoadBalancers: Balanceadores de Carga de Serviços
+  servicesNodePorts: NodePorts de Serviço
+  namespaceLimit:
+    label: Limite do Namespace
+  projectLimit:
+    label: Limite do Projeto
+    cpuPlaceholder: ex. 2000
+    memoryPlaceholder: ex. 2048
+    storagePlaceholder: ex. 50
+    unitlessPlaceholder: ex. 50
+  namespaceDefaultLimit:
+    label: Limite Padrão do Namespace
+    cpuPlaceholder: ex. 500
+    memoryPlaceholder: ex. 1024
+    storagePlaceholder: ex. 10
+    unitlessPlaceholder: ex. 10
+  add:
+    label: Adicionar Recurso
+  errors:
+    customTypeRequired: Identificador de recurso é obrigatório
+  tooltip:
+    reserved: 'Outros Namespaces:'
+    namespace: 'Este Namespace:'
+    available: 'Disponível:'
+    max: 'Total:'
+  ariaLabel:
+    grid: Cotas de Recursos
+    resourceType: 'Tipo de Recurso, linha {row}'
+    resourceIdentifier: 'Identificador de Recurso, linha {row}'
+    projectLimit: 'Limite do Projeto, linha {row}'
+    namespaceDefaultLimit: 'Limite Padrão do Namespace, linha {row}'
+    remove: 'Remover {identifier}'
+
+customLinks:
+  displayTitle: Links
+  label: Links da Home
+  description: 'Configure os links a exibir na página inicial. Você pode definir seus próprios links personalizados, além de mostrar ou ocultar links padrão.'
+  restoreDefaults: 'Restaurar Padrões'
+  addLink: Adicionar Link
+  restoreSuccess: URLs padrão foram restauradas.
+  settings:
+    default: Links Padrão
+    custom: Links Personalizados
+    keyLabel: Texto de Exibição
+    valueLabel: URL
+    showLabel: Mostrar
+  defaults:
+    docs:       Documentação
+    forums:     Fóruns
+    slack:      Slack
+    issues:     Reportar um Problema
+    getStarted: Primeiros Passos
+    commercialSupport: Suporte Comercial
+    appCo: SUSE Application Collection
+
+##############################
+### Página de Suporte
+##############################
+
+support:
+  bannerImage: Imagem do banner da página de suporte
+  community:
+    title: O SUSE Rancher oferece suporte de classe mundial
+    linksTitle: Suporte da Comunidade
+    learnMore: Saiba mais sobre o Suporte do SUSE Rancher
+    pricing: Entre em contato para preços
+  subscription:
+    haveSupport: Já tem suporte?
+    addSubscription: Adicionar ID de Assinatura
+    removeSubscription: Remover ID de Assinatura
+    addTitle: Adicionar seu ID de Assinatura SUSE
+    addLabel: "Por favor, insira um ID de Assinatura válido:"
+    removeTitle: Remover seu ID?
+    removeBody: "Nota: Isso não afetará sua assinatura."
+
+  suse:
+    title: "Ótimas Notícias - Você está coberto"
+    editBrand: Personalizar Tema da Interface
+    access:
+      title: Obter Suporte
+      text: Faça login no SUSE Customer Center para acessar o suporte para sua assinatura
+      action: SUSE Customer Center
+      aws:
+        generateConfig: Gerar Configuração de Suporte
+        text: 'Faça login no SUSE Customer Center para acessar o suporte para sua assinatura. Precisa abrir um novo caso de suporte? Baixe um arquivo de configuração de suporte abaixo.'
+  promos:
+    one:
+      title: Suporte 24x7
+      text: Fornecemos SLAs bem definidos e oferecemos opções de suporte ininterrupto.
+    two:
+      title: Resolução de Problemas
+      text: Execute produtos SUSE Rancher com confiança, sabendo que os desenvolvedores que os criaram estão disponíveis para resolver problemas rapidamente.
+    three:
+      title: Solução de Problemas
+      text: Nos concentramos em descobrir a causa raiz de qualquer problema, seja relacionado a produtos SUSE, Kubernetes, Docker ou sua infraestrutura subjacente.
+    four:
+      title: Inove com Liberdade
+      text: Aproveite nossa compatibilidade certificada com uma ampla gama de provedores Kubernetes, sistemas operacionais e software de código aberto.
+
+embedding:
+  retry: Tentar novamente
+  unavailable: Interface do Cluster Manager não está disponível
+
+serverUpgrade:
+  title: "{vendor} Server Alterado"
+  message: "A página foi recarregada porque a versão do {vendor} em execução no seu servidor foi alterada."
+
+volumeClaimTemplate:
+  add:
+    label: Adicionar Modelo de Claim
+
+manager:
+  cloudCredentials:
+    label: Credenciais de Nuvem
+    list:
+      groupBy:
+        provider: Agrupar por Provedor
+      headers:
+        provider: Provedor
+  drivers:
+    label: Drivers
+  rkeTemplates:
+    label: Modelos RKE
+  nodeTemplates:
+    label: Modelos de Nó
+  jwtAuthentication:
+    label: Autenticação JWT
+
+auth:
+  roleTemplate: Modelos de Papel
+  config:
+    label: Provedor de Auth
+
+vncConsole:
+  error:
+    message: Console Web VNC desconectado
+  reconnecting:
+    message: Tentativa de reconexão do console Web VNC
+
+gitPicker:
+  github:
+    label: GitHub
+    tableHeaders:
+      choose:
+        label: Selecionar
+      sha:
+        label: SHA
+      author:
+        label: Autor
+        unknown: Desconhecido
+      message:
+        label: Mensagem
+      date:
+        label: Data
+    username:
+      label: Usuário / Organização
+      inputLabel: Usuário / Organização
+      tooltip: Usuário / Organização do Repositório Git
+    branch:
+      label: Branch
+      inputLabel: Branch
+      tooltip: Branch para implantar
+    repo:
+      label: Repositório
+      inputLabel: Repositório
+      tooltip: Repositório para implantar
+    commits:
+      label: Commits
+      tooltip: Commits para implantar
+    commit:
+      label: Commit
+      inputLabel: Commit
+    commitMessage:
+      label: Mensagem do Commit
+    errors:
+      noAccount: Nenhuma conta GitHub ou Organização encontrada. Por favor, revise sua consulta e tente novamente.
+      noBranch: Nenhum branch encontrado. Por favor, revise sua consulta e tente novamente.
+  gitlab:
+    label: GitLab
+    tableHeaders:
+      choose:
+        label: Selecionar
+      sha:
+        label: SHA
+      author:
+        label: Autor
+        unknown: Desconhecido
+      message:
+        label: Mensagem
+      date:
+        label: Data
+    username:
+      label: Usuário / Organização
+      inputLabel: Usuário / Organização
+      tooltip: Usuário / Organização do Repositório Git
+    branch:
+      label: Branch
+      inputLabel: Branch
+      tooltip: Branch para implantar
+    repo:
+      label: Repositório
+      inputLabel: Repositório
+      tooltip: Repositório para implantar
+    commits:
+      label: Commits
+      tooltip: Commits para implantar
+    commit:
+      label: Commit
+      inputLabel: Commit
+    commitMessage:
+      label: Mensagem do Commit
+    errors:
+      noAccount: Nenhuma conta GitLab ou Organização encontrada. Por favor, revise sua consulta e tente novamente.
+      noBranch: Nenhum branch encontrado. Por favor, revise sua consulta e tente novamente.
+
+networkAttachmentDefinition:
+  tabs:
+    config: Configuração
+
+errors:
+  actionNotAvailable: Esta ação não está disponível no momento
+  missingRequired: é obrigatório
+  notUnique: não é único
+  notNullable: deve ser definido
+  invalidOption: não é uma opção válida
+  invalidCharacters: contém caracteres inválidos
+  minLengthExceeded: não é longo o suficiente
+  maxLengthExceeded: é muito longo
+  minLimitExceeded: é muito pequeno
+  maxLimitExceded: é muito grande
+  messageAndDetail: '{message} ({detail})'
+  messageOrDetail: '{val}'
+  failedInApi:
+    withName:
+      withCodeExplanation:
+        withMessageDetail: 'Falha na validação na API: {name} {codeExplanation}: {messageDetail}'
+        withoutMessageDetail: 'Falha na validação na API: {name} {codeExplanation}'
+      withMessageDetail: 'Falha na validação na API: {name} {messageDetail}'
+      withoutAnythingElse: 'Falha na validação na API: {name} '
+    withoutName:
+      withMessageDetail:
+        withCodeExplanation: 'Falha na validação na API: {codeExplanation}: {messageDetail}'
+        withoutCodeExplanation: 'Falha na validação na API: {messageDetail}'
+      withCode:
+        withCodeExplanation: 'Falha na validação na API: {code} {codeExplanation}'
+        withoutCodeExplanation: 'Falha na validação na API: {code}'
+    withoutAnything: Falha na validação na API.
+  notFound:
+    withUrl: '{msg}: {url}'
+    withoutUrl: '{msg}'
+
+component:
+  drawer:
+    chrome:
+      ariaLabel:
+        close: Fechar painel {target}
+      close: Fechar
+    resourceDetailDrawer:
+      title: "{resourceName} ({resourceType}) - Configuração"
+      editConfig: Editar Configuração
+      editYaml: Editar YAML
+      ariaLabel:
+        editConfig: Editar Configuração
+        editYaml: Editar YAML
+      yamlTab:
+        title: YAML
+      configTab:
+        title: Configuração
+  resource:
+    detail:
+      copyToClipboard:
+        ariaLabel:
+          copy: Copiar para a área de transferência
+      card:
+        resourceUsage:
+          used: Usado
+          amount: '{used} de {available}'
+          cpu: CPU
+          memory: Memória
+          pods: Pods
+        resourcesCard:
+          title: Recursos
+          rows:
+            services: Serviços
+            ingresses: Ingresses
+            referredToBy: Referenciado por
+            refersTo: Refere-se a
+        podsCard:
+          title: Pods
+          ariaResourceName: pods
+        jobsCard:
+          title: Jobs
+          ariaResourceName: jobs
+        insightsCard:
+          title: Insights
+          rows:
+            conditions: Condições
+            events: Eventos
+        extrasCard:
+          title: Extras
+          message: 'Considere instalar <extensionsLink>extensões</extensionsLink> adicionais e / ou <clusterToolsLink>ferramentas de cluster</clusterToolsLink> para enriquecer sua experiência com o Rancher.'
+        scaler:
+          ariaLabel:
+            increase: Aumentar {resourceName}
+            decrease: Diminuir {resourceName}
+      titleBar:
+        showConfiguration: Mostrar Configuração
+        ariaLabel:
+          actionMenu: Mais ações - { resource }
+          showConfiguration: Mostrar toda a configuração de { resource }
+      metadata:
+        labelsAndAnnotations: Rótulos e Anotações
+        identifyingInformation:
+          namespace: Namespace
+          project: Projeto
+          age: Idade
+          image: Imagem
+          ready: Pronto
+          up-to-date: Atualizado
+          available: Disponível
+          serviceAccount: Conta de Serviço
+          type: Tipo
+          certificate: Certificado
+          issuer: Emissor
+          expires: Expira
+          workspace: Workspace
+        annotations:
+          title: Anotações
+        labels:
+          title: Rótulos
+        keyValue:
+          noRows: Não há {propertyName} configurados neste recurso.
+          showConfiguration: Mostrar Configuração
+          ariaLabel:
+            showPreview: Mostrar Pré-visualização
+      glance:
+        state: Estado
+        age: Idade
+        namespace: Namespace
+        project: Projeto
+        type: Tipo
+        ariaLabel:
+          showDetails: Mostrar Informações do Recurso sobre { resource } chamado { name }
+          actionMenu: Ações do Recurso - { resource }
+  cron:
+    expressionEditor:
+      label:
+        minute: "Minuto"
+        hour: "Hora"
+        dayOfMonth: "Dia do Mês"
+        month: "Mês"
+        dayOfWeek: "Dia da Semana"
+      invalidValue: "Valor inválido"
+      invalidCronExpression: "Expressão Cron Inválida"
+      minute:
+        any: "qualquer valor (a cada minuto)"
+        at1and5: "no minuto 1 e 5 após a hora"
+        range: "a cada minuto de 1 a 5"
+        every5: "a cada 5 minutos"
+        start8: "a cada 5 minutos, começando no minuto 8 após a hora"
+        allowed: "Valores literais permitidos: 0-59"
+      hour:
+        any: "qualquer valor (a cada hora)"
+        at1and5: "às 1h e 5h"
+        range: "a cada hora de 1h a 5h"
+        every5: "a cada 5 horas"
+        start8: "a cada 5 horas a partir das 8h"
+        allowed: "Valores literais permitidos: 0-23"
+      dayOfMonth:
+        any: "qualquer valor (todos os dias do mês)"
+        omit: "omitir"
+        1and5: "nos dias 1 e 5 do mês"
+        range: "a cada dia do 1º ao 5º"
+        every5: "a cada 5 dias"
+        start8: "a cada 5 dias a partir do 8º"
+        allowed: "Valores literais permitidos: 1-31"
+      month:
+        any: "qualquer valor (todos os meses)"
+        1and5: "nos meses 1 e 5 (Janeiro e Maio)"
+        range: "a cada mês de Janeiro a Maio"
+        every2: "a cada 2 meses"
+        start3: "a cada 2 meses, a partir do mês 3 (Março)"
+        allowed: "Valores literais permitidos: 1-12"
+        alias: "Valores de alias permitidos: jan-dez"
+      dayOfWeek:
+        any: "qualquer valor (todos os dias da semana)"
+        omit: "omitir"
+        1and5: "nos dias 1 e 5 (Segunda e Sexta)"
+        range: "a cada dia de Segunda a Sexta"
+        allowed: "Valores literais permitidos: 0-7"
+        alias: "Valores de alias permitidos: seg-dom"
+      a11y:
+        examples: "Editar {label}. Exemplos:"
+    expressionEditorModal:
+      title: "Definir expressão Cron"
+      description: "Clique em qualquer campo para obter dicas sobre valores válidos e símbolos curinga."
+      wildcards:
+        title: "Curingas Genéricos"
+        anyValue: "qualquer valor"
+        xAndY: "X e Y"
+        fromXtoY: "de X a Y"
+        everyX: "a cada X"
+        everyXStartingY: "a cada X a partir de Y"
+        everyXFromYtoZ: "a cada X, de Y a Z"
+      examples:
+        title: "Exemplos"
+        dailyMidnight: "À meia-noite"
+        every5Hours: "No minuto 0 da hora, a cada 5 horas"
+        day1At1745: "Às 17:45, no dia 1 do mês"
+        weekdaysAt0830: "Nos 30 minutos da hora, a cada 1 hora, começando às 08:00, de Segunda a Sexta"
+        marchToMayHourly: "A cada hora, apenas em Março, Abril e Maio"
+        every4Hours9to17: "No minuto 0 da hora, a cada 4 horas, entre 09:00 e 17:00"
+
+autoscaler:
+  card:
+    title: Autoscaler
+    pause: Pausar
+    resume: Retomar
+    loadingError: Houve um problema ao carregar os detalhes
+    loadingAlt: Carregando Detalhes
+    details:
+      status: Status
+      health: Saúde
+      scaleDown: Reduzir Escala
+      scaleUp: Aumentar Escala
+      nodes: Nós
+      ready: Pronto
+      notStarted: Não Iniciado
+      inTotal: No Total
+      provisioning: Provisionando
+      paused: Pausado
+      unavailable: Indisponível
+  tab:
+    title: Autoscaler
+
+ext.cattle.io.kubeconfig:
+  deleted: "{name} (excluído)"
+  moreClusterCount: " + {remainingCount} mais"
