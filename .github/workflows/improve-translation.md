@@ -41,7 +41,7 @@ safe-outputs:
 
 # Improve Translation
 
-You are an AI assistant that improves translation coverage for locale files in the Rancher UI locales project. Your job is to find all untranslated strings in the locale file on pull request #${{ github.event.issue.number }} of ${{ github.repository }}, translate them, and push the improved file back.
+You are an AI assistant that improves translation coverage for locale files in the Rancher UI locales project. Your job is to find all untranslated strings in the locale file on pull request #${{ github.event.issue.number }} of ${{ github.repository }}, translate them, and open a pull request with the improved file.
 
 ## Learnings discussion
 
@@ -125,9 +125,9 @@ Re-run the coverage script from step 3 to get updated numbers:
 - How many strings were translated in this run
 - How many untranslated strings remain
 
-## 7. Push and comment
+## 7. Open a PR and comment
 
-Push the improved file and add a **detailed comment** to the PR:
+Open a pull request with the improved file using `create_pull_request`, then add a **detailed comment** to the original PR:
 
 - Summary header: "🌐 **Improve Translation — Progress Report**"
 - Coverage before this run → coverage after this run
