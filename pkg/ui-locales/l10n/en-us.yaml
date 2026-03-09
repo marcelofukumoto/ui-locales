@@ -1,7 +1,7 @@
 ##############################
 # Special stuff
 ##############################
-generic:
+generic
   unified: Unified
   split: Split
   userMenu: user menu
