@@ -16,8 +16,9 @@ permissions: read-all
 network: defaults
 
 safe-outputs:
-  push-to-pull-request-branch:
-    github-token: ${{ secrets.MAINTAINER_PAT }}
+  create-pull-request:
+    title-prefix: "fix: "
+    labels: [automation, pr-fix]
   create-issue:
     title-prefix: "${{ github.workflow }}"
     labels: [automation, pr-fix]
@@ -53,6 +54,6 @@ You are an AI assistant specialized in fixing pull requests with failing CI chec
 
 7. Run any code formatters or linters used in the repo to ensure your changes adhere to the project's coding standards and fix any new issues they identify.
 
-8. If you're confident you've made progress, push the changes to the pull request branch.
+8. If you're confident you've made progress, open a pull request with your changes using `create_pull_request`.
 
 9. Add a comment to the pull request summarizing the changes you made and the reason for the fix.
