@@ -66,7 +66,7 @@ Check out the branch for pull request #${{ github.event.issue.number }} and set 
 
 ## 3. Identify untranslated strings
 
-Use bash to write and run a script that compares the locale file against `en-us.yaml`:
+Use bash to write and run a Python script that compares the locale file against `en-us.yaml`. **Use only the standard `PyYAML` library (`import yaml`) — do NOT run `pip install` for any package.**
 
 1. Parse both YAML files and extract every leaf key-value pair (fully-qualified key path → value).
 2. A string is **untranslated** if its value in the locale file is **identical** to the value in `en-us.yaml`. Exception: values that should NOT be translated (placeholders like `'—'`, empty strings, pure numbers, single characters, URLs, technical identifiers, variable-only values like `{name}`) — skip those.
