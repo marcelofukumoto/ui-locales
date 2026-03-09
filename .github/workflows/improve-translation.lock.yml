@@ -27,7 +27,7 @@
 # pushes the improved file, and reports progress. Can be run repeatedly until
 # 100% coverage is reached. Results are logged to the shared learnings discussion.
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"08322c70329a7a4723765e044f48b355094548ddda5bf9f0f3bfa3295fc71304","compiler_version":"v0.51.4"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"f8edea54fbcd7fde8882ed37c43cfc1aebc6f3aff74856e2c2007d61f70bcbda","compiler_version":"v0.51.4"}
 
 name: "Improve Translation"
 "on":
@@ -798,7 +798,7 @@ jobs:
       - name: Execute GitHub Copilot CLI
         id: agentic_execution
         # Copilot CLI tool arguments (sorted):
-        timeout-minutes: 60
+        timeout-minutes: 120
         run: |
           set -o pipefail
           # shellcheck disable=SC1003
