@@ -29,7 +29,9 @@ tools:
   bash: true
 
 safe-outputs:
-  push-to-pull-request-branch:
+  create-pull-request:
+    title-prefix: "fix: "
+    labels: [translations, automated]
   add-comment: {}
   create-discussion:
     title-prefix: "[learnings] "
