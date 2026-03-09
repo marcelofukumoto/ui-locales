@@ -16,6 +16,7 @@ permissions: read-all
 network: defaults
 
 safe-outputs:
+  github-token: ${{ secrets.MAINTAINER_PAT }}
   push-to-pull-request-branch:
   create-issue:
     title-prefix: "${{ github.workflow }}"
