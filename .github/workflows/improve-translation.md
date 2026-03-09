@@ -62,7 +62,14 @@ Read pull request #${{ github.event.issue.number }} — its description, all com
 
 ## 2. Check out the PR branch
 
-Check out the branch for pull request #${{ github.event.issue.number }} and set up the environment.
+Check out the branch for pull request #${{ github.event.issue.number }}, then **immediately create a new working branch** from it before making any changes:
+
+```bash
+gh pr checkout ${{ github.event.issue.number }}
+git checkout -b improve-translation-${{ github.event.issue.number }}-$(date +%s)
+```
+
+All edits must be committed to this new branch. This is required so that `create_pull_request` can open a PR from it.
 
 ## 3. Identify untranslated strings
 
