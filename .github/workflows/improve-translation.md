@@ -19,7 +19,7 @@ permissions:
 
 network: defaults
 
-timeout-minutes: 60
+timeout-minutes: 120
 
 tools:
   github:
