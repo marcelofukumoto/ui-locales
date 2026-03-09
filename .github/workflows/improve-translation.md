@@ -102,6 +102,15 @@ Translate the untranslated strings, working in chunks to stay within output limi
 - After each chunk, write the updated content back to the file
 - Track progress: log how many strings were translated per chunk
 
+### ⚠️ Bash script size limit — CRITICAL
+
+Each individual bash tool call must be **small**. Never try to write all translations in a single script.
+
+- **Maximum ~50 key-value pairs per bash call** — split into multiple calls if needed
+- Write translations as a Python `dict` patch and apply it with a small helper; do not embed thousands of lines of YAML in one heredoc
+- If a script would be longer than ~100 lines, split it into smaller scripts
+- Large tool call payloads will be silently rejected — you will see repeated `bash` validation errors if this happens. Stop immediately, make the scripts smaller, and retry.
+
 ### Maximizing coverage
 
 - **Do NOT skip strings** because they seem hard — attempt every untranslated string
