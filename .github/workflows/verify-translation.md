@@ -91,6 +91,8 @@ After these steps, `pt-br.yaml` (or whichever locale file) is a brand-new untrac
 
 ## 3. Structural validation
 
+⚠️ **CRITICAL**: Do NOT spawn sub-agents or background agents. Do all validation and fix work yourself, sequentially. Sub-agents write to temporary files that are invisible to the patch generator — only changes to the actual locale file in the git working tree will be included in the pull request.
+
 This is the core of your work. The translated file **must be a mirror** of `en-us.yaml` with only the values changed. Perform ALL of the following checks:
 
 ### 3a. Valid YAML
@@ -158,6 +160,10 @@ After applying all fixes, re-run the validation from step 3 to confirm:
 If new issues remain, go back to step 4 and fix them. Repeat until the file is perfect.
 
 ## 6. Open a PR and comment
+
+⚠️ **MANDATORY**: You MUST call either `create_pull_request` (if fixes were made) or `add_comment` (if no issues found) before finishing. If you skip these, the workflow produces no output and all work is lost.
+
+Before calling `create_pull_request`, verify your changes exist by running `git diff --stat`. You must see changes to the locale file. If you don't, check that you wrote fixes to the actual file, not to a temp file.
 
 ### If fixes were made:
 

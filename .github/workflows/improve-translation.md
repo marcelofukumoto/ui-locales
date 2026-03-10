@@ -102,6 +102,8 @@ Use bash to write and run a Python script that compares the locale file against 
 
 ## 4. Translate in priority order
 
+⚠️ **CRITICAL**: Do NOT spawn sub-agents or background agents. Do all translation work yourself, sequentially. Sub-agents write to temporary files that are invisible to the patch generator — only changes to the actual locale file in the git working tree (`pkg/ui-locales/l10n/<locale>.yaml`) will be included in the pull request.
+
 Translate the untranslated strings, working in chunks to stay within output limits. Prioritize:
 
 1. **User-facing UI text first**: buttons, labels, messages, descriptions, tooltips, error messages
@@ -132,9 +134,10 @@ Instead, **edit the file line-by-line using text replacement**:
 
 - Work by **top-level YAML section** (e.g. `generic`, `nav`, `cluster`, `workload`, etc.)
 - Within each section, translate all untranslated leaf values
-- After each chunk, write the updated content back to the file
+- After each chunk, write the updated content **directly to the locale file in the repo working tree** (e.g. `pkg/ui-locales/l10n/pt-br.yaml`) — NOT to a temp/JSON file
+- Verify each chunk was written by running `git diff --stat` — you must see changes to the locale file
 - Track progress: log how many strings were translated per chunk
-- **Stop after translating 1000 strings total** — commit, push, and open the PR. The workflow can be re-triggered to continue where it left off.
+- **Stop after translating 1000 strings total** — then proceed immediately to steps 5–7. The workflow can be re-triggered to continue where it left off.
 
 ### ⚠️ Bash script size limit — CRITICAL
 
@@ -171,6 +174,10 @@ Re-run the coverage script from step 3 to get updated numbers:
 - How many untranslated strings remain
 
 ## 7. Open a PR and comment
+
+⚠️ **MANDATORY**: You MUST call `create_pull_request` and `add_comment` before finishing, even if you only translated a few strings. If you skip these, all your work is lost — the workflow produces no output.
+
+Before calling `create_pull_request`, verify your changes exist by running `git diff --stat`. You must see changes to the locale file (e.g. `pkg/ui-locales/l10n/pt-br.yaml`). If you don't, something went wrong — check that you wrote translations to the actual file, not to a temp file.
 
 Open a pull request with the improved file using `create_pull_request`. The PR will target `main` with the complete improved locale file.
 
