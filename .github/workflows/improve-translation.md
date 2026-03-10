@@ -109,6 +109,7 @@ Translate the untranslated strings, working in chunks to stay within output limi
 - Within each section, translate all untranslated leaf values
 - After each chunk, write the updated content back to the file
 - Track progress: log how many strings were translated per chunk
+- **Stop after translating 1000 strings total** — commit, push, and open the PR. The workflow can be re-triggered to continue where it left off.
 
 ### ⚠️ Bash script size limit — CRITICAL
 
