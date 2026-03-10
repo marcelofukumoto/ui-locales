@@ -27,6 +27,7 @@ tools:
   bash: true
 
 safe-outputs:
+  max-patch-size: 10240
   create-pull-request:
     title-prefix: "feat: "
     labels: [translations, automated]
@@ -102,6 +103,16 @@ Translate the untranslated strings, working in chunks to stay within output limi
 - Preserve all ICU message format syntax — only translate the human-readable text inside
 - Empty values must remain empty
 - Values that are `'—'`, URLs, or pure technical identifiers must not be translated
+
+### ⚠️ Writing translations back — CRITICAL
+
+**Never load the YAML file with `yaml.load()` and write it back with `yaml.dump()`** — this reformats the entire file (strips quotes, changes indentation, rewrites every line) and creates a massive diff that will exceed the patch size limit and fail.
+
+Instead, **edit the file line-by-line using text replacement**:
+- Read the raw file as text
+- For each untranslated value, find the exact line and replace only the value portion
+- Write the file back with the same formatting as the original
+- Use a regex or simple string search to locate each key's line
 
 ### Chunking strategy
 
