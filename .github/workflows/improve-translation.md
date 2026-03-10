@@ -61,17 +61,31 @@ Read pull request #${{ github.event.issue.number }} — its description, all com
 - Take heed of any additional instructions in the slash command: "${{ steps.sanitized.outputs.text }}"
 - Identify the locale file (e.g. `pkg/ui-locales/l10n/pt-br.yaml`) and the target language.
 
-## 2. Check out the PR branch
+## 2. Fetch the locale file from the PR branch
 
-Check out the branch for pull request #${{ github.event.issue.number }}, then **immediately create and push a new working branch** from it before making any changes:
+⚠️ **CRITICAL**: The `create_pull_request` tool applies your changes as a patch against the default branch (`main`). The locale file (e.g. `pt-br.yaml`) does NOT exist on `main` — it only exists on the PR branch. If you edit it on the PR branch, the patch will reference file versions that don't exist on `main` and **will fail to apply**.
+
+You must ensure the patch is a **new file creation** (not a modification). Follow these steps **exactly**:
 
 ```bash
-gh pr checkout ${{ github.event.issue.number }}
-git checkout -b improve-translation-${{ github.event.issue.number }}-$(date +%s)
-git push -u origin HEAD
+# 1. Save the PR branch name (auto-checkout already put us on the PR branch)
+PR_BRANCH=$(git branch --show-current)
+
+# 2. Identify the locale file path from the PR's changed files
+LOCALE_FILE="pkg/ui-locales/l10n/<locale-code>.yaml"
+
+# 3. Save a copy of the locale file before switching branches
+cp "$LOCALE_FILE" /tmp/locale-file-original.yaml
+
+# 4. Switch to main — this is critical so the patch is generated against main
+git checkout main
+
+# 5. Copy the locale file into the working tree (new file from main's perspective)
+mkdir -p "$(dirname "$LOCALE_FILE")"
+cp /tmp/locale-file-original.yaml "$LOCALE_FILE"
 ```
 
-All edits must be committed and pushed to this new branch. This is required so that `create_pull_request` can open a PR from it.
+After these steps, `pt-br.yaml` (or whichever locale file) is a brand-new untracked file from `main`'s perspective. When `create_pull_request` generates the patch, it will be a file creation diff that applies cleanly.
 
 ## 3. Identify untranslated strings
 
@@ -158,7 +172,9 @@ Re-run the coverage script from step 3 to get updated numbers:
 
 ## 7. Open a PR and comment
 
-Open a pull request with the improved file using `create_pull_request`, then add a **detailed comment** to the original PR:
+Open a pull request with the improved file using `create_pull_request`. The PR will target `main` with the complete improved locale file.
+
+Then add a **detailed comment** to the original PR #${{ github.event.issue.number }}:
 
 - Summary header: "🌐 **Improve Translation — Progress Report**"
 - Coverage before this run → coverage after this run
