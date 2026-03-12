@@ -1,21 +1,17 @@
 # pt-br Translation Learnings
 
 ## Setup
-Install js-yaml: cd /tmp/gh-aw/agent/yaml-tools && npm install js-yaml
-Scripts: apply_translations.js, check_parity.js, get_untranslated.js, section_stats.js
-Apply: node apply_translations.js /tmp/path/translations.json
+- js-yaml unavailable (network firewalled). Use /tmp/gh-aw/agent/parse_yaml.js + patcher.js
+- Apply: node patcher.js translations_NN.json (~50 keys per file)
 
-## Coverage History
-Run 1: 26.22% to 43.15% (1066 strings)
-Run 2: 43.15% to 60.23% (1075 strings)
-Total: 3792/6296 translatable keys
+## Coverage
+Run 1+2: ~1625 strings (26%). Run 3: +1007 (42%). ~3618 remaining.
 
-## Remaining Priority
-storageClass:180, persistentVolume:177, catalog:170, logging:170,
-cluster:143, monitoring:110, plugins:110, istio:96, component:78,
-typeLabel:52, fleet:41, workload:35, authConfig:34, monitoringReceiver:32
+## Priority Order
+cluster:628, workload:285, fleet:223, authConfig:185, storageClass:180,
+persistentVolume:177, logging:169, catalog:168, monitoring:150, advancedSettings:120
 
 ## Rules
-- K8s terms in English: Deployment, StatefulSet, namespace, etc.
-- Batch size: 50-80 keys per JSON file
-- Preserve ICU plural syntax and HTML tags exactly
+- K8s terms in English (Deployment, StatefulSet, namespace)
+- Preserve ICU plural syntax and HTML tags
+- 50 keys/batch; stop at 1000/run
