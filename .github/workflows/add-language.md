@@ -14,41 +14,41 @@ permissions:
   contents: read
   issues: read
   pull-requests: read
-  discussions: read
 
 network: defaults
 
-timeout-minutes: 60
+timeout-minutes: 120
 
 tools:
   github:
     lockdown: false
+  repo-memory:
+    branch-name: memory/default
+    max-file-size: 32768
+    file-glob: ["memory/default/*.md"]
   bash: true
 
 safe-outputs:
+  max-patch-size: 32
   create-pull-request:
     title-prefix: "feat: "
     labels: [translations, new-language, automated]
   add-comment: {}
-  create-discussion:
-    title-prefix: "[learnings] "
-    category: general
-    labels: [translations, automated]
-  update-discussion:
-    body:
-    target: "*"
 ---
 
 # Add New Language Translation
 
 When a GitHub issue requests a new language to be added to the UI locales extension, translate the entire `en-us.yaml` file into the requested language and open a Pull Request.
 
-## Learnings discussion
+## Scripting constraint
 
-Before doing anything else, search for a discussion in this repository with the title `[learnings] Add New Language Translation`. This discussion accumulates knowledge from previous runs to help you work faster and avoid past mistakes.
+Do **NOT** use Python or pip in any scripts. The runner does not have access to `pypi.org` and package installs will fail. Use **Node.js** or **pure bash** (with tools like `awk`, `sed`, `grep`, `sort`, `diff`) for all scripting needs including YAML parsing and validation.
 
-- If it exists, **read it carefully** — it contains chunking strategies, known pitfalls, character/token limits observed, and tips from previous runs. Apply this knowledge throughout your work.
-- If it does not exist, you will create it at the end (see below).
+## Learnings (repo-memory)
+
+Before doing anything else, read the file `/tmp/gh-aw/repo-memory-default/memory/default/learnings.md` if it exists. This file accumulates knowledge from all previous translation runs — chunking strategies, known pitfalls, character/token limits, and tips. Apply this knowledge throughout your work.
+
+If the file does not exist yet, that is fine — you will create it at the end.
 
 ## Trigger condition
 
@@ -74,7 +74,7 @@ If the issue does not meet these criteria, do nothing and stop.
    - Do not translate YAML comments (lines starting with `#`) — preserve them in the same positions
    - Empty values must remain empty; special values like `'—'` must be preserved exactly
    - If a key's value is a mapping (has children) in `en-us.yaml`, it must also be a mapping in the output — never flatten a nested structure into a scalar
-   - Use chunking sizes and strategies noted in the learnings discussion (if available), otherwise split at top-level YAML keys to keep each chunk manageable
+   - Use chunking sizes and strategies noted in the learnings file (if available), otherwise split at top-level YAML keys to keep each chunk manageable
 
 5. **Self-validate before opening the PR**. Use bash to write and run a validation script that checks:
    - The output file is valid YAML (no parse errors, no duplicate keys)
@@ -82,6 +82,8 @@ If the issue does not meet these criteria, do nothing and stop.
    - Key order matches `en-us.yaml`
    - All placeholders (`{...}`, `&hellip;`, HTML tags) from `en-us.yaml` are present in the corresponding translated values
    - If any issues are found, fix them and re-validate until the file is clean
+
+   **Fixing YAML parse errors**: If the generated file has YAML parse errors, identify the broken key from the parser error (line number), look up that key in `en-us.yaml` to get the original value and formatting, re-translate it preserving the exact same YAML quoting and formatting style (single quotes, block scalars `|`/`>`, etc.), replace the broken line, and re-validate. Common causes: unescaped colons/hashes in translations, broken quoting, mangled ICU `{count, plural, ...}` syntax. Always mirror `en-us.yaml`'s formatting.
 
 6. **Open a Pull Request** that:
    - Creates the new file at `pkg/ui-locales/l10n/<locale-code>.yaml` with the translated content
@@ -92,14 +94,13 @@ If the issue does not meet these criteria, do nothing and stop.
 
 7. **Add a comment** to the original issue letting the requester know a PR has been opened with the translation, linking to it, noting it needs native speaker review before merging, and that `/verify-translation` can be run on the PR for additional structural checks.
 
-## Update learnings discussion
+## Update learnings
 
-After completing the work (or after hitting any significant obstacle), update the learnings discussion with what you learned during this run. This is the most important step for improving future runs.
+After completing the work (or after hitting any significant obstacle), write your learnings to `/tmp/gh-aw/repo-memory-default/memory/default/learnings.md`. This is the most important step for improving future runs.
 
-- **If the discussion already exists**: update its body using `update_discussion`, **merging** your new observations into the existing content — do not discard previous learnings, incorporate them
-- **If the discussion does not exist**: create it using `create_discussion` with title `[learnings] Add New Language Translation`
+If the file already exists, **merge** your new observations into the existing content — do not discard previous learnings. If it does not exist, create it.
 
-The discussion body should be written in Markdown and cover:
+The file should be written in Markdown and cover:
 
 - **Chunking strategy**: how you split `en-us.yaml` (e.g. by top-level key, how many keys per chunk, approximate line count per chunk) and what worked well
 - **Output size limits**: any limits you hit (token/character limits per PR file, per commit) and how you worked around them
@@ -107,7 +108,7 @@ The discussion body should be written in Markdown and cover:
 - **Known pitfalls**: keys or sections that are tricky (ICU plurals, nested HTML, very long values) and how to handle them
 - **Anything that caused errors or timeouts** and how to avoid them next time
 
-Keep the discussion concise and actionable — it is read at the start of every future run.
+Keep the file concise and actionable — it is read at the start of every future run. The file auto-commits to the `memory/default` branch when the workflow finishes.
 
 ## Style
 

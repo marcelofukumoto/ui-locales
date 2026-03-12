@@ -1,12 +1,11 @@
 ---
 description: |
-  This workflow verifies and fixes translation files in pull requests on-demand
-  via the '/verify-translation' slash command. It compares the target locale YAML
-  against en-us.yaml to ensure structural parity: same keys, same nesting, same
-  ordering, no duplicate keys, no invented keys, and valid YAML syntax. When issues
-  are found it fixes them and pushes corrections. When the file is perfect it reports
-  success. Results are logged to a shared learnings discussion so future add-language
-  runs avoid the same mistakes.
+  This workflow performs a read-only verification of translation files in pull
+  requests on-demand via the '/verify-translation' slash command. It compares the
+  target locale YAML against en-us.yaml and produces a detailed report covering
+  structural integrity, translation coverage, placeholder preservation, and key
+  ordering. It does NOT modify any files — it only reports findings. When issues
+  are found it recommends running '/improve-translation' to apply fixes.
 
 on:
   slash_command:
@@ -17,7 +16,6 @@ permissions:
   contents: read
   issues: read
   pull-requests: read
-  discussions: read
 
 network: defaults
 
@@ -26,100 +24,86 @@ timeout-minutes: 60
 tools:
   github:
     lockdown: false
+  repo-memory:
+    branch-name: memory/default
+    max-file-size: 32768
+    file-glob: ["memory/default/*.md"]
   bash: true
 
 safe-outputs:
-  max-patch-size: 10240
-  create-pull-request:
-    title-prefix: "fix: "
-    labels: [translations, automated]
-  add-comment: {}
-  create-discussion:
-    title-prefix: "[learnings] "
-    category: general
-    labels: [translations, automated]
-  update-discussion:
-    body:
-    target: "*"
+  max-patch-size: 32
+  add-comment:
+    hide-older-comments: true
+  add-labels:
+  submit-pull-request-review:
+    target: ${{ github.event.issue.number }}
+    footer: "if-body"
 
 ---
 
 # Verify Translation
 
-You are an AI assistant specialized in verifying and fixing translation YAML files for the Rancher UI locales project. Your job is to ensure the translated locale file in pull request #${{ github.event.issue.number }} of ${{ github.repository }} is **structurally identical** to `en-us.yaml` — same keys, same nesting, same order, valid YAML, no duplicates, no invented keys.
+You are an AI assistant specialized in auditing translation YAML files for the Rancher UI locales project. Your job is to **verify** the translated locale file in pull request #${{ github.event.issue.number }} of ${{ github.repository }} and produce a detailed quality report. You do **NOT** modify or fix any files — you only analyze and report.
 
-## Learnings discussion
+## Important: read-only workflow
 
-Before doing anything else, search for a discussion in this repository with the title `[learnings] Add New Language Translation`. This discussion accumulates knowledge from previous runs to help you work faster and avoid past mistakes.
+This workflow is strictly read-only. You must **never** push changes, edit files, or modify the PR branch. All findings are reported as a PR comment. If issues are found, recommend that the user runs `/improve-translation` to apply fixes.
 
-- If it exists, **read it carefully** — it contains chunking strategies, known structural pitfalls, duplicate key patterns, and tips from previous runs. Apply this knowledge throughout your work.
-- If it does not exist, you will create it at the end (see below).
+## Scripting constraint
+
+Do **NOT** use Python or pip in any scripts. The runner does not have access to `pypi.org` and package installs will fail. Use **Node.js** or **pure bash** (with tools like `awk`, `sed`, `grep`, `sort`, `diff`) for all scripting needs including YAML parsing and validation.
+
+## Learnings (repo-memory)
+
+Before doing anything else, read the file `/tmp/gh-aw/repo-memory-default/memory/default/learnings.md` if it exists. This file accumulates knowledge from all previous translation runs — chunking strategies, known structural pitfalls, duplicate key patterns, and tips. Apply this knowledge throughout your work.
+
+If the file does not exist, skip this step.
 
 ## 1. Read the PR and previous comments
 
 Read pull request #${{ github.event.issue.number }} — its description, all comments, and the list of changed files.
 
-- If there are previous `/verify-translation` comments from earlier runs, read them to understand what was already fixed and what issues remain.
+- If there are previous `/verify-translation` comments from earlier runs, read them to understand what was already reported and whether issues have been addressed since.
 - Take heed of any additional instructions in the slash command: "${{ steps.sanitized.outputs.text }}"
 - Identify which locale file is being added or modified (e.g. `pkg/ui-locales/l10n/pt-br.yaml`).
 
-## 2. Fetch the locale file from the PR branch
+## 2. Check out the PR branch
 
-⚠️ **CRITICAL**: The `create_pull_request` tool applies your changes as a patch against the default branch (`main`). The locale file (e.g. `pt-br.yaml`) does NOT exist on `main` — it only exists on the PR branch. If you edit it on the PR branch, the patch will reference file versions that don't exist on `main` and **will fail to apply**.
-
-You must ensure the patch is a **new file creation** (not a modification). Follow these steps **exactly**:
-
-```bash
-# 1. Save the PR branch name (auto-checkout already put us on the PR branch)
-PR_BRANCH=$(git branch --show-current)
-
-# 2. Identify the locale file path from the PR's changed files
-LOCALE_FILE="pkg/ui-locales/l10n/<locale-code>.yaml"
-
-# 3. Save a copy of the locale file before switching branches
-cp "$LOCALE_FILE" /tmp/locale-file-original.yaml
-
-# 4. Switch to main — this is critical so the patch is generated against main
-git checkout main
-
-# 5. Copy the locale file into the working tree (new file from main's perspective)
-mkdir -p "$(dirname "$LOCALE_FILE")"
-cp /tmp/locale-file-original.yaml "$LOCALE_FILE"
-```
-
-After these steps, `pt-br.yaml` (or whichever locale file) is a brand-new untracked file from `main`'s perspective. When `create_pull_request` generates the patch, it will be a file creation diff that applies cleanly.
+Check out the branch for pull request #${{ github.event.issue.number }} and set up the environment.
 
 ## 3. Structural validation
 
-⚠️ **CRITICAL**: Do NOT spawn sub-agents or background agents. Do all validation and fix work yourself, sequentially. Sub-agents write to temporary files that are invisible to the patch generator — only changes to the actual locale file in the git working tree will be included in the pull request.
-
-This is the core of your work. The translated file **must be a mirror** of `en-us.yaml` with only the values changed. Perform ALL of the following checks:
+The translated file **must be a mirror** of `en-us.yaml` with only the values changed. Perform ALL of the following checks and collect the results for the final report.
 
 ### 3a. Valid YAML
 
-Parse the locale file with a YAML parser. If it fails to parse, the file is broken. Common causes:
-- **Duplicate keys** at the same nesting level (YAML spec forbids this) — the AI may have generated the same key twice with different translations
+Parse the locale file with a YAML parser. Report whether it parses successfully. If it fails, report the error details. Common causes:
+- **Duplicate keys** at the same nesting level (YAML spec forbids this)
 - Incorrect indentation
 - Unescaped special characters in values
 - Missing quotes around values that need them
 
 ### 3b. Exact key parity
 
-Extract every fully-qualified key path (e.g. `generic.actions.activate`) from both `en-us.yaml` and the locale file. Then:
-- **Missing keys**: keys in `en-us.yaml` that are absent from the locale file — these must be added
-- **Extra/invented keys**: keys in the locale file that do NOT exist in `en-us.yaml` — these must be removed
-- Both sets must be **exactly equal** when done
+Extract every fully-qualified key path (e.g. `generic.actions.activate`) from both `en-us.yaml` and the locale file. Then report:
+- **Missing keys**: keys in `en-us.yaml` that are absent from the locale file (list up to 30 examples)
+- **Extra/invented keys**: keys in the locale file that do NOT exist in `en-us.yaml` (list up to 30 examples)
+- Total missing key count and total extra key count
 
 ### 3c. Key ordering
 
-Keys within each nesting level must appear in the **same order** as in `en-us.yaml`. Out-of-order keys suggest the AI generated them from memory rather than following the source. Reorder them to match.
+Check whether keys within each nesting level appear in the **same order** as in `en-us.yaml`. Report:
+- Number of out-of-order keys
+- Up to 20 examples of misordered keys
 
 ### 3d. Structure parity
 
-For every key, the type must match:
+For every key, verify the type matches:
 - If a key is a **mapping** (has children) in `en-us.yaml`, it must also be a mapping in the locale file
 - If a key is a **scalar** (leaf value) in `en-us.yaml`, it must also be a scalar in the locale file
 - The nesting depth of every key must be identical
+
+Report any structural mismatches found.
 
 ### 3e. Preserved placeholders
 
@@ -129,74 +113,135 @@ For every leaf value, verify that all placeholders from `en-us.yaml` are present
 - HTML tags: `<b>`, `<a href="...">`, `<code>`, `<br/>`, etc.
 - Template expressions: anything inside `{` and `}`
 
-If a placeholder is missing from the translation, it is a bug that must be fixed.
+Report any keys where placeholders are missing or altered (list up to 30 examples).
 
 ### 3f. Empty and special values
 
-- If a value is empty in `en-us.yaml`, it must be empty in the locale file
+- If a value is empty in `en-us.yaml`, verify it is also empty in the locale file
 - Values that are `'—'` or similar special characters should be preserved exactly
 - YAML comments (lines starting with `#`) in `en-us.yaml` should be preserved in the same positions
 
-## 4. Fix all issues
+Report any mismatches.
 
-For every issue found in step 3, fix it directly in the locale file:
-- Add missing keys with a correct translation (translate the English value)
-- Remove invented/extra keys
-- Fix duplicate keys (keep the correct translation, remove the duplicate)
-- Reorder keys to match `en-us.yaml`
-- Fix placeholder issues
-- Fix structural mismatches
+## 4. Translation coverage
 
-When the file is very large (en-us.yaml is ~9500 lines), work in chunks by top-level key section to stay within output limits.
+Use bash to write and run a script that calculates translation coverage:
 
-## 5. Re-validate
+1. Parse both YAML files and extract every leaf key-value pair (fully-qualified key path → value).
+2. Classify every leaf key into one of four categories:
+   - **Translated**: value in the locale file **differs** from the English value.
+   - **Kept in English**: value is **identical** to English but is **correct to keep as-is**. This includes:
+     - Brand names and proper nouns (e.g. `Rancher`, `Kubernetes`, `Docker`, `Helm`, `Longhorn`, `Harvester`, `Prometheus`, `Grafana`, `Istio`, `Fleet`, `Epinio`, `NeuVector`, `RKE2`, `K3s`, `Linux`, `Windows`, `Azure`, `AWS`, `GKE`, `EKS`, `AKS`)
+     - Technical terms, CLI commands, and identifiers (e.g. `kubectl`, `etcd`, `nginx`, `containerd`, `CronJob`, `DaemonSet`, `StatefulSet`, `ConfigMap`, `PersistentVolume`)
+     - Acronyms and abbreviations (e.g. `CPU`, `GPU`, `RAM`, `DNS`, `API`, `HTTP`, `HTTPS`, `SSH`, `TCP`, `UDP`, `CIDR`, `RBAC`, `OIDC`, `LDAP`, `SAML`, `PVC`, `CSI`)
+     - File extensions, formats, and protocols (e.g. `.yaml`, `.json`, `base64`, `PEM`, `PKCS`)
+     - Values that are a single word that is also a universal technical term in IT (commonly left in English even in fully translated software)
+   - **Skipped**: values that are inherently non-translatable — empty strings, pure numbers, single characters, URLs, variable-only values like `{name}`, special values like `'—'`, HTML-only values
+   - **Untranslated**: value is identical to English and does **not** fit in "Kept in English" or "Skipped" — these genuinely need translation.
+3. Calculate:
+   - **Total leaf keys** in `en-us.yaml`
+   - **Translated** (count and percentage of translatable)
+   - **Kept in English** (count — correctly identical to English)
+   - **Skipped** (count — non-translatable)
+   - **Untranslated** (count and percentage of translatable — genuinely need translation)
+   - **Overall coverage**: (translated + kept in English) / (total - skipped) as a percentage
+4. Break down coverage by **top-level YAML section** (e.g. `generic`, `nav`, `cluster`, `workload`, etc.) — for each section report translated, kept-in-english, and untranslated counts.
 
-After applying all fixes, re-run the validation from step 3 to confirm:
-- The YAML parses without errors
-- The key sets are exactly equal
-- The key order matches
-- All placeholders are preserved
+### 4a. Agent review of untranslated strings
 
-If new issues remain, go back to step 4 and fix them. Repeat until the file is perfect.
+The bash script cannot perfectly distinguish technical terms from genuinely untranslated strings. After the script runs, **you must manually review** every string the script classified as "untranslated":
 
-## 6. Open a PR and comment
+- For each "untranslated" value, check whether it is a product name, Kubernetes resource type, provider name, CLI command, protocol, acronym, storage driver, authentication provider, cloud service, icon identifier, or any other term that is universally kept in English in localized software.
+- **Reclassify** any such terms from "untranslated" to "kept in English" in the final counts.
+- Only strings that contain **actual human-readable English words or phrases that should be localized** (e.g. button labels like "Save", "Delete", descriptions, error messages, help text) should remain as "untranslated".
+- Update the coverage calculation accordingly: coverage = (translated + kept in English) / (total - skipped).
 
-⚠️ **MANDATORY**: You MUST call either `create_pull_request` (if fixes were made) or `add_comment` (if no issues found) before finishing. If you skip these, the workflow produces no output and all work is lost.
+This agent review step is critical — the script's known-terms list will never be exhaustive. You are the final arbiter of whether a string genuinely needs translation.
 
-Before calling `create_pull_request`, verify your changes exist by running `git diff --stat`. You must see changes to the locale file. If you don't, check that you wrote fixes to the actual file, not to a temp file.
+## 5. Post the report as a PR comment
 
-### If fixes were made:
+Add a single, detailed comment to the PR with the full verification report. Use this structure:
 
-Open a pull request with the corrected file using `create_pull_request` (the PR will target `main` with the complete corrected locale file), then add a **detailed comment** to the original PR #${{ github.event.issue.number }} with:
+### If all checks passed and coverage is 100%:
 
-- A summary header (e.g. "🔧 Verify Translation — Fixes Applied")
-- How many issues were found and fixed, broken down by category:
-  - Duplicate keys removed
-  - Missing keys added
-  - Extra/invented keys removed
-  - Keys reordered
-  - Placeholder fixes
-  - Structural fixes
-- A list of the most notable fixes (up to 20 examples)
-- A note that another `/verify-translation` run can be triggered to re-check
+```
+✅ **Verify Translation — All Checks Passed**
 
-### If no issues were found:
+**Locale file**: `pkg/ui-locales/l10n/<locale>.yaml`
+**Language**: <Language Name>
 
-Add a comment to the PR:
+### Structural Integrity
+- ✅ Valid YAML — no parse errors
+- ✅ Key parity — all {N} keys present, no extra keys
+- ✅ Key ordering — matches en-us.yaml
+- ✅ Structure parity — all types match
+- ✅ Placeholders — all preserved
+- ✅ Empty/special values — all preserved
 
-- "✅ **Verify Translation — All Checks Passed**"
-- Confirm: valid YAML, exact key parity with en-us.yaml, correct ordering, all placeholders preserved
-- State the total number of keys verified
-- Note that the file is ready for human review of translation quality
+### Translation Coverage
+- **Overall**: {percentage}% ({translated}/{translatable} translatable strings)
+- **Translated**: {translated} strings
+- **Kept in English**: {kept} strings (brand names, technical terms, acronyms)
+- **Skipped**: {skipped} non-translatable values
 
-## 7. Update learnings discussion
+🏷️ Label `ready-to-merge` added.
 
-After completing the work (whether fixes were needed or not), update the learnings discussion with what you learned during this run.
+The file is structurally sound and fully translated. Ready for native speaker review of translation quality.
+```
 
-- **If the discussion already exists**: update its body using `update_discussion`, merging your new observations into the existing content — do not discard previous learnings
-- **If the discussion does not exist**: create it using `create_discussion` with title `[learnings] Add New Language Translation`
+### If issues were found or coverage is incomplete:
 
-Add or update these sections in the discussion:
+```
+📋 **Verify Translation — Report**
+
+**Locale file**: `pkg/ui-locales/l10n/<locale>.yaml`
+**Language**: <Language Name>
+
+### Structural Integrity
+- {✅ or ❌} Valid YAML — {details}
+- {✅ or ⚠️} Key parity — {N} missing keys, {N} extra keys
+- {✅ or ⚠️} Key ordering — {N} out-of-order keys
+- {✅ or ⚠️} Structure parity — {N} type mismatches
+- {✅ or ⚠️} Placeholders — {N} keys with missing placeholders
+- {✅ or ⚠️} Empty/special values — {N} mismatches
+
+{If there are structural issues, list them here with details}
+
+### Translation Coverage
+- **Overall**: {percentage}% ({translated + kept}/{translatable} translatable strings)
+- **Translated**: {translated} strings
+- **Kept in English**: {kept} strings (brand names, technical terms, acronyms)
+- **Untranslated**: {untranslated} strings still need translation
+- **Skipped**: {skipped} non-translatable values
+
+#### Coverage by Section
+| Section | Translated | Kept in English | Untranslated | Coverage |
+|---------|-----------|----------------|-------------|----------|
+| generic | X         | Y              | Z           | NN%      |
+| nav     | X         | Y              | Z           | NN%      |
+| ...     | ...       | ...            | ...         | ...      |
+
+### Recommended Actions
+Run `/improve-translation` to fix structural issues and translate remaining strings.
+```
+
+## 6. Label and approve on 100% coverage
+
+If **all** structural checks passed (valid YAML, key parity, key ordering, structure parity, placeholders, empty/special values) **and** overall translation coverage is **100%** after the agent review (i.e. zero genuinely untranslated strings), then:
+
+1. Add the label `ready-to-merge` to pull request #${{ github.event.issue.number }}.
+2. Submit an **approving PR review** using `submit_pull_request_review` with event `APPROVE` and a body like:
+   > ✅ AI verification passed — all structural checks clean, 100% translation coverage. Ready for native speaker review of translation quality.
+
+If the coverage is below 100% or any structural check failed, do **not** add the label or approve the PR.
+
+## 7. Update learnings
+
+After completing the verification and labeling, update the learnings file at `/tmp/gh-aw/repo-memory-default/memory/default/learnings.md`.
+
+If the file already exists, **merge** your new observations into the existing content — do not discard previous learnings. If it does not exist, create it.
+
+Add or update these sections:
 
 - **Common structural issues**: duplicate keys found (which ones, why they occur), invented keys, missing sections
 - **Chunking strategy**: what chunk sizes work for the ~9500-line en-us.yaml, which top-level sections are largest
@@ -205,4 +250,4 @@ Add or update these sections in the discussion:
 - **Validation approach**: how to efficiently validate the file (tools, scripts, strategies)
 - **Anything that caused errors** and how to avoid them next time
 
-Keep the discussion concise and actionable — it is read at the start of every future add-language and verify-translation run.
+Keep the file concise and actionable. It auto-commits to the `memory/default` branch when the workflow finishes.
