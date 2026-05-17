@@ -1,0 +1,1373 @@
+diff --git a/pkg/ui-locales/l10n/pt-br.yaml b/pkg/ui-locales/l10n/pt-br.yaml
+index 7fc2d46..85bb202 100644
+--- a/pkg/ui-locales/l10n/pt-br.yaml
++++ b/pkg/ui-locales/l10n/pt-br.yaml
+@@ -438,44 +438,44 @@ accountAndKeys:
+     notAllowed: Você não tem permissão para gerenciar Chaves de API
+     apiEndpoint: "Endpoint de API:"
+     copyApiEnpoint: Copiar Endpoint de API para a área de transferência
+-    normanTokenDeprecation: The API Keys feature is being migrated to a new API. Any existing API Keys from the legacy API will continue to work, but new API Keys will be created using the new API.
++  normanTokenDeprecation: O recurso de Chaves de API está sendo migrado para uma nova API. Quaisquer Chaves de API existentes da API legada continuarão funcionando, mas novas Chaves de API serão criadas usando a nova API.
+     add:
+       description:
+-        label: Description
+-        placeholder: Optionally enter a description to help you identify this API Key
+-      label: Create API Key
++  label: Descrição
++  placeholder: Opcionalmente, insira uma descrição para ajudá-lo a identificar esta chave de API
++  label: Criar chave de API
+       ariaLabel:
+-        expiration: Expiration duration - number input
+-        expirationUnits: Expiration unit - time unit
++  expiration: Duração da expiração - entrada numérica
++  expirationUnits: Unidade de expiração - unidade de tempo
+       expiry:
+-        label: Automatically expire
++  label: Expirar automaticamente
+         options:
+-          never: Never
+-          day: A day from now
+-          month: A month from now
+-          year: A year from now
+-          custom: Custom
+-          maximum: "{value} - Maximum allowed"
++  never: Nunca
++  day: Um dia a partir de agora
++  month: Um mês a partir de agora
++  year: Um ano a partir de agora
++  custom: Personalizado
++  maximum: "{value} - Máximo permitido"
+       customExpiry:
+         options:
+-          minute: Minutes
+-          hour: Hours
+-          day: Days
+-          month: Months
+-          year: Years
+-      scope: Scope
+-      userPrincipal: User Principal
+-      noScope: No Scope
+-      enabled: Token enabled
++  minute: Minutos
++  hour: Horas
++  day: Dias
++  month: Meses
++  year: Anos
++  scope: Escopo
++  userPrincipal: Principal do usuário
++  noScope: Sem escopo
++  enabled: Token ativado
+     info:
+-      accessKey: Access Key
+-      secretKey: Secret Key
+-      bearerToken: Bearer Token
+-      saveWarning: Save the info above! This is the only time you'll be able to see it. If you lose it, you'll need to create a new API key.
+-      keyCreated: A new API Key has been created
+-      bearerTokenTip: "Access Key and Secret Key can be sent as the username and password for HTTP Basic auth to authorize requests. You can also combine them to use as a Bearer token:"
+-      ttlLimitedWarning: The Expiry time for this API Key was reduced due to system configuration
+-      expiryOptionsWithNever: Since "auth-token-max-ttl-minutes" is set to <= 0, the API Key will not expire unless the "Automatically expire" option is set to "Custom" and a custom expiry time is set.
++  accessKey: Chave de acesso
++  secretKey: Chave secreta
++  bearerToken: Bearer Token
++  saveWarning: Salve as informações acima! Esta é a única vez que você poderá vê-las. Se você perdê-las, precisará criar uma nova chave de API.
++  keyCreated: Uma nova chave de API foi criada
++  bearerTokenTip: "A chave de acesso e a chave secreta podem ser enviadas como nome de usuário e senha para autenticação HTTP Basic. Você também pode combiná-las para usar como um Bearer token:"
++  ttlLimitedWarning: O tempo de expiração desta chave de API foi reduzido devido à configuração do sistema
++  expiryOptionsWithNever: Como "auth-token-max-ttl-minutes" está definido como <= 0, a chave de API não expirará a menos que a opção "Expirar automaticamente" seja definida como "Personalizado" com um tempo de expiração personalizado.
+ addClusterMemberDialog:
+   title: Adicionar Membro do Cluster
+ 
+@@ -2726,63 +2726,63 @@ cluster:
+ 
+ clusterIndexPage:
+   hardwareResourceGauge:
+-    consumption: "{useful} of {total} {units} {suffix}"
++  consumption: "{useful} de {total} {units} {suffix}"
+     cores: CPU
+-    pods: Pods
+-    ram: Memory
+-    used: Used
+-    reserved: Reserved
+-    allocated: Allocated
++  pods: Pods
++  ram: Memória
++  used: Utilizado
++  reserved: Reservado
++  allocated: Alocado
+     units:
+       cores: |-
+         {count, plural,
+         =1 {core}
+         other {cores}}
+-  header: Cluster Dashboard
++  header: Painel do cluster
+   resourceGauge:
+-    totalResources: Total Resources
++  totalResources: Total de recursos
+   sections:
+     capacity:
+-      label: Capacity
++  label: Capacidade
+     events:
+-      label: Events
++  label: Eventos
+       resource:
+-        label: Resource
++  label: Recurso
+       date:
+-        label: Date
++  label: Data
+     alerts:
+-      label: Alerts
++  label: Alertas
+     clusterMetrics:
+-      label: Cluster Metrics
++  label: Métricas do cluster
+     etcdMetrics:
+-      label: Etcd Metrics
++  label: Métricas do Etcd
+     k8sMetrics:
+-      label: Kubernetes Components Metrics
++  label: Métricas dos componentes Kubernetes
+     gatekeeper:
+-      buttonText: Configure Gatekeeper
+-      disabled: OPA Gatekeeper is not configured.
+-      label: OPA Gatekeeper Constraint Violations
+-      noRows: There are no constraints with violations to show.
++  buttonText: Configurar Gatekeeper
++  disabled: O OPA Gatekeeper não está configurado.
++  label: Violações de restrições do OPA Gatekeeper
++  noRows: Não há restrições com violações para mostrar.
+     nodes:
+-      label: Unhealthy Nodes
+-      noRows: There are no unhealthy nodes to show.
++  label: Nós com problemas
++  noRows: Não há nós com problemas para mostrar.
+     componentStatus:
+       component:
+         etcd:
+-          label: Etcd
++  label: Etcd
+         scheduler:
+-          label: Scheduler
++  label: Agendador
+         controller-manager:
+-          label: Controller Manager
++  label: Gerenciador de controladores
+         cattle:
+-          label: Cattle
++  label: Cattle
+         fleet:
+           label: Fleet
+       tooltip:
+-        disconnected: Agent disconnected
+-        unavailableReplicas: Replicas not available
++  disconnected: Agente desconectado
++  unavailableReplicas: Réplicas não disponíveis
+     certs:
+-      label: Certificates
++  label: Certificados
+ 
+ configmap:
+   tabs:
+@@ -4086,48 +4086,48 @@ labeledSelect:
+   pressEnter: Press enter to add "{input}"
+ 
+ landing:
+-  bannerImage: Homepage banner image
+-  homepage: Homepage
++  bannerImage: Imagem do banner da página inicial
++  homepage: Página inicial
+   clusters:
+-    title: Clusters
++  title: Clusters
+     tooMany:
+-      showAll: Show all clusters (may increase load time)
+-      showSome: Show some clusters (may improve load time)
+-      showingAll: Showing {total} clusters.
+-      showingSome: Showing {rows} of {total} recently created clusters.
+-    provider: Provider
+-    distro: Distro
+-    kubernetesVersion: Kubernetes Version
+-    architecture: Architecture
+-    explorer: Explorer
+-    explore: Explore
++  showAll: Mostrar todos os clusters (pode aumentar o tempo de carregamento)
++  showSome: Mostrar alguns clusters (pode melhorar o tempo de carregamento)
++  showingAll: Mostrando {total} clusters.
++  showingSome: Mostrando {rows} de {total} clusters criados recentemente.
++  provider: Provedor
++  distro: Distribuição
++  kubernetesVersion: Versão do Kubernetes
++  architecture: Arquitetura
++  explorer: Explorer
++  explore: Explorar
+     cores: |-
+       {count, plural,
+       =1 {core}
+       other {cores}}
+-    cpuUsed: CPU Used
+-    memoryUsed: Memory Used
++  cpuUsed: CPU utilizada
++  memoryUsed: Memória utilizada
+   whatsNew:
+-    title: Welcome to Rancher {version}
+-    message: Learn more about the improvements and new capabilities in this version
+-    link: Release Notes
+-  learnMore: Learn More
+-  support: Support
++  title: Bem-vindo ao Rancher {version}
++  message: Saiba mais sobre as melhorias e novas funcionalidades desta versão
++  link: Notas de versão
++  learnMore: Saiba mais
++  support: Suporte
+   community:
+-    title: Community Support
+-    docs: Docs
+-    forums: Forums
++  title: Suporte da comunidade
++  docs: Documentação
++  forums: Fóruns
+   commercial:
+-    title: Commercial Support
+-    body: Learn about commercial support
++  title: Suporte comercial
++  body: Saiba mais sobre suporte comercial
+   landingPrefs:
+-    body: "You can change where you land when you login"
+-    ariaLabelTakeMeToCluster: Select which cluster to take me to after login
++  body: "Você pode alterar onde fica a página inicial ao fazer login"
++  ariaLabelTakeMeToCluster: Selecionar qual cluster acessar após o login
+     options:
+-      homePage: Take me to the home page
+-      lastVisited: Take me to the area I last visited
+-      custom: "Take me to cluster:"
+-  welcomeToRancher: 'Welcome to {vendor}'
++  homePage: Levar-me à página inicial
++  lastVisited: Levar-me à área que visitei por último
++  custom: "Levar-me ao cluster:"
++  welcomeToRancher: 'Bem-vindo ao {vendor}'
+ 
+ logging:
+   clusterFlow:
+@@ -4416,42 +4416,42 @@ neuvector:
+         na: Resource Unavailable
+ 
+ login:
+-  login: Login
+-  howdy: Howdy!
+-  welcome: Welcome to {vendor}
+-  landscapeAlt: Landscape image
+-  loggedOut: You have been logged out.
+-  loggedOutSessionIdle: You've been logged out of Rancher because your session has expired. Log in again to continue.
+-  loggedOutFromSso: You've been logged out of Rancher, however you may still be logged in to your single sign-on identity provider.
+-  loggedOutFromSlo: You've been logged out of Rancher and from your single sign-on identity provider.
+-  loginAgain: Log in again to continue.
++  login: Entrar
++  howdy: Olá!
++  welcome: Bem-vindo ao {vendor}
++  landscapeAlt: Imagem paisagem
++  loggedOut: Sua sessão foi encerrada.
++  loggedOutSessionIdle: Você foi desconectado do Rancher porque sua sessão expirou. Faça login novamente para continuar.
++  loggedOutFromSso: Você foi desconectado do Rancher, mas ainda pode estar conectado ao seu provedor de identidade SSO.
++  loggedOutFromSlo: Você foi desconectado do Rancher e do seu provedor de identidade de login único.
++  loginAgain: Faça login novamente para continuar.
+   serverError:
+-    authFailedCreds: "Logging in failed: Check credentials, or your account may not be authorized to log in."
+-    authFailed: "Logging in failed: Your account may not be authorized to log in."
+-    unknown: "An unknown error occurred while attempting to login. Please contact your system administrator."
+-    invalidSamlAttrs: "Invalid saml attributes"
+-    noResponse: "No response received"
+-  error: An error occurred logging in. Please try again.
+-  invalidResponseError: Invalid response received to login request. Please try again.
+-  clientError: Invalid username or password. Please try again.
+-  userUnauthorized: You are not authorized to use this system.
+-  specificError: 'An error occurred logging in: {msg}'
+-  useLocal: Use a local user
+-  loginWithProvider: Log in with {provider}
+-  username: Username
+-  password: Password
+-  loggingIn: Logging in...
+-  loggedIn: Logged in
+-  loginWithLocal: Log in with Local User
+-  useProvider: Use a {provider} user
+-  useNonLocal: Use a non-local user
++  authFailedCreds: 'Falha no login: Verifique as credenciais, ou sua conta pode não estar autorizada a fazer login.'
++  authFailed: 'Falha no login: Sua conta pode não estar autorizada a fazer login.'
++  unknown: 'Ocorreu um erro desconhecido ao tentar fazer login. Entre em contato com o administrador do sistema.'
++  invalidSamlAttrs: 'Atributos SAML inválidos'
++  noResponse: 'Nenhuma resposta recebida'
++  error: Ocorreu um erro ao fazer login. Por favor, tente novamente.
++  invalidResponseError: Resposta inválida recebida para solicitação de login. Por favor, tente novamente.
++  clientError: Nome de usuário ou senha inválidos. Por favor, tente novamente.
++  userUnauthorized: Você não está autorizado a usar este sistema.
++  specificError: 'Ocorreu um erro ao fazer login: {msg}'
++  useLocal: Usar um usuário local
++  loginWithProvider: Entrar com {provider}
++  username: Nome de usuário
++  password: Senha
++  loggingIn: Entrando...
++  loggedIn: Conectado
++  loginWithLocal: Entrar com usuário local
++  useProvider: Usar um usuário {provider}
++  useNonLocal: Usar um usuário não local
+   remember:
+-    label: Remember Username
++  label: Lembrar nome de usuário
+   cli:
+-    welcome: Login to complete CLI authentication
+-    invalidParams: Invalid login parameters - can not login
+-    warning: 'If you did not initiate this request or the "Client Request Id" shown in your terminal does not match the code shown below, do not continue'
+-    warningLegacy: 'If you did not initiate this request or the code shown below does not match the "requestId" parameter shown as part of the login url in your terminal, do not continue'
++  welcome: Faça login para concluir a autenticação CLI
++  invalidParams: Parâmetros de login inválidos - não é possível fazer login
++  warning: 'Se você não iniciou esta solicitação ou o "ID de solicitação do cliente" mostrado no terminal não corresponde ao código abaixo, não continue'
++  warningLegacy: 'Se você não iniciou esta solicitação ou o código abaixo não corresponde ao parâmetro "requestId" mostrado na URL de login no terminal, não continue'
+ 
+ logout:
+   message: Logging Out...
+@@ -4464,39 +4464,39 @@ managementNode:
+   customName: Custom Name
+ 
+ members:
+-  clusterMembers: Cluster Members
+-  memberRoles: Member Roles
+-  clusterAndProject: Cluster and Project Members
+-  createActionLabel: Add
+-  clusterMembership: Cluster Membership
+-  projectMembership: Project Membership
++  clusterMembers: Membros do cluster
++  memberRoles: Funções dos membros
++  clusterAndProject: Membros do cluster e do projeto
++  createActionLabel: Adicionar
++  clusterMembership: Participação no cluster
++  projectMembership: Participação no projeto
+   clusterPermissions:
+-    noDescription: User created - no description
+-    label: Cluster Permissions
+-    description: Controls what access users have to the Cluster
+-    createProjects: Create Projects
+-    manageClusterBackups: Manage Cluster Backups
+-    manageClusterCatalogs: Manage Cluster Catalogs
+-    manageClusterMembers: Manage Cluster Members
+-    manageNavlinks: Manage Navlinks
+-    manageNodes: Manage Nodes
+-    manageStorage: Manage Storage
+-    viewAllProjects: View All Projects
+-    viewClusterCatalogs: View Cluster Catalogs
+-    viewClusterMembers: View Cluster Members
+-    viewNodes: View Nodes
++  noDescription: Usuário criado - sem descrição
++  label: Permissões do cluster
++  description: Controla o acesso dos usuários ao cluster
++  createProjects: Criar projetos
++  manageClusterBackups: Gerenciar backups do cluster
++  manageClusterCatalogs: Gerenciar catálogos do cluster
++  manageClusterMembers: Gerenciar membros do cluster
++  manageNavlinks: Gerenciar links de navegação
++  manageNodes: Gerenciar nós
++  manageStorage: Gerenciar armazenamento
++  viewAllProjects: Ver todos os projetos
++  viewClusterCatalogs: Ver catálogos do cluster
++  viewClusterMembers: Ver membros do cluster
++  viewNodes: Ver nós
+     owner:
+-      label: Owner
+-      description: Owners have full control over the Cluster and all resources inside it.
++  label: Proprietário
++  description: Proprietários têm controle total sobre o cluster e todos os recursos dentro dele.
+     member:
+-      label: Member
+-      description: Members can manage the resources inside the Cluster but not change the Cluster itself.
++  label: Membro
++  description: Membros podem gerenciar os recursos dentro do cluster, mas não alterar o cluster em si.
+     custom:
+-      label: Custom
+-      description: Choose individual roles for this user.
+-      lockedRole: This role is locked.
+-  localClusterWarning: "Caution: This is the cluster that Rancher is using as a data store. Only administrators should be given write access to this cluster. Users with write access to this cluster can use it to grant themselves access to any part of this installation."
+-  noRolesAssigned: There are no users assigned to this project.
++  label: Personalizado
++  description: Escolha funções individuais para este usuário.
++  lockedRole: Esta função está bloqueada.
++  localClusterWarning: "Atenção: Este é o cluster que o Rancher está usando como armazenamento de dados. Apenas administradores devem ter acesso de gravação a este cluster."
++  noRolesAssigned: Não há usuários atribuídos a este projeto.
+ 
+ membershipEditor:
+   label: Members
+@@ -4876,107 +4876,107 @@ namespaceList:
+ 
+ navLink:
+   name:
+-    label: Name
+-    placeholder: 'e.g. foo-bar'
++  label: Nome
++  placeholder: 'ex.: foo-bar'
+   label:
+-    label: Display name
+-    placeholder: 'Text displayed for the link'
++  label: Nome de exibição
++  placeholder: 'Texto exibido para o link'
+   tabs:
+     link:
+-      label: Link type
++  label: Tipo de link
+       type:
+-        label: Link type
+-        service: Link to service
+-        url: Link to URL
++  label: Tipo de link
++  service: Link para serviço
++  url: Link para URL
+       toURL:
+-        label: Destination URL
+-        placeholder: 'e.g. https://rancher.com'
++  label: URL de destino
++  placeholder: 'ex.: https://rancher.com'
+       toService:
+         service:
+-          label: Service (namespace/name)
+-          placeholder: 'e.g. cattle-system/rancher-webhook'
++  label: Serviço (namespace/nome)
++  placeholder: 'ex.: cattle-system/rancher-webhook'
+         path:
+-          label: Path
+-          placeholder: 'e.g. proxy/?orgId=1'
++  label: Caminho
++  placeholder: 'ex.: proxy/?orgId=1'
+         port:
+-          label: Port
+-          placeholder: 'e.g. 80'
++  label: Porta
++  placeholder: 'ex.: 80'
+         scheme:
+-          label: Scheme
+-          placeholder: 'e.g. http'
++  label: Esquema
++  placeholder: 'ex.: http'
+     target:
+-      label: Window target
++  label: Destino da janela
+       option:
+-        blank: New window
+-        self: Replace window
+-        named: Custom named window
++  blank: Nova janela
++  self: Substituir janela
++  named: Janela nomeada personalizada
+       namedValue:
+-        label: Window name
++  label: Nome da janela
+     group:
+-      label: Group
++  label: Grupo
+       group:
+-        label: Group name
+-        tooltip: Assign link to a group
++  label: Nome do grupo
++  tooltip: Atribuir link a um grupo
+       sideLabel:
+-        label: Link label
++  label: Rótulo do link
+       description:
+-        label: Link description
++  label: Descrição do link
+     groupImage:
+-      label: Group Image
++  label: Imagem do grupo
+       iconSrc:
+-        tip: 'Image height should be 21 pixels with a max width of 200 pixels. Max file size is 20KB. Accepted formats: JPEG, PNG, SVG.'
+-        label: Add image
++  tip: 'A altura da imagem deve ser de 21 pixels com largura máxima de 200 pixels. Tamanho máximo do arquivo é 20KB. Formatos aceitos: JPEG, PNG, SVG.'
++  label: Adicionar imagem
+ networkpolicy:
+   egress:
+-    label: Egress Rules
+-    enable: Configure egress rules to restrict outgoing traffic
+-    ruleLabel: Targets
+-    ruleHint: Outgoing traffic is only allowed to the configured targets
+-    portHint: Outgoing traffic is only allowed to connect to the configured ports
++  label: Regras de Egresso
++  enable: Configurar regras de egresso para restringir o tráfego de saída
++  ruleLabel: Destinos
++  ruleHint: O tráfego de saída só é permitido para os destinos configurados
++  portHint: O tráfego de saída só pode se conectar às portas configuradas
+   ingress:
+-    label: Ingress Rules
+-    enable: Configure ingress rules to restrict incoming traffic
+-    ruleLabel: Sources
+-    ruleHint: Incoming traffic is only allowed from the configured sources
+-    portHint: Incoming traffic is only allowed to connect to the configured ports
++  label: Regras de Ingresso
++  enable: Configurar regras de ingresso para restringir o tráfego de entrada
++  ruleLabel: Fontes
++  ruleHint: O tráfego de entrada só é permitido a partir das fontes configuradas
++  portHint: O tráfego de entrada só pode se conectar às portas configuradas
+   labelsAnnotations:
+-    label: Labels & Annotations
++  label: Rótulos e Anotações
+   rules:
+     pod: Pod
+     namespace: Namespace
+-    ruleLabel: Rule {index}
+-    addPort: Add allowed port
+-    type: Rule type
++  ruleLabel: Regra {index}
++  addPort: Adicionar porta permitida
++  type: Tipo de regra
+     ingress:
+-      add: Add allowed traffic source
++  add: Adicionar fonte de tráfego permitida
+     egress:
+-      add: Add allowed traffic target
++  add: Adicionar destino de tráfego permitido
+     ports:
+-      label: Allowed ports
++  label: Portas permitidas
+       port:
+-        label: Port
+-        placeholder: e.g. 8080
+-      protocol: Protocol
++  label: Porta
++  placeholder: ex.: 8080
++  protocol: Protocolo
+     ipBlock:
+-      label: IP block
+-      exceptions: Exceptions
++  label: Bloco de IP
++  exceptions: Exceções
+       cidr:
+         label: CIDR
+-        placeholder: e.g. 1.1.1.0/24
+-      addExcept: Add exception
+-      invalidCidr: "Invalid CIDR"
+-      invalidExceptionCidrs: "Invalid Exceptions: "
++  placeholder: ex.: 1.1.1.0/24
++  addExcept: Adicionar exceção
++  invalidCidr: "CIDR inválido"
++  invalidExceptionCidrs: "Exceções inválidas: "
+     podSelector:
+-      label: Pod Label Selector
++  label: Seletor de rótulo do Pod
+     namespaceSelector:
+-      label: Namespace Label Selector
++  label: Seletor de rótulo do Namespace
+     namespaceAndPodSelector:
+-      label: Namespace/Pod Label Selector
++  label: Seletor de rótulo do Namespace/Pod
+   config:
+-    label: Configuration
++  label: Configuração
+   selectors:
+-    label: Selectors
+-    hint: The NetworkPolicy is applied to the selected Pods
++  label: Seletores
++  hint: A NetworkPolicy é aplicada aos Pods selecionados
+     matchingPods:
+       matchesSome: |-
+         {matched, plural,
+@@ -4992,7 +4992,7 @@ networkpolicy:
+           other {Matches {matched, number} of {total, number} existing namespaces, including "{sample}"}
+         }
+     matchingNamespacesAndPods:
+-      tooltip: A single entry rule that specifies both Namespace Selector and Pod Selector that selects particular Pods within particular namespaces
++  tooltip: Uma regra de entrada única que especifica tanto o Seletor de Namespace quanto o Seletor de Pod para selecionar pods específicos em namespaces específicos
+       matchesSome: |-
+         {matchedPods, plural,
+           =0 {Matches 0 of {totalPods, number} pods}
+@@ -5884,21 +5884,21 @@ promptSlo:
+     waiting: Logging Out
+ 
+ promptRemove:
+-  title: Are you sure?
++  title: Tem certeza?
+   andOthers: |-
+     {count, plural,
+     =0 {.}
+     =1 { and <b>one other</b>.}
+     other { and <b>{count} others</b>.}
+     }
+-  attemptingToRemove: "You are attempting to delete the {type}"
+-  attemptingToRemoveAuthConfig: "You are attempting to disable this Auth Provider. <br><br> Be aware that cluster role template bindings, project role template bindings, global role bindings, users, tokens will be all deleted. <br><br> Are you sure you want to proceed?"
+-  protip: "Tip: Hold the {alternateLabel} key while clicking delete to bypass this confirmation"
+-  confirmName: "Enter <b>{nameToMatch}</b> below to confirm:"
+-  deleteAssociatedNamespaces: "Also delete the namespaces in this project:"
+-  willDeleteAssociatedNamespaces: "This will also delete all namespaces in the project: "
+-  confirmRelatedResource: "Deleting the {type} will remove all the resources on this particular {type} and this is not revertable, are you sure you want to continue deleting {names}?"
+-  promptConfirmation: "Do not prompt again for confirmation when scaling down."
++  attemptingToRemove: "Você está tentando excluir o {type}"
++  attemptingToRemoveAuthConfig: "Você está tentando desativar este provedor de autenticação. <br><br> Esteja ciente de que as ligações de modelo de função de cluster, ligações de modelo de função de projeto, ligações de função global, usuários e tokens serão todos excluídos. <br><br> Tem certeza de que deseja continuar?"
++  protip: "Dica: Segure a tecla {alternateLabel} enquanto clica em excluir para ignorar esta confirmação"
++  confirmName: "Digite <b>{nameToMatch}</b> abaixo para confirmar:"
++  deleteAssociatedNamespaces: "Também excluir os namespaces neste projeto:"
++  willDeleteAssociatedNamespaces: "Isso também excluirá todos os namespaces no projeto: "
++  confirmRelatedResource: "Excluir o {type} removerá todos os recursos neste {type} específico e isso não é reversível. Tem certeza de que deseja continuar excluindo {names}?"
++  promptConfirmation: "Não solicitar confirmação novamente ao reduzir a escala."
+ 
+ promptRemoveApp:
+   removeCrd: "Delete the CRD associated with this app"
+@@ -6164,30 +6164,30 @@ resourceLoadingIndicator:
+ 
+ resourceTable:
+   groupBy:
+-    none: Flat List
+-    namespace: Group by Namespace
+-    project: Group by Project
+-    node: Group by Node
+-    role: Group by Role
+-    cluster: Group by Cluster
+-    device: Group by Device
+-    pool: Group by Pool
++  none: Lista plana
++  namespace: Agrupar por Namespace
++  project: Agrupar por Projeto
++  node: Agrupar por Nó
++  role: Agrupar por Função
++  cluster: Agrupar por Cluster
++  device: Agrupar por Dispositivo
++  pool: Agrupar por Pool
+   groupLabel:
+-    cluster: "<span>Cluster:</span> {name}"
+-    notInACluster: Not in a Cluster
+-    namespace: "<span>Namespace:</span> {name}"
+-    notInAMachinePool: "Not In A Deployment"
+-    machinePool: "<span>Pool:</span> {name}"
+-    notInANamespace: Not Namespaced
+-    notInAProject: Not in a Project
+-    project: "<span>Project:</span> <span>{name}</span>"
+-    notInAWorkspace: Not in a Workspace
+-    workspace: "<span>Workspace:</span> {name}"
+-    notInANodePool: "Not in a Pool"
+-    nodePool: "<span>Pool:</span> {name}"
+-    node: "<span>Node:</span> {name}"
++  cluster: "<span>Cluster:</span> {name}"
++  notInACluster: Não está em um Cluster
++  namespace: "<span>Namespace:</span> {name}"
++  notInAMachinePool: "Não está em uma Implantação"
++  machinePool: "<span>Pool:</span> {name}"
++  notInANamespace: Sem Namespace
++  notInAProject: Não está em um Projeto
++  project: "<span>Projeto:</span> <span>{name}</span>"
++  notInAWorkspace: Não está em um Workspace
++  workspace: "<span>Workspace:</span> {name}"
++  notInANodePool: "Não está em um Pool"
++  nodePool: "<span>Pool:</span> {name}"
++  node: "<span>Nó:</span> {name}"
+   autoRefresh:
+-    label: Auto Refresh
++  label: Atualização automática
+ 
+ resourceTabs:
+   conditions:
+@@ -7110,7 +7110,7 @@ user:
+     inactive: 'Desabilitado'
+     unknown: 'Desconhecido'
+   detail:
+-    username: Username
++  username: Nome de usuário
+     globalPermissions:
+       label: Permissões Globais
+       description: Acesso para gerenciar recursos que afetam toda a instalação
+@@ -7121,7 +7121,7 @@ user:
+       label: Funções do Cluster
+       description: Funções concedidas a este usuário para clusters individuais
+       tableHeaders:
+-        cluster: Cluster
++  cluster: Cluster
+     projectRoles:
+       label: Funções do Projeto
+       description: Funções concedidas a este usuário para projetos individuais
+@@ -7135,15 +7135,15 @@ user:
+     credentials:
+       label: Credenciais
+       username:
+-        label: Username
+-        placeholder: e.g. jsmith
+-        exists: 'Username is already in use. Please choose a new username'
++  label: Nome de usuário
++  placeholder: ex.: jsmith
++  exists: 'Nome de usuário já está em uso. Por favor, escolha um novo nome de usuário'
+       displayName:
+-        label: Display Name
+-        placeholder: e.g. John Smith
++  label: Nome de exibição
++  placeholder: ex.: João Silva
+       userDescription:
+-        label: Description
+-        placeholder: e.g. This account is for John Smith
++  label: Descrição
++  placeholder: ex.: Esta conta é para João Silva
+   list:
+     errorRefreshingGroupMemberships: Erro ao atualizar membros do grupo
+   retention:
+@@ -7154,43 +7154,43 @@ user:
+       message: As configurações de retenção de usuário foram atualizadas com sucesso
+     edit:
+       title:
+-        header: "Users: Settings"
+-        pre: "Users:"
+-        post: Settings
+-        subTitle: User retention
++  header: "Usuários: Configurações"
++  pre: "Usuários:"
++  post: Configurações
++  subTitle: Retenção de usuários
+       form:
+         disableAfter:
+-          checkbox: Disable user accounts after an inactivity period (duration since last login)
++  checkbox: Desativar contas de usuário após um período de inatividade (duração desde o último login)
+           input:
+-            label: Inactivity period
+-            tooltip: Uses duration units (e.g. use 30h for 30 hours)
++  label: Período de inatividade
++  tooltip: Usa unidades de duração (ex.: use 30h para 30 horas)
+         deleteAfter:
+-          checkbox: Delete user accounts after an inactivity period (duration since last login)
++  checkbox: Excluir contas de usuário após um período de inatividade (duração desde o último login)
+           input:
+-            label: Inactivity period
+-            tooltip: Uses duration units (e.g. use 30h for 30 hours)
+-            subLabel: This value must be larger than the Disable period, if it's active
++  label: Período de inatividade
++  tooltip: Usa unidades de duração (ex.: use 30h para 30 horas)
++  subLabel: Este valor deve ser maior que o período de desativação, se estiver ativo
+         cron:
+-          label: User retention process schedule
+-          subLabel: The user retention process runs as a cron job (required)
+-          errorMessage: User retention process schedule must be a valid cron expression
++  label: Agendamento do processo de retenção de usuários
++  subLabel: O processo de retenção de usuários é executado como um cron job (obrigatório)
++  errorMessage: O agendamento do processo de retenção de usuários deve ser uma expressão cron válida
+         dryRun:
+-          label: Run the user retention process in DRY mode (no changes will be applied)
+-          subLabel: You can check the logs to see which accounts would be affected
++  label: Executar o processo de retenção de usuários no modo SECO (nenhuma alteração será aplicada)
++  subLabel: Você pode verificar os logs para ver quais contas seriam afetadas
+         defaultLastLogin:
+-          label: Default last login (ms)
+-          subLabel: Accounts without a registered last login timestamp will get this as a default
+-          placeholder: Unix timestamp
++  label: Último login padrão (ms)
++  subLabel: Contas sem um registro de último login receberão este como padrão
++  placeholder: Timestamp Unix
+ validation:
+   noUpperCase: 'Caracteres alfanuméricos em "{key}" devem ser minúsculos'
+   arrayLength:
+-    between: '"{key}" should contain between {min} and {max} {max, plural, =1 {item} other {items}}'
+-    exactly: '"{key}" should contain {count, plural, =1 {# item} other {# items}}'
+-    max: '"{key}" should contain at most {count} {count, plural, =1 {item} other {items}}'
+-    min: '"{key}" should contain at least {count} {count, plural, =1 {item} other {items}}'
++  between: '"{key}" deve conter entre {min} e {max} {max, plural, =1 {item} other {itens}}'
++  exactly: '"{key}" deve conter {count, plural, =1 {# item} other {# itens}}'
++  max: '"{key}" deve conter no máximo {count} {count, plural, =1 {item} other {itens}}'
++  min: '"{key}" deve conter pelo menos {count} {count, plural, =1 {item} other {itens}}'
+   alphanumeric: '"{key}" deve ser alfanumérico'
+   boolean: '"{key}" deve ser um valor booleano.'
+-  chars: '"{key}" contains {count, plural, =1 {an invalid character} other {# invalid characters}}: {chars}'
++  chars: '"{key}" contém {count, plural, =1 {um caractere inválido} other {# caracteres inválidos}}: {chars}'
+   cluster:
+     name: O nome do cluster não pode ser 'local' ou ter o formato 'c-xxxxx'
+   conflict: |-
+@@ -7202,23 +7202,23 @@ validation:
+   dns:
+     doubleHyphen: '"{key}" Não pode conter dois ou mais hífens consecutivos'
+     hostname:
+-      empty: '"{key}" must be at least one character'
+-      emptyLabel: '"{key}" cannot contain two consecutive dots'
+-      endDot: '"{key}" cannot end with a dot'
+-      endHyphen: '"{key}" cannot end with a hyphen'
+-      startDot: '"{key}" cannot start with a dot'
+-      startHyphen: '"{key}" cannot start with a hyphen'
+-      startNumber: '"{key}" cannot start with a number'
+-      tooLong: '"{key}" cannot be longer than {max} characters'
+-      tooLongLabel: '"{key}" cannot contain a section longer than {max} characters'
++  empty: '"{key}" deve ter pelo menos um caractere'
++  emptyLabel: '"{key}" não pode conter dois pontos consecutivos'
++  endDot: '"{key}" não pode terminar com um ponto'
++  endHyphen: '"{key}" não pode terminar com um hífen'
++  startDot: '"{key}" não pode começar com um ponto'
++  startHyphen: '"{key}" não pode começar com um hífen'
++  startNumber: '"{key}" não pode começar com um número'
++  tooLong: '"{key}" não pode ter mais de {max} caracteres'
++  tooLongLabel: '"{key}" não pode conter uma seção com mais de {max} caracteres'
+     label:
+-      endDot: '"{key}" cannot end with a dot'
+-      startDot: '"{key}" cannot start with a dot'
+-      emptyLabel: '"{key}" cannot be empty'
+-      endHyphen: '"{key}" cannot end with a hyphen'
+-      startHyphen: '"{key}" cannot start with a hyphen'
+-      startNumber: '"{key}" cannot start with a number'
+-      tooLongLabel: '"{key}" cannot be more than {max} characters'
++  endDot: '"{key}" não pode terminar com um ponto'
++  startDot: '"{key}" não pode começar com um ponto'
++  emptyLabel: '"{key}" não pode estar vazio'
++  endHyphen: '"{key}" não pode terminar com um hífen'
++  startHyphen: '"{key}" não pode começar com um hífen'
++  startNumber: '"{key}" não pode começar com um número'
++  tooLongLabel: '"{key}" não pode ter mais de {max} caracteres'
+   flowOutput:
+     both: Requer que "Saída" ou "Saída do Cluster" seja selecionada.
+     global: Requer que "Saída do Cluster" seja selecionada.
+@@ -7233,14 +7233,14 @@ validation:
+   invalidCidr: "CIDR inválido"
+   invalidIP: "IP inválido"
+   k8s:
+-    name: Must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character (e.g. 'my-name', or '123-abc').
++  name: Deve consistir em caracteres alfanuméricos minúsculos ou '-', e deve começar e terminar com um caractere alfanumérico (ex.: 'meu-nome', ou '123-abc').
+     identifier:
+-      emptyLabel: '"{key}" cannot have an empty key'
+-      emptyPrefix: '"{key}" cannot have an empty prefix'
+-      endLetter: '"{key}" must end with a letter or number'
+-      startLetter: '"{key}" must start with a letter or number'
+-      tooLongKey: '"{key}" cannot have a key longer than {max} characters'
+-      tooLongPrefix: '"{key}" cannot have a prefix longer than {max} characters'
++  emptyLabel: '"{key}" não pode ter uma chave vazia'
++  emptyPrefix: '"{key}" não pode ter um prefixo vazio'
++  endLetter: '"{key}" deve terminar com uma letra ou número'
++  startLetter: '"{key}" deve começar com uma letra ou número'
++  tooLongKey: '"{key}" não pode ter uma chave com mais de {max} caracteres'
++  tooLongPrefix: '"{key}" não pode ter um prefixo com mais de {max} caracteres'
+   minLength: '"{key}" deve conter mais de {min} caracteres'
+   maxLength: '"{key}" deve conter menos de {max} caracteres'
+   minValue: '"{key}" deve ser igual ou maior que {min}'
+@@ -7250,38 +7250,38 @@ validation:
+   noSchema: Nenhum schema encontrado para validar
+   noType: Nenhum tipo para validar
+   number:
+-    requiredInt: '"{key}" must be integer'
+-    isPositive: '"{key}" must be positive'
+-    isOctal: '"{key}" must have no leading zeros'
+-    between: '"{key}" should be between {min} and {max}'
+-    exactly: '"{key}" should be exactly {val}'
+-    max: '"{key}" should be at most {val}'
+-    min: '"{key}" should be at least {val}'
++  requiredInt: '"{key}" deve ser um inteiro'
++  isPositive: '"{key}" deve ser positivo'
++  isOctal: '"{key}" não deve ter zeros à esquerda'
++  between: '"{key}" deve estar entre {min} e {max}'
++  exactly: '"{key}" deve ser exatamente {val}'
++  max: '"{key}" deve ser no máximo {val}'
++  min: '"{key}" deve ser pelo menos {val}'
+   podAffinity:
+-    affinityTitle: Pod Affinity
+-    antiAffinityTitle: Pod Anti-Affinity
+-    requiredDuringSchedulingIgnoredDuringExecution: required rules
+-    preferredDuringSchedulingIgnoredDuringExecution: preferred rules
+-    topologyKey: Rule [{index}] of {group} {rules} - Topology key is required.
++  affinityTitle: Afinidade de Pod
++  antiAffinityTitle: Anti-Afinidade de Pod
++  requiredDuringSchedulingIgnoredDuringExecution: regras obrigatórias
++  preferredDuringSchedulingIgnoredDuringExecution: regras preferenciais
++  topologyKey: Regra [{index}] do {group} {rules} - Chave de topologia é obrigatória.
+     matchExpressions:
+-      operator: Rule [{index}] of {group} {rules} - operator must be one of 'In', 'NotIn', 'Exists', 'DoesNotExist'
+-      valueMustBeEmpty: Rule [{index}] of {group} {rules} - value must be empty if operator is 'Exists' or 'DoesNotExist'
+-      valuesMustBeDefined: Rule [{index}] of {group} {rules} - value must be defined if operator is 'In' or 'NotIn'
++  operator: Regra [{index}] do {group} {rules} - operador deve ser um de 'In', 'NotIn', 'Exists', 'DoesNotExist'
++  valueMustBeEmpty: Regra [{index}] do {group} {rules} - valor deve estar vazio se o operador for 'Exists' ou 'DoesNotExist'
++  valuesMustBeDefined: Regra [{index}] do {group} {rules} - valor deve ser definido se o operador for 'In' ou 'NotIn'
+   port: Uma porta deve ser um número entre 1 e 65535.
+   path: '"{key}" deve ser um caminho absoluto'
+   prometheusRule:
+-    noEdit: This Prometheus Rule may not be edited due to invalid characters in name.
++  noEdit: Esta Prometheus Rule não pode ser editada devido a caracteres inválidos no nome.
+     groups:
+-      required: At least one rule group is required.
+-      singleAlert: A rule may contain alert rules or recording rules but not both.
++  required: Pelo menos um grupo de regras é obrigatório.
++  singleAlert: Uma regra pode conter regras de alerta ou regras de gravação, mas não ambas.
+       valid:
+-        name: 'Name is required for rule group {index}.'
++  name: 'Nome é obrigatório para o grupo de regras {index}.'
+         rule:
+-          alertName: 'Rule group {groupIndex} rule {ruleIndex} requires a Alert Name.'
+-          expr: 'Rule group {groupIndex} rule {ruleIndex} requires a PromQL Expression.'
+-          labels: 'Rule group {groupIndex} rule {ruleIndex} requires at least one label. Severity is recommended.'
+-          recordName: 'Rule group {groupIndex} rule {ruleIndex} requires a Time Series Name.'
+-        singleEntry: 'At least one alert rule or one recording rule is required in rule group {index}.'
++  alertName: 'O grupo de regras {groupIndex} regra {ruleIndex} requer um Nome de Alerta.'
++  expr: 'O grupo de regras {groupIndex} regra {ruleIndex} requer uma Expressão PromQL.'
++  labels: 'O grupo de regras {groupIndex} regra {ruleIndex} requer pelo menos um rótulo. A gravidade é recomendada.'
++  recordName: 'O grupo de regras {groupIndex} regra {ruleIndex} requer um Nome de Série Temporal.'
++  singleEntry: 'Pelo menos uma regra de alerta ou uma regra de gravação é obrigatória no grupo de regras {index}.'
+   required: '"{key}" é obrigatório'
+   invalid: '"{key}" é inválido'
+   requiredOrOverride: '"{key}" é obrigatório ou deve permitir substituição'
+@@ -7295,41 +7295,41 @@ validation:
+   semanticVersion: A versão deve ser um número de versão válido ou uma restrição de versionamento semântico (ex.: 2.x.x, < 1.0)
+   service:
+     externalName:
+-      none: External Name is required on an ExternalName Service.
++  none: Nome externo é obrigatório em um serviço ExternalName.
+     ports:
+       name:
+-        required: 'Port Rule [{position}] - Name is required.'
++  required: 'Regra de porta [{position}] - Nome é obrigatório.'
+       nodePort:
+-        requiredInt: 'Port Rule [{position}] - Node Port must be integer values if included.'
+-        between: 'Port Rule [{position}] - Node Port must be between 1 and 65535'
++  requiredInt: 'Regra de porta [{position}] - Porta do nó deve ser um valor inteiro se incluída.'
++  between: 'Regra de porta [{position}] - Porta do nó deve estar entre 1 e 65535'
+       port:
+-        required: 'Port Rule [{position}] - Port is required.'
+-        requiredInt: 'Port Rule [{position}] - Port must be integer values if included.'
+-        between: 'Port Rule [{position}] - Port must be between 1 and 65535'
++  required: 'Regra de porta [{position}] - Porta é obrigatória.'
++  requiredInt: 'Regra de porta [{position}] - Porta deve ser um valor inteiro se incluída.'
++  between: 'Regra de porta [{position}] - Porta deve estar entre 1 e 65535'
+       targetPort:
+-        between: 'Port Rule [{position}] - Target Port must be between 1 and 65535'
+-        iana: 'Port Rule [{position}] - Target Port must be an IANA Service Name or Integer'
+-        ianaAt: 'Port Rule [{position}] - Target Port '
+-        required: 'Port Rule [{position}] - Target Port is required'
++  between: 'Regra de porta [{position}] - Porta de destino deve estar entre 1 e 65535'
++  iana: 'Regra de porta [{position}] - Porta de destino deve ser um nome de serviço IANA ou inteiro'
++  ianaAt: 'Regra de porta [{position}] - Porta de destino '
++  required: 'Regra de porta [{position}] - Porta de destino é obrigatória'
+   setting:
+     serverUrl:
+-      https: Server URL must be https.
+-      localhost: If the Server URL is internal to the Rancher server (e.g. localhost) the downstream clusters may not be able to communicate with Rancher.
+-      trailingForwardSlash: Server URL should not have a trailing forward slash.
+-      url: Server URL must be an URL.
+-      awsStyleEndpoint: Endpoint URL has to be a valid domain-based endpoint and cannot start with a protocol (e.g https:// or http://)
++  https: URL do servidor deve ser https.
++  localhost: Se a URL do servidor for interna ao servidor Rancher (ex.: localhost), os clusters downstream podem não conseguir se comunicar com o Rancher.
++  trailingForwardSlash: A URL do servidor não deve ter uma barra final.
++  url: URL do servidor deve ser uma URL.
++  awsStyleEndpoint: A URL do endpoint deve ser um endpoint baseado em domínio válido e não pode começar com um protocolo (ex.: https:// ou http://)
+   genericUrl: O campo deve ser uma URL válida
+   stringLength:
+-    between: '"{key}" should be between {min} and {max} {max, plural, =1 {character} other {characters}}'
+-    exactly: '"{key}" should be {count, plural, =1 {# character} other {# characters}}'
+-    max: '"{key}" should be at most {count} {count, plural, =1 {character} other {characters}}'
+-    min: '"{key}" should be at least {count} {count, plural, =1 {character} other {characters}}'
++  between: '"{key}" deve ter entre {min} e {max} {max, plural, =1 {caractere} other {caracteres}}'
++  exactly: '"{key}" deve ter {count, plural, =1 {# caractere} other {# caracteres}}'
++  max: '"{key}" deve ter no máximo {count} {count, plural, =1 {caractere} other {caracteres}}'
++  min: '"{key}" deve ter pelo menos {count} {count, plural, =1 {caractere} other {caracteres}}'
+   targets:
+     missingProjectId: Um alvo deve ter um projeto selecionado.
+   monitoring:
+     route:
+-      match: At least one Match or Match Regex must be selected
+-      interval: '"{key}" must be of a format with digits followed by a unit i.e. 1h, 2m, 30s'
++  match: Pelo menos um Match ou Match Regex deve ser selecionado
++  interval: '"{key}" deve ter o formato com dígitos seguidos de uma unidade, ex.: 1h, 2m, 30s'
+   tab: "Um ou mais campos nesta aba contêm um erro de validação de formulário"
+   version: Número de versão inválido
+ 
+@@ -8025,37 +8025,37 @@ typeDescription:
+   #       Should fit on one line.
+   #       If you link to anything external, it MUST have
+   #       target="_blank" rel="noopener noreferrer nofollow"
+-  jwt.authentication: Enable this feature on a cluster to add support for JWT authenticating downstream service accounts.
+-  branding: "Branding allows administrators to globally re-brand the UI by customizing the Rancher product name, logos and color scheme."
+-  chart: "All charts have at least one version that is installable on clusters with Linux and Windows nodes unless otherwise indicated."
+-  compliance.cattle.io.clusterscanbenchmark: A benchmark version is the name of benchmark to run using kube-bench as well as the valid configuration parameters for that benchmark.
+-  compliance.cattle.io.clusterscanprofile: A profile is the configuration for the compliance scan, which is the benchmark versions to use and any specific tests to skip in that benchmark.
+-  compliance.cattle.io.clusterscan: A scan is created to trigger a compliance scan on the cluster based on the defined profile. A report is created after the scan is completed.
+-  compliance.cattle.io.clusterscanreport: A report is the result of a compliance scan of the cluster.
+-  management.cattle.io.feature: Feature Flags allow certain {vendor} features to be toggled on and off.  Features that are off by default should be considered experimental functionality.
+-  cluster.x-k8s.io.machine: A Machine encapsulates the configuration of a Kubernetes Node. Use this view to see what happens after updating a cluster.
+-  cluster.x-k8s.io.machinedeployment: A Machine Deployment orchestrates deployments via templates over a collection of Machine Sets (similar to a Deployment). Use this view to see what happens after updating a cluster.
+-  cluster.x-k8s.io.machineset: A Machine Set ensures the desired number of Machine resources are up and running at all times (similar to a ReplicaSet). Use this view to see what happens after updating a cluster.
+-  resources.cattle.io.backup: A backup is created to perform one-time backups or schedule recurring backups based on a ResourceSet.
+-  resources.cattle.io.restore: A restore is created to trigger a restore to the cluster based on a backup file.
+-  resources.cattle.io.resourceset: A resource set defines which CRDs and resources to store in the backup.
+-  monitoring.coreos.com.servicemonitor: A service monitor defines the group of services and the endpoints that Prometheus will scrape for metrics. This is the most common way to define metrics collection.
+-  monitoring.coreos.com.podmonitor: A pod monitor defines the group of pods that Prometheus will scrape for metrics. The common way is to use service monitors, but pod monitors allow you to handle any situation where a service monitor wouldn't work.
+-  monitoring.coreos.com.prometheusrule: A Prometheus Rule resource defines both recording and/or alert rules. A recording rule can pre-compute values and save the results. Alerting rules allow you to define conditions on when to send notifications to AlertManager.
+-  monitoring.coreos.com.prometheus: A Prometheus server is a Prometheus deployment whose scrape configuration and rules are determined by selected ServiceMonitors, PodMonitors, and PrometheusRules and whose alerts will be sent to all selected Alertmanagers with the custom resource's configuration.
+-  monitoring.coreos.com.alertmanager: An alert manager is deployment whose configuration will be specified by a secret in the same namespace, which determines which alerts should go to which receiver.
+-  node: The base Kubernetes Node resource represents a virtual or physical machine which hosts deployments. To manage the machine lifecycle, if available, go to Cluster Management.
+-  catalog.cattle.io.clusterrepo: 'A chart repository is a Helm repository or {vendor} git based application catalog. It provides the list of available charts in the cluster.'
+-  catalog.cattle.io.clusterrepo.local: ' A chart repository is a Helm repository or {vendor} git based application catalog. It provides the list of available charts in the cluster. Cluster Templates are deployed via Helm charts.'
+-  catalog.cattle.io.operation: An operation is the list of recent Helm operations that have been applied to the cluster.
+-  catalog.cattle.io.app: An installed application is a Helm 3 chart that was installed either via our charts or through the Helm CLI.
+-  logging.banzaicloud.io.clusterflow: Logs from the cluster will be collected and logged to the selected Cluster Output.
+-  logging.banzaicloud.io.clusteroutput: A cluster output defines which logging providers that logs can be sent to and is only effective when deployed in the namespace that the logging operator is in.
+-  logging.banzaicloud.io.flow: A flow defines which logs to collect and filter as well as which output to send the logs. The flow is a namespaced resource, which means logs will only be collected from the namespace that the flow is deployed in.
+-  logging.banzaicloud.io.output: An output defines which logging providers that logs can be sent to. The output needs to be in the same namespace as the flow that is using it.
+-  group.principal: Assigning global roles to a group only works with external auth providers that support groups. Local authorization does not support groups.
+-  management.cattle.io.oidcclient: Here you can add applications to Rancher's single sign-on identity provider
+-  auditlog.cattle.io.auditpolicy: Define rules that determine which Rancher API events are logged and the level of detail they contain.
++  jwt.authentication: Ative este recurso em um cluster para adicionar suporte para autenticação JWT de contas de serviço downstream.
++  branding: "O Branding permite que os administradores remarquem globalmente a interface personalizando o nome do produto Rancher, logotipos e esquema de cores."
++  chart: "Todos os charts têm pelo menos uma versão instalável em clusters com nós Linux e Windows, salvo indicação em contrário."
++  compliance.cattle.io.clusterscanbenchmark: Uma versão de benchmark é o nome do benchmark a ser executado usando kube-bench, bem como os parâmetros de configuração válidos para esse benchmark.
++  compliance.cattle.io.clusterscanprofile: Um perfil é a configuração da varredura de conformidade, que inclui as versões de benchmark a usar e quaisquer testes específicos a ignorar.
++  compliance.cattle.io.clusterscan: Uma varredura é criada para acionar uma varredura de conformidade no cluster com base no perfil definido. Um relatório é criado após a conclusão da varredura.
++  compliance.cattle.io.clusterscanreport: Um relatório é o resultado de uma varredura de conformidade do cluster.
++  management.cattle.io.feature: Feature Flags permitem que certos recursos do {vendor} sejam ativados ou desativados. Recursos desativados por padrão devem ser considerados funcionalidades experimentais.
++  cluster.x-k8s.io.machine: Uma Machine encapsula a configuração de um Node Kubernetes. Use esta visualização para ver o que acontece após atualizar um cluster.
++  cluster.x-k8s.io.machinedeployment: Um Machine Deployment orquestra implantações via templates em uma coleção de Machine Sets (semelhante a um Deployment). Use esta visualização para ver o que acontece após atualizar um cluster.
++  cluster.x-k8s.io.machineset: Um Machine Set garante que o número desejado de recursos Machine esteja sempre em execução (semelhante a um ReplicaSet). Use esta visualização para ver o que acontece após atualizar um cluster.
++  resources.cattle.io.backup: Um backup é criado para realizar backups pontuais ou agendar backups recorrentes com base em um ResourceSet.
++  resources.cattle.io.restore: Uma restauração é criada para acionar a restauração do cluster com base em um arquivo de backup.
++  resources.cattle.io.resourceset: Um resource set define quais CRDs e recursos armazenar no backup.
++  monitoring.coreos.com.servicemonitor: Um service monitor define o grupo de serviços e os endpoints que o Prometheus irá coletar métricas. Esta é a maneira mais comum de definir a coleta de métricas.
++  monitoring.coreos.com.podmonitor: Um pod monitor define o grupo de pods que o Prometheus irá coletar métricas. A maneira comum é usar service monitors, mas pod monitors permitem lidar com situações onde um service monitor não funcionaria.
++  monitoring.coreos.com.prometheusrule: Um recurso Prometheus Rule define regras de gravação e/ou alertas. Uma regra de gravação pode pré-calcular valores e salvar os resultados. Regras de alertas permitem definir condições para enviar notificações ao AlertManager.
++  monitoring.coreos.com.prometheus: Um servidor Prometheus é uma implantação cujas configurações de coleta e regras são determinadas por ServiceMonitors, PodMonitors e PrometheusRules selecionados, e cujos alertas serão enviados a todos os Alertmanagers selecionados.
++  monitoring.coreos.com.alertmanager: Um alert manager é uma implantação cuja configuração é especificada por um secret no mesmo namespace, que determina quais alertas devem ir para qual receptor.
++  node: O recurso base Node do Kubernetes representa uma máquina virtual ou física que hospeda implantações. Para gerenciar o ciclo de vida da máquina, se disponível, acesse Gerenciamento de Cluster.
++  catalog.cattle.io.clusterrepo: 'Um repositório de charts é um repositório Helm ou catálogo de aplicações baseado em git do {vendor}. Ele fornece a lista de charts disponíveis no cluster.'
++  catalog.cattle.io.clusterrepo.local: ' Um repositório de charts é um repositório Helm ou catálogo de aplicações baseado em git do {vendor}. Ele fornece a lista de charts disponíveis no cluster. Templates de cluster são implantados via charts Helm.'
++  catalog.cattle.io.operation: Uma operação é a lista de operações Helm recentes aplicadas ao cluster.
++  catalog.cattle.io.app: Uma aplicação instalada é um chart Helm 3 instalado via nossos charts ou pelo Helm CLI.
++  logging.banzaicloud.io.clusterflow: Os logs do cluster serão coletados e registrados na Saída de Cluster selecionada.
++  logging.banzaicloud.io.clusteroutput: Uma saída de cluster define quais provedores de logging podem receber logs e só é efetiva quando implantada no namespace do operador de logging.
++  logging.banzaicloud.io.flow: Um flow define quais logs coletar e filtrar, bem como qual saída usar. O flow é um recurso com namespace, o que significa que os logs só serão coletados do namespace onde o flow está implantado.
++  logging.banzaicloud.io.output: Uma saída define quais provedores de logging podem receber logs. A saída precisa estar no mesmo namespace que o flow que a utiliza.
++  group.principal: Atribuir funções globais a um grupo funciona apenas com provedores de autenticação externos que suportam grupos. A autorização local não suporta grupos.
++  management.cattle.io.oidcclient: Aqui você pode adicionar aplicações ao provedor de identidade de login único do Rancher
++  auditlog.cattle.io.auditpolicy: Defina regras que determinam quais eventos da API Rancher são registrados e o nível de detalhes que contêm.
+ 
+ typeLabel:
+   management.cattle.io.oidcclient: |-
+@@ -8868,129 +8868,129 @@ advancedSettings:
+ 
+ featureFlags:
+   label: Feature Flags
+-  title: "Are you sure?"
++  title: "Tem certeza?"
+   warning: |-
+     Feature flags allow {vendor} to gate certain features behind flags.
+     Features that are off by default should be considered experimental functionality.
+     Some features require a restart of the {vendor} server to change.
+     This will result in a short outage of the API and UI, but not affect running clusters or workloads.
+-  promptActivate: Please confirm that you want to activate the feature flag "{flag}"
+-  promptDeactivate: Please confirm that you want to deactivate the feature flag "{flag}"
+-  restartRequired: "Note: Updating this feature flag will restart {vendor}"
++  promptActivate: Confirme que deseja ativar o feature flag "{flag}"
++  promptDeactivate: Confirme que deseja desativar o feature flag "{flag}"
++  restartRequired: 'Nota: Atualizar este feature flag irá reiniciar o {vendor}'
+   restart:
+-    title: Waiting for Restart
+-    wait: This may take a few moments
++  title: Aguardando reinicialização
++  wait: Isso pode levar alguns instantes
+ 
+ performance:
+-  label: UI Performance Settings
+-  settingName: Performance
+-  deprecatedInactivitySetting: The <i class="mr-5">"Inactivity"</i> setting is now deprecated in favor of the <i class="mr-5">auth-user-session-idle-ttl-minutes</i>&nbsp;<a href="{settingsPageUrl}">Setting</a>.
+-  deprecatedForSSP: The <i class="mr-5">"{setting}"</i> setting is now deprecated and will be removed in a future release.
++  label: Configurações de desempenho da interface
++  settingName: Desempenho
++  deprecatedInactivitySetting: A configuração <i class="mr-5">"Inatividade"</i> está agora descontinuada em favor da <i class="mr-5">auth-user-session-idle-ttl-minutes</i>&nbsp;<a href="{settingsPageUrl}">Configuração</a>.
++  deprecatedForSSP: A configuração <i class="mr-5">"{setting}"</i> está agora descontinuada e será removida em uma versão futura.
+   incrementalLoad:
+-    label: Incremental Loading
+-    setting: You can configure the threshold above which incremental loading will be used.
++  label: Carregamento incremental
++  setting: Você pode configurar o limite acima do qual o carregamento incremental será usado.
+     description: |-
+       When enabled, resources will appear more quickly, but it may take slightly longer to load the entire set of resources. This setting only applies to resources that come from the Kubernetes API
+-    checkboxLabel: Enable incremental loading
+-    inputLabel: Resource Threshold
+-    incompatibleDescription: "Incremental Loading is incompatible with Namespace/Project filtering and Server-side Pagination. Enabling this will disable them."
++  checkboxLabel: Ativar carregamento incremental
++  inputLabel: Limite de recursos
++  incompatibleDescription: "O carregamento incremental é incompatível com filtragem de Namespace/Projeto e paginação no lado do servidor. Ativá-lo desativará essas funções."
+   manualRefresh:
+-    label: Manual Refresh
+-    setting: You can configure a threshold above which manual refresh will be enabled.
+-    buttonTooltip: Refresh list
++  label: Atualização manual
++  setting: Você pode configurar um limite acima do qual a atualização manual será ativada.
++  buttonTooltip: Atualizar lista
+     description: |-
+       When enabled, list data will not auto-update but instead the user must manually trigger a list-view refresh. This setting only applies to resources that come from the Kubernetes API
+-    checkboxLabel: Enable manual refresh of data for lists
+-    inputLabel: Resource Threshold
+-    incompatibleDescription: "Manual Refresh is incompatible with Namespace/Project filtering and Server-side Pagination. Enabling this will disable them."
++  checkboxLabel: Ativar atualização manual de dados para listas
++  inputLabel: Limite de recursos
++  incompatibleDescription: "A atualização manual é incompatível com filtragem de Namespace/Projeto e paginação no lado do servidor. Ativá-la desativará essas funções."
+   websocketNotification:
+-    label: Websocket Notifications
++  label: Notificações via WebSocket
+     description: |-
+       When checked, websocket notifications will not appear when the UI detects a disconnection.
+-    checkboxLabel: Disable websocket notifications
++  checkboxLabel: Desativar notificações via WebSocket
+   gc:
+-    label: Resource Garbage Collection
+-    description: The UI will cache Kubernetes resources locally to avoid having to re-fetch them. In some cases this can lead to a large amount of data stored in the browser. Enable this setting to periodically remove them.
+-    checkboxLabel: Enable Garbage Collection
++  label: Coleta de lixo de recursos
++  description: A interface armazenará em cache os recursos Kubernetes localmente para evitar buscá-los novamente. Em alguns casos, isso pode levar a uma grande quantidade de dados armazenados no navegador. Ative esta configuração para removê-los periodicamente.
++  checkboxLabel: Ativar coleta de lixo
+     whenRun:
+-      description: Update when garbage collection runs
++  description: Atualizar quando a coleta de lixo é executada
+       intervalCheckBox:
+-        label: Run garbage collection periodically
++  label: Executar coleta de lixo periodicamente
+       interval:
+-        inputLabel: Run every
++  inputLabel: Executar a cada
+       route:
+-        description: Run garbage collection on page change
+-        inputLabel: Page Change
++  description: Executar coleta de lixo na mudança de página
++  inputLabel: Mudança de página
+     howRun:
+-      description: Update how garbage collection runs
++  description: Atualizar como a coleta de lixo é executada
+       age:
+-        description: "Resource types musn't have been accessed within this period to be considered for garbage collection."
+-        inputLabel: Resource Age
++  description: "Os tipos de recursos não devem ter sido acessados dentro deste período para serem considerados para coleta de lixo."
++  inputLabel: Idade do recurso
+       count:
+-        description: Resource types must exceed this amount to be considered for garbage collection.
+-        inputLabel: Resource Count
++  description: Os tipos de recursos devem exceder esta quantidade para serem considerados para coleta de lixo.
++  inputLabel: Contagem de recursos
+   nsFiltering:
+-    label: Require Namespace / Project Filtering
+-    description: Require the user to select namespaces and/or projects. This restricts the number of resources fetched when viewing lists and should help the responsiveness of the UI in systems with a lot of resources.
+-    checkboxLabel: Enable Required Namespace / Project Filtering
+-    incompatibleDescription: "Required Namespace / Project Filtering is incompatible with Manual Refresh and Incremental Loading. Enabling this will disable them."
++  label: Exigir filtragem de Namespace / Projeto
++  description: Exigir que o usuário selecione namespaces e/ou projetos. Isso restringe o número de recursos buscados ao visualizar listas e deve melhorar a responsividade da interface em sistemas com muitos recursos.
++  checkboxLabel: Ativar filtragem obrigatória de Namespace / Projeto
++  incompatibleDescription: "A filtragem obrigatória de Namespace / Projeto é incompatível com Atualização Manual e Carregamento Incremental. Ativá-la desativará essas funções."
+   advancedWorker:
+-    label: Websocket Web Worker
+-    description: Updates to resources pushed to the UI come via WebSocket and are handled in the UI thread. Enable this option to handle cluster WebSocket updates in a Web Worker in a separate thread. This should help the responsiveness of the UI in systems where resources change often.
+-    checkboxLabel: Enable Advanced Websocket Web Worker
++  label: Web Worker de WebSocket
++  description: As atualizações de recursos enviadas para a interface chegam via WebSocket e são tratadas na thread da interface. Ative esta opção para tratar as atualizações de WebSocket do cluster em um Web Worker em uma thread separada.
++  checkboxLabel: Ativar Web Worker avançado de WebSocket
+   inactivity:
+-    title: Inactivity
+-    checkboxLabel: Enable inactivity session expiration
+-    inputLabel: Inactivity timeout (minutes)
+-    information: To change the automatic logout behaviour, edit the authorisation and/or session token timeout values (<code>auth-user-session-ttl-minutes</code> and <code>auth-token-max-ttl-minutes</code>) in the Settings page.
+-    description: When enabled and the user is inactive past the specified timeout, the UI will no longer fresh page content and the user must reload the page to continue.
+-    authUserTTL: This timeout cannot be higher than the user session timeout auth-user-session-ttl-minutes, which is currently {current} minutes.
++  title: Inatividade
++  checkboxLabel: Ativar expiração de sessão por inatividade
++  inputLabel: Tempo limite de inatividade (minutos)
++  information: Para alterar o comportamento de logout automático, edite os valores de tempo limite de autorização e/ou token de sessão (<code>auth-user-session-ttl-minutes</code> e <code>auth-token-max-ttl-minutes</code>) na página de Configurações.
++  description: Quando ativado e o usuário estiver inativo além do tempo limite especificado, a interface não atualizará mais o conteúdo da página e o usuário deverá recarregar a página para continuar.
++  authUserTTL: Este tempo limite não pode ser maior que o tempo limite de sessão do usuário auth-user-session-ttl-minutes, que atualmente é de {current} minutos.
+   serverPagination:
+-    label: Server-side Pagination
+-    description: By default Lists will fetch all resources and paginate (create the page given sort and filter settings) locally in the browser. Server-Side Pagination moves this out from the browser to the server. This improves performance of the UI, especially in systems with lots of resources.
+-    applicable: "Server-side pagination applies to Resource Types"
+-    featureFlag: Enabling/Disabling <i class="mr-5">"Server-side Pagination"</i> is now solely done so via the <i class="mr-5">ui-sql-cache</i>&nbsp;<a href="{ffUrl}">Feature Flag</a>
++  label: Paginação no lado do servidor
++  description: Por padrão, as listas buscam todos os recursos e paginam localmente no navegador. A paginação no lado do servidor move isso do navegador para o servidor. Isso melhora o desempenho da interface, especialmente em sistemas com muitos recursos.
++  applicable: "A paginação no lado do servidor se aplica a tipos de recursos"
++  featureFlag: Ativar/Desativar <i class="mr-5">"Paginação no lado do servidor"</i> agora é feito somente via o <i class="mr-5">ui-sql-cache</i>&nbsp;<a href="{ffUrl}">Feature Flag</a>
+     resources:
+-      generic: most resources in the cluster's 'More Resources' section
+-      all: All Resources
++  generic: a maioria dos recursos na seção 'Mais recursos' do cluster
++  all: Todos os recursos
+ banner:
+-  label: Fixed Banners
++  label: Banners fixos
+   settingName: Banners
+-  bannerHeader: Header Banner
+-  bannerFooter: Footer Banner
+-  bannerConsent: Login Screen Banner
+-  text: Text
+-  buttonText: Accept Button Text
+-  textColor: Text Color
+-  background: Background Color
+-  showHeader: Show Banner in Header
+-  showFooter: Show Banner in Footer
+-  showConsent: Show Consent Banner on Login Screen
++  bannerHeader: Banner do cabeçalho
++  bannerFooter: Banner do rodapé
++  bannerConsent: Banner da tela de login
++  text: Texto
++  buttonText: Texto do botão Aceitar
++  textColor: Cor do texto
++  background: Cor de fundo
++  showHeader: Mostrar banner no cabeçalho
++  showFooter: Mostrar banner no rodapé
++  showConsent: Mostrar banner de consentimento na tela de login
+   showAsDialog:
+-    defaultButtonText: Accept
+-    label: Show Login Consent as a modal dialog
+-    tooltip: Show a modal dialog on the login screen that must be accepted by a user before they can login
++  defaultButtonText: Aceitar
++  label: Mostrar consentimento de login como um diálogo modal
++  tooltip: Mostrar um diálogo modal na tela de login que deve ser aceito pelo usuário antes de fazer login
+   bannerAlignment:
+-    label: Text Alignment
+-    leftOption: Left
+-    centerOption: Center
+-    rightOption: Right
++  label: Alinhamento do texto
++  leftOption: Esquerda
++  centerOption: Centro
++  rightOption: Direita
+   bannerDecoration:
+-    label: Text Decoration
+-    bannerBold: Bold
+-    bannerItalic: Italic
+-    bannerUnderline: Underline
++  label: Decoração do texto
++  bannerBold: Negrito
++  bannerItalic: Itálico
++  bannerUnderline: Sublinhado
+   bannerFontSize:
+-    label: 'Font Size'
+-  consent: Consent Banner
+-  consentFootnote: "Tip: Use \\n character for line break"
+-  individualSetting: 'This banner is managed by the setting "{name}" and can not be modified in the UI'
++  label: 'Tamanho da fonte'
++  consent: Banner de consentimento
++  consentFootnote: "Dica: Use o caractere \n para quebra de linha"
++  individualSetting: 'Este banner é gerenciado pela configuração "{name}" e não pode ser modificado na interface'
+   type:
+     html: HTML
+-    text: Text
+-  htmlWarning: 'Not all HTML elements or attriutes are permitted and the HTML entered here will be sanitized before display. For HTML anchor elements, it is recommended to use the target attribute to have links open in a blank tab.'
+-  htmlContent: HTML Content
+-  toggleTextHtml: Toggle between text and html
++  text: Texto
++  htmlWarning: 'Nem todos os elementos ou atributos HTML são permitidos e o HTML inserido aqui será sanitizado antes da exibição.'
++  htmlContent: Conteúdo HTML
++  toggleTextHtml: Alternar entre texto e html
+ 
+ branding:
+   label: Branding
+@@ -9135,44 +9135,44 @@ customLinks:
+ ##############################
+ 
+ support:
+-  bannerImage: Support page banner image
++  bannerImage: Imagem do banner da página de suporte
+   community:
+-    title: SUSE Rancher provides world-class support
+-    linksTitle: Community Support
+-    learnMore: Find out more about SUSE Rancher Support
+-    pricing: Contact us for pricing
++  title: O SUSE Rancher oferece suporte de classe mundial
++  linksTitle: Suporte da comunidade
++  learnMore: Saiba mais sobre o suporte do SUSE Rancher
++  pricing: Entre em contato para preços
+   subscription:
+-    haveSupport: Already have support?
+-    addSubscription: Add a Subscription ID
+-    removeSubscription: Remove your Subscription ID
+-    addTitle: Add your SUSE Subscription ID
+-    addLabel: "Please enter a valid Subscription ID:"
+-    removeTitle: Remove your ID?
+-    removeBody: "Note: This will not affect your subscription."
++  haveSupport: Já tem suporte?
++  addSubscription: Adicionar um ID de assinatura
++  removeSubscription: Remover seu ID de assinatura
++  addTitle: Adicione seu ID de assinatura SUSE
++  addLabel: "Por favor, insira um ID de assinatura válido:"
++  removeTitle: Remover seu ID?
++  removeBody: "Nota: Isso não afetará sua assinatura."
+ 
+   suse:
+-    title: "Great News - You're covered"
+-    editBrand: Customize UI Theme
++  title: "Ótimas notícias - você está coberto"
++  editBrand: Personalizar tema da interface
+     access:
+-      title: Get Support
+-      text: Login to SUSE Customer Center to access support for your subscription
+-      action: SUSE Customer Center
++  title: Obter suporte
++  text: Faça login no SUSE Customer Center para acessar o suporte da sua assinatura
++  action: SUSE Customer Center
+       aws:
+-        generateConfig: Generate Support Config
+-        text: 'Login to SUSE Customer Center to access support for your subscription. Need to open a new support case? Download a support config file below.'
++  generateConfig: Gerar configuração de suporte
++  text: 'Faça login no SUSE Customer Center para acessar o suporte da sua assinatura. Precisa abrir um novo caso de suporte? Baixe um arquivo de configuração de suporte abaixo.'
+   promos:
+     one:
+-      title: 24x7 Support
+-      text: We provide tightly defined SLAs, and offer round the clock support options.
++  title: Suporte 24x7
++  text: Fornecemos SLAs bem definidos e oferecemos opções de suporte ininterrupto.
+     two:
+-      title: Issue Resolution
+-      text: Run SUSE Rancher products with confidence, knowing that the developers who built them are available to quickly resolve issues.
++  title: Resolução de problemas
++  text: Execute produtos SUSE Rancher com confiança, sabendo que os desenvolvedores que os criaram estão disponíveis para resolver problemas rapidamente.
+     three:
+-      title: Troubleshooting
+-      text: We focus on uncovering the root cause of any issue, whether it is related to SUSE products, Kubernetes, Docker or your underlying infrastructure.
++  title: Diagnóstico e solução de problemas
++  text: Focamos em descobrir a causa raiz de qualquer problema, seja relacionado a produtos SUSE, Kubernetes, Docker ou sua infraestrutura subjacente.
+     four:
+-      title: Innovate with Freedom
+-      text: Take advantage of our certified compatibility with a wide range of Kubernetes providers, operating systems, and open source software.
++  title: Inove com liberdade
++  text: Aproveite nossa compatibilidade certificada com uma ampla gama de provedores Kubernetes, sistemas operacionais e software de código aberto.
+ 
+ embedding:
+   retry: Retry
+@@ -9294,36 +9294,36 @@ networkAttachmentDefinition:
+     config: Config
+ 
+ errors:
+-  actionNotAvailable: This action is not currently available
+-  missingRequired: is required
+-  notUnique: is not unique
+-  notNullable: must be set
+-  invalidOption: is not a valid option
+-  invalidCharacters: contains invalid characters
+-  minLengthExceeded: is not long enough
+-  maxLengthExceeded: is too long
+-  minLimitExceeded: is too small
+-  maxLimitExceded: is too big
++  actionNotAvailable: Esta ação não está disponível no momento
++  missingRequired: é obrigatório
++  notUnique: não é único
++  notNullable: deve ser definido
++  invalidOption: não é uma opção válida
++  invalidCharacters: contém caracteres inválidos
++  minLengthExceeded: não é longo o suficiente
++  maxLengthExceeded: é muito longo
++  minLimitExceeded: é muito pequeno
++  maxLimitExceded: é muito grande
+   messageAndDetail: '{message} ({detail})'
+   messageOrDetail: '{val}'
+   failedInApi:
+     withName:
+       withCodeExplanation:
+-        withMessageDetail: 'Validation failed in API: {name} {codeExplanation}: {messageDetail}'
+-        withoutMessageDetail: 'Validation failed in API: {name} {codeExplanation}'
+-      withMessageDetail: 'Validation failed in API: {name} {messageDetail}'
+-      withoutAnythingElse: 'Validation failed in API: {name} '
++  withMessageDetail: 'Falha na validação na API: {name} {codeExplanation}: {messageDetail}'
++  withoutMessageDetail: 'Falha na validação na API: {name} {codeExplanation}'
++  withMessageDetail: 'Falha na validação na API: {name} {messageDetail}'
++  withoutAnythingElse: 'Falha na validação na API: {name} '
+     withoutName:
+       withMessageDetail:
+-        withCodeExplanation: 'Validation failed in API: {codeExplanation}: {messageDetail}'
+-        withoutCodeExplanation: 'Validation failed in API: {messageDetail}'
++  withCodeExplanation: 'Falha na validação na API: {codeExplanation}: {messageDetail}'
++  withoutCodeExplanation: 'Falha na validação na API: {messageDetail}'
+       withCode:
+-        withCodeExplanation: 'Validation failed in API: {code} {codeExplanation}'
+-        withoutCodeExplanation: 'Validation failed in API: {code}'
+-    withoutAnything: Validation failed in API.
++  withCodeExplanation: 'Falha na validação na API: {code} {codeExplanation}'
++  withoutCodeExplanation: 'Falha na validação na API: {code}'
++  withoutAnything: Falha na validação na API.
+   notFound:
+-    withUrl: '{msg}: {url}'
+-    withoutUrl: '{msg}'
++  withUrl: '{msg}: {url}'
++  withoutUrl: '{msg}'
+ component:
+   drawer:
+     chrome:
