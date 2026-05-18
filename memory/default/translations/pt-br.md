@@ -1,9 +1,9 @@
 # pt-br Translation Notes
 
 ## Current Coverage
-- **62.4%** (3931/6304 translatable strings) as of run attempt 1
-- Untranslated: 2373
-- Baseline at start of attempt 1: 2930 translated (46.5%)
+- **73.1%** (4595/6287 translatable strings) as of verify run 2026-05-18
+- Translated: 3925, Kept in English: 670, Untranslated: ~1692, Skipped: 62
+- Previous: 62.4% (attempt 1 improve run)
 
 ## File Info
 - `pkg/ui-locales/l10n/pt-br.yaml`
@@ -15,18 +15,26 @@
 - logging ✅ (139 → 0 remaining)
 - gitPicker ✅ (structure fixed and translated)
 
-## Sections with Most Remaining (attempt 1 end)
-- cluster: 227
-- workload: 164
-- authConfig: 137
+## Sections with Most Remaining (verify run 2026-05-18)
+- cluster: 160
+- authConfig: 120
+- workload: 109
 - typeLabel: 108 (all block scalars - hard to translate)
-- plugins: 98
-- istio: 95
-- monitoring: 82
-- fleet: 81
-- component: 71
-- catalog: 67
-- persistentVolume: 53
+- plugins: 84
+- istio: 81
+- monitoring: 67
+- catalog: 57
+- fleet: 53
+- component: 51
+- persistentVolume: 41
+- branding: 36
+
+## Placeholder Issues Found
+- 58 keys flagged, ~48 real issues (rest are false positives from angle-bracket content)
+- Main issue: translators removed HTML links and <br> tags from values
+- Keys: cluster.jwtAuthentication.banner, cluster.custom.registrationCommand.windowsNotReady,
+  cluster.credential.*.help, monitoring.aggregateDefaultRoles.tip,
+  monitoring.alerting.validation.duplicatedReceiverName, storageClass.deprecated.warning
 
 ## Key Issues Fixed
 1. validation.conflict block scalar (line ~7196) — was corrupted, fixed
