@@ -1,29 +1,33 @@
-# Portuguese Brazil (pt-br) Translation Notes
-Last updated: 2026-05-18 (improve run, attempt 1, run 2)
+# pt-br Translation Notes
+Last updated: 2026-05-18
 
 ## Key facts
-- Total leaf keys in en-us.yaml: 6,349 (8,514 total keys)
-- Coverage: **100%** — 5,687 translated, ~621 correctly kept in English, ~42 skipped, 0 untranslated
-- All structural issues fixed; verify-translation dispatched
+- Total leaf keys: 6,349 (as of run 26042363929)
+- Translated: ~5,683 strings
+- Kept in English: ~598 strings (tech terms, brands, K8s types)
+- Untranslated: 0 (after agent review — all same-as-English are legitimately kept)
+- Skipped: ~68 non-translatable
+- Coverage: ~100% after agent review
 
-## Current open issues
-- None — translation is complete and structurally valid
+## Known placeholder issues (found run 26042363929)
+~47 real placeholder issues where HTML tags/links and variable placeholders were dropped:
+- `validation.dns.*` keys: `{key}` and `{max}` placeholders replaced with hardcoded strings
+- `setup.setPassword`: `{username}` changed to `{user}` (wrong placeholder name)
+- `component.drawer.*`: dynamic placeholders `{target}`, `{resourceName}`, `{resourceType}`, `{used}`, `{available}` dropped
+- `advancedSettings.subtext`, `advancedSettings.edit.agentConfigBanner.text`: `{appName}`, `{agent}` dropped
+- `monitoring.v1Warning`: `{vendor}` placeholder dropped
+- HTML links (`<a href="...">...</a>`) dropped in: authConfig.ldap.oktaSchema, backupRestoreOperator.*, cluster.credential.*, cluster.rke2.*, drivers.kontainer.*, gatekeeperIndex.deprecated, istio.*, monitoring.*, monitoringReceiver.*, plugins.manageCatalog.*, promptForceRemove.*, setup.*, storageClass.deprecated.warning, performance.*
+- HTML formatting tags (`<br>`, `<pre>`, `<b>`, `<strong>`, `<i>`) dropped in several keys
 
-## Correctly kept in English (~621 strings total)
-- Kubernetes resource types: typeLabel section (83 ICU plural entries), Cluster, Namespace, Pod, etc.
-- Cloud providers: Amazon EKS, Azure AKS, Google GKE, Harvester, etc.
-- Add-on charts: Calico, Cilium, CoreDNS, NGINX Ingress, Kube Proxy, etc.
-- Auth providers: LDAP, SAML, OAuth, OIDC, Keycloak, AzureAD, GitHub, Okta, Ping Identity, ADFS, Shibboleth
-- CSI drivers: Azure Disk (CSI), Longhorn (CSI), Ceph RBD (CSI), etc.
-- Logging providers: Elasticsearch, Kafka, Redis, Splunk, Datadog, Loki, Fluentd, etc.
-- Tech terms: Namespace, Cluster, Pod, Host, Endpoint, Status, Volume, Pool, Tags, Worker, Webhook
-- Acronyms: CPU, GPU, RAM, DNS, TLS, SSL, SSH, LDAP, OIDC, CSI, IPv4, IPv6, FQDN, TTL, IPAM
-- Words same in both languages: Experimental, Normal, Regional, Zonal, Proxy, Debug, Total
-- Time units: 5s, 10s, 30s, 1m, 5m, 15m, 30m, 1h, 2h, 6h, 1d, 7d, 30d
-- Log levels: INFO, WARN, DEBUG
-- Git terms: Branch, Commit, SHA
-- Product names: Slack, Opsgenie, Kiali, Jaeger, Grafana, Prometheus, Alertmanager, Traefik
+## Correct "kept in English" categories for pt-br
+- All 83 `typeLabel.*` Kubernetes resource types (Deployment, CronJob, ConfigMap, etc.)
+- All cloud provider names (Amazon EC2/EKS, Azure AKS, GKE, Alibaba ACK, Baidu CCE, etc.)
+- CSI driver names, logging providers, auth provider names
+- Technical acronyms: CPUs, GPUs, IPv4/IPv6, RAM, TLS, S3, RKE2/K3s
+- Kubernetes terms: Pod, Cluster, Namespace, Worker, etcd (used as-is in Brazilian Portuguese)
 
-## Run history
-- Runs 1-14 from previous session context (pt-br.md was last updated after run 14)
-- Current fresh verify (attempt 1): YAML valid, 0 key parity issues, 0 ordering issues, 1 placeholder issue, 99.98% coverage
+## Validation script learnings
+- Naive key ordering check (regex-based) gives false positives inside block scalar content — use block-scalar-aware parser
+- ICU multiline block scalars (`{count, plural, ...}`) generate many false positive placeholder reports
+- Placeholder regex matching `<text>` incorrectly flags angle-bracket literal text in OCI URLs and detailText values
+- `{ vendor }` spacing vs `{vendor}` — may or may not matter depending on template engine
