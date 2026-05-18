@@ -1,66 +1,51 @@
-# Portuguese Brazil (pt-br) Translation Notes
-Last updated: 2026-05-18
+# pt-br Translation Learnings
 
-## Key facts
-- Total leaf keys: 6,349 (6,245 translatable, ~52 skipped, ~1,075 kept in English)
-- Run 1 (add-language): 978 translated
-- Runs 2-4 (improve attempts 1-3): Various attempts, some push failures
-- Run 5 (improve, attempt 1 of new cycle): 1,025 more strings translated
-- Verify (attempt 1, 2026-05-18): 2,004 translated, coverage ~49%, ~3,166 untranslated
+## Current Status
+- Coverage: 46.6% (2,933/6,297 translatable strings)
+- Last run: Attempt 1, Run 3 - translated ~929 strings
 
-## Critical YAML issue (fixed in earlier runs)
-- Values containing "ex.:" (Portuguese abbrev for e.g.) with colon+space break YAML
-- Fix: wrap any value with ": " pattern in single quotes
-- Pattern: unquoted values containing ': ' need single-quote wrapping
+## Run History
+- Run 1 (verify attempt 1): 57.5% coverage reported by verifier (different counting method)  
+- Improve run 1: pushed, got YAML parse errors (unquoted `ex.:` values)
+- Improve run 2: push failed ("Failed to apply patch")
+- Improve run 3 (this run): 31.7% → 46.6%, ~929 strings, push succeeded
+  - Trick: git update-ref refs/remotes/origin/{branch} pull/4/head to enable incremental patch
 
-## Placeholder note
-- `<Binary Data: {n, number} bytes>` / `<Empty>` / `<Value not supported...>` — these angle brackets are literal UI display chars, NOT HTML; correctly translated to Portuguese. Validator will false-flag these.
-- Real placeholder issue: `cluster.rke2.modal.editYamlMachinePool.body` — `<br><br>` tags must be preserved
+## Critical YAML Rules
+- Values containing `: ` (colon+space) MUST be quoted
+- `ex.:` abbreviations cause YAML parse errors → use single-quoted strings
+- Block scalars (`|-`, `|+`, `>-`) need separate patcher (`patch-block-yaml.js`)
+- Always validate: check for unquoted colons before committing
 
-## Sections still needing work (after verify attempt 1)
-- workload: 276 untranslated
-- cluster: 252 untranslated
-- typeLabel: 116 untranslated
-- storageClass: 164 untranslated
-- persistentVolume: 166 untranslated
-- logging: 137 untranslated
-- plugins: 128 untranslated
-- authConfig: 119 untranslated
-- monitoring: 113 untranslated
-- tableHeaders: 92 untranslated
-- component: 79 untranslated
-- rbac: 80 untranslated
-- istio: 81 untranslated
-- validation: 75 untranslated
-- fleet: 69 untranslated
-
-## Sections completed in run 5
-authConfig (SAML/Azure/OIDC), cluster (machines/networking/security/etcd),
-catalog (Helm charts/repos), backupRestoreOperator, fleet (GitRepo/HelmOp),
-accountAndKeys, cloudCredentials (AWS/Azure/GCP/DigitalOcean/vSphere/Harvester)
-
-## Translation choices (PT-BR)
-- "cluster" → kept as "cluster"
-- "namespace" → kept as "namespace"
-- "pod" → kept as "pod"
+## Translation Choices (pt-br)
+- "cluster" → "cluster" (keep as-is, technical)
+- "namespace" → "namespace" (keep as-is, technical)  
 - "workload" → "carga de trabalho"
-- "label" (k8s label) → "rótulo"
-- "dashboard" → "painel"
-- "upgrade" → "atualização"
+- "pod" → "pod" (keep as-is)
+- "label" (k8s) → "rótulo"
 - "backup" → "backup"
-- "e.g." → "ex.:" (ALWAYS quote values containing this!)
-- "persistent volume" → "volume persistente"
-- "storage class" → "classe de armazenamento"
-- "load balancer" → "balanceador de carga"
-- "garbage collection" → "coleta de lixo"
-- "role" → "função"
-- "webhook" → "webhook" (kept)
-- "fleet workspace" → "workspace fleet" (kept)
-- "deploy/deployment" → "implantar/implantação"
-- "drain" → "drenar"
-- "etcd" → "etcd" (kept)
-- "snapshot" → "snapshot" (kept)
-- "polling" → "polling" (kept)
-- "bundle" → "bundle" (kept)
-- "taints" → "taints" (kept)
-- "tokens" → "tokens" (kept)
+- "cordon" → "bloquear"/"desbloquear" (node operations)
+
+## Sections Remaining (High Priority)
+- workload: 336 remaining
+- cluster: 314 remaining
+- logging: 139 remaining
+- storageClass: 139 remaining
+- authConfig: 137 remaining
+- persistentVolume: 136 remaining
+- typeLabel: 108 remaining
+- fleet: 100 remaining
+
+## Patching Methodology
+- Use `/tmp/gh-aw/agent/patch-yaml.js` for regular values
+- Use `/tmp/gh-aw/agent/patch-block-yaml.js` for block scalars
+- Max 50 keys per patchYaml call (per rules)
+- Always check actual key names from YAML, don't guess
+
+## Git Push Workaround
+The shallow clone uses pull/4/head ref. To enable push_to_pull_request_branch:
+```
+git update-ref refs/remotes/origin/add-pt-br-translation-a281552504f7f665 pull/4/head
+git branch --set-upstream-to=origin/add-pt-br-translation-a281552504f7f665 add-pt-br-translation-a281552504f7f665
+```
+Then safeoutputs push_to_pull_request_branch works.
