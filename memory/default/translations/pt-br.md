@@ -2,16 +2,16 @@
 Last updated: 2026-05-18
 
 ## Key facts
-- Total leaf keys in en-us.yaml: 6,350 (updated count)
-- Coverage as of 2026-05-18 (run 4): ~90.8% by simple script / ~91%+ by verification script
-- Translated: 5,714 | Skipped: 58 | Untranslated: 578
+- Total leaf keys in en-us.yaml: 6,347
+- Coverage as of 2026-05-18 (run 5): 89.3% (script-based) — 5,622 translated, 674 untranslated, 50 skipped
+- Note: script coverage differs from verifier; verifier result may differ
 
 ## Known structural issues (history)
 - ✅ `cluster.machineConfig.gce.error.*` keys fixed (run 2)
 - ✅ `rbac.globalRoles.types.custom.*` and `rbac.globalRoles.types.builtin.*` added (run 2)
 - ✅ All placeholder issues fixed in previous runs
 - ✅ Broken block scalars fixed (run 4): wm.containerLogs.range.hours/minutes, landing.clusters.cores, clusterIndexPage.hardwareResourceGauge.units.cores
-- ❌ `nav.support` block scalar double-content bug (found in verify run 5): patcher wrote quoted Portuguese value + left English `|-` block after it — causes YAML parse error at line 224
+- ✅ `nav.support` block scalar double-content bug fixed (run 5): reverted to proper `|-` block scalar format
 
 ## Correctly kept in English
 - Time abbreviations (5s, 10s, 30m, 1h, etc.)
@@ -40,5 +40,6 @@ Last updated: 2026-05-18
 - Block scalar `|-` entries need special care: always check for double-content bugs after patching
 - nav.support uses `|-` block scalar with ICU select format — patcher must use block scalar format, NOT quoted inline
 - Patcher v1 (patch_yaml.js) has stale index issue; Patcher v2 rebuilds per patch — use v2
-- Previous improve runs: run 1 → 57.5%, run 2 → 86%, run 3 → 91.1%, run 4 → ~91%+
-- Line count: pt-br should be within ±10 lines of en-us (was +4 after run 4)
+- Previous improve runs: run 1 → 57.5%, run 2 → 86%, run 3 → 91.1%, run 4 → ~91%+, run 5 → 89.3% (fixed YAML parse error + ~20 new strings)
+- Line count: pt-br should be within ±10 lines of en-us (was +1 after run 5)
+- `cluster.harvester.warning.cloudProvider.incompatible.*` — the text IS the YAML key, not a value. Do NOT translate it, as it must match en-us.yaml exactly for key parity.
