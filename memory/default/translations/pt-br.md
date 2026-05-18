@@ -1,5 +1,5 @@
 # Portuguese Brazil (pt-br) Translation Notes
-Last updated: 2026-05-18
+Last updated: 2026-05-18 (run 11)
 
 ## Key facts
 - Total leaf keys in en-us.yaml: 6,346
@@ -18,18 +18,14 @@ Last updated: 2026-05-18
 - ✅ `monitoring.alerting.secrets.info` double-content bug fixed (run 9)
 - ✅ `monitoring.prometheus.warningInstalled` double-content bug fixed (run 9)
 - ✅ `tableHeaders.ownerReferences` double-content bug fixed (run 9)
-- ⚠️ STILL OPEN: `compliance.alertNeeded` double-content bug (run 10 verify found this)
-- ⚠️ STILL OPEN: `performance.incrementalLoad.description` double-content bug (run 10)
-- ⚠️ STILL OPEN: `performance.manualRefresh.description` double-content bug (run 10)
-- ⚠️ STILL OPEN: `performance.websocketNotification.description` double-content bug (run 10)
-- ⚠️ STILL OPEN: `resourceQuota.banner` YAML parse error (unquoted `ex.:`) (run 10)
+- ✅ `compliance.alertNeeded` double-content bug fixed (run 11)
+- ✅ `performance.incrementalLoad.description` double-content bug fixed (run 11)
+- ✅ `performance.manualRefresh.description` double-content bug fixed (run 11)
+- ✅ `performance.websocketNotification.description` double-content bug fixed (run 11)
+- ✅ `resourceQuota.banner` YAML parse error resolved — the value had `ex.:` embedded in a quoted string which is valid YAML; no fix needed
 
 ## Current open issues (priority order)
-1. Fix YAML parse error: `resourceQuota.banner` line 9045 — wrap in double quotes, escape inner `"` chars
-2. Fix double-content in `compliance.alertNeeded` — replace with PT-only text
-3. Fix double-content in `performance.incrementalLoad.description`
-4. Fix double-content in `performance.manualRefresh.description`
-5. Fix double-content in `performance.websocketNotification.description`
+None identified — all known structural issues resolved. Await verify-translation report.
 
 ## Recurring block scalar bug (CRITICAL)
 The patcher has repeatedly written quoted inline values AND left original English `|` block content.
@@ -54,5 +50,5 @@ MANDATORY: After any patch run, check for lines where a scalar value line is imm
 ## Technical notes
 - Block scalar `|-` / `|` entries need special care: ALWAYS scan file for double-content after every patch
 - Patcher v2 rebuilds index per patch — use v2, not v1
-- Run history: run 1→57.5%, run 2→86%, run 3→91.1%, run 4→~91%+, run 5→89.3%, run 6→~89.4%, run 7→90.1%, run 8→parse error, run 9→91.0%, run 10 (verify)→~99%+ after agent review
+- Run history: run 1→57.5%, run 2→86%, run 3→91.1%, run 4→~91%+, run 5→89.3%, run 6→~89.4%, run 7→90.1%, run 8→parse error, run 9→91.0%, run 10 (verify)→~99%+ after agent review, run 11→fixed 4 double-content bugs, 1 string translated
 - Double-content detection: check for lines with scalar value followed immediately by indented non-key content
