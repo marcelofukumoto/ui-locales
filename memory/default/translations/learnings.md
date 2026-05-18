@@ -1,40 +1,35 @@
-# Translation Workflow Learnings
+# Cross-Language Translation Learnings
+Last updated: 2026-05-18
 
-## Environment
-- Node.js available, Python3 available
-- js-yaml must be installed: `cd /tmp/gh-aw/agent && npm install js-yaml --no-save`
-- js-yaml location: `/tmp/gh-aw/agent/node_modules/js-yaml`
+## Key facts
+- Use Node.js with js-yaml (npm install js-yaml) for YAML parsing — Python/pip is blocked
+- pypi.org is blocked by firewall; use Node.js scripts for all YAML work
+- registry.yarnpkg.com is also blocked — use npm with cached packages
 
-## Scripting Constraints
-- Max 50 keys per translation chunk
-- 1000 translation limit per workflow run
-- No Python (bash/Node.js only)
+## YAML pitfalls
+- Duplicate keys cause silent data loss in js-yaml (last value wins) — use a duplicate-key checker
+- Block scalars (`|-`, `|`, `>`) must be preserved with same indentation — translators often break these
+- ICU multiline format (`{count, plural, ...}`) often spans multiple lines — preserve exactly
+- HTML tags are often stripped by translators — validate placeholder presence after translation
 
-## Tools
-- `coverage.js`: computes coverage, outputs untranslated.json (array of key paths)
-- `find-lines-pt.js`: finds 0-based line numbers in pt-br.yaml by walking YAML structure
-- `apply-chunk.js`: applies translations using find-lines-pt.js line numbers
+## Verification script notes
+- Regex `/{[^}]+}/g` doesn't match multiline ICU — causes false positives in placeholder check
+- Better approach: check if each EN placeholder is a substring of the PT value
+- Time abbreviations (5s, 10s, 30m, 1h, 7d, etc.) are correctly kept in English — don't flag
+- `locale.*` keys (locale names in native script) are correctly kept as-is
 
-## Key Learnings
-1. **Use find-lines-pt.js NOT find-lines.js**: pt-br.yaml may have different line count than en-us.yaml
-2. **Block scalars cannot be patched**: multi-line values (|-) need direct file manipulation
-3. **Path tracking**: find-lines-pt.js uses indent/2 for level — works for 2-space indent
-4. **Quoted keys**: keys like `'opaque'` are stripped of quotes in path comparison
-5. **safeoutputs push**: must set up remote tracking ref before push works in shallow clone:
-   ```
-   git update-ref refs/remotes/origin/<branch> pull/4/head
-   git branch --set-upstream-to=origin/<branch> <branch>
-   ```
-6. **YAML validation**: run `node coverage.js` — if it prints numbers, YAML is valid
-7. **Common failures**: keys with hyphens in path (like `rancher-vsphere`) work fine
-8. **Keys that are same in pt as en**: words like Branch, Cluster, Host, URL, etc. won't increase coverage even when "translated" — skip them
+## Key parity issues seen
+- Improve-translation workflows sometimes invent wrong key paths (e.g., `gce.externalFirewall.*` instead of `gce.error.*`)
+- Always extract keys from en-us.yaml to verify; never trust the translation workflow's claimed parity
+- rbac section keys can be silently omitted
 
-## Coverage History
-- Start of attempt 1: 46.5% (2930/6304)
-- After run 1: 62.4% (3931/6304)
+## Chunking strategy
+- Max ~50 key-value pairs per bash call per shared rules
+- Large files (>6000 keys) require multiple rounds of improve-translation
+- Priority order: user-facing UI text > long-form text > technical/edge-case
 
-## Section Notes
-- typeLabel: all 108 keys are block scalars — need special handling
-- authConfig: many proper nouns that stay in English
-- model section was corrupted and needed full replacement
-- gitPicker section was corrupted and needed full replacement
+## Coverage calculation
+- Skippable: empty, pure numbers, single chars, URLs, pure `{placeholder}`, `—`, pure HTML tags
+- Kept in English: brand names, acronyms, CamelCase tech terms, time abbreviations
+- Untranslated: same value as English, doesn't fit above categories
+- Coverage = (translated + kept) / (total - skipped)

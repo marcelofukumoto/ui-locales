@@ -1,61 +1,33 @@
-# pt-br Translation Notes
+# Portuguese Brazil (pt-br) Translation Notes
+Last updated: 2026-05-18
 
-## Current Coverage
-- **62.4%** (3931/6304 translatable strings) as of run attempt 1
-- Untranslated: 2373
-- Baseline at start of attempt 1: 2930 translated (46.5%)
+## Key facts
+- Total leaf keys in en-us.yaml: 6,349
+- Coverage as of 2026-05-18: ~80% (5,024 / 6,293 translatable)
+- Translated: 4,849 | Kept in English: 175 | Untranslated: 1,269 | Skipped: 56
 
-## File Info
-- `pkg/ui-locales/l10n/pt-br.yaml`
-- 9440 lines (en-us.yaml has 9514 lines — different due to structure changes)
-- Both files may now have different line counts — use find-lines-pt.js not find-lines.js
+## Known structural issues
+- `cluster.machineConfig.gce.error.*` keys at wrong path (`gce.externalFirewall.*` instead of `gce.error.*`) — 3 extra, 3 missing
+- `rbac.globalRoles.types.custom.*` and `rbac.globalRoles.types.builtin.*` — 4 keys missing
 
-## Sections Fully Translated
-- storageClass ✅ (139 → 0 remaining)
-- logging ✅ (139 → 0 remaining)
-- gitPicker ✅ (structure fixed and translated)
+## Known placeholder issues
+- HTML tags stripped in translations: `<br>`, `<br />`, `<b>`, `</b>`, `<a href="...">`, `</a>`
+- ICU variable `{vendor}` stripped in `cluster.import.commandInstructions`
+- `{name}` stripped in `monitoring.alerting.validation.duplicatedReceiverName`
+- `<pre class='...'>` stripped in `monitoring.alerting.secrets.additional.info`
 
-## Sections with Most Remaining (attempt 1 end)
-- cluster: 227
-- workload: 164
-- authConfig: 137
-- typeLabel: 108 (all block scalars - hard to translate)
-- plugins: 98
-- istio: 95
-- monitoring: 82
-- fleet: 81
-- component: 71
-- catalog: 67
-- persistentVolume: 53
+## Top sections needing work (2026-05-18)
+- authConfig: 134 untranslated (43% coverage)
+- cluster: 182 untranslated (76% coverage)
+- typeLabel: 108 untranslated (7% coverage) — resource type labels
+- fleet: 46 untranslated (87%)
+- logging: 36 untranslated (83%)
+- workload: 34 untranslated (92%)
+- resourceQuota: 26 untranslated (48%)
+- namespace: 25 untranslated (0%)
 
-## Key Issues Fixed
-1. validation.conflict block scalar (line ~7196) — was corrupted, fixed
-2. model section (lines ~7944-8021) — corrupted due to wrong line numbers, fully replaced
-3. gitPicker section (lines ~9216-9292) — corrupted duplicate keys, fully replaced
-4. Missing `'opaque': 'Opaque'` line (line 6279) — caused line misalignment
-
-## Approach That Works
-- `find-lines-pt.js` + `apply-chunk.js`: finds keys in pt-br.yaml by walking YAML path
-- Works for single-line leaf values at any depth
-- Doesn't work for block scalars (multiline values)
-- Chunk size: 50 keys max
-- Apply chunks: 50 keys at a time, check failures
-
-## Known Issues
-- pt-br.yaml now has 9440 lines vs en-us.yaml's 9514 — line numbers no longer match
-- typeLabel section has 108 block scalar keys — needs special handling
-- authConfig has many proper nouns (Keycloak, LDAP, etc.) that are unchanged
-
-## Previous Run Issues
-- Regex-based patching (REVERTED): caused parent key corruption
-- Line-number from en-us.yaml (UNRELIABLE): files had different line counts
-- Solution: use find-lines-pt.js which walks pt-br.yaml structure
-
-## Run 2 (Attempt 1 of loop) — 2025
-- Coverage: 62.8% → 77.4% (+950 strings)
-- Scripts used: apply-translations.js (main), apply-dotted-keys.js (typeDescription)
-- Sections translated: monitoring, fleet, plugins, istio, workload, cluster (partial)
-- Key fix: cluster.harvester.kubeconfigSecret.error was placed in wrong YAML indent context (under gce section). Fixed by updating original at line 1825 and deleting corrupt line.
-- New scripts: coverage.js generates untranslated.json for iterative translation
-- Block scalar values still need careful handling — single-line values with colons can cause YAML issues
-- Fleet block scalar entries (harvester, clusterTargets.rules) skipped due to ICU format with block scalars
+## Correctly kept in English
+- Time abbreviations (5s, 10s, 30m, 1h, etc.)
+- Acronyms: CPU, GPU, RAM, DNS, API, HCI, RBAC, OIDC, PVC, etc.
+- Brand names: Rancher, Kubernetes, Docker, Helm, Prometheus, Grafana, Fleet, etc.
+- macOS, iOS — OS brand names
