@@ -4,7 +4,7 @@ Last updated: 2026-05-18
 ## Key facts
 - Total leaf keys in en-us.yaml: 6,347
 - Coverage as of 2026-05-18 (run 6): ~89.4% (script-based) — 5,624 translated, 671 untranslated, 52 skipped
-- Note: script coverage differs from verifier; verifier result may differ
+- Note: YAML parse error in import.success blocks full verification (verify run after run 6)
 
 ## Known structural issues (history)
 - ✅ `cluster.machineConfig.gce.error.*` keys fixed (run 2)
@@ -14,12 +14,20 @@ Last updated: 2026-05-18
 - ✅ `nav.support` block scalar double-content bug fixed (run 5)
 - ✅ `cluster.machineConfig.linode.typeLabel` block scalar double-content bug fixed (run 6)
 - ✅ `wm.containerLogs.containerName` and `wm.containerShell.containerName` translated (run 6)
+- ❌ `import.success` block scalar double-content bug introduced in run 6 (NEW — must fix in run 7)
 
 ## Recurring block scalar bug (CRITICAL)
 The patcher has repeatedly written quoted inline values AND left original English `|-` block content after them.
-Affected so far: `nav.support` (fixed in run 5), `linode.typeLabel` (still broken as of run 5).
-Fix pattern: replace `'value'` + leftover block lines with proper `|-` block scalar.
-The improve workflow MUST check for double-content after every block scalar patch.
+Affected: `nav.support` (fixed run 5), `linode.typeLabel` (fixed run 6), `import.success` (introduced run 6).
+Fix pattern: replace `'Aplicado {count, plural,\n=1 {1 Recurso}\nother {# Recursos}\n}'` + leftover block lines with proper `|-` block scalar:
+```yaml
+  success: |-
+    Aplicado {count, plural,
+    =1 {1 Recurso}
+    other {# Recursos}
+    }
+```
+The improve workflow MUST scan entire file for double-content after every block scalar patch.
 
 ## Correctly kept in English
 - Time abbreviations (5s, 10s, 30m, 1h, etc.)
@@ -28,9 +36,7 @@ The improve workflow MUST check for double-content after every block scalar patc
 - Cloud provider names: AWS, Azure, GCP, vSphere, Harvester, etc.
 - Storage driver names: Longhorn, Ceph RBD, StorageOS, etc.
 - macOS, iOS, Windows, Linux — OS brand names
-- Protocol identifiers: SSH, LDAP, SAML, OAuth, OIDC
 - Kubernetes resource types: Deployment, CronJob, ConfigMap, StorageClass, etc.
-- typeLabel ICU plurals with only technical terms inside
 - Auth provider labels: LDAP, SAML, OAuth, OIDC, Endpoints, URL, Realm, TLS, etc.
 
 ## Remaining genuinely untranslated
@@ -44,7 +50,6 @@ The improve workflow MUST check for double-content after every block scalar patc
 - model: 26 — Auth provider names
 
 ## Technical notes
-- Block scalar `|-` entries need special care: always check for double-content bugs after patching
-- Patcher v1 (patch_yaml.js) has stale index issue; Patcher v2 rebuilds per patch — use v2
-- Previous improve runs: run 1 → 57.5%, run 2 → 86%, run 3 → 91.1%, run 4 → ~91%+, run 5 → 89.3% (fixed nav.support + ~20 new strings, but broke linode.typeLabel), run 6 → ~89.4% (fixed linode.typeLabel YAML error)
-- Line count: pt-br should be within ±10 lines of en-us
+- Block scalar `|-` entries need special care: ALWAYS scan file for double-content after every patch
+- Patcher v2 rebuilds index per patch — use v2, not v1
+- Run history: run 1 → 57.5%, run 2 → 86%, run 3 → 91.1%, run 4 → ~91%+, run 5 → 89.3%, run 6 → ~89.4% (fixed linode.typeLabel but introduced import.success bug)
