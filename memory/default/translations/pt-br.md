@@ -1,43 +1,39 @@
 # Portuguese Brazil (pt-br) Translation Notes
-Last updated: 2026-05-17
+Last updated: 2026-05-18
 
 ## Key facts
-- Total leaf keys: ~9514 lines | ~6130 translatable strings
-- Run 1 (add-language): 978 translated | Kept in English: 2546 | Untranslated: 2606
-- Run 2 (improve, attempt 1): ~513 more strings but push failed
-- Run 3 (improve, attempt 2): Fixed YAML + claimed ~965 more strings but push failed
-- Run 4 (improve, attempt 3/this run): ~1015 strings translated, push SUCCEEDED
-- Coverage after run 4: ~35%+ (est.)
+- Total leaf keys: 9514 lines | ~6312 translatable strings
+- Run 1 (add-language): 978 translated
+- Runs 2-4 (improve attempts 1-3): Various attempts, some push failures
+- Run 5 (improve, attempt 1 of new cycle): 1025 more strings translated
+- Coverage after run 5: 31.7% (2004/6312)
 
-## Critical YAML issue (fixed in run 4)
+## Critical YAML issue (fixed in run 4 and 5)
 - Values containing "ex.:" (Portuguese abbrev for e.g.) with colon+space break YAML
-- Fix: wrap any value with ": " pattern in double quotes
-- Pattern detected: `sed 's/^(\s+\w+): (ex\.: .+)$/\1: "\2"/'`
-- Also applies to other values containing ": " mid-sentence
+- Fix: wrap any value with ": " pattern in single quotes
+- Pattern: unquoted values containing ': ' need single-quote wrapping
+- Script used: find values with `val.includes(': ')` and wrap in `'...'`
 
-## Sections completed in run 4 (~1015 strings)
-errors, typeDescription, promptRemove, login, featureFlags, support,
-navLink, landing, members, banner, clusterIndexPage, accountAndKeys,
-user, branding, performance, validation, oidcclient, rbac, resourceQuota,
-ingress, monitoringReceiver, asyncButton, action, namespace,
-selectOrCreateAuthSecret, resourceTable, clusterBadge, customLinks,
-drivers, autoscaler, podSecurityAdmission, nav, probe, product, wm,
-glance, labels, dynamicContent, hpa, promptRollback
+## Sections still needing work (after run 5)
+- workload: ~402 untranslated
+- cluster: ~330 untranslated (large section)
+- tableHeaders: ~230 untranslated
+- logging: ~210 untranslated
+- persistentVolume: ~206 untranslated
+- storageClass: ~194 untranslated
+- plugins: ~146 untranslated
+- authConfig: ~137 untranslated
+- monitoring: ~136 untranslated
+- component: ~117 untranslated
+- typeLabel: ~116 untranslated
+- fleet: ~101 untranslated
+- rbac: ~99 untranslated
+- istio: ~95 untranslated
 
-## Sections still needing work (est. after run 4)
-- cluster: ~780 untranslated (very large)
-- workload: ~402 remaining
-- fleet: ~355 remaining
-- tableHeaders: ~230 remaining
-- logging: ~210 remaining
-- persistentVolume: ~206 remaining
-- authConfig: ~201 remaining
-- storageClass: ~194 remaining
-- catalog: ~174 remaining
-- plugins: ~146 remaining
-- monitoring: ~138 remaining
-- component: ~117 remaining
-- typeLabel: ~116 remaining
+## Sections completed in run 5
+authConfig (SAML/Azure/OIDC), cluster (machines/networking/security/etcd),
+catalog (Helm charts/repos), backupRestoreOperator, fleet (GitRepo/HelmOp),
+accountAndKeys, cloudCredentials (AWS/Azure/GCP/DigitalOcean/vSphere/Harvester)
 
 ## Translation choices (PT-BR)
 - "cluster" → kept as "cluster"
@@ -57,3 +53,10 @@ glance, labels, dynamicContent, hpa, promptRollback
 - "webhook" → "webhook" (kept)
 - "fleet workspace" → "workspace fleet" (kept)
 - "deploy/deployment" → "implantar/implantação"
+- "drain" → "drenar"
+- "etcd" → "etcd" (kept)
+- "snapshot" → "snapshot" (kept)
+- "polling" → "polling" (kept)
+- "bundle" → "bundle" (kept)
+- "taints" → "taints" (kept)
+- "tokens" → "tokens" (kept)
