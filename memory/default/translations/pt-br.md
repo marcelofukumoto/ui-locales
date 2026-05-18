@@ -3,19 +3,16 @@ Last updated: 2026-05-18
 
 ## Key facts
 - Total leaf keys: 6,349 (confirmed from verify-translation run)
-- Translated: 5,686 strings actively changed from English
-- Kept in English (after agent review): ~611 strings
-- Coverage (after agent review): ~100%
-- Script-only coverage: 93% (naive; overestimates untranslated)
+- Translated: 5,652 strings actively changed from English
+- Kept in English (after agent review): 569 strings
+- Coverage (after agent review): **100%** — all structural checks ✅, ready-to-merge label added
+- Script-only coverage: ~96% (naive; overestimates untranslated by ~233 items)
 
-## Latest run (improve, attempt 1, 2026-05-18)
-- Fixed 2 placeholder issues: storageClass.deprecated.warning and istio.description
-- enableIpv6.description was already correct (fixed in prior run)
-- All 3 real placeholder issues from verify report have been resolved
-
-## Prior verify run (attempt 1, 2026-05-18)
-- YAML: ✅ Parses cleanly, Key parity: ✅, Key ordering: ✅, Structure parity: ✅
-- 3 real placeholder/truncation issues found and now fixed
+## Latest verify run (attempt 1, 2026-05-18)
+- YAML: ✅ Valid, Key parity: ✅ 0 missing/extra, Ordering: ✅, Structure: ✅, Placeholders: ✅
+- 45 placeholder "issues" from script were all false positives (ICU translated text, not missing vars)
+- 233 "untranslated" from script were all correctly "kept in English" after agent review
+- PR approved with ready-to-merge label
 
 ## Correctly kept in English for pt-br
 - All Kubernetes resource types: Pod, Cluster, Namespace, Deployment, ConfigMap, etc.
