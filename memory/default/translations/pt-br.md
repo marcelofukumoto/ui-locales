@@ -3,9 +3,9 @@ Last updated: 2026-05-18
 
 ## Key facts
 - Total leaf keys in en-us.yaml: 6,346
-- Coverage as of 2026-05-18 (run 7): ~90.1% (script-based) — 5,673 translated, 621 untranslated, 52 skipped
-- Recurring double-content block scalar bug: STILL occurring (runs 5,6,7,8 all hit this)
-- Realistic coverage ceiling: ~90-91% due to technical English terms
+- Coverage as of 2026-05-18 (run 9): ~91.0% — 5,650 translated, 559 untranslated, 138 skipped
+- Recurring double-content block scalar bug: STILL occurring (runs 5,6,7,8,9 all hit this)
+- Realistic coverage ceiling: ~91% due to technical English terms
 
 ## Known structural issues (history)
 - ✅ `cluster.machineConfig.gce.error.*` keys fixed (run 2)
@@ -15,8 +15,9 @@ Last updated: 2026-05-18
 - ✅ `nav.support` block scalar double-content bug fixed (run 5)
 - ✅ `cluster.machineConfig.linode.typeLabel` double-content bug fixed (run 6)
 - ✅ `import.success` double-content bug fixed (run 7)
-- ❌ `monitoring.alerting.secrets.info` double-content bug — found in run 8 verify
-- ❌ `monitoring.prometheus.warningInstalled` double-content bug — found in run 8 verify
+- ✅ `monitoring.alerting.secrets.info` double-content bug fixed (run 9)
+- ✅ `monitoring.prometheus.warningInstalled` double-content bug fixed (run 9)
+- ✅ `tableHeaders.ownerReferences` double-content bug fixed (run 9)
 
 ## Recurring block scalar bug (CRITICAL)
 The patcher has repeatedly written quoted inline values AND left original English `|` block content.
@@ -51,5 +52,5 @@ Most are legitimately English technical terms:
 ## Technical notes
 - Block scalar `|-` / `|` entries need special care: ALWAYS scan file for double-content after every patch
 - Patcher v2 rebuilds index per patch — use v2, not v1
-- Run history: run 1→57.5%, run 2→86%, run 3→91.1%, run 4→~91%+, run 5→89.3%, run 6→~89.4%, run 7→90.1%, run 8→parse error (double-content)
+- Run history: run 1→57.5%, run 2→86%, run 3→91.1%, run 4→~91%+, run 5→89.3%, run 6→~89.4%, run 7→90.1%, run 8→parse error (double-content), run 9→91.0% (fixed 3 double-content bugs)
 - Double-content detection: check for lines with scalar value followed immediately by indented non-key content
