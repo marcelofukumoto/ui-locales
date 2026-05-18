@@ -2,32 +2,38 @@
 Last updated: 2026-05-18
 
 ## Key facts
-- Total leaf keys: 6,349 (as of run 26042363929)
-- Translated: ~5,683 strings
-- Kept in English: ~598 strings (tech terms, brands, K8s types)
-- Untranslated: 0 (after agent review — all same-as-English are legitimately kept)
-- Skipped: ~68 non-translatable
-- Coverage: ~100% after agent review
+- Total leaf keys: 6,381 (as of run 26043092829)
+- Actively translated: ~5,579 strings
+- Legitimately kept in English: ~559 strings (tech terms, brands, K8s types)
+- Genuinely untranslated: ~0 (all same-as-English are legitimate)
+- Skipped: ~243 non-translatable
+- Coverage: ~99-100% after agent review
 
-## Known placeholder issues (found run 26042363929)
-~47 real placeholder issues where HTML tags/links and variable placeholders were dropped:
-- `validation.dns.*` keys: `{key}` and `{max}` placeholders replaced with hardcoded strings
-- `setup.setPassword`: `{username}` changed to `{user}` (wrong placeholder name)
-- `component.drawer.*`: dynamic placeholders `{target}`, `{resourceName}`, `{resourceType}`, `{used}`, `{available}` dropped
-- `advancedSettings.subtext`, `advancedSettings.edit.agentConfigBanner.text`: `{appName}`, `{agent}` dropped
-- `monitoring.v1Warning`: `{vendor}` placeholder dropped
-- HTML links (`<a href="...">...</a>`) dropped in: authConfig.ldap.oktaSchema, backupRestoreOperator.*, cluster.credential.*, cluster.rke2.*, drivers.kontainer.*, gatekeeperIndex.deprecated, istio.*, monitoring.*, monitoringReceiver.*, plugins.manageCatalog.*, promptForceRemove.*, setup.*, storageClass.deprecated.warning, performance.*
-- HTML formatting tags (`<br>`, `<pre>`, `<b>`, `<strong>`, `<i>`) dropped in several keys
+## Latest verification status
+- YAML parses cleanly (parse error at line 9045 was fixed in previous run)
+- authConfig.googleoauth.steps.3.introduction URL: FIXED (full URL preserved)
+- catalog.install.warning.managed: TRANSLATED (block scalar with ICU plurals)
+- Key parity: 0 missing, 0 extra
+- Placeholder issues: 0 real issues
 
 ## Correct "kept in English" categories for pt-br
-- All 83 `typeLabel.*` Kubernetes resource types (Deployment, CronJob, ConfigMap, etc.)
-- All cloud provider names (Amazon EC2/EKS, Azure AKS, GKE, Alibaba ACK, Baidu CCE, etc.)
+- All Kubernetes resource types: Pod, Cluster, Namespace, Deployment, ConfigMap, DaemonSet, StatefulSet, etc.
+- All cloud provider names: Amazon EC2/EKS, Azure AKS, GKE, Alibaba ACK, Baidu CCE, etc.
 - CSI driver names, logging providers, auth provider names
-- Technical acronyms: CPUs, GPUs, IPv4/IPv6, RAM, TLS, S3, RKE2/K3s
-- Kubernetes terms: Pod, Cluster, Namespace, Worker, etcd (used as-is in Brazilian Portuguese)
+- Technical acronyms: CPU, GPU, RAM, TLS, SSL, RBAC, API, DNS, HCI, IPv4/IPv6
+- Kubernetes terms: etcd, kubelet, Worker, Ingress, Taints
+- Product names: Longhorn, NeuVector, Istio, Prometheus, Grafana, Loki, Fleet, K3s
+- Auth providers: Keycloak, Okta, GitHub, SAML, OAuth, OIDC, FreeIPA, Shibboleth
+- Time units: 5s, 1m, 1h (same in Portuguese)
+- Words identical in Portuguese: Status, Total, Volume, Global, Local, Normal, Hosts, Drivers, Banners, Banner, Favicon, Token, Tags, Tag, Links, Experimental
+
+## Known false positives in naive coverage script
+- Block scalar content misidentified as YAML keys by simple parser
+- ICU plural values ({count, plural,...}) cause parser confusion
+- fleet.restrictions.banner shows as "untranslated" but IS translated (ICU block scalar parsing issue)
+- generic.comma (", ") and pure template values are skippable
 
 ## Validation script learnings
-- Naive key ordering check (regex-based) gives false positives inside block scalar content — use block-scalar-aware parser
-- ICU multiline block scalars (`{count, plural, ...}`) generate many false positive placeholder reports
-- Placeholder regex matching `<text>` incorrectly flags angle-bracket literal text in OCI URLs and detailText values
-- `{ vendor }` spacing vs `{vendor}` — may or may not matter depending on template engine
+- Use block-scalar-aware parser for accurate coverage counting
+- Naive duplicate key check gives false positives inside block scalars (HTML list items)
+- ICU multiline block scalars generate many false positive reports
