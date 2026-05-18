@@ -2,9 +2,10 @@
 Last updated: 2026-05-18
 
 ## Key facts
-- Total leaf keys in en-us.yaml: 6,347
-- Coverage as of 2026-05-18 (run 6): ~89.4% (script-based) — 5,624 translated, 671 untranslated, 52 skipped
-- Note: YAML parse error in import.success blocks full verification (verify run after run 6)
+- Total leaf keys in en-us.yaml: 6,346
+- Coverage as of 2026-05-18 (run 7): ~90.1% (script-based) — 5,673 translated, 621 untranslated, 52 skipped
+- import.success bug fixed in run 7 (block scalar double-content)
+- Realistic coverage ceiling: ~90-91% due to technical English terms
 
 ## Known structural issues (history)
 - ✅ `cluster.machineConfig.gce.error.*` keys fixed (run 2)
@@ -13,20 +14,12 @@ Last updated: 2026-05-18
 - ✅ Broken block scalars fixed (run 4): wm.containerLogs.range.hours/minutes, landing.clusters.cores, clusterIndexPage.hardwareResourceGauge.units.cores
 - ✅ `nav.support` block scalar double-content bug fixed (run 5)
 - ✅ `cluster.machineConfig.linode.typeLabel` block scalar double-content bug fixed (run 6)
-- ✅ `wm.containerLogs.containerName` and `wm.containerShell.containerName` translated (run 6)
-- ❌ `import.success` block scalar double-content bug introduced in run 6 (NEW — must fix in run 7)
+- ✅ `import.success` block scalar double-content bug fixed (run 7)
 
 ## Recurring block scalar bug (CRITICAL)
 The patcher has repeatedly written quoted inline values AND left original English `|-` block content after them.
-Affected: `nav.support` (fixed run 5), `linode.typeLabel` (fixed run 6), `import.success` (introduced run 6).
-Fix pattern: replace `'Aplicado {count, plural,\n=1 {1 Recurso}\nother {# Recursos}\n}'` + leftover block lines with proper `|-` block scalar:
-```yaml
-  success: |-
-    Aplicado {count, plural,
-    =1 {1 Recurso}
-    other {# Recursos}
-    }
-```
+Affected: `nav.support` (fixed run 5), `linode.typeLabel` (fixed run 6), `import.success` (fixed run 7).
+Fix pattern: replace inline quoted value + leftover block lines with proper `|-` block scalar.
 The improve workflow MUST scan entire file for double-content after every block scalar patch.
 
 ## Correctly kept in English
@@ -38,18 +31,22 @@ The improve workflow MUST scan entire file for double-content after every block 
 - macOS, iOS, Windows, Linux — OS brand names
 - Kubernetes resource types: Deployment, CronJob, ConfigMap, StorageClass, etc.
 - Auth provider labels: LDAP, SAML, OAuth, OIDC, Endpoints, URL, Realm, TLS, etc.
+- Icon names in asyncButton (refresh, error, checkmark)
 
-## Remaining genuinely untranslated
+## Remaining genuinely untranslated (621 strings)
+Most are legitimately English technical terms:
 - typeLabel: 83 — All Kubernetes/Rancher resource type ICU plurals (legitimately English)
-- logging: 44 — Provider names (Elasticsearch, Redis, Kafka) and technical identifiers
-- fleet: 34 — Technical identifiers legitimately English
-- persistentVolume: 34 — Storage driver/provider names
-- workload: 34 — Kubernetes terms (TTY, Stdin, ConfigMap)
-- cluster: 31 — Cloud provider names, addon names
-- tableHeaders: 31 — Column headers that are technical terms
+- cluster: 115 — Cloud provider names, addon names, Kubernetes technical terms
+- logging: 43 — Provider names (Elasticsearch, Redis, Kafka) and technical identifiers
+- fleet: 24 — Technical identifiers (Cluster, YAML, TLS mode names)
+- persistentVolume: 30 — CSI driver names, technical labels
+- workload: 31 — Kubernetes terms (TTY, Stdin, ConfigMap, Pods)
+- tableHeaders: 27 — Column headers that are technical terms
 - model: 26 — Auth provider names
+- generic: 22 — Time abbreviations, technical terms (comma, ID, OK)
 
 ## Technical notes
 - Block scalar `|-` entries need special care: ALWAYS scan file for double-content after every patch
 - Patcher v2 rebuilds index per patch — use v2, not v1
-- Run history: run 1 → 57.5%, run 2 → 86%, run 3 → 91.1%, run 4 → ~91%+, run 5 → 89.3%, run 6 → ~89.4% (fixed linode.typeLabel but introduced import.success bug)
+- Run history: run 1→57.5%, run 2→86%, run 3→91.1%, run 4→~91%+, run 5→89.3%, run 6→~89.4%, run 7→90.1%
+- Note: runs 5-6 had bugs that slightly reduced coverage; run 7 fixed bugs and added ~50 genuine translations
