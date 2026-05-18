@@ -1,52 +1,52 @@
-# pt-br Translation Learnings
-Last updated: 2026-05-18
+# pt-br Translation Notes
 
-## Current Status
-- Coverage: ~46.6% (2,933/6,297 translatable strings) as of last improve run
-- YAML parse error in latest commit: `validation.conflict` block scalar incorrectly formatted
+## Current Coverage
+- **62.4%** (3931/6304 translatable strings) as of run attempt 1
+- Untranslated: 2373
+- Baseline at start of attempt 1: 2930 translated (46.5%)
 
-## Run History
-- Run 1 (verify attempt 1): 57.5% coverage by first verifier (different counting method)
-- Improve run 1: YAML parse errors (unquoted `ex.:` values - colon+space issue)
-- Improve run 2: push failed ("Failed to apply patch")
-- Improve run 3: 31.7% → 46.6%, ~929 strings, push succeeded
-- Verify attempt 1 (this run): YAML parse error at line 7197 - block scalar issue
+## File Info
+- `pkg/ui-locales/l10n/pt-br.yaml`
+- 9440 lines (en-us.yaml has 9514 lines — different due to structure changes)
+- Both files may now have different line counts — use find-lines-pt.js not find-lines.js
 
-## Critical YAML Rules
-- Values containing `: ` (colon+space) MUST be quoted
-- Block scalars (`|-`, `|+`, `>-`) must stay as block scalars - never replace with inline strings
-- `validation.conflict` is a `|-` block scalar - must be kept as multiline, NOT inline
-- Always validate: check for unquoted colons and block scalar corruption before committing
+## Sections Fully Translated
+- storageClass ✅ (139 → 0 remaining)
+- logging ✅ (139 → 0 remaining)
+- gitPicker ✅ (structure fixed and translated)
 
-## Translation Choices (pt-br)
-- "cluster" → "cluster" (keep as-is, technical)
-- "namespace" → "namespace" (keep as-is, technical)
-- "workload" → "carga de trabalho"
-- "pod" → "pod" (keep as-is)
-- "label" (k8s) → "rótulo"
-- "backup" → "backup"
-- "cordon" → "bloquear"/"desbloquear" (node operations)
+## Sections with Most Remaining (attempt 1 end)
+- cluster: 227
+- workload: 164
+- authConfig: 137
+- typeLabel: 108 (all block scalars - hard to translate)
+- plugins: 98
+- istio: 95
+- monitoring: 82
+- fleet: 81
+- component: 71
+- catalog: 67
+- persistentVolume: 53
 
-## Sections Remaining (High Priority)
-- workload: ~336 remaining
-- cluster: ~314 remaining
-- logging: ~139 remaining
-- storageClass: ~139 remaining
-- authConfig: ~137 remaining
-- persistentVolume: ~136 remaining
-- typeLabel: ~108 remaining
-- fleet: ~100 remaining
+## Key Issues Fixed
+1. validation.conflict block scalar (line ~7196) — was corrupted, fixed
+2. model section (lines ~7944-8021) — corrupted due to wrong line numbers, fully replaced
+3. gitPicker section (lines ~9216-9292) — corrupted duplicate keys, fully replaced
+4. Missing `'opaque': 'Opaque'` line (line 6279) — caused line misalignment
 
-## Patching Methodology
-- Use `/tmp/gh-aw/agent/patch-yaml.js` for regular values
-- Use `/tmp/gh-aw/agent/patch-block-yaml.js` for block scalars
-- Max 50 keys per patchYaml call (per rules)
-- Always check actual key names from YAML, don't guess
-- NEVER replace a `|-` block scalar with an inline string value
+## Approach That Works
+- `find-lines-pt.js` + `apply-chunk.js`: finds keys in pt-br.yaml by walking YAML path
+- Works for single-line leaf values at any depth
+- Doesn't work for block scalars (multiline values)
+- Chunk size: 50 keys max
+- Apply chunks: 50 keys at a time, check failures
 
-## Git Push Workaround
-```
-git update-ref refs/remotes/origin/add-pt-br-translation-a281552504f7f665 pull/4/head
-git branch --set-upstream-to=origin/add-pt-br-translation-a281552504f7f665 add-pt-br-translation-a281552504f7f665
-```
-Then safeoutputs push_to_pull_request_branch works.
+## Known Issues
+- pt-br.yaml now has 9440 lines vs en-us.yaml's 9514 — line numbers no longer match
+- typeLabel section has 108 block scalar keys — needs special handling
+- authConfig has many proper nouns (Keycloak, LDAP, etc.) that are unchanged
+
+## Previous Run Issues
+- Regex-based patching (REVERTED): caused parent key corruption
+- Line-number from en-us.yaml (UNRELIABLE): files had different line counts
+- Solution: use find-lines-pt.js which walks pt-br.yaml structure
