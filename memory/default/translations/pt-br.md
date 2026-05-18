@@ -4,7 +4,7 @@ Last updated: 2026-05-18
 ## Key facts
 - Total leaf keys in en-us.yaml: 6,346
 - Coverage as of 2026-05-18 (run 7): ~90.1% (script-based) — 5,673 translated, 621 untranslated, 52 skipped
-- import.success bug fixed in run 7 (block scalar double-content)
+- Recurring double-content block scalar bug: STILL occurring (runs 5,6,7,8 all hit this)
 - Realistic coverage ceiling: ~90-91% due to technical English terms
 
 ## Known structural issues (history)
@@ -13,14 +13,17 @@ Last updated: 2026-05-18
 - ✅ All placeholder issues fixed in previous runs
 - ✅ Broken block scalars fixed (run 4): wm.containerLogs.range.hours/minutes, landing.clusters.cores, clusterIndexPage.hardwareResourceGauge.units.cores
 - ✅ `nav.support` block scalar double-content bug fixed (run 5)
-- ✅ `cluster.machineConfig.linode.typeLabel` block scalar double-content bug fixed (run 6)
-- ✅ `import.success` block scalar double-content bug fixed (run 7)
+- ✅ `cluster.machineConfig.linode.typeLabel` double-content bug fixed (run 6)
+- ✅ `import.success` double-content bug fixed (run 7)
+- ❌ `monitoring.alerting.secrets.info` double-content bug — found in run 8 verify
+- ❌ `monitoring.prometheus.warningInstalled` double-content bug — found in run 8 verify
 
 ## Recurring block scalar bug (CRITICAL)
-The patcher has repeatedly written quoted inline values AND left original English `|-` block content after them.
-Affected: `nav.support` (fixed run 5), `linode.typeLabel` (fixed run 6), `import.success` (fixed run 7).
-Fix pattern: replace inline quoted value + leftover block lines with proper `|-` block scalar.
+The patcher has repeatedly written quoted inline values AND left original English `|` block content.
+Affected keys so far: nav.support, linode.typeLabel, import.success, monitoring.alerting.secrets.info, monitoring.prometheus.warningInstalled.
+Fix: replace inline quoted value + leftover block lines with proper `|` block scalar.
 The improve workflow MUST scan entire file for double-content after every block scalar patch.
+MANDATORY: After any patch run, check for lines where a scalar value line is immediately followed by more-indented non-key content.
 
 ## Correctly kept in English
 - Time abbreviations (5s, 10s, 30m, 1h, etc.)
@@ -46,7 +49,7 @@ Most are legitimately English technical terms:
 - generic: 22 — Time abbreviations, technical terms (comma, ID, OK)
 
 ## Technical notes
-- Block scalar `|-` entries need special care: ALWAYS scan file for double-content after every patch
+- Block scalar `|-` / `|` entries need special care: ALWAYS scan file for double-content after every patch
 - Patcher v2 rebuilds index per patch — use v2, not v1
-- Run history: run 1→57.5%, run 2→86%, run 3→91.1%, run 4→~91%+, run 5→89.3%, run 6→~89.4%, run 7→90.1%
-- Note: runs 5-6 had bugs that slightly reduced coverage; run 7 fixed bugs and added ~50 genuine translations
+- Run history: run 1→57.5%, run 2→86%, run 3→91.1%, run 4→~91%+, run 5→89.3%, run 6→~89.4%, run 7→90.1%, run 8→parse error (double-content)
+- Double-content detection: check for lines with scalar value followed immediately by indented non-key content
