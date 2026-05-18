@@ -12,12 +12,7 @@ Last updated: 2026-05-18 (verify run after improve run 13)
 - ❌ resourceQuota.banner: unquoted colon-space `(ex.: Limite de CPU)` — caused parse error in verify runs 11 and current. Improve run 13 did NOT fix it despite claiming to.
 
 ## Current open issues
-- resourceQuota.banner YAML parse error: must be fixed by wrapping value in double quotes and escaping internal quotes
-
-## Fix needed for resourceQuota.banner
-```yaml
-  banner: "Limite o consumo de recursos em um projeto para tipos de recursos padrão (ex.: Limite de CPU) e personalizados. Para tipos de recursos personalizados, você deve fornecer o identificador de recurso. Quer saber mais sobre cotas de recursos? Leia nossa <a href=\"https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">documentação <i class=\"icon icon-external-link\"></i></a><span class=\"sr-only\">Abre em uma nova aba</span>"
-```
+- None. resourceQuota.banner YAML parse error fixed in run 14 (commit 2447986) by wrapping value in double quotes.
 
 ## Correctly kept in English (613 strings total)
 - Kubernetes resource types: typeLabel section (83 ICU plural entries)
@@ -36,4 +31,4 @@ Last updated: 2026-05-18 (verify run after improve run 13)
 - Runs 1→57.5%, 2→86%, 3→91.1%, 4-8→~89-91%, 9→91%, 10→~99%+ (agent review)
 - Run 11→fixed double-content block scalar bugs, run 12 verify→YAML error at resourceQuota.banner
 - Run 13→fixed 4 block scalars, translated 2 strings (longhorn/neuvector subtitles, harvester warning)
-- Current verify→YAML error still present, coverage 100% after agent review, dispatched run 14
+- Run 14→fixed resourceQuota.banner YAML parse error (wrapped value in double quotes for `ex.:` unquoted colon)
