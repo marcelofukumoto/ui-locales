@@ -2,14 +2,14 @@
 Last updated: 2026-05-18
 
 ## Key facts
-- No js-yaml available; use Node.js built-in line-by-line approach or pure bash
+- js-yaml not pre-installed; install with `cd /tmp/gh-aw/agent && npm install js-yaml --no-save`
 - Python/pip blocked - use only Node.js or bash
 - File is 9514 lines, ~6312 key-value pairs (for pt-br)
 - Max ~50 replacements per bash call works reliably
 - 1000-translation limit per run: stop and push when reached
 
 ## Scripting environment
-- Node.js v22.22.2 available, no external packages
+- Node.js v22.22.2 available, js-yaml must be installed to /tmp/gh-aw/agent/node_modules
 - Write scripts to files and run with `node script.js` (avoids inline quoting issues)
 - Use heredoc with JSEOF delimiter for script files
 - Inline node -e fails easily with special chars - always write to file
@@ -22,10 +22,10 @@ Last updated: 2026-05-18
 
 ## Common YAML issues
 - Values containing ": " (colon-space) must be single-quoted
-- Pattern to detect: `val.includes(': ')` and value not already quoted
-- Fix: wrap in single quotes, escape inner single quotes with ''
-- Common cases: Portuguese "ex.:" (e.g.), Azure AD URLs, instructions with colons
+- Block scalars (`|-`, `|+`, `>-`) must remain as block scalars - NEVER replace with inline strings
+- `validation.conflict` is a `|-` block scalar - must be kept as multiline
 - Always run fix-colon-issues script after each translation run
+- Always validate YAML before committing
 
 ## Chunking strategy
 - 50 translations per chunk works well
@@ -35,12 +35,12 @@ Last updated: 2026-05-18
 - 23 chunks of ~50 keys = ~1000 translations per run
 
 ## Checkout approach
-- PR branch is available at `pull/4/head` ref
-- Use `git fetch origin refs/pull/4/head:pr-4` to get a writable branch
-- Or work directly on the detached HEAD and use safeoutputs to push
+- PR branch at `refs/pull/4/head` but git fetch requires auth (blocked)
+- Use GitHub API to download the file: github-get_file_contents with ref=refs/pull/4/head
+- Save to /tmp/gh-aw/agent/pt-br.yaml for analysis
+- For writing: use safeoutputs push_to_pull_request_branch with git push workaround
 
 ## Coverage tracking
 - Run coverage.js to get current stats
-- coverage.js compares pt-br.yaml vs en-us.yaml line-by-line
 - Detects untranslated when value matches English
 - Does NOT track multiline blocks (|-) properly - they appear skipped
