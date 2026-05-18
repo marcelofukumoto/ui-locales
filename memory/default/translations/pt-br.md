@@ -1,14 +1,13 @@
 # Portuguese Brazil (pt-br) Translation Notes
-Last updated: 2026-05-18 (verify run, attempt 1 fresh run)
+Last updated: 2026-05-18 (improve run, attempt 1, run 2)
 
 ## Key facts
 - Total leaf keys in en-us.yaml: 6,349 (8,514 total keys)
-- Coverage (agent review): ~99.98% — 5,685 translated, ~621 correctly kept in English, ~42 skipped, 1 genuinely untranslated
-- Improve-translation run dispatched (attempt 1) to fix 2 issues
+- Coverage: **100%** — 5,687 translated, ~621 correctly kept in English, ~42 skipped, 0 untranslated
+- All structural issues fixed; verify-translation dispatched
 
 ## Current open issues
-- ⚠️ `authConfig.googleoauth.steps.3.introduction`: URL in href was truncated — path changed from `configure-google-oauth#3-creating-service-account-credentials` to just `google`. Must restore original URL.
-- ⚠️ `catalog.install.warning.managed`: full English warning message about managed app upgrades — needs translation
+- None — translation is complete and structurally valid
 
 ## Correctly kept in English (~621 strings total)
 - Kubernetes resource types: typeLabel section (83 ICU plural entries), Cluster, Namespace, Pod, etc.
