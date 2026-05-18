@@ -2,33 +2,37 @@
 Last updated: 2026-05-18
 
 ## Key facts
-- Total leaf keys: 9514 lines | ~6312 translatable strings
+- Total leaf keys: 6,349 (6,245 translatable, ~52 skipped, ~1,075 kept in English)
 - Run 1 (add-language): 978 translated
 - Runs 2-4 (improve attempts 1-3): Various attempts, some push failures
-- Run 5 (improve, attempt 1 of new cycle): 1025 more strings translated
-- Coverage after run 5: 31.7% (2004/6312)
+- Run 5 (improve, attempt 1 of new cycle): 1,025 more strings translated
+- Verify (attempt 1, 2026-05-18): 2,004 translated, coverage ~49%, ~3,166 untranslated
 
-## Critical YAML issue (fixed in run 4 and 5)
+## Critical YAML issue (fixed in earlier runs)
 - Values containing "ex.:" (Portuguese abbrev for e.g.) with colon+space break YAML
 - Fix: wrap any value with ": " pattern in single quotes
 - Pattern: unquoted values containing ': ' need single-quote wrapping
-- Script used: find values with `val.includes(': ')` and wrap in `'...'`
 
-## Sections still needing work (after run 5)
-- workload: ~402 untranslated
-- cluster: ~330 untranslated (large section)
-- tableHeaders: ~230 untranslated
-- logging: ~210 untranslated
-- persistentVolume: ~206 untranslated
-- storageClass: ~194 untranslated
-- plugins: ~146 untranslated
-- authConfig: ~137 untranslated
-- monitoring: ~136 untranslated
-- component: ~117 untranslated
-- typeLabel: ~116 untranslated
-- fleet: ~101 untranslated
-- rbac: ~99 untranslated
-- istio: ~95 untranslated
+## Placeholder note
+- `<Binary Data: {n, number} bytes>` / `<Empty>` / `<Value not supported...>` — these angle brackets are literal UI display chars, NOT HTML; correctly translated to Portuguese. Validator will false-flag these.
+- Real placeholder issue: `cluster.rke2.modal.editYamlMachinePool.body` — `<br><br>` tags must be preserved
+
+## Sections still needing work (after verify attempt 1)
+- workload: 276 untranslated
+- cluster: 252 untranslated
+- typeLabel: 116 untranslated
+- storageClass: 164 untranslated
+- persistentVolume: 166 untranslated
+- logging: 137 untranslated
+- plugins: 128 untranslated
+- authConfig: 119 untranslated
+- monitoring: 113 untranslated
+- tableHeaders: 92 untranslated
+- component: 79 untranslated
+- rbac: 80 untranslated
+- istio: 81 untranslated
+- validation: 75 untranslated
+- fleet: 69 untranslated
 
 ## Sections completed in run 5
 authConfig (SAML/Azure/OIDC), cluster (machines/networking/security/etcd),
