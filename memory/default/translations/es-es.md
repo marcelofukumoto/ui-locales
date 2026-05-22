@@ -56,3 +56,26 @@
 
 ## Sections Completed (attempts 1+2+3)
 All major sections — see previous notes. Remaining: typeLabel (0%), performance, oidcclient, support, typeDescription, plus remaining cluster/fleet/component/persistentVolume/secret/logging/monitoring sub-sections.
+
+## Attempt 4 (Current)
+
+### What was fixed
+- YAML was invalid at line 745 (from attempt 3's broken structural additions)
+- 27+ structural issues fixed using string-replacement scripts
+- branding section: added logos:, banner:, loginBackground:, favicon:, options:, uiPL:, color:, linkColor: parent keys
+- notifications.loginError: added loginError: parent key  
+- vncConsole: duplicate message: keys → split into error: and reconnecting: parents
+- errors.failedInApi: wrong indentation + duplicate keys → correct withName:/withoutName: structure
+- support.suse: added suse:, access:, promos: parents
+
+### Coverage after attempt 4
+- 75.9% (4638/6110 translatable strings)
+- yaml.dump() approach rewrites file structure (changes key order, string quoting)
+- Many "untranslated" strings are legitimate same-in-Spanish (Error, ID, product names, technical terms)
+- fleet section: ~83 strings still same as English, most are technical terms
+
+### Key learnings
+- yaml.dump() approach completely rewrites YAML format, loses original ordering and quoting
+- When using yaml.load()+yaml.dump() to patch, the file format changes significantly
+- Some strings are intentionally the same in Spanish: Error, ID, General, Proxy, system-store, strict, Local
+- coverage.js may overcount "untranslated" since it doesn't skip these legitimate same-value strings
