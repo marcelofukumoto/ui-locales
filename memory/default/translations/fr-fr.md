@@ -7,12 +7,19 @@ Last updated: 2026-05-22
 - Attempt 3: ~82.4% (5,187/6,297) - typeDescription fixes, fleet.bundles, placeholder fixes
 - Attempt 4 (early): ~85.5% (5,385/6,297) - 406 more strings translated
 - Attempt 5: 87.7% (5,522/6,295) - fixed 29 placeholder keys + ~137 new translations
-- Verify 4 (latest): ~99.9% after agent review — 2 placeholder issues + 1 untranslated
-- Improve 5 (2026-05-22): Fixed all 3 remaining issues — now ~100% coverage
-- Status: verify-translation dispatched to confirm final fixes
+- Verify 4 (attempt 4): ~99.9% after agent review — 7 placeholder issues + 3 untranslated
+- Status: improve-translation dispatched (attempt 4) to fix placeholder issues
 
-## Known Remaining Issues
-- None — all issues resolved as of 2026-05-22
+## Known Remaining Issues (Attempt 4)
+- 7 real variable placeholder issues:
+  - `catalog.install.steps.basics.generatedImagePullSecretBannerFromPreviousAuth` — missing `{ repoAuthenticationName }`
+  - `catalog.install.steps.basics.usePreviouslyGeneratedImagePullSecretBanner` — missing `{ repoAuthenticationName }`
+  - `plugins.incompatibleRancherVersion` — missing `{ required }`
+  - `plugins.incompatibleKubeVersion` — missing `{ required }`
+  - `plugins.incompatibleUiExtensionsApiVersion` — missing `{ required }`
+  - `plugins.incompatibleHost` — missing `{ mainHost }`
+  - `plugins.currentInstalledVersionBlockedByKubeVersion` — `{ kubeVersionToCheck }` replaced with duplicate `{ kubeVersion }`
+- 3 genuinely untranslated: `istio.poweredBy`, `unit.sec` (secs), `unit.min` (mins)
 
 ## Placeholder False Positives (for future verifiers)
 - ICU plural body text like `{other}`, `{resource}`, `{item}` inside `one {...} other {...}` are NOT variables — they are translated body text
@@ -38,6 +45,7 @@ Last updated: 2026-05-22
 - Cloud provider names (Amazon EKS, Azure AKS, etc.) → KEEP IN ENGLISH
 - Apostrophes in double-quoted strings: use directly
 - ICU plurals with `{`: must be quoted in YAML
+- `unit.sec`/`unit.min` (`secs`/`mins`): both EN and FR are identical — may legitimately need translation to `s`/`min`
 
 ## YAML Technical Issues
 - French apostrophes: use double-quoted YAML strings
