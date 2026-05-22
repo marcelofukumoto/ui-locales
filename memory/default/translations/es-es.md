@@ -3,47 +3,38 @@ Last updated: 2026-05-22
 
 ## Key facts
 - Total keys in en-us.yaml: 6,349 leaf keys
-- **Attempt 5**: Fixed structural issues (197 missing + 1,311 extra keys from attempt 4), translated 1000 strings
-- Coverage after attempt 5: 89.4% (5,638 translated, 669 untranslated, 42 skipped)
-- Untranslated remaining: 669 keys
+- **Attempt 5 verify**: 1 extra key (`typeLabel.resources`), ~20 placeholder issues, ~97% coverage
+- Revised coverage after agent review: ~97% (5,610 translated + ~428 kept-in-English / 6,239 translatable)
+- Genuinely untranslated remaining: ~201 strings
 
-## Structural fix (Attempt 5)
-- Rebuilt es-es.yaml by cloning en-us.yaml structure via Node.js `rebuild-structure.js`
-- Script deep-clones en-us.yaml tree, substituting es-es values where they differ from English
-- Result: 0 missing keys, 0 extra keys — perfect structural match with en-us.yaml
-- YAML validated successfully with js-yaml
-
-## Critical YAML gotcha
-- YAML keys under `typeLabel` contain literal dots (e.g., `typeLabel["management.cattle.io.oidcclient"]` is ONE key)
-- Initial patch script splitting on `.` failed; fixed in patch2.js using segment arrays from en-us.yaml structure
-- Always use `patch2.js` for patching: `node /tmp/gh-aw/agent/patch2.js /tmp/gh-aw/agent/tNN.json`
+## Structural issues (Attempt 5 output)
+- 1 extra key: `typeLabel.resources` — must be removed (does not exist in en-us.yaml)
+- ~20 placeholder issues: mostly missing `<a>` HTML links in cluster banners, `<br>` tags, `{vendor}`/`{version}` ICU variables
+- `assignTo.title` completely lost its ICU plural structure — was simplified to plain "Asignar a"
 
 ## Non-translatable patterns (keep as English)
-- Single tech terms: Host, TTY, Stdin, General, Selector, URL, ID, SHA
-- Product names: Longhorn, Fleet, Rancher, Istio, Kiali, Jaeger, Alertmanager, Grafana, Prometheus
-- Auth protocols: LDAP, SAML, OAuth, OIDC, Keycloak, ADFS, Okta, RBAC
-- K8s abbreviations: SAT, TLS, CSI, CPI, RKE, HCI, DNS, CNI, NAT
-- Time units: 5s, 10s, 1m, 5m etc (numeric + letter unit)
-- CSS suffixes: MiB, GB, CPUs, GPUs, %
+- All `typeLabel.*` = Kubernetes API resource type names (ConfigMap, Pod, EndpointSlice, etc.)
+- All `cluster.provider.*` = cloud provider product names (Amazon EC2, Azure AKS, Google GKE, etc.)
+- `generic.error`, `generic.no`, `generic.experimental`, `generic.selectors.label` = cognates/tech
+- All `generic.units.time.*` = universal time abbreviations (5s, 1m, 1h, etc.)
+- `logging.outputProviders.*` = product names (Redis, Cloudwatch, LogDNA, SumoLogic, S3, etc.)
+- `cluster.addonChart.*`, `cluster.rke2.systemService.*`, `cluster.k3s.systemService.*` = product component names
+- `logging.*.host` (8 entries) = tech field label kept in Spanish IT contexts
+- Acronyms: CPUs, GPUs, MiB, RAM, IPv4, IPv6, OPA Gatekeeper, macOS, S3
 
-## Remaining priority sections (669 keys)
-- cluster: 124 untranslated (many are provider names / tech terms)
-- typeLabel: 41 untranslated (most are K8s type names — legitimately keep English)
-- logging: 32 untranslated (many are product/service names)
-- workload: 30 untranslated (many are tech terms)
-- model: 25 (mostly auth provider names — keep English)
-- secret: 23 untranslated
-- fleet: 22 untranslated
-- persistentVolume: 22 untranslated
-- generic: 21 (many are time units / tech terms)
-- monitoring: 15 untranslated
+## Priority sections for Attempt 6
+- featureFlags: ~7 untranslated (0% coverage)
+- registryMirrorRewrite: ~7 untranslated (0% coverage)
+- namespaceFilter: ~5 untranslated (14% coverage)
+- jwt: ~5 untranslated (44% coverage — enabled/disabled/headers)
+- autoscaler: ~5 untranslated
+- cluster banners: fix ~15 missing `<a>` HTML links
+- Remove extra key `typeLabel.resources`
 
-## js-yaml dump settings
-`{ lineWidth: -1, noRefs: true, quotingType: "'", forceQuotes: false }`
-- lineWidth -1 prevents line wrapping which would break multiline ICU strings
+## Critical YAML gotcha
+- YAML keys under `typeLabel` contain literal dots — use segment arrays, not split('.')
+- Always use `patch2.js` for patching
 
 ## Script locations
 - `/tmp/gh-aw/agent/rebuild-structure.js` — YAML structure rebuilder
-- `/tmp/gh-aw/agent/rebuild.js` — coverage analysis + writes untranslated.json
-- `/tmp/gh-aw/agent/get-untranslated.js` — extracts untranslated keys with values to JSON
 - `/tmp/gh-aw/agent/patch2.js` — applies JSON translation patches correctly
