@@ -1,54 +1,51 @@
 # French (fr-fr) Translation Learnings
-Last updated: 2026-05-22
-
-## Status
-- **Total leaf keys**: 6,378 (9,514 YAML lines)
-- **Coverage after attempt 4 verify**: ~74.7% (4,447/5,951 translatable)
-- **Untranslated remaining**: ~1,504
-- **YAML parse error**: Line 1546 - cluster.jwtAuthentication.banner broken multi-line string
 
 ## Coverage History
-| Attempt | Coverage |
-|---------|----------|
-| Attempt 1 verify | ~47% |
-| Attempt 2 verify | ~57% |
-| Attempt 3 verify | 60.7% |
-| Attempt 4 improve | ~67.9% (local) |
-| Attempt 4 verify | ~74.7% |
+| Attempt | Coverage | Notes |
+|---------|----------|-------|
+| 1 | ~50% | Initial translation |
+| 2 | ~65% | Second pass |
+| 3 verify | ~67.9% | Last commit message |
+| 4 verify | ~74.7% | From verify report |
+| 4 improve | ~79.4% | Fixed YAML errors + translated ~522 strings |
 
-## Active YAML Error (must fix first)
-- **Line 1546**: `cluster.jwtAuthentication.banner` — translation closed double-quote early, left orphaned `<code>...</code>"` continuation line
-- Fix: merge into single properly-quoted multi-line string matching en-us.yaml format
-
-## Priority Sections (most untranslated)
-| Section | Untranslated | Coverage |
-|---------|-------------|----------|
-| cluster | 151 | 80% |
-| storageClass | 107 | 46% |
-| workload | 69 | 82% |
-| monitoring | 68 | 50% |
-| plugins | 66 | 55% |
-| catalog | 51 | 77% |
-| istio | 41 | 66% |
-| selectOrCreateAuthSecret | 23 | 0% |
-| resourceTable | 22 | 0% |
-| monitoringRoute | 21 | 0% |
-| gatekeeperConstraint | 20 | 5% |
-| clusterBadge | 20 | 0% |
-| autoscaler | 19 | 0% |
-| probe | 19 | 5% |
+## Known YAML Issues Fixed
+- `cluster.jwtAuthentication.banner` - multiline ICU had orphaned English continuation lines
+- `fleet.clusters.harvester` - multiline value had orphaned English lines (lines 3054-3058)
+- `fleet.tokens.harvester` - multiline value had orphaned English lines
+- `featureFlags.warning` - had 4 orphaned English continuation lines
+- `catalog.install.warning.managed` - orphaned English multiline continuation (removed 5 lines)
+- `cluster.harvester.warning.cloudProvider.incompatible` - orphaned English line removed
+- `cluster.harvester.clusterWarning` - ICU collapsed, orphan brace removed
+- `cluster.machineConfig.aws.sizeLabel` - multiline ICU collapsed
+- `cluster.machineConfig.digitalocean.sizeLabel` - multiline ICU collapsed
+- `cluster.machineConfig.linode.typeLabel` - multiline ICU collapsed
+- `monitoring.prometheus.warningInstalled` - orphaned English lines removed
+- `glance.nodes.total.label` - orphaned English lines removed
 
 ## Translation Conventions
-- "cluster" → "cluster" (keep)
-- "namespace" → "espace de noms"
-- "workload" → "charge de travail"
-- "pod" → "pod"
-- "helm chart" → "chart Helm"
-- "dashboard" → "tableau de bord"
-- French cognates (keep same): Type, Port, Configuration, Action, Description, Version, Standard
+- Use "espace de noms" for namespace
+- Use "cluster" (unchanged) for cluster
+- Use "tableau de bord" for dashboard
+- Use "flux" or keep "Fleet" for fleet (Rancher product)
+- Brand names unchanged: GitHub, GitLab, LDAP, SAML, OAuth, OIDC, Keycloak
+- Technical protocols: SHA, CSI, RBD, NFS unchanged
+- Use French typography: "ex." for "e.g.", include space before ":" in some contexts
+
+## Remaining Untranslated (~1,257 strings by coverage script)
+Note: Many remaining "untranslated" strings are proper nouns/brand names intentionally identical in French:
+- `gitPicker.*` - SHA, Message, Date, Commits, Commit, GitHub, GitLab (proper nouns)
+- `fleet.*` - Type, Source, Cluster, Chart, Version, ID, Secrets, Tarball (technical terms)
+- `model.authConfig.*` - LDAP, SAML, OAuth, OIDC, Keycloak (protocol/brand names)
+- `storageClass.*` - ~93 strings, mostly technical (Ceph RBD, Portworx, ScaleIO params)
+- `persistentVolume.*` - ~23 strings, mostly driver names (keep in English)
+- `logging.outputProviders.*` - provider names (Splunk, Kafka, etc.)
+- `cluster.cloudProvider.*` - Amazon, Azure, Google, vSphere, Harvester (brand names)
 
 ## Technical Notes
-- **Patch script**: `/tmp/gh-aw/agent/patch.js` - line-map based in-place patching
-- **Quoting**: auto-quote values with apostrophes, colons, #, or starting with {
-- **typeLabel ICU plurals**: use string-replacement approach
-- **js-yaml** at `/home/runner/.npm-global/lib/node_modules/js-yaml`
+- patch.js script at `/tmp/gh-aw/agent/patch.js` - in-place YAML patcher, unquoted keys only
+- Quoted keys (e.g., `'kubernetes.io/...'`) require direct string replacement
+- Apostrophes in French values need double-quoted YAML strings
+- ICU plural strings work as single-line values in double quotes
+- js-yaml at `/home/runner/work/ui-locales/ui-locales/node_modules/js-yaml/`
+- Remote tracking ref needed: `git update-ref refs/remotes/origin/<branch> <sha>`
