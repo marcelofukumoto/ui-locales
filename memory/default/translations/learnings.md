@@ -1,42 +1,52 @@
-# Cross-Language Translation Learnings
-Last updated: 2026-05-22
+# Translation Workflow Learnings
 
-## Key facts
-- Use Node.js for all scripting (Python/pip unavailable)
-- js-yaml: install globally with `npm install -g js-yaml`; use `NODE_PATH=$(npm root -g)` to require it
-- Chunking: max ~50 key-value pairs per bash call
-- CRITICAL: When patching multi-line block scalar values (ICU plurals), ensure the patch REPLACES the entire block — do NOT append.
+## General Rules
+- Max ~50 keys per bash call (patch.js approach)
+- Node.js only (pypi.org inaccessible)
+- patch.js: traverse YAML lines to find keys by dot-path, replace in-place
+- js-yaml installed globally: `npm install -g js-yaml`
+- YAML validation: `NODE_PATH=$(npm root -g) node -e "const yaml=require('js-yaml'); yaml.load(require('fs').readFileSync('<file>','utf8')); console.log('valid')"`
 
-## Details
+## Common YAML Issues to Fix After Translation
+1. **Values ending with colon** (e.g. `key: Some text:`) — must be quoted: `key: "Some text:"`
+2. **Bare comma value** (e.g. `comma: , `) — must be quoted: `comma: ", "`
+3. **Multi-line string values** — patch.js block scalar handling works, but some complex multi-line strings may need manual fixes
 
-### Scripting
-- `NODE_PATH=$(npm root -g) node` to use globally installed modules
-- patch.js approach: find key line by indentation, replace value in-place - reliable
-- Key detection via indentation stack works for standard YAML (2 spaces per level)
-- Keys with hyphens (e.g., `agent-tls-mode`) need special handling in patcher
-- Always use separate patch JSON files per batch to stay within limits
+## Fix Script for Colon-Ending Values
+```python
+import re
+with open('file.yaml', 'r', encoding='utf-8') as f:
+    lines = f.readlines()
+result = []
+for line in lines:
+    stripped = line.rstrip('\n')
+    m = re.match(r'^(\s+\S+: )(.+):$', stripped)
+    if m:
+        prefix, value = m.group(1), m.group(2)
+        if not value.startswith('"') and not value.startswith("'") and not value.startswith('|') and not value.startswith('>'):
+            line = prefix + '"' + value.replace('"', '\\"') + ':"' + '\n'
+    result.append(line)
+with open('file.yaml', 'w', encoding='utf-8') as f:
+    f.writelines(result)
+```
 
-### Push to PR
-- `safeoutputs push_to_pull_request_branch` needs a remote tracking ref to compute diff
-- Create it manually: `git update-ref refs/remotes/origin/<branch> <original-sha>`
-- The tool computes an incremental patch from the remote tracking ref to local HEAD
-- Use file redirection: `safeoutputs push_to_pull_request_branch . < /tmp/payload.json`
+## patch.js Warnings
+- "Key not found" for some paths is benign — the key may live at a different nesting level
+- E.g. `cluster.harvester.*` keys live under `cluster.credential.harvester.*`
 
-### YAML gotchas
-- French translations often contain apostrophes - use double quotes for values with apostrophes
-- Single-quoted YAML strings must escape apostrophes by doubling: '' (not backslash)
-- ICU plural/select blocks: only translate the human-readable portions
-- The "appended EN content" bug: when patching multi-line blocks, find the end of the block and REPLACE all lines, not append
+## Language-Specific Notes
 
-### Coverage calculation
-- Non-translatable: empty strings, pure numbers, single chars, URLs, pure placeholders {var},
-  time abbreviations (5s, 1m), icon identifiers (refresh, error, checkmark), CSS classes
-- Many technical terms correctly "kept in English" - actual coverage ~3-5% higher than raw script
-- ICU plural body text ({other}, {resource}, {item}) are NOT variable placeholders — false positive
-- `<a href>` with reordered rel attributes is functionally equivalent — not a placeholder bug
-- Cognates (same word in French and English): Port, Format, Source, Type, Message, etc. — correct to keep as-is
+### Spanish (es-es) — PR #14
+- Branch: `add-spanish-es-es-translation`
+- ~1000+ keys translated across major sections
+- 9 YAML formatting issues fixed (colon-ending values, comma)
+- Key count: 6349 (matches en-us.yaml)
 
-### Performance
-- 50 keys per batch works reliably
-- Start with highest-count genuinely-translatable sections for max coverage per run
-- Many "untranslated" strings are legitimately the same word in French (cognates)
+### French (fr-fr) — PR #12
+- Branch: `add-fr-fr-translation-0ce92e050ed12de6`
+- ~1000 keys translated
+- Key count: 8553
+
+### Portuguese Brazil (pt-br) — PR #4
+- ~978 keys translated
+- Key count: ~6387
