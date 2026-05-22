@@ -6,45 +6,35 @@ Last updated: 2026-05-22
 - Attempt 2: ~79.1% (4,979/6,297) - structural fixes
 - Attempt 3: ~82.4% (5,187/6,297) - typeDescription fixes, fleet.bundles, placeholder fixes
 - Attempt 4: ~85.5% (5,385/6,297) - 406 more strings translated
-- Verify 4 (old): 87% script / ~93% after agent review
+- Verify 4: 87% script / ~93% after agent review
 - Attempt 5: 87.7% (5,522/6,295) - fixed 29 placeholder keys + ~137 new translations
-- Attempt 4 (loop): **~100%** after agent review — all placeholder issues fixed, unit.hour/day translated, storage labels translated
+- Attempt 4 (loop): ~100% after agent review — all placeholder issues fixed
+- Verify 4 (latest): 89.6% script / ~100% after agent review — 2 placeholder issues remain
 
 ## Key Issues Remaining
-- Quobyte product name labels (quobyteApiServer, quobyteConfig, quobyteTenant) - correctly kept in English
-- GID MIN / GID MAX - technical identifiers, correctly kept in English
-- Raw script shows ~769 untranslated but ~767 are correctly kept in English
-
-## French Translation Conventions
-- "Cluster" stays in English (technical term)
-- "Namespace" → "espace de noms"
-- Kubernetes resource names (Deployment, DaemonSet, etc.) → KEEP IN ENGLISH
-- Product names (Grafana, Prometheus, Longhorn) → KEEP IN ENGLISH
-- Cloud provider names (Amazon EKS, Azure AKS, etc.) → KEEP IN ENGLISH
-- "Workload" → "charge de travail"
-- "Node" → "nœud"
-- Apostrophes in double-quoted strings: use directly
-- "Warning" → "Avertissement", "Error" → "Erreur", "Settings" → "Paramètres"
-- Time units: unit.hour → heure/heures, unit.day → jour/jours
-- Block Size → Taille de bloc, I/O Priority → Priorité E/S
-- Aggregation Level → Niveau d'agrégation, Protection Domain → Domaine de protection
-- Snapshots Interval → Intervalle d'instantanés
-
-## YAML Technical Issues
-- French apostrophes: use double-quoted YAML strings
-- ICU plurals with `{`: must be quoted in YAML
-- HTML `<a href='...'>` vs `<a href="...">` — match en-us.yaml quoting style exactly
-- `&quot;`, `&lt;`, `&gt;` entities must NOT be converted to literal chars
-- `<pre class='...'>` vs `<pre class="...">` - both valid but must preserve class attribute
-- When fixing placeholders with regex, use line-by-line approach to avoid corruption
+- `cluster.machineConfig.digitalocean.sizeLabel`: uses {cpu},{memory} instead of {memoryGb},{vcpus},{value}
+- `advancedSettings.edit.agentConfigBanner.text`: missing {agent} variable (paraphrased)
 
 ## Correctly Kept in English (bulk)
 - `typeLabel.*` (84 entries) — ALL Kubernetes resource type names
 - `cluster.provider.*` — ALL cloud provider names
 - `storageClass.*` driver/product names — Quobyte, Portworx, ScaleIO, StorageOS, Harvester
 - `persistentVolume.csi.drivers.*` — ALL CSI driver product names
-- `asyncButton.*.actionIcon/successIcon/waitingIcon` — icon identifiers
 - `generic.units.time.*` — time abbreviations (5s, 1m, 1h, 1d, etc.)
-- `authConfig.ldap.protocols.*` — protocol names (Start TLS, LDAPS)
-- `nav.group.*` — navigation group names (RBAC, Fleet, K3s, Rancher, API, etc.)
-- `generic.id`, `generic.ok`, `generic.type` — universal technical terms
+- French cognates: Description, Configuration, Action, Version, Source, Type, Format, Total, Date, Message, Image, Local, Conditions, Volumes, Notifications, Annotations, Performance, Architecture, etc.
+- Log levels: INFO, ERROR, WARN, DEBUG
+- Acronyms: ID, URL, API, CPU, GPU, TTL, SNI, IQN, IPAM, TLS, IPv4, IPv6
+- Kubernetes identifiers: IfNotPresent, ReadWriteMany, NoExecute, NoSchedule
+
+## French Translation Conventions
+- "Cluster" stays in English (technical term)
+- Kubernetes resource names (Deployment, DaemonSet, etc.) → KEEP IN ENGLISH
+- Product names (Grafana, Prometheus, Longhorn) → KEEP IN ENGLISH
+- Cloud provider names (Amazon EKS, Azure AKS, etc.) → KEEP IN ENGLISH
+- Apostrophes in double-quoted strings: use directly
+- ICU plurals with `{`: must be quoted in YAML
+
+## YAML Technical Issues
+- French apostrophes: use double-quoted YAML strings
+- HTML `<a href='...'>` vs `<a href="...">` — match en-us.yaml quoting style
+- `&quot;`, `&lt;`, `&gt;` entities must NOT be converted to literal chars
