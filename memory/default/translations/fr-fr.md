@@ -11,66 +11,33 @@ Last updated: 2026-05-22
 - Improve 4a: fixed 42 duplicate keys + genuine storageClass translations
 - Verify 4b: 91% script / ~97-98% after agent review; 42 dup regression FIXED
 - Improve 4b: Fixed 2 critical placeholder issues + tableHeaders.taints consistency fix
-- Verify 4c: dispatched — checking compliance.alertNeeded and matchingNamespacesAndPods fixes
+- Verify 4c (attempt 4): ✅ 100% COVERAGE — all checks passed, ready-to-merge label added, PR approved
 
-## Status: Placeholder Issues FIXED (Improve 4b)
-1. `compliance.alertNeeded` — ✅ FIXED: {link}, {vendor}, {docsBase} restored with <a href> elements
-2. `networkpolicy.selectors.matchingNamespacesAndPods.matchesSome` — ✅ FIXED: all 6 original ICU plural variables restored (matchedPods, totalPods, samplePods, matchedNamespaces, totalNamespaces, sampleNamespaces)
-3. `tableHeaders.taints` — ✅ FIXED: Taints → Marques (consistent with node.list.nodeTaint and node.detail.pods.taints)
+## Status: ✅ COMPLETE — 100% coverage (Verify attempt 4)
+- All 6,349 leaf keys present; 0 missing, 0 extra
+- Key ordering: perfect match with en-us.yaml
+- YAML: valid, no parse errors
+- Placeholders: all confirmed correct (compliance.alertNeeded, matchingNamespacesAndPods all fixed)
+- 276 script-flagged "untranslated" = ALL correctly kept in English or skippable
+- Label `ready-to-merge` added; PR approved
 
 ## Correctly Kept in English (Large Sections)
 Most "untranslated" strings in the script are legitimately kept in English:
 - `cluster.provider.*` — ALL cloud provider names
-- `cluster.addonChart.*.configuration` — product names (Calico, CoreDNS, NGINX Ingress, etc.)
-- `cluster.rke2.systemService.*` — K8s service names
-- `logging.outputProviders.*` — ALL logging provider names (Elasticsearch, Kafka, Redis, etc.)
+- `cluster.addonChart.*.configuration` — product names (NGINX Ingress, Kube Proxy, Metrics Server, etc.)
+- `cluster.rke2/k3s.systemService.*` — K8s service names (Traefik, Klipper LB)
+- `logging.outputProviders.*` — ALL logging provider names
 - `persistentVolume.csi.drivers.*` — ALL CSI driver names
-- `workload.storage.subtypes.*` — K8s storage types (ConfigMap, Secret, CSI, NFS)
-- `workload.scheduling.tolerations.effectOptions.*` — K8s taint effects (NoExecute, NoSchedule)
+- `workload.storage.subtypes.*` — K8s storage types
 - `tableHeaders.*` — mostly cognates (Message, Date, Version, Description, Phase, etc.)
-- `model.authConfig.*` — auth provider names (GitHub, Azure AD, LDAP, OIDC, Keycloak, etc.)
+- `model.authConfig.*` — auth provider names (Keycloak, Cognito, GitHub App, Ping Identity)
 - `typeLabel.*` (84 entries) — ALL Kubernetes resource type names
 - `asyncButton.*.Icon` values — icon identifiers (refresh, error, checkmark)
-- `wm.containerShell.logLevel.*` — log levels (INFO, ERROR, WARN, DEBUG)
-- `storageClass.*.(title|placeholder)` — product names (Quobyte, Portworx, ScaleIO, StorageOS, etc.) and example placeholders (e.g. ext4)
-
-## Genuine Translations Added
-- storageClass.scaleio.*: Gateway→Passerelle, System→Système, Storage Pool→Pool de stockage
-- storageClass.storageos.*: Filesystem Type→Type de système de fichiers, Admin Secret Namespace→...
-- storageClass.portworx-volume.*: Filesystem→Système de fichiers, Ephemeral→Éphémère
-- storageClass.quobyte.group.label: Group→Groupe
+- `generic.units.time.*` — time abbreviations (5s, 1m, 1h, 1d)
+- `storageClass.*.(title|placeholder)` — product names and example values
 
 ## YAML Technical Issues
 - French apostrophes in single-quoted strings: use '' to escape; or use double-quoted strings
 - ICU plural branch text ({other}, {resource}) are NOT variable placeholders — false positive in scripts
-- Duplicate content bug (appended EN after FR) FIXED in improve 4a — confirmed fixed
+- Duplicate content bug (appended EN after FR) was FIXED in improve run 4a — confirmed fixed
 - ICU plural blocks: restore ENTIRE block when fixing — do not just patch one line
-
-
-## Correctly Kept in English (Large Sections)
-Most "untranslated" strings in the script are legitimately kept in English:
-- `cluster.provider.*` — ALL cloud provider names
-- `cluster.addonChart.*.configuration` — product names (Calico, CoreDNS, NGINX Ingress, etc.)
-- `cluster.rke2.systemService.*` — K8s service names
-- `logging.outputProviders.*` — ALL logging provider names (Elasticsearch, Kafka, Redis, etc.)
-- `persistentVolume.csi.drivers.*` — ALL CSI driver names
-- `workload.storage.subtypes.*` — K8s storage types (ConfigMap, Secret, CSI, NFS)
-- `workload.scheduling.tolerations.effectOptions.*` — K8s taint effects (NoExecute, NoSchedule)
-- `tableHeaders.*` — mostly cognates (Message, Date, Version, Description, Phase, etc.)
-- `model.authConfig.*` — auth provider names (GitHub, Azure AD, LDAP, OIDC, Keycloak, etc.)
-- `gitPicker.*` — all technical terms (SHA, Commit, Message, Date)
-- `monitoring.accessModes.*` — K8s access modes (ReadWriteMany, ReadWriteOnce)
-- `typeLabel.*` (84 entries) — ALL Kubernetes resource type names
-- `asyncButton.*.Icon` values — icon identifiers (refresh, error, checkmark)
-- `wm.containerShell.logLevel.*` — log levels (INFO, ERROR, WARN, DEBUG)
-
-## Genuine Translations Added (Attempt 4)
-- storageClass.scaleio.*: Gateway→Passerelle, System→Système, Storage Pool→Pool de stockage
-- storageClass.storageos.*: Filesystem Type→Type de système de fichiers, Admin Secret Namespace→...
-- storageClass.portworx-volume.*: Filesystem→Système de fichiers, Ephemeral→Éphémère
-- storageClass.quobyte.group.label: Group→Groupe
-
-## YAML Technical Issues
-- French apostrophes in single-quoted strings: use '' to escape; or use double-quoted strings
-- ICU plural branch text ({other}, {resource}) are NOT variable placeholders — false positive in scripts
-- Duplicate content bug (appended EN after FR) was FIXED in improve run 4a — confirmed fixed in verify 4b
