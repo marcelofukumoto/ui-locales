@@ -7,12 +7,15 @@ Last updated: 2026-05-22
 - Attempt 3: ~82.4% (5,187/6,297) - typeDescription fixes, fleet.bundles, placeholder fixes
 - Attempt 4 (early): ~85.5% (5,385/6,297) - 406 more strings translated
 - Attempt 5: 87.7% (5,522/6,295) - fixed 29 placeholder keys + ~137 new translations
-- Verify 4 (attempt 4): ~93% script / ~96-97% after agent review — 42 duplicate-content keys (regression)
-- Improve 4 (attempt 4): fixed 42 duplicate keys + genuine storageClass translations; script shows 89.5% but true coverage ~96-97%
+- Verify 4a: ~93% script / ~96-97% after agent review — 42 duplicate-content keys (regression)
+- Improve 4a: fixed 42 duplicate keys + genuine storageClass translations
+- Verify 4b: 91% script / ~97-98% after agent review; 42 dup regression confirmed FIXED
+  - 2 real placeholder issues found: compliance.alertNeeded, networkpolicy matchingNamespacesAndPods
 
-## Critical Bug: Appended English Content — FIXED
-The 42 keys that had English original appended after French translation have been FIXED in improve run (attempt 4).
-The regression pattern `{FR translation}\n{EN original}` no longer exists in the file.
+## Critical Placeholder Issues (need fixing)
+1. `compliance.alertNeeded` — Missing {link}, {vendor}, {docsBase} — translation oversimplified
+2. `networkpolicy.selectors.matchingNamespacesAndPods.matchesSome` — renamed all 6 variables
+   ({matchedPods,totalPods,samplePods,matchedNamespaces,totalNamespaces,sampleNamespaces} → wrong names)
 
 ## Correctly Kept in English (Large Sections)
 Most "untranslated" strings in the script are legitimately kept in English:
@@ -31,27 +34,13 @@ Most "untranslated" strings in the script are legitimately kept in English:
 - `asyncButton.*.Icon` values — icon identifiers (refresh, error, checkmark)
 - `wm.containerShell.logLevel.*` — log levels (INFO, ERROR, WARN, DEBUG)
 
-## Genuine French Translations Added (Attempt 4)
-- `storageClass.scaleio.gateway.label`: Gateway → Passerelle
-- `storageClass.scaleio.system.label`: System → Système
-- `storageClass.scaleio.storagePool.label`: Storage Pool → Pool de stockage
-- `storageClass.scaleio.storageMode.label`: StorageMode → Mode de stockage
-- `storageClass.scaleio.readOnly.label`: Read Only → Lecture seule
-- `storageClass.scaleio.filesystemType.label`: Filesystem Type → Type de système de fichiers
-- `storageClass.storageos.filesystemType.label`: Filesystem Type → Type de système de fichiers
-- `storageClass.storageos.adminSecretNamespace.label`: Admin Secret Namespace → Espace de noms du secret admin
-- `storageClass.storageos.adminSecretName.label`: Admin Secret Name → Nom du secret admin
-- `storageClass.harvesterhci.hostStorageClass.label`: Host Storage Class → Classe de stockage hôte
-- `storageClass.portworx-volume.filesystem.label`: Filesystem → Système de fichiers
-- `storageClass.portworx-volume.ephemeral.label`: Ephemeral → Éphémère
-- `storageClass.quobyte.group.label`: Group → Groupe
+## Genuine Translations Added (Attempt 4)
+- storageClass.scaleio.*: Gateway→Passerelle, System→Système, Storage Pool→Pool de stockage
+- storageClass.storageos.*: Filesystem Type→Type de système de fichiers, Admin Secret Namespace→...
+- storageClass.portworx-volume.*: Filesystem→Système de fichiers, Ephemeral→Éphémère
+- storageClass.quobyte.group.label: Group→Groupe
 
 ## YAML Technical Issues
-- French apostrophes in single-quoted strings: use `''` to escape; or use double-quoted strings
-- Always use double-quoted YAML for strings with French apostrophes to avoid parse errors
-- Patcher.js: use indentation stack (2 spaces per nesting level) to find key lines
-
-## Key with Hyphens
-- Some keys have hyphens in them (e.g., `advancedSettings.enum.agent-tls-mode.strict`)
-- The patcher.js won't find these due to the `part + ':'` search logic
-- These need special handling or manual patching
+- French apostrophes in single-quoted strings: use '' to escape; or use double-quoted strings
+- ICU plural branch text ({other}, {resource}) are NOT variable placeholders — false positive in scripts
+- Duplicate content bug (appended EN after FR) was FIXED in improve run 4a — confirmed fixed in verify 4b
