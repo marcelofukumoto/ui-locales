@@ -3,29 +3,20 @@ Last updated: 2026-05-22
 
 ## Key facts
 - Total leaf keys: ~8,299 (en-us matches)
-- Coverage after run 2: ~99.0% (line-based; YAML invalid after run 2)
+- Coverage after run 2+3: ~99.0% (YAML now valid after run 3 structural fixes)
 - Key parity: ✅ 8,553 key-like lines match
-- YAML validation: ❌ Parse error at L270 after improve-translation run 2
+- YAML validation: ✅ All structural issues fixed in run 3
 
-## Critical issues found in run 2
-- 25 indentation mismatches concentrated in authConfig/nav/accountAndKeys sections
-- `assignTo.title` ICU plural block scalar collapsed to plain "Assigner à" — must restore plural format
-- These errors were INTRODUCED by improve-translation run 2, not present before
+## Issue history
+- Run 1: Initial improve — YAML errors (unescaped apostrophes)
+- Run 2: Fixed apostrophes + translated ~135 strings. But introduced 25 indentation mismatches and collapsed assignTo.title ICU format
+- Run 3: Fixed all 25 indentation mismatches and restored assignTo.title ICU plural format
 
-## Problem sections (for run 3 to fix)
-- nav.ns.project: 2 spaces instead of 4 (L269) — CAUSES PARSE ERROR
-- nav.categories.configuration: 2 instead of 4 (L277)
-- accountAndKeys.expiryTime.customExpiry.options.minute: 8 instead of 10 (L461)
-- authConfig.githubapp.warning: 2 instead of 4 (L515)
-- authConfig.googleoauth.steps.1.body items: extra indent (L596-600)
-- authConfig.googleoauth ariaLabel keys: extra indent (L603-604, L614)
-- authConfig.ldap.groupMembershipMapping: under-indent (L647-648)
-- authConfig.ldap.tls: under-indent (L654, L656)
-- auth section message/linkText/title/body: under-indent (L750-754)
-- authConfig.oidc jwksUrl, cognitoIssuer, cognitoHelp: over-indent (L776, L791-792)
-- authConfig.oidc tooltip: under-indent (L784)
-- authConfig.localEnabled: over-indent (L816)
-- assignTo.title: ICU plural format lost (L827-828)
+## Critical lesson from run 2
+- When patching indentation with sed, use exact whitespace - never approximations
+- ICU plural block scalars (|- format) MUST NOT be collapsed to plain strings
+- Use fixIndent(lineNum, fromSpaces, toSpaces) approach (by prefix, not full-line matching)
+- Unicode apostrophes (U+2019) ≠ ASCII apostrophes — use byte comparison or prefix-based fixers
 
 ## Correctly kept in English for fr-fr
 - Product names: Longhorn, NeuVector, Istio, Rancher, Fleet, OPA Gatekeeper, Calico
@@ -48,6 +39,6 @@ Last updated: 2026-05-22
 ## YAML quoting rules (CRITICAL)
 - Single-quoted strings: escape apostrophes by doubling them ('')
 - Single-quoted strings: CANNOT use backslash escape (\')
-- When patching indentation: use sed with exact whitespace replacement
+- When patching indentation: use prefix-based approach, not full-line content matching
 - Block scalars (|-): must preserve all content lines with exact indentation
 - ICU plural blocks: NEVER collapse to plain text — preserve full {count, plural,...} format

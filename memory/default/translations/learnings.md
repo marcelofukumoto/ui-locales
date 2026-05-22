@@ -46,3 +46,9 @@ When block scalar patch creates double content:
 - Extract untranslated keys by section first, then batch by section
 - Skip obvious technical terms early (before attempting to translate)
 - Fix broken block scalars before counting coverage (they inflate untranslated count)
+
+## Unicode apostrophe pitfall (added 2026-05-22)
+- French text often uses Unicode right single quotes (U+2019, '\xe2\x80\x99') not ASCII apostrophes
+- String comparison in JS will fail silently if you mix them
+- Use prefix-based indent fixing (check leading spaces only) instead of full-line content matching
+- This avoids all Unicode encoding comparison issues
