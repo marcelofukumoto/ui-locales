@@ -3,10 +3,29 @@ Last updated: 2026-05-22
 
 ## Key facts
 - Total leaf keys: ~8,299 (en-us matches)
-- Coverage after run 3: ~99.0% (line-based comparison)
-- Remaining untranslated: ~64 strings (mostly correctly kept in English)
-- Key parity: ✅ matches en-us.yaml exactly
-- YAML validation: ✅ No parse errors (all apostrophe issues fixed)
+- Coverage after run 2: ~99.0% (line-based; YAML invalid after run 2)
+- Key parity: ✅ 8,553 key-like lines match
+- YAML validation: ❌ Parse error at L270 after improve-translation run 2
+
+## Critical issues found in run 2
+- 25 indentation mismatches concentrated in authConfig/nav/accountAndKeys sections
+- `assignTo.title` ICU plural block scalar collapsed to plain "Assigner à" — must restore plural format
+- These errors were INTRODUCED by improve-translation run 2, not present before
+
+## Problem sections (for run 3 to fix)
+- nav.ns.project: 2 spaces instead of 4 (L269) — CAUSES PARSE ERROR
+- nav.categories.configuration: 2 instead of 4 (L277)
+- accountAndKeys.expiryTime.customExpiry.options.minute: 8 instead of 10 (L461)
+- authConfig.githubapp.warning: 2 instead of 4 (L515)
+- authConfig.googleoauth.steps.1.body items: extra indent (L596-600)
+- authConfig.googleoauth ariaLabel keys: extra indent (L603-604, L614)
+- authConfig.ldap.groupMembershipMapping: under-indent (L647-648)
+- authConfig.ldap.tls: under-indent (L654, L656)
+- auth section message/linkText/title/body: under-indent (L750-754)
+- authConfig.oidc jwksUrl, cognitoIssuer, cognitoHelp: over-indent (L776, L791-792)
+- authConfig.oidc tooltip: under-indent (L784)
+- authConfig.localEnabled: over-indent (L816)
+- assignTo.title: ICU plural format lost (L827-828)
 
 ## Correctly kept in English for fr-fr
 - Product names: Longhorn, NeuVector, Istio, Rancher, Fleet, OPA Gatekeeper, Calico
@@ -16,38 +35,19 @@ Last updated: 2026-05-22
 - Kubernetes resources: DaemonSet, ConfigMap, IfNotPresent, Pod, Namespace, Deployment
 - Units: MiB, GB, CPUs, GPUs, iB
 - OS names: macOS, Windows, Linux
-- Version labels: Versions, Version, Helm, Machine (same in French)
 - Terms identical in French: Type, Standard, Description, Configuration, Diagnostics, Extensions
 
 ## Language-specific notes
 - "espace de noms" for namespace
 - "cluster" (not translated)
 - "tableau de bord" for dashboard
-- "charges de travail" for workloads
-- "étiquettes" for labels
-- "Enregistrer" for Save
-- "Supprimer" for Delete/Remove
 - "Toujours" for Always, "Jamais" for Never
-- "Révision/Révisions" for Revision/Revisions
-- "Seconde/Secondes" for Second/Seconds
-- "Fois" for Time/Times
-- "Créer un dépôt Git" for Create Git Repo
-- "Créer une opération Helm" for Create Helm Op
-- "Assigner le cluster à…" for Assign Cluster To…
+- "Assigner le cluster à…" for Assign Cluster To… (ICU plural)
+- "Assigner {count} clusters à…" for Assign {count} Clusters To…
 
 ## YAML quoting rules (CRITICAL)
 - Single-quoted strings: escape apostrophes by doubling them ('')
 - Single-quoted strings: CANNOT use backslash escape (\')
-- Values with apostrophes AND double-quotes: use single-quoted with '' for apostrophes
-- HTML content with both types of quotes: use single-quoted, double '' for apostrophes
-- Always check new translations don't introduce unescaped apostrophes
-
-## Sections completed
-- generic (all), tabs, graph, locale, nav, product, suffix, about, accountAndKeys
-- authConfig (all: github, githubapp, googleoauth, ldap, saml, azuread, oidc, stateBanner)
-- authGroups, assignTo (all), asyncButton (all)
-- backupRestoreOperator, catalog, changePassword, members, membershipEditor
-- login, logout, nameNsDescription, namespace, namespaceFilter, namespaceList
-- user, footer, growl, errors, component.drawer, component.resource.detail
-- node, notificationCenter, wizard, sideWindow, wm, clusterIndexPage, configmap, validation
-- fleet (Create Git Repo, Create Helm Op)
+- When patching indentation: use sed with exact whitespace replacement
+- Block scalars (|-): must preserve all content lines with exact indentation
+- ICU plural blocks: NEVER collapse to plain text — preserve full {count, plural,...} format
