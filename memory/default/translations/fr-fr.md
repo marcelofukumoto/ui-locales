@@ -5,6 +5,7 @@
 - Attempt 2: ~79.1% (4,979/6,297) - structural fixes
 - Attempt 3: ~82.4% (5,187/6,297) - typeDescription fixes, fleet.bundles, placeholder fixes
 - Attempt 4: ~85.5% (5,385/6,297) - 406 more strings translated
+- Verify 4: 87% script / ~93% after agent review — 5,385 translated, ~419 genuinely untranslated, 54 keys with missing placeholders (HTML links stripped)
 
 ## Key Issues Fixed
 1. **typeDescription keys**: Previous runs had stripped namespace prefixes (e.g., used `authentication` instead of `jwt.authentication`). Fixed.
@@ -51,16 +52,23 @@ When replacing multiline HTML values with short French translations, the old mul
 Keys like `'kubeconfig-default-token-ttl-minutes'` are stored with single quotes in YAML.
 The `patch.js` script can't find them by dotted path. Use direct string content replacement.
 
-## Remaining Untranslated (~912 strings at 85.5%)
+## Remaining Untranslated (~419 strings after agent review)
 Most are legitimately English:
-- `typeLabel.*` (84) - Kubernetes resource type names like Deployment, DaemonSet
-- `cluster.provider.*` - Cloud provider names
-- `storageClass.*` (80) - Storage driver names, technical placeholders  
+- `typeLabel.*` (84) - Kubernetes resource type names like Deployment, DaemonSet → ALL kept in English
+- `cluster.provider.*` - Cloud provider names (Amazon EKS, Azure AKS, etc.) → kept in English
+- `storageClass.*` (~80) - Storage driver names, technical placeholders → mostly kept in English
 - `logging.outputProviders.*` - Product names like Elasticsearch, Redis, Kafka
-- `tableHeaders.*` (35) - Mostly single technical words: Type, Source, URL, IP
-- `generic.*` (18) - Time units (5s, 1m, 1h), ID, OK, Type
-- `persistentVolume.*` (30) - CSI driver names
-- `model.*` (29) - Auth provider names
+- `tableHeaders.*` (33) - Mostly single technical words: Type, Source, URL, IP
+- `generic.*` - Time units (5s, 1m, 1h), ID, OK, Type
+- `persistentVolume.*` (28) - CSI driver names
+- `model.*` - Auth provider names
+
+## Key Placeholder Issues (54 keys)
+Main pattern: HTML `<a href="...">...</a>` links removed during translation. Need to preserve:
+- Anchor tags with full href attributes
+- Custom Vue component tags: `<repositoriesUrl>`, `<repoCreate>`, etc.
+- `{variable}` references in ICU-adjacent strings
+- Specific keys: `validation.arrayLength.*` missing `{item}`/`{items}`
 
 ## Scripts in /tmp/gh-aw/agent/
 - `patch.js`: In-place YAML patcher; finds keys by path, replaces values
