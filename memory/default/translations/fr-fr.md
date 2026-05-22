@@ -2,11 +2,21 @@
 Last updated: 2026-05-22
 
 ## Key facts
-- Total leaf keys: 8,553 (larger file than pt-br due to en-us.yaml sync)
-- Translated in first run: ~1,000 strings
-- Remaining untranslated: ~7,500 strings (in English)
-- Key parity: ✅ 8,553 keys match en-us.yaml exactly
-- YAML validation: ✅ No duplicate keys, no parse errors
+- Total leaf keys: 8,299 (raw line count; YAML-parsed count may differ)
+- Translated after run 2: ~6,864 strings (~97.4% raw coverage)
+- Remaining untranslated: ~55 genuine strings + 6 YAML parse errors to fix
+- Key parity: ✅ 8,299 keys match en-us.yaml exactly (by raw line count)
+- YAML validation: ❌ 6 broken single-quoted strings with unescaped apostrophes (see below)
+
+## CRITICAL: YAML parse errors (must fix before merge)
+Lines with unescaped apostrophes in single-quoted YAML strings:
+- L812 authConfig.stateBanner.disabled — use double quotes
+- L813 authConfig.stateBanner.enabled — use double quotes
+- L4435 (specificError) — use double quotes
+- L4455 (error) — use double quotes
+- L7137 (user.exists) — backslash escape invalid; use doubled apostrophe or double quotes
+- L7198 (validation.custom.missing) — backslash escape invalid; use doubled apostrophe or double quotes
+Fix: wrap in double quotes: "Le fournisseur d'authentification {provider}..."
 
 ## Sections translated in first run
 - generic (all ~150 keys)
