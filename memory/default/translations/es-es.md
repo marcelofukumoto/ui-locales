@@ -3,42 +3,47 @@ Last updated: 2026-05-22
 
 ## Key facts
 - Total keys in en-us.yaml: 6,349 leaf keys
-- **Attempt 4 verify**: 197 missing keys, 1,311 extra keys, 62 placeholder issues, ~79% coverage
-- Coverage: 4,597 translated + 181 kept-in-English = 4,778 / 6,052 translatable = 79%
-- Untranslated after agent review: ~1,274
+- **Attempt 5**: Fixed structural issues (197 missing + 1,311 extra keys from attempt 4), translated 1000 strings
+- Coverage after attempt 5: 89.4% (5,638 translated, 669 untranslated, 42 skipped)
+- Untranslated remaining: 669 keys
 
-## Critical structural issue (Attempt 4)
-- The improve-translation workflow introduced 1,311 EXTRA keys not in en-us.yaml
-- Examples of extra keys: `product.sriov`, `product.cis`, `accountAndKeys.sshKeys`, `accountAndKeys.tokens`
-- Also 197 MISSING keys from en-us.yaml
-- This is a regression from Attempt 1 which had perfect key parity
-- **Fix needed**: Rebuild es-es.yaml by cloning en-us.yaml structure exactly, only changing values
+## Structural fix (Attempt 5)
+- Rebuilt es-es.yaml by cloning en-us.yaml structure via Node.js `rebuild-structure.js`
+- Script deep-clones en-us.yaml tree, substituting es-es values where they differ from English
+- Result: 0 missing keys, 0 extra keys — perfect structural match with en-us.yaml
+- YAML validated successfully with js-yaml
 
-## 62 placeholder issues
-- ICU plural syntax `{count, plural, …}` was stripped from: generic.other, generic.resource, generic.resourceCount, suffix.revisions, suffix.seconds, suffix.times, about.diagnostic.resourceCounts
-- ICU select syntax `{hasSupport, select, …}` stripped from: nav.support
-- HTML tag `<br>` stripped from: authConfig.azuread.updateEndpoint.modal.body
+## Critical YAML gotcha
+- YAML keys under `typeLabel` contain literal dots (e.g., `typeLabel["management.cattle.io.oidcclient"]` is ONE key)
+- Initial patch script splitting on `.` failed; fixed in patch2.js using segment arrays from en-us.yaml structure
+- Always use `patch2.js` for patching: `node /tmp/gh-aw/agent/patch2.js /tmp/gh-aw/agent/tNN.json`
 
-## Priority sections (untranslated)
-- cluster: 163 untranslated (78% coverage)
-- typeLabel: 96 untranslated (17% coverage) — HIGH PRIORITY
-- catalog: 73 untranslated (67%)
-- fleet: 73 untranslated (79%)
-- component: 66 untranslated (42%)
-- autoscaler: 16 untranslated (6%) — LOW coverage
-- drivers: 19 untranslated (0%) — NOT STARTED
+## Non-translatable patterns (keep as English)
+- Single tech terms: Host, TTY, Stdin, General, Selector, URL, ID, SHA
+- Product names: Longhorn, Fleet, Rancher, Istio, Kiali, Jaeger, Alertmanager, Grafana, Prometheus
+- Auth protocols: LDAP, SAML, OAuth, OIDC, Keycloak, ADFS, Okta, RBAC
+- K8s abbreviations: SAT, TLS, CSI, CPI, RKE, HCI, DNS, CNI, NAT
+- Time units: 5s, 10s, 1m, 5m etc (numeric + letter unit)
+- CSS suffixes: MiB, GB, CPUs, GPUs, %
 
-## Key terminology (Spanish)
-- cluster → clúster
-- workload → carga de trabajo
-- namespace → espacio de nombres
-- deployment → despliegue
-- node → nodo
-- service → servicio
-- ingress → entrada/enrutamiento
+## Remaining priority sections (669 keys)
+- cluster: 124 untranslated (many are provider names / tech terms)
+- typeLabel: 41 untranslated (most are K8s type names — legitimately keep English)
+- logging: 32 untranslated (many are product/service names)
+- workload: 30 untranslated (many are tech terms)
+- model: 25 (mostly auth provider names — keep English)
+- secret: 23 untranslated
+- fleet: 22 untranslated
+- persistentVolume: 22 untranslated
+- generic: 21 (many are time units / tech terms)
+- monitoring: 15 untranslated
 
-## Values correctly kept in English
-- Time units: 5s, 10s, 30s, 1m, 5m, 1h, 1d, 7d, 30d
-- Units: MiB, GiB, Cores, CPUs, GPUs
-- ICU number format patterns
-- Product names: Rancher, Kubernetes, Helm, Fleet, Longhorn, etc.
+## js-yaml dump settings
+`{ lineWidth: -1, noRefs: true, quotingType: "'", forceQuotes: false }`
+- lineWidth -1 prevents line wrapping which would break multiline ICU strings
+
+## Script locations
+- `/tmp/gh-aw/agent/rebuild-structure.js` — YAML structure rebuilder
+- `/tmp/gh-aw/agent/rebuild.js` — coverage analysis + writes untranslated.json
+- `/tmp/gh-aw/agent/get-untranslated.js` — extracts untranslated keys with values to JSON
+- `/tmp/gh-aw/agent/patch2.js` — applies JSON translation patches correctly
