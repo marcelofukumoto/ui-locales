@@ -3,8 +3,8 @@ Last updated: 2026-05-22
 
 ## Key facts
 - Total keys: 6,349 | Translated: 4,529 | Kept: ~178 | Skipped: ~1,637 | Coverage: ~100%
-- Attempt 8 verify: 0 untranslated strings; 23 ICU plural collapse issues remain
-- Attempt 9: Dispatched to fix 23 ICU plural collapses in typeLabel.*, unit.*, validation.chars
+- Attempt 9: Fixed all 23 ICU plural collapses (typeLabel.*, unit.hour, unit.day, validation.chars)
+- Attempt 9 dispatched verify; expect clean pass on structural issues
 
 ## Non-translatable (keep as English)
 - `typeLabel.*`, `cluster.provider.*`, `asyncButton.*.Icon` (icon identifiers)
