@@ -1,16 +1,16 @@
 # Spanish (es-es) Translation Learnings
-Last updated: 2026-05-22
+Last updated: 2026-05-23
 
 ## Key facts
 - Total keys in en-us.yaml: 6,349 leaf keys
-- **Attempt 5 verify**: 1 extra key (`typeLabel.resources`), ~20 placeholder issues, ~97% coverage
-- Revised coverage after agent review: ~97% (5,610 translated + ~428 kept-in-English / 6,239 translatable)
-- Genuinely untranslated remaining: ~201 strings
+- **Attempt 6**: Fixed `typeLabel.resources` extra key, fixed 21 placeholder issues, translated ~170 strings
+- Coverage after attempt 6: 91.5% (5,808 / 6,349 keys differ from English)
+- True coverage (accounting for intentionally-English strings): ~97%
+- Remaining genuinely untranslated: ~100-200 strings
 
-## Structural issues (Attempt 5 output)
-- 1 extra key: `typeLabel.resources` — must be removed (does not exist in en-us.yaml)
-- ~20 placeholder issues: mostly missing `<a>` HTML links in cluster banners, `<br>` tags, `{vendor}`/`{version}` ICU variables
-- `assignTo.title` completely lost its ICU plural structure — was simplified to plain "Asignar a"
+## Structural issues resolved in Attempt 6
+- ✅ Removed extra key `typeLabel.resources` (at lines 8377-8381 in old file)
+- ✅ Fixed 21 placeholder issues: missing `<a>` HTML links, ICU variables, `<br>` tags
 
 ## Non-translatable patterns (keep as English)
 - All `typeLabel.*` = Kubernetes API resource type names (ConfigMap, Pod, EndpointSlice, etc.)
@@ -19,22 +19,15 @@ Last updated: 2026-05-22
 - All `generic.units.time.*` = universal time abbreviations (5s, 1m, 1h, etc.)
 - `logging.outputProviders.*` = product names (Redis, Cloudwatch, LogDNA, SumoLogic, S3, etc.)
 - `cluster.addonChart.*`, `cluster.rke2.systemService.*`, `cluster.k3s.systemService.*` = product component names
-- `logging.*.host` (8 entries) = tech field label kept in Spanish IT contexts
 - Acronyms: CPUs, GPUs, MiB, RAM, IPv4, IPv6, OPA Gatekeeper, macOS, S3
 
-## Priority sections for Attempt 6
-- featureFlags: ~7 untranslated (0% coverage)
-- registryMirrorRewrite: ~7 untranslated (0% coverage)
-- namespaceFilter: ~5 untranslated (14% coverage)
-- jwt: ~5 untranslated (44% coverage — enabled/disabled/headers)
-- autoscaler: ~5 untranslated
-- cluster banners: fix ~15 missing `<a>` HTML links
-- Remove extra key `typeLabel.resources`
+## Critical YAML gotchas
+- Keys with literal dots (e.g., `ext.cattle.io.kubeconfig`, `typeLabel.*`) cannot be navigated via split('.')
+  → Use `sed` or special-case them
+- **NEVER** use last-segment key matching — `header`, `generic`, `deployment`, `config` etc. appear at many levels
+  → Always use `yaml.load → full-object-path traversal → yaml.dump`
+- yaml.dump with `{indent:2, lineWidth:-1, noRefs:true, quotingType:"'"}` produces valid output
 
-## Critical YAML gotcha
-- YAML keys under `typeLabel` contain literal dots — use segment arrays, not split('.')
-- Always use `patch2.js` for patching
-
-## Script locations
-- `/tmp/gh-aw/agent/rebuild-structure.js` — YAML structure rebuilder
-- `/tmp/gh-aw/agent/patch2.js` — applies JSON translation patches correctly
+## Preferred patching approach
+Use `comprehensive-patch.js` pattern: load YAML as object, traverse full dot-path, dump back.
+Handle dot-in-key-names with `sed` separately.
