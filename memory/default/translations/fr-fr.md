@@ -8,6 +8,7 @@
 | 3 verify | ~67.9% | Last commit message |
 | 4 verify | ~74.7% | From verify report |
 | 4 improve | ~79.4% | Fixed YAML errors + translated ~522 strings |
+| 4 verify (2) | ~85% | After agent reclassification; 4,964 translated + 375 kept in English |
 
 ## Known YAML Issues Fixed
 - `cluster.jwtAuthentication.banner` - multiline ICU had orphaned English continuation lines
@@ -32,7 +33,12 @@
 - Technical protocols: SHA, CSI, RBD, NFS unchanged
 - Use French typography: "ex." for "e.g.", include space before ":" in some contexts
 
-## Remaining Untranslated (~1,257 strings by coverage script)
+## Remaining Structural Issues (verified 2026-05-22, attempt 4)
+- **Key parity**: 14 missing keys, 12 extra in `typeDescription` section — dot-separated namespaced keys (e.g. `typeDescription.jwt.authentication`) were stripped to basename keys (`typeDescription.authentication`)
+- **fleet.bundles.resources** and **fleet.bundles.harvester** — completely missing
+- **27 placeholder issues**: Variables like `{others}`, `{resource}`, `{vendor}`, `{nameToMatch}`, `{names}` were dropped in translation; HTML entities `&quot;` also dropped
+
+## Remaining Untranslated (~943 strings after reclassification)
 Note: Many remaining "untranslated" strings are proper nouns/brand names intentionally identical in French:
 - `gitPicker.*` - SHA, Message, Date, Commits, Commit, GitHub, GitLab (proper nouns)
 - `fleet.*` - Type, Source, Cluster, Chart, Version, ID, Secrets, Tarball (technical terms)
