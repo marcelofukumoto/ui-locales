@@ -3,9 +3,9 @@ Last updated: 2026-05-22
 
 ## Key facts
 - Total keys in en-us.yaml: 6,349 leaf keys
-- **Attempt 7 (this run)**: Fixed 15 placeholder issues. Coverage stays at 91.5%.
-- Translated: 5,808 | Intentionally in English: 497 | Skipped: 44
-- **All 15 confirmed placeholder issues now fixed** — verify dispatched
+- **Attempt 7 verify**: 15 previous issues fixed; 10 new/missed placeholder issues found
+- Translated: 5,808 | Kept in English: 476 | Skipped: 65 | Coverage: 100% (after agent review)
+- Attempt 8 dispatched to fix 10 remaining placeholder issues
 
 ## Non-translatable patterns (keep as English)
 - All `typeLabel.*` = Kubernetes API resource type names
@@ -20,14 +20,17 @@ Last updated: 2026-05-22
 - `cluster.addonChart.*`, `cluster.rke2.systemService.*`, `cluster.k3s.systemService.*`
 - Kubernetes component names: etcd, CoreDNS, NGINX, Calico, Canal, Cilium, Traefik
 
-## Placeholder fixes applied (Attempt 7)
-- `login.welcome`: Use {vendor} not hardcoded "Rancher"
-- `growl.connectError.message` / `growl.reconnected.message`: #{tries} must be included
-- `compliance.alertNeeded`: Full HTML with {link}, {vendor}, {docsBase} must be preserved
-- `drivers.deactivate.warningDrivers`: Use {names} not {driver}/{drivers}/{andOthers}
-- `cluster.machineConfig.aws.sizeLabel`: Full ICU with {storageSize}/{storageUnit}/{storageType}/{architecture}
-- `cluster.machineConfig.digitalocean.sizeLabel`: Use {memoryGb}/{vcpus}/{disk}/{value}
-- `networkpolicy.selectors.matching*.matchesSome`: Include {sample}/{samplePods}/{sampleNamespaces} in =1 and other branches
+## Outstanding placeholder issues (Attempt 8 to fix)
+- `promptForceRemove.removeWarning`: {nameToMatch} missing; ES uses {vendor} (wrong variable)
+- `promptRemove.confirmRelatedResource`: {names} missing at end
+- `rbac.globalRoles.usersBound`: block scalar (`|-`) corruption — `other` branch missing, absorbed sibling YAML
+- `rbac.globalRoles.types.global.description`: truncated after `{isUser, select,`
+- `sortableTable.paging.generic`: `{from}` and `{to}` missing in `other` branch; uses `{pages}` instead
+- `sortableTable.paging.resource`: same issue as above
+- `advancedSettings.subtext`: completely truncated to "Configuración avanzada"; {appName} missing
+- `advancedSettings.edit.agentConfigBanner.text`: simplified; {agent} missing
+- `advancedSettings.descriptions.ui-offline-preferred`: truncated; {appName} missing
+- `resourceDetail.masthead.managedWarning`: uses `{name}` instead of `{appName}` in `yes` branch
 
 ## Critical YAML gotchas
 - Keys with literal dots (e.g., `ext.cattle.io.kubeconfig`) cannot be navigated via split('.')

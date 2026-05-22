@@ -38,9 +38,12 @@ with open('file.yaml', 'w', encoding='utf-8') as f:
 
 ### Spanish (es-es) — PR #14
 - Branch: `add-spanish-es-es-translation`
-- ~1000+ keys translated across major sections
-- 9 YAML formatting issues fixed (colon-ending values, comma)
+- Coverage: 100% (5808 translated + 476 kept-in-English / 6284 translatable)
 - Key count: 6349 (matches en-us.yaml)
+- **ICU-aware placeholder validation critical**: simple `{[^}]+}` regex produces ~144 false positives on ICU strings
+- Use `getSimpleVars()` with `{word}` pattern only (no spaces/commas) for accurate placeholder checking
+- Block scalar `|-` corruption risk: if block scalar not properly closed, it absorbs sibling YAML keys into value
+- Recurring problem areas: `advancedSettings`, `sortableTable.paging`, `rbac.globalRoles`, `promptRemove/ForceRemove`
 
 ### French (fr-fr) — PR #12
 - Branch: `add-fr-fr-translation-0ce92e050ed12de6`
