@@ -2,64 +2,52 @@
 Last updated: 2026-05-22
 
 ## Key facts
-- Total leaf keys: 8,299 (raw line count; YAML-parsed count may differ)
-- Translated after run 2: ~6,864 strings (~97.4% raw coverage)
-- Remaining untranslated: ~55 genuine strings + 6 YAML parse errors to fix
-- Key parity: ✅ 8,299 keys match en-us.yaml exactly (by raw line count)
-- YAML validation: ❌ 6 broken single-quoted strings with unescaped apostrophes (see below)
-
-## CRITICAL: YAML parse errors (must fix before merge)
-Lines with unescaped apostrophes in single-quoted YAML strings:
-- L812 authConfig.stateBanner.disabled — use double quotes
-- L813 authConfig.stateBanner.enabled — use double quotes
-- L4435 (specificError) — use double quotes
-- L4455 (error) — use double quotes
-- L7137 (user.exists) — backslash escape invalid; use doubled apostrophe or double quotes
-- L7198 (validation.custom.missing) — backslash escape invalid; use doubled apostrophe or double quotes
-Fix: wrap in double quotes: "Le fournisseur d'authentification {provider}..."
-
-## Sections translated in first run
-- generic (all ~150 keys)
-- tabs, graph, locale (all)
-- nav (all ~80 keys)
-- product, suffix, layouts
-- about, accountAndKeys (all)
-- authConfig (partial: github, googleoauth, ldap, saml, azuread, oidc, stateBanner)
-- authGroups, assignTo
-- asyncButton (all ~80 keys)
-- backupRestoreOperator (partial)
-- catalog (partial: app, chart, charts, install sections)
-- changePassword (all)
-- chartHeading
-- members, membershipEditor (all)
-- login, logout (all)
-- nameNsDescription, namespace (all)
-- namespaceFilter, namespaceList
-- user (all)
-- footer, growl (all)
-- errors (partial - base keys)
-- component.drawer, component.resource.detail (partial)
-- node, notificationCenter (all)
-- wizard, sideWindow, wm (all)
-- clusterIndexPage, configmap (all)
-- validation (partial: core keys)
-
-## Known fixed issues
-- errors.notFound was accidentally given scalar value "Introuvable" by patcher
-  → Fixed: changed to mapping (parent) node with no scalar value
+- Total leaf keys: ~8,299 (en-us matches)
+- Coverage after run 3: ~99.0% (line-based comparison)
+- Remaining untranslated: ~64 strings (mostly correctly kept in English)
+- Key parity: ✅ matches en-us.yaml exactly
+- YAML validation: ✅ No parse errors (all apostrophe issues fixed)
 
 ## Correctly kept in English for fr-fr
-- All Kubernetes resource types: Pod, Cluster, Namespace, Deployment, ConfigMap
-- Cloud provider names: Amazon EKS, Azure AKS, GKE etc.
-- Product names: Longhorn, NeuVector, Istio, Prometheus, Rancher, Fleet
-- Technical acronyms: CPU, GPU, RAM, TLS, SSL, RBAC, API, DNS
-- Auth providers: Keycloak, Okta, GitHub, SAML, OAuth, OIDC, FreeIPA
+- Product names: Longhorn, NeuVector, Istio, Rancher, Fleet, OPA Gatekeeper, Calico
+- Navigation groups: Cluster, Policy, Networking, Storage, Scheduling, Discovery, Coordination, RBAC, Fleet, K3s, Rancher, Admission, JWT Authentication, RKE1 Configuration
+- Technical acronyms: CPU, GPU, RAM, TLS, SSL, RBAC, API, DNS, OIDC, LDAP, SAML, PKCE
+- Auth providers: Keycloak, Okta, GitHub, SAML, OAuth, OIDC, FreeIPA, Active Directory
+- Kubernetes resources: DaemonSet, ConfigMap, IfNotPresent, Pod, Namespace, Deployment
+- Units: MiB, GB, CPUs, GPUs, iB
+- OS names: macOS, Windows, Linux
+- Version labels: Versions, Version, Helm, Machine (same in French)
+- Terms identical in French: Type, Standard, Description, Configuration, Diagnostics, Extensions
 
 ## Language-specific notes
-- Use "espace de noms" for namespace
-- Use "cluster" (not translated)
-- Use "tableau de bord" for dashboard
-- Use "charges de travail" for workloads
-- Use "étiquettes" for labels (not "labels")
-- Use "Enregistrer" for Save (not "Sauvegarder")
-- Use "Supprimer" for both Delete and Remove
+- "espace de noms" for namespace
+- "cluster" (not translated)
+- "tableau de bord" for dashboard
+- "charges de travail" for workloads
+- "étiquettes" for labels
+- "Enregistrer" for Save
+- "Supprimer" for Delete/Remove
+- "Toujours" for Always, "Jamais" for Never
+- "Révision/Révisions" for Revision/Revisions
+- "Seconde/Secondes" for Second/Seconds
+- "Fois" for Time/Times
+- "Créer un dépôt Git" for Create Git Repo
+- "Créer une opération Helm" for Create Helm Op
+- "Assigner le cluster à…" for Assign Cluster To…
+
+## YAML quoting rules (CRITICAL)
+- Single-quoted strings: escape apostrophes by doubling them ('')
+- Single-quoted strings: CANNOT use backslash escape (\')
+- Values with apostrophes AND double-quotes: use single-quoted with '' for apostrophes
+- HTML content with both types of quotes: use single-quoted, double '' for apostrophes
+- Always check new translations don't introduce unescaped apostrophes
+
+## Sections completed
+- generic (all), tabs, graph, locale, nav, product, suffix, about, accountAndKeys
+- authConfig (all: github, githubapp, googleoauth, ldap, saml, azuread, oidc, stateBanner)
+- authGroups, assignTo (all), asyncButton (all)
+- backupRestoreOperator, catalog, changePassword, members, membershipEditor
+- login, logout, nameNsDescription, namespace, namespaceFilter, namespaceList
+- user, footer, growl, errors, component.drawer, component.resource.detail
+- node, notificationCenter, wizard, sideWindow, wm, clusterIndexPage, configmap, validation
+- fleet (Create Git Repo, Create Helm Op)
