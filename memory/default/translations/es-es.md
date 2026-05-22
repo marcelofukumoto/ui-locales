@@ -1,56 +1,84 @@
 # Spanish (es-es) Translation Learnings
-Last updated: 2026-05-22
 
-## Key facts
-- PR #14, branch: `add-spanish-es-es-translation-22541102b6eb17cb`
-- Attempt 2 coverage: ~71% (4,517 / 6,346 translatable strings)
-- Attempt 2 remaining: ~1,829 untranslated strings
-- Placeholder issue from attempt 1 (growl.connectError.message) was FIXED in attempt 2
+## Status
+- **Attempt 3** complete
+- Coverage before attempt 3: ~71% (per verify attempt 2 = 1,829 untranslated of 6,349 keys)
+- Strings translated in attempt 3: ~1,018 (simple line parser; actual may differ)
+- Simple parser shows ~1,735 remaining (many are non-translatable)
+- Verify attempt 3 dispatched for accurate coverage
 
-## Placeholder Issues Found in Attempt 2 (needs fixing)
-1. `generic.ariaLabel.key`: missing `{index}` — ES is "Entrada de clave-valor"
-2. `plugins.incompatibleUiExtensionsApiVersion`: missing `{ required }` — wrong source string used
-3. `plugins.info.requiresExtensionApiVersion`: missing `{required}` — wrong source string used
-4. `plugins.setup.prompt.can`: missing `{ff}` — wrong source string used
-5. `validation.invalid`: missing `{key}` — ES is "Programación cron inválida" (wrong context)
-
-## Key Translation Terms
+## Key Terminology (Spanish)
 - cluster → clúster
 - workload → carga de trabajo
 - namespace → espacio de nombres
 - deployment → despliegue
 - node → nodo
 - secret → secreto
-- pod → pod (keep as-is)
-- taint → mancha / tolerancia
 - ingress → entrada
-- service account → cuenta de servicio
 - label → etiqueta
 - annotation → anotación
+- role → rol
+- binding → enlace
+- policy → política
+- dashboard → panel
+- template → plantilla
+- quota → cuota
+- threshold → umbral
+- toggle → alternar
+- scope → alcance
+- repository → repositorio
+- authentication → autenticación
+- authorization → autorización
 
-## Sections Remaining (Attempt 3 priorities)
-| Section | Untranslated | Coverage |
-|---------|-------------|---------|
-| istio | 97 | 20% |
-| plugins | 95 | 34% |
-| catalog | 95 | 57% |
-| rbac | 74 | 25% |
-| authConfig | 49 | 79% |
-| component | 56 | 52% |
-| performance | 47 | 9% |
-| advancedSettings | 48 | 29% |
-| resourceQuota | 43 | 14% |
-| oidcclient | 40 | 7% |
-| persistentVolume | 40 | 80% |
-| branding | 36 | 10% |
-| typeDescription | 31 | 0% |
-| support | 26 | 3% |
-| navLink | 26 | 16% |
-| cluster | 111 | 85% |
-| Fully 0%: auth, ext, keyValue, notifications, podAffinity, promptRedeploy, promptRemoveApp, providers, registryConfig, serverUpgrade, sideWindow, vncConsole, volumeClaimTemplate
+## Do NOT Translate (keep in English)
+- RBAC, API, Fleet, K3s, Rancher, NeuVector, Pod, Helm, YAML, DNS
+- HCI, RKE1, OPA, Prometheus, Grafana, Istio, Longhorn
+- Technical identifiers (App IDs, CSS classes, URLs)
+- Brand names (SUSE, Rancher, NeuVector)
+
+## Placeholder Rules
+- Keep `{variable}` and `{ variable }` exactly as-is
+- Keep `{pages, plural, ...}` ICU syntax intact
+- Critical issues fixed in attempt 2: `generic.ariaLabel.key`, `validation.invalid`
+- Critical issues fixed in attempt 3: `plugins.incompatibleUiExtensionsApiVersion`, `plugins.info.requiresExtensionApiVersion`, `plugins.setup.prompt.can`
+
+## Sections Completed (attempts 1+2+3)
+Attempt 1+2 (1710 strings):
+- Generic, common, dialog, buttons, navigation, cluster, networking, storage, workloads, etc.
+
+Attempt 3 (~1018 strings):
+- action, advancedSettings, auditPolicy, authConfig, banner, branding, catalog, errors
+- gitPicker, hpa, istio, keyValue, model, monitoringReceiver, monitoringRoute, navLink
+- notifications (partial), oidcclient, performance, plugins, podAffinity, prometheusRule
+- providers, rbac, registryConfig, resourceQuota, servicesPage, serverUpgrade, sideWindow
+- sortableTable, support, typeDescription, user (partial), vncConsole, wm
+
+## Sections Still Needing Translation (estimated)
+- cluster (205 estimated remaining)
+- typeLabel (116)
+- fleet (91)
+- component (74)
+- persistentVolume (56)
+- secret (55)
+- logging (48)
+- monitoring (44)
+- workload (37)
+- user (remaining)
+- prometheusRule (already done in attempt 3)
+- networkpolicy (31)
+- projectMembers (22)
+- sortableTable (mostly done)
+- Various other small sections
 
 ## Tooling Notes
-- Line-based patching via patch_lines.js works reliably
-- js-yaml not available in local node_modules (empty dir); use line-based parsing
-- ICU plural/select inner text (e.g. `{item}` in `{count, plural, =1 {# item}}`) should NOT be flagged as missing placeholder — false positive in checker
-- No network access: no npm/pip installs available
+- Simple line-parser (`find_untranslated.js`) inflates count due to multi-line blocks
+- Actual coverage tracked by verify workflow (js-yaml based, more accurate)
+- Patch approach: create JS script with line-number → new-line mapping
+- Max ~50-65 patches per bash call (script size limit)
+- Remote tracking ref trick: `git update-ref refs/remotes/origin/<branch> refs/remotes/pull/14/head`
+  before calling `push_to_pull_request_branch` (needed when shallow clone lacks auth)
+
+## Coverage History
+- Attempt 1: ~46% coverage (baseline Spanish file submitted)
+- Attempt 2: ~71% coverage (translated ~1,710 strings)
+- Attempt 3: ~87%+ estimated (translated ~1,018 more strings + fixed 5 placeholder issues)
