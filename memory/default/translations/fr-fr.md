@@ -7,13 +7,12 @@ Last updated: 2026-05-22
 - Attempt 3: ~82.4% (5,187/6,297) - typeDescription fixes, fleet.bundles, placeholder fixes
 - Attempt 4 (early): ~85.5% (5,385/6,297) - 406 more strings translated
 - Attempt 5: 87.7% (5,522/6,295) - fixed 29 placeholder keys + ~137 new translations
-- Verify 4 (latest): ~99.9% after agent review — 2 real placeholder issues remain
-- Status: improve-translation dispatched to fix 2 placeholder issues + ~8 genuinely untranslated
+- Verify 4 (latest): ~99.9% after agent review — 2 placeholder issues + 1 untranslated
+- Improve 5 (2026-05-22): Fixed all 3 remaining issues — now ~100% coverage
+- Status: verify-translation dispatched to confirm final fixes
 
 ## Known Remaining Issues
-- `promptForceRemove.podRemoveWarning`: `<strong>`/`</strong>` tags removed in FR translation
-- `catalog.repo.oci.info`: Translation truncated — OCI URL examples omitted
-- `storageClass.deprecated.title`: `"(Deprecated)"` → should be `"(Obsolète)"`
+- None — all issues resolved as of 2026-05-22
 
 ## Placeholder False Positives (for future verifiers)
 - ICU plural body text like `{other}`, `{resource}`, `{item}` inside `one {...} other {...}` are NOT variables — they are translated body text
