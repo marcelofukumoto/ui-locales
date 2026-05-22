@@ -3,13 +3,14 @@ Last updated: 2026-05-22
 
 ## Key facts
 - Use Node.js for all scripting (Python/pip unavailable)
+- js-yaml: install globally with `npm install -g js-yaml`; use `NODE_PATH=$(npm root -g)` to require it
 - Chunking: max ~50 key-value pairs per bash call
-- js-yaml not available without npm install; use custom line-by-line parser
+- When fetching PR file: use github-get_file_contents with ref=refs/pull/12/head; save JSON; extract with python3
 
 ## Details
 
 ### Scripting
-- Simple line-by-line YAML parser works well for leaf extraction
+- `NODE_PATH=/home/runner/.npm-global/lib/node_modules node` to use globally installed modules
 - patch.js approach: find key line, replace value in-place - reliable
 - Key detection via indentation stack works for standard YAML
 - Always use separate patch JSON files per batch to stay within limits
@@ -18,19 +19,23 @@ Last updated: 2026-05-22
 - French translations often contain apostrophes - use double quotes for values with apostrophes
 - Single-quoted YAML strings must escape apostrophes by doubling: '' (not backslash)
 - ICU plural/select blocks: only translate the human-readable portions
-
-### Remote tracking ref trick
-- When PR branch is checked out as detached HEAD via pull/12/head:
-  - Create local branch: git checkout -b <branch-name>
-  - Create remote tracking ref manually: git update-ref refs/remotes/origin/<branch> <commit-sha>
-  - Then push_to_pull_request_branch can compute the incremental patch
+- CRITICAL: When patching multi-line block scalar values (ICU plurals), ensure the patch
+  REPLACES the entire block — do NOT append. Old block must be fully removed before writing new one.
+  The "appended EN content" bug (42 keys in fr-fr attempt 4) was caused by appending instead of replacing.
 
 ### Coverage calculation
-- Non-translatable values: empty strings, pure numbers, single chars, URLs, pure placeholders {var}
-- Many technical terms correctly "kept in English" - verify report may count as untranslated
-- Actual coverage ~5-10% higher than raw script calculation due to valid EN-kept terms
+- Non-translatable: empty strings, pure numbers, single chars, URLs, pure placeholders {var},
+  time abbreviations (5s, 1m), icon identifiers (refresh, error, checkmark), CSS classes
+- Many technical terms correctly "kept in English" - actual coverage ~3-5% higher than raw script
+- ICU plural body text ({other}, {resource}, {item}) are NOT variable placeholders — false positive
+- `<a href>` with reordered rel attributes is functionally equivalent — not a placeholder bug
+
+### Placeholder check tips
+- Extract top-level `{varname}` from ICU expressions, check if varname appears ANYWHERE in FR value
+- For spaced variables `{ varName }` — normalize spaces when comparing
+- HTML tag comparison: normalize attribute order; only flag if href/src URLs differ
 
 ### Performance
 - 1000 strings per run is achievable with 50-key batches
 - ~30 batches needed for 1000 strings
-- Start with highest-count sections for max coverage per run
+- Start with highest-count untranslated sections for max coverage per run

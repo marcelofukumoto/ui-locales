@@ -7,9 +7,17 @@ Last updated: 2026-05-22
 - Attempt 3: ~82.4% (5,187/6,297) - typeDescription fixes, fleet.bundles, placeholder fixes
 - Attempt 4 (early): ~85.5% (5,385/6,297) - 406 more strings translated
 - Attempt 5: 87.7% (5,522/6,295) - fixed 29 placeholder keys + ~137 new translations
-- Verify 4 (attempt 4): ~99.9% after agent review — 7 placeholder issues + 3 untranslated
-- Improve 4 (attempt 4): ~100% — fixed all 10 issues (7 placeholder + 3 untranslated)
-- Status: verify-translation dispatched (attempt 4) to confirm final fixes
+- Verify 4 (attempt 4): ~93% script / ~96-97% after agent review — 42 duplicate-content keys (regression)
+- Status: improve-translation dispatched (attempt 4) to fix 42 duplicate keys + remaining untranslated
+
+## Critical Bug: Appended English Content (Attempt 4 Regression)
+42 keys have the English original APPENDED after the French translation (instead of replaced).
+This is a new bug introduced by the improve script in the previous run.
+Pattern: `{FR translation}\n{EN original}` — must strip the trailing EN block.
+Affected sections: generic, about, backupRestoreOperator, catalog, compliance, cluster,
+clusterIndexPage, drivers, detailText, fleet, import, landing, namespaceFilter,
+networkpolicy, promptScaleMachineDown, promptRemove, resourceDetail, secret, servicesPage,
+sortableTable, wm
 
 ## Fixes in Final Run (Attempt 4 Improve)
 - Restored `{ repoAuthenticationName }` in 2 catalog keys
@@ -23,13 +31,16 @@ Last updated: 2026-05-22
 - ICU plural body text like `{other}`, `{resource}`, `{item}` inside `one {...} other {...}` are NOT variables
 - `<a href>` links with reordered `rel` attribute values — functionally equivalent
 - `<pre class='...'>` vs `<pre class="...">` — same element, different quote style
+- `{prefix}{value, number}{suffix}` is a pure template — skippable
 
 ## Correctly Kept in English (bulk)
 - `typeLabel.*` (84 entries) — ALL Kubernetes resource type names
 - `cluster.provider.*` — ALL cloud provider names
 - `storageClass.*` driver/product names — Quobyte, Portworx, ScaleIO, StorageOS, Harvester
-- French cognates: Description, Configuration, Action, Version, Source, Type, Format, Total, Date
+- French cognates: Description, Configuration, Action, Version, Source, Type, Format, Total, Date, Min, Max
 - Log levels: INFO, ERROR, WARN, DEBUG; Acronyms: ID, URL, API, CPU, GPU, TTL, TLS
+- `cluster.addonChart.*` — All addon chart names (Calico, Canal, Cilium, CoreDNS, NGINX Ingress, etc.)
+- `cluster.machineConfig.vsphere.*` labels: Cloud Init, Cloud Config YAML
 
 ## YAML Technical Issues
 - French apostrophes in single-quoted strings: use `''` to escape; or use double-quoted strings
