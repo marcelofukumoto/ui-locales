@@ -1,12 +1,30 @@
 # Spanish (es-es) Translation Learnings
-Last updated: 2026-05-23
+Last updated: 2026-05-22
 
 ## Key facts
 - Total keys in en-us.yaml: 6,349 leaf keys
-- **Attempt 6**: Fixed `typeLabel.resources` extra key, fixed 21 placeholder issues, translated ~170 strings
-- Coverage after attempt 6: 91.5% (5,808 / 6,349 keys differ from English)
-- True coverage (accounting for intentionally-English strings): ~97%
-- Remaining genuinely untranslated: ~100-200 strings
+- **Attempt 6 verify (this run)**: Coverage = 100% after agent review. 0 genuinely untranslated strings.
+- Translated: 5,774 | Kept in English: 462 | Skipped: 113
+- **15+ confirmed placeholder issues remain** — these are the only blocker
+
+## Remaining placeholder issues (must fix in attempt 7)
+| Key | Problem |
+|-----|---------|
+| `login.welcome` | `{vendor}` hardcoded as "Rancher" |
+| `growl.connectError.message` | `{tries}` missing (truncated) |
+| `growl.reconnected.message` | `{tries}` missing (truncated) |
+| `compliance.alertNeeded` | `{link}`, `{vendor}`, `{docsBase}` missing (HTML links removed) |
+| `gatekeeperConstraint.violations.notAll` | `{shown}` missing (truncated) |
+| `drivers.deactivate.warningDrivers` | `{names}` → wrong vars used |
+| `istio.links.kiali.description` | `{link}`, `{vendor}` missing (HTML link removed) |
+| `monitoring.prometheus.warningInstalled` | `{vendor}` missing |
+| `monitoring.receiver.tls.secretsBanner` | `{docsBase}` missing |
+| `monitoring.v1Warning` | `{vendor}` missing |
+| `cluster.machineConfig.aws.sizeLabel` | ICU truncated, missing 4 vars |
+| `cluster.machineConfig.digitalocean.sizeLabel` | wrong var names |
+| `networkpolicy.selectors.matchingPods.matchesSome` | `{sample}` dropped |
+| `networkpolicy.selectors.matchingNamespaces.matchesSome` | `{sample}` dropped |
+| `networkpolicy.selectors.matchingNamespacesAndPods.matchesSome` | `{samplePods}`, `{sampleNamespaces}` dropped |
 
 ## Structural issues resolved in Attempt 6
 - ✅ Removed extra key `typeLabel.resources` (at lines 8377-8381 in old file)
