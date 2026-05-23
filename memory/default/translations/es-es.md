@@ -2,12 +2,10 @@
 Last updated: 2026-05-23
 
 ## Key facts
-- Total keys: 6,349 | Translated: ~5,694 | Kept: ~332 | Coverage: ~99% (2026-05-23)
-- Attempt 12: Fixed YAML key quoting (yes/no/numeric), logging.install.tooltip (3 code tags), promptRemove.attemptingToRemoveAuthConfig (br+confirmation)
-- Attempt 11: Fixed all 38 structural issues from Attempt 10 — 0 missing keys, 0 extra keys, placeholder restored
-- Key rename bug FIXED: `cluster.credential.harvester.*` was under `gcp` — inserted `harvester:` section header
-- Key rename bug FIXED: `fleet.settings.proxy.placeholder` restored to correct nesting inside `proxy:`
-- YAML key quoting FIXED: Unquoted all `'yes'`/`'no'` and `'1'`/`'2'` etc. numeric keys to match en-us.yaml exactly
+- Total keys: 6,349 | Translated: ~5,795 | Kept: ~499 | Coverage: ~99.98% (Attempt 12, 2026-05-23)
+- Attempt 12: Fixed YAML key quoting (yes/no/numeric), logging.install.tooltip (3 code tags), promptRemove.attemptingToRemoveAuthConfig (br+confirmation). All structural checks now pass.
+- Only 1 genuinely untranslated: `setup.eula` ("By checking the box, you accept the...EULA")
+- Attempt 13 dispatched to fix setup.eula
 
 ## Non-translatable (keep as English)
 - `typeLabel.*` — ALL are Kubernetes resource types in ICU plural format (Deployment, DaemonSet, etc.)
@@ -16,8 +14,9 @@ Last updated: 2026-05-23
 - `cluster.addonChart.*`, `cluster.rke2/k3s.systemService.*` — component names (Calico, Cilium, CoreDNS, etc.)
 - `logging.outputProviders.*` — Elasticsearch, OpenSearch, Redis, Splunk, Kafka, Datadog, etc.
 - `persistentVolume.csi.drivers.*` — Longhorn, Harvester, LVM, NFS, Ceph, GlusterFS, etc.
-- Words same in Spanish: No, Total, Global, General, Selector, Proxy, Local, Host, Dual, Experimental
-- Acronyms: CPU, GPU, RAM, TLS, SSL, API, DNS, RBAC, FQDN, IQN, IPv4, IPv6, MiB, GB, etc.
+- `detailText.binary/empty/unsupported` — angle-bracket format strings MUST NOT be translated (per learnings)
+- Words same in Spanish: No, Total, Global, General, Selector, Proxy, Local, Host, Dual, Experimental, Roles, Normal
+- Acronyms: CPU, GPU, RAM, TLS, SSL, API, DNS, RBAC, FQDN, IQN, IPv4, IPv6, MiB, GB, TTL, SNI, IPAM
 
 ## CRITICAL: key naming rules
 - NEVER rename `cluster.credential.harvester.*` to anything else — this is the Harvester cloud provider section
@@ -25,21 +24,12 @@ Last updated: 2026-05-23
 - Always verify key names match en-us.yaml exactly when writing translation sections
 
 ## CRITICAL placeholder rules
-- `detailText.binary/empty/unsupported`: angle-bracket format strings MUST NOT be translated
-- `fleet.settings.proxy.placeholder`: example placeholders `<username>`, `<password>`, `<port>` MUST NOT be translated
-- `setup.eula`: must keep full SUSE EULA PDF URL
-- `performance.inactivity.information`: MUST include `<code>auth-user-session-ttl-minutes</code>` and `<code>auth-token-max-ttl-minutes</code>` tags
+- `setup.eula`: translate English text, keep full SUSE EULA PDF URL in href unchanged
+- `logging.install.tooltip`: MUST include ALL 3 `<code>` pairs: `<code>journald</code>`, `<code>systemdLogPath</code>`, `<code>/run/log/journal</code>`
+- `promptRemove.attemptingToRemoveAuthConfig`: MUST include both `<br><br>` pairs AND final confirmation sentence
 - HTML anchor `rel` attribute: preserve EXACT order from en-us.yaml
 - ICU plural branches: translate human-readable text inside, keep ICU structure intact
-- `logging.install.tooltip`: MUST include ALL 3 `<code>` pairs: `<code>journald</code>`, `<code>systemdLogPath</code>`, `<code>/run/log/journal</code>`
-- `promptRemove.attemptingToRemoveAuthConfig`: MUST include both `<br><br>` pairs AND the final "¿Está seguro..." confirmation sentence
 
 ## Placeholder false positives (NOT real issues)
-- `{other}`, `{resource}`, `{Support}`, `{core}`, `{Owner}`, `{Empty}` inside ICU plural branches
-- ICU select/plural branch text like `{user}`, `{group}` in select expressions
-
-## Known fixed problem areas (all resolved as of attempt 10)
-- `rbac.globalRoles.waiting`: icon class order = `icon-spin icon icon-spinner` with `style="margin-left: 5px"`
-- `promptScaleMachineDown.scaling`: =1 and other branches must have different text and include `<br>` tag
-- `monitoring.alerting.secrets.info`: complex multiline with `<pre class='inline-block m-0'>` tags
-- GCP credential help blocks: use block scalar `|-` format with complete IAM role lists
+- `{otro}`, `{Soporte}`, `{core}` etc. inside ICU plural branches are CORRECTLY TRANSLATED (not missing placeholders)
+- ICU select/plural branch text like `{user}`, `{group}` in select expressions — these are output messages, not variable refs
