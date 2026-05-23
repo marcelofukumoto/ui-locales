@@ -2,11 +2,11 @@
 Last updated: 2026-05-22
 
 ## Key facts
-- Total keys: 6,349 | Translated: ~5,795 | Kept: ~502 | Skipped: ~52 | Coverage: ~100%
-- Attempt 10 verify: Found key parity error (37 missing + 37 extra) + 1 placeholder issue
-- Key rename bug: `cluster.credential.harvester.*` → wrongly renamed to `cluster.credential.gcp.*` (36 keys + sub-keys)
-- Key rename bug: `fleet.settings.proxy.placeholder` → wrongly renamed to `fleet.settings.placeholder`
-- Placeholder issue: `performance.inactivity.information` simplified, lost `<code>auth-user-session-ttl-minutes</code>` and `<code>auth-token-max-ttl-minutes</code>` tags
+- Total keys: 6,349 | Translated: ~5,789 | Kept: ~536 | Coverage: ~91.5% (2026-05-22)
+- Attempt 11: Fixed all 38 structural issues from Attempt 10 — 0 missing keys, 0 extra keys, placeholder restored
+- Key rename bug FIXED: `cluster.credential.harvester.*` was under `gcp` — inserted `harvester:` section header
+- Key rename bug FIXED: `fleet.settings.proxy.placeholder` restored to correct nesting inside `proxy:`
+- Placeholder FIXED: `performance.inactivity.information` now has both `<code>` tags
 
 ## Non-translatable (keep as English)
 - `typeLabel.*` — ALL are Kubernetes resource types in ICU plural format (Deployment, DaemonSet, etc.)
