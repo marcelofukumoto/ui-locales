@@ -1,13 +1,13 @@
 # Spanish (es-es) Translation Learnings
-Last updated: 2026-05-22
+Last updated: 2026-05-23
 
 ## Key facts
 - Total keys: 6,349 | Translated: ~5,694 | Kept: ~332 | Coverage: ~99% (2026-05-23)
-- Attempt 12 dispatched: 2 real placeholder issues to fix (logging.install.tooltip, promptRemove.attemptingToRemoveAuthConfig)
+- Attempt 12: Fixed YAML key quoting (yes/no/numeric), logging.install.tooltip (3 code tags), promptRemove.attemptingToRemoveAuthConfig (br+confirmation)
 - Attempt 11: Fixed all 38 structural issues from Attempt 10 — 0 missing keys, 0 extra keys, placeholder restored
 - Key rename bug FIXED: `cluster.credential.harvester.*` was under `gcp` — inserted `harvester:` section header
 - Key rename bug FIXED: `fleet.settings.proxy.placeholder` restored to correct nesting inside `proxy:`
-- YAML key quoting: en-us.yaml uses unquoted `yes`/`no` and numeric keys; es-es.yaml uses `'yes'`/`'no'`/`'1'` etc. — may differ at parser level
+- YAML key quoting FIXED: Unquoted all `'yes'`/`'no'` and `'1'`/`'2'` etc. numeric keys to match en-us.yaml exactly
 
 ## Non-translatable (keep as English)
 - `typeLabel.*` — ALL are Kubernetes resource types in ICU plural format (Deployment, DaemonSet, etc.)
