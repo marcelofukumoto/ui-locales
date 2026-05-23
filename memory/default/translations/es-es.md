@@ -2,9 +2,9 @@
 Last updated: 2026-05-23
 
 ## Key facts
-- Total keys: 6,349 | Translated: ~5,796 | Kept: ~499 | Coverage: 100% (Attempt 13, 2026-05-23)
-- Attempt 13: Translated final string `setup.eula`. All strings now translated.
-- All structural issues from Attempt 11 fixed in Attempt 12 (key quoting, placeholder fixes).
+- Total keys: 6,349 | Translated: ~5,796 | Kept: ~488 | Untranslated: ~5 | Coverage: ~99.9% (Attempt 13 verify, 2026-05-23)
+- Attempt 13 verify: Found ~5 genuinely untranslated strings: `fleet.helmOp.values.valuesFiles.selectLabel/empty`, `detailText.binary/empty/unsupported`. Dispatched attempt 14.
+- Attempt 13 improve: Translated `setup.eula`. Script claimed 100% but verify found 5 remaining.
 
 ## Non-translatable (keep as English)
 - `typeLabel.*` — ALL are Kubernetes resource types in ICU plural format (Deployment, DaemonSet, etc.)
@@ -13,7 +13,7 @@ Last updated: 2026-05-23
 - `cluster.addonChart.*`, `cluster.rke2/k3s.systemService.*` — component names (Calico, Cilium, CoreDNS, etc.)
 - `logging.outputProviders.*` — Elasticsearch, OpenSearch, Redis, Splunk, Kafka, Datadog, etc.
 - `persistentVolume.csi.drivers.*` — Longhorn, Harvester, LVM, NFS, Ceph, GlusterFS, etc.
-- `detailText.binary/empty/unsupported` — angle-bracket format strings MUST NOT be translated (per learnings)
+- `detailText.binary/empty/unsupported` — angle-bracket format strings flagged as untranslated; agent review found ~5 genuinely untranslated; dispatched attempt 14 to fix these
 - Words same in Spanish: No, Total, Global, General, Selector, Proxy, Local, Host, Dual, Experimental, Roles, Normal
 - Acronyms: CPU, GPU, RAM, TLS, SSL, API, DNS, RBAC, FQDN, IQN, IPv4, IPv6, MiB, GB, TTL, SNI, IPAM
 
