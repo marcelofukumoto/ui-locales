@@ -2,9 +2,9 @@
 Last updated: 2026-05-23
 
 ## Key facts
-- Total keys: 6,349 | Translated: ~5,796 | Kept: ~488 | Untranslated: 0 | Coverage: 100% (Attempt 14, 2026-05-23)
+- Total keys: 6,349 | Translated: 5,549 | Kept: ~488 | Skipped: 312 | Untranslated: 0 | Coverage: 100% ✅ (Attempt 14 verify, 2026-05-23)
 - Attempt 14: Translated final 5 strings: `fleet.helmOp.values.valuesFiles.selectLabel/empty`, `detailText.binary/empty/unsupported`
-- Attempt 13 verify: Found ~5 genuinely untranslated strings; everything else was correctly kept in English
+- Attempt 14 verify: 0 genuinely untranslated strings — PR approved with `ready-to-merge` label
 
 ## Non-translatable (keep as English)
 - `typeLabel.*` — ALL are Kubernetes resource types in ICU plural format (Deployment, DaemonSet, etc.)
