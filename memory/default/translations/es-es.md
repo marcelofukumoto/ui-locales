@@ -2,11 +2,12 @@
 Last updated: 2026-05-22
 
 ## Key facts
-- Total keys: 6,349 | Translated: ~5,789 | Kept: ~536 | Coverage: ~91.5% (2026-05-22)
+- Total keys: 6,349 | Translated: ~5,694 | Kept: ~332 | Coverage: ~99% (2026-05-23)
+- Attempt 12 dispatched: 2 real placeholder issues to fix (logging.install.tooltip, promptRemove.attemptingToRemoveAuthConfig)
 - Attempt 11: Fixed all 38 structural issues from Attempt 10 — 0 missing keys, 0 extra keys, placeholder restored
 - Key rename bug FIXED: `cluster.credential.harvester.*` was under `gcp` — inserted `harvester:` section header
 - Key rename bug FIXED: `fleet.settings.proxy.placeholder` restored to correct nesting inside `proxy:`
-- Placeholder FIXED: `performance.inactivity.information` now has both `<code>` tags
+- YAML key quoting: en-us.yaml uses unquoted `yes`/`no` and numeric keys; es-es.yaml uses `'yes'`/`'no'`/`'1'` etc. — may differ at parser level
 
 ## Non-translatable (keep as English)
 - `typeLabel.*` — ALL are Kubernetes resource types in ICU plural format (Deployment, DaemonSet, etc.)
@@ -30,6 +31,8 @@ Last updated: 2026-05-22
 - `performance.inactivity.information`: MUST include `<code>auth-user-session-ttl-minutes</code>` and `<code>auth-token-max-ttl-minutes</code>` tags
 - HTML anchor `rel` attribute: preserve EXACT order from en-us.yaml
 - ICU plural branches: translate human-readable text inside, keep ICU structure intact
+- `logging.install.tooltip`: MUST include ALL 3 `<code>` pairs: `<code>journald</code>`, `<code>systemdLogPath</code>`, `<code>/run/log/journal</code>`
+- `promptRemove.attemptingToRemoveAuthConfig`: MUST include both `<br><br>` pairs AND the final "¿Está seguro..." confirmation sentence
 
 ## Placeholder false positives (NOT real issues)
 - `{other}`, `{resource}`, `{Support}`, `{core}`, `{Owner}`, `{Empty}` inside ICU plural branches
