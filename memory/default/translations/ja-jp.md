@@ -1,7 +1,11 @@
 # Japanese (ja-jp) Translation Learnings
+Last updated: 2026-05-27
 
-## File
-`pkg/ui-locales/l10n/ja-jp.yaml`
+## Key facts
+- File: `pkg/ui-locales/l10n/ja-jp.yaml`
+- Total leaf keys: 6,349
+- Translatable keys: 6,298 (51 skipped)
+- Attempt 5 verify: 90% (5,688/6,298)
 
 ## Coverage History
 | Attempt | Coverage | Translated | Remaining |
@@ -11,135 +15,58 @@
 | 3 verify | 75% | ~4,725 | ~1,575 |
 | 4 start | 71.6% | ~4,508 | ~1,792 |
 | 4 end | 86.6% | ~5,456 | ~844 |
+| 5 verify | 90% | 5,476+212 | ~610 |
 
-## Translation Notes
+## Placeholder Issues Found (attempt 5 verify)
+- `catalog.install.warning.managed`: Missing `{version, select, ...}` ICU block — translation truncated EN value
+- `principal.loading`, `wm.connection.connecting`: Use Unicode `…` instead of `&hellip;`
 
-### Technical Terms (keep in English / same as English)
+## Remaining Untranslated (~610 strings)
+| Section | Count |
+|---------|-------|
+| cluster | 122 |
+| fleet | 41 |
+| monitoring | 32 |
+| authConfig | 23 |
+| logging | 21 |
+| workload | 16 |
+| catalog | 16 |
+| errors | 11 |
+| asyncButton | 11 |
+| model | 13 |
+| wm | 9 |
+| suffix | 8 |
+| setup | 8 |
+| drivers | 8 |
+| dynamicContent | 8 |
+
+## Technical Terms (keep in English)
 - Kubernetes resource types: ConfigMap, Deployment, DaemonSet, StatefulSet, etc.
 - Access modes: ReadWriteOnce, ReadWriteMany, ReadOnlyMany
-- Time abbreviations: 5s, 10s, 1m, 5m, 15m, 30m, 1h (keep as-is)
+- Time abbreviations: 5s, 10s, 1m, 5m (keep as-is)
 - Brand names: Calico, Canal, Cilium, CoreDNS, Nginx, Prometheus, Grafana, etc.
-- Cloud provider names: Amazon, Azure, Google, vSphere, Harvester
-- Auth protocol names: LDAP, SAML, OAuth, OIDC, TLS
+- Cloud providers: Amazon, Azure, Google, vSphere, Harvester
+- Auth protocols: LDAP, SAML, OAuth, OIDC, TLS
 - Log levels: INFO, ERROR, WARN, DEBUG
-- Product names: Slack, PagerDuty, Opsgenie, Webhook, Fluentd, etc.
-- TableHeaders: CPU, RAM, IP, ID, OS, URL, TTL
+- Monitoring: Slack, PagerDuty, Opsgenie, Webhook, Fluentd, S3, GELF, GCS
+- Table headers: CPU, RAM, IP, ID, OS, URL, TTL
 - Git platforms: GitHub, GitLab, SHA
-- Technical abbreviations: TTY, Stdin, DNS, HCI, RBAC, API
+- Tech abbreviations: TTY, Stdin, DNS, HCI, RBAC, API, FQDN, SNI, IQN, LVM, IPAM
+- asyncButton icon names: refresh, checkmark, error (icon identifiers)
+- vSphere CPI, vSphere CSI, NGINX Ingress, Kube Proxy, Metrics Server (addon charts)
 
-### Dotted Keys
+## Dotted Keys
 Some keys have literal dots in the YAML key name (not nested paths):
-- `typeLabel.apiregistration.k8s.io.apiservice` — the last part after `typeLabel.` is the literal key
-- `secret.initials.kubernetes.io/service-account-token` — slash in key name
-- Use `patch-yaml2.js` (smart greedy patcher) for ALL keys; it handles both dotted and regular keys
+- `typeLabel.management.cattle.io.oidcclient` — key is `management.cattle.io.oidcclient` under `typeLabel:`
+- Use dotted-key-aware patch scripts for these
 
-### Coverage Script Note
-Many technical terms (brand names, product names, acronyms) remain "untranslated" because their correct Japanese translation IS the same English string. The script counts them as untranslated even though they are correct. Real untranslated count is somewhat lower than reported.
+## ICU Plural/Select Notes
+- Japanese doesn't grammatically distinguish plural, but ICU format is still required
+- Keep `{count, plural, one {...} other {...}}` structure intact
+- Only translate the human-readable text portions inside alternatives
 
-### ICU Plural Forms
-Japanese doesn't grammatically distinguish plural, but ICU format is still required:
-```
-{count, plural,
-=0 {0 個のアイテム}
-=1 {1 個のアイテム}
-other {# 個のアイテム}
-}
-```
-
-### Common Japanese Translations
-- cluster → クラスター
-- namespace → 名前空間
-- node → ノード
-- workload → ワークロード
-- service → サービス
-- storage → ストレージ
-- volume → ボリューム
-- persistent volume → 永続ボリューム
-- user → ユーザー
-- role → ロール
-- permission → 権限
-- settings → 設定
-- configuration → 設定/構成
-- dashboard → ダッシュボード
-- overview → 概要
-- details → 詳細
-- create → 作成
-- delete → 削除
-- edit → 編集
-- save → 保存
-- cancel → キャンセル
-- confirm → 確認
-- warning → 警告
-- error → エラー
-- success → 成功
-- loading → 読み込み中
-- active → アクティブ
-- inactive → 非アクティブ
-- enabled → 有効
-- disabled → 無効
-- required → 必須
-- optional → 任意
-- default → デフォルト
-- custom → カスタム
-- name → 名前
-- label → ラベル
-- description → 説明
-- version → バージョン
-- status → ステータス
-- logs → ログ
-- events → イベント
-- conditions → 条件
-- replicas → レプリカ
-- image → イメージ
-- container → コンテナ
-- pod → ポッド
-- ingress → Ingress
-- certificate → 証明書
-- secret → シークレット
-- project → プロジェクト
-- member → メンバー
-- owner → オーナー
-- admin → 管理者
-- password → パスワード
-- token → トークン
-- endpoint → エンドポイント
-- registry → レジストリ
-- repository → リポジトリ
-- branch → ブランチ
-- commit → コミット
-- fleet → Fleet (keep)
-- snapshot → スナップショット
-- backup → バックアップ
-- restore → リストア
-
-## Remaining Untranslated (attempt 4 end, ~844 strings)
-- cluster: ~160 (many HTML credential help texts, long descriptions)
-- fleet: ~45
-- monitoring: ~38 (many technical terms same in English)
-- workload: ~30
-- authConfig: ~26 (HTML-heavy steps)
-- logging: ~27
-- model: ~25
-- catalog: ~19
-- generic: ~18 (time abbreviations like 5s, 1m — keep in English)
-- asyncButton icons: ~11 (icon names like "refresh", "checkmark" — keep)
-
-## Patch Script Usage
-```bash
-node /tmp/gh-aw/agent/patch-yaml2.js pkg/ui-locales/l10n/ja-jp.yaml '{"key": "value"}'
-```
-- Use for all keys (handles both dotted and nested)
-- Second arg is JSON string
-- Logs "Patched N keys"
-
-## Coverage Script
-```javascript
-const nonTranslatable = (v) => {
-  if (v === '' || v === '—' || v === '-') return true;
-  if (/^\d+$/.test(v)) return true;
-  if (/^[a-zA-Z0-9_-]$/.test(v)) return true;
-  if (/^https?:\/\//.test(v) || /^\/[a-zA-Z]/.test(v)) return true;
-  if (/^\{[^}]+\}$/.test(v)) return true;
-  return false;
-};
-```
+## Coverage Script Notes
+- Script classifies `…` (U+2026) vs `&hellip;` as different but both are functionally equivalent
+- Many technical terms remain "untranslated" in script but are correct kept-in-English
+- asyncButton icon names (refresh, checkmark, error, refresh) are icon identifiers — keep
+- typeLabel/typeDescription keys have dotted names: getValue(obj, path) splitting on `.` fails for these
