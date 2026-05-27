@@ -426,7 +426,7 @@ accountAndKeys:
     add:
       description:
         label: 説明
-        placeholder: Optionally enter a description to help you identify this API Key
+        placeholder: "例: helmコマンドの目的"
       label: APIキーを作成
       ariaLabel:
         expiration: Expiration duration - number input
@@ -518,7 +518,7 @@ authConfig:
         '2': <li>「秘密鍵」で「秘密鍵を生成」をクリックします</li>
         '3': <li>新しく作成したOAuthアプリの「App ID」、「Client ID」、「Client Secret」、「Private Key」をコピーして以下のフィールドに貼り付けてください</li>
     host:
-      label: GitHub Enterprise ホスト
+      label: これはHarvesterクラスターです - 管理するにはHarvester機能フラグを有効にしてください
       placeholder: '例: github.mycompany.example'
     target:
       label: 使用するGitHubのバージョンを選択してください
@@ -615,10 +615,10 @@ authConfig:
     groupMemberUserAttribute: グループメンバーユーザー属性
     groupSearchBase:
       label: グループ検索ベース
-      placeholder: ou=groups,dc=mycompany,dc=com
+      placeholder: "ou=groups,dc=mycompany,dc=com"
     hostname:
       label: ホスト名/IP
-      placeholder: '例: server1,server2'
+      placeholder: "例: web"
       hint: 複数のサーバーはカンマ区切りリストとして指定できます
     loginAttribute: ログイン属性
     nameAttribute: 名前属性
@@ -647,17 +647,17 @@ authConfig:
     serviceAccountInfo: '{vendor} needs a service account that has read-only access to all of the domains that will be able to login, so that we can determine what groups a user is a member of when they make a request with an API key.'
     starttls:
       label: Start TLS
-      tip: Upgrades non-encrypted connections by wrapping with TLS during the connection process. Can not be used in conjunction with TLS.
+      tip: 接続プロセス中にTLSでラップすることで、暗号化されていない接続をアップグレードします。TLSと組み合わせて使用することはできません。
     searchUsingServiceAccount:
-      label: Enable Service Account Search
-      tip: When enabled, Rancher will use the service account instead of the user account to search for users and groups.
+      label: サービスアカウント検索を有効化
+      tip: 有効にすると、Rancherはユーザーアカウントの代わりにサービスアカウントを使用してユーザーとグループを検索します。
     tls: TLS
     userEnabledAttribute: ユーザー有効属性
     userMemberAttribute: ユーザーメンバー属性
     userLoginFilter: ユーザーログインフィルター
     userSearchBase:
-      label: ユーザー検索ベース
-      placeholder: e.g. ou=users,dc=mycompany,dc=com
+      label: SSL
+      placeholder: "例: 8080またはmyport"
     username: ユーザー名
     usernameAttribute: ユーザー名属性
     table:
@@ -667,7 +667,7 @@ authConfig:
     entityID: エンティティIDフィールド
     UID: UIDフィールド
     adfs: AD FSアカウントを設定
-    api: '{vendor} API Host'
+    api: "{vendor} APIホスト"
     cert:
       label: 証明書
       placeholder: Paste in the certificate, starting with -----BEGIN CERTIFICATE-----
@@ -695,11 +695,11 @@ authConfig:
   azuread:
     tenantId:
       label: テナントID
-      tooltip: From the Azure AD portal
-      placeholder: A long UUID string
+      tooltip: Azure ADポータルから
+      placeholder: 長いUUID文字列
     applicationId:
       label: アプリケーションID
-      placeholder: A long UUID string
+      placeholder: 長いUUID文字列
     applicationSecret:
       label: アプリケーションシークレット
     endpoint:
@@ -724,14 +724,14 @@ authConfig:
     reply:
       info: Azure AD requires a whitelisted URL for your Rancher server before beginning this setup. Please ensure that the following URL is set in the Reply URL section of your Azure Portal. Please note that it may take up to 5 minutes for the whitelisted URL to propagate.
       label: リプライURL
-      ariaLabel: Copy Reply URL to clipboard
+      ariaLabel: 返信URLをクリップボードにコピー
     updateEndpoint:
       button: エンドポイントを更新
       banner:
         message: 'Azure AD Authentication must be updated: it is using the Azure Graph API, which will be deprecated at the end of 2022.'
-        linkText: Update it here.
+        linkText: ここで更新する。
       modal:
-        title: Are you sure? This update is irreversible.
+        title: 本当によろしいですか？この更新は元に戻せません。
         body: <p><b>You may need to make some additional changes</b>. Please ensure the Azure AD app has the Directory.Read.All <b>Application</b> permission added to Microsoft Graph.<br> If any endpoints were customized while configuring Azure AD authentication in Rancher, they will not be automatically updated. </p>
   oidc:
     endSessionEndpoint:
@@ -779,7 +779,7 @@ authConfig:
       label: PKCE（S256）を有効にする
       tooltip: Enable Proof Key for Code Exchange (PKCE) using the S256 code challenge method. When enabled, this client must use PKCE with S256 for authorization requests.
     pkceMethod:
-      label: PKCE Method
+      label: PKCEメソッド
     cert:
       label: 証明書
       placeholder: Paste in the certificate, starting with -----BEGIN CERTIFICATE-----
@@ -1018,7 +1018,7 @@ backupRestoreOperator:
       label: デフォルトのストレージ場所
       options:
         defaultStorageClass: デフォルトのストレージクラスを使用 ({name})
-        none: デフォルトのストレージ場所なし
+        none: なし
         pickPV: 既存の永続ボリュームを使用
         pickSC: 既存のストレージクラスを使用
         s3: S3互換オブジェクトストアを使用
@@ -1092,12 +1092,12 @@ catalog:
       resources:
         label: リソース
         busy: '{app}が完全にインストールされると、関連リソースが表示されます。'
-      values: Values YAML
+      values: 値のYAML
     upgrade:
       uncertainUpgradeWarningTooltip: アップグレードが利用可能かどうか判断できません（このアプリケーションのデプロイに使用されたリポジトリとチャートを特定できません）
   chart:
     registry:
-      label: コンテナレジストリ
+      label: レジストリ
       tooltip: コンテナイメージはクラスターコンテナレジストリから、またはシステムコンテナレジストリ設定からプルされます。このデフォルト動作を変更するには、ここでレジストリを入力または更新してください
       custom:
         checkBoxLabel: Rancherシステムコンテナイメージのコンテナレジストリ
@@ -1247,13 +1247,13 @@ catalog:
       legacy:
         label: This is a {legacyType} App and it cannot be modified here
         enableLegacy:
-          prompt: You will need to enable Legacy Features to edit this App
-          goto: Go to Feature Flag settings
-        navigate: Navigate to Legacy Apps
-        mcmNotSupported: Legacy Multi-cluster Apps can not be managed through this UI
+          prompt: このアプリを編集するにはレガシー機能を有効にする必要があります
+          goto: 機能フラグ設定へ
+        navigate: レガシーアプリへ移動
+        mcmNotSupported: レガシーマルチクラスターアプリはこのUIでは管理できません
         category:
-          legacy: Legacy
-          mcm: Multi-cluster
+          legacy: レガシー
+          mcm: マルチクラスター
     header:
       install: '{name}をインストール'
       installGeneric: チャートをインストール
@@ -1268,7 +1268,7 @@ catalog:
       dryRun: ドライラン
       force: 強制
       historyMax:
-        label: Keep last
+        label: 直近を保持
         unit: |-
           {value, plural,
             =1 { revision }
@@ -1278,7 +1278,7 @@ catalog:
       openapi: OpenAPIスキーマを検証
       resetValues: 値をリセット
       timeout:
-        label: Timeout
+        label: タイムアウト
         unit: |-
           {value, plural,
             =1 { second }
@@ -1292,39 +1292,39 @@ catalog:
       valuesYaml: YAMLを編集
       diff: 変更を比較
     slideIn:
-      dock: Dock to shell
+      dock: シェルにドック
     steps:
       basics:
-        label: Metadata
-        subtext: Set App metadata
+        label: メタデータ
+        subtext: アプリのメタデータを設定
         description: This process will help {action, select, install { create } upgrade { upgrade } downgrade { upgrade } editVersion { update } } the {existing, select, true { app} false { chart} }. Start by setting some basic information used by {vendor} to manage the App.
-        nsCreationDescription: To install the app into a new namespace enter it's name in the Namespace field and select it.
-        createNamespace: Namespace <code>{namespace}</code> will be created.
-        requiresImagePullSecret: This Chart requires an Image Pull Secret in order for images to be succesfully pulled.
-        dontUseDefaultImagePullSecret: Manually select an Image Pull Secret or create a new one with Username/Password
+        nsCreationDescription: アプリを新しいネームスペースにインストールするには、ネームスペースフィールドに名前を入力して選択してください。
+        createNamespace: "ネームスペース <code>{namespace}</code> が作成されます。"
+        requiresImagePullSecret: このチャートはイメージを正常にプルするためにImage Pull Secretが必要です。
+        dontUseDefaultImagePullSecret: Image Pull Secretを手動で選択するか、ユーザー名/パスワードで新規作成してください
         generatedNewImagePullSecret: A new Image Pull Secret <b>{ imagePullSecretName }</b> will be generated
         generatedImagePullSecretBannerFromPreviousAuth: A new Image Pull Secret <b>{ imagePullSecretName }</b> will be generated from the Repository secret <b>{ repoAuthenticationName }</b>.
         usePreviouslyGeneratedImagePullSecretBanner: Image Pull Secret <b>{ imagePullSecretName }</b> was already created previously from the Repository secret <b>{ repoAuthenticationName }</b> and will be used.
       clusterTplVersion:
-        label: Version
-        subtext: Select a version of the template
-        description: Select a version of the Cluster Template
+        label: バージョン
+        subtext: テンプレートのバージョンを選択
+        description: クラスターテンプレートのバージョンを選択
       clusterTplValues:
-        label: Values
-        subtext: Change how the Cluster is defined
-        description: Configure Values used by Helm that help define the Cluster.
+        label: 値
+        subtext: クラスターの定義方法を変更
+        description: クラスターを定義するHelmの値を設定します。
       helmValues:
-        label: Values
-        subtext: Change how the App works
-        description: Configure Values used by Helm that help define the App.
+        label: 値
+        subtext: アプリの動作を変更
+        description: アプリを定義するHelmの値を設定します。
         chartInfo:
-          button: View Chart Info
-          label: Chart Info
+          button: チャート情報を表示
+          label: チャート情報
       helmCli:
-        checkbox: Customize Helm options before install
-        label: Helm Options
-        subtext: Change how the app is deployed
-        description: Supply additional deployment options
+        checkbox: インストール前にHelmオプションをカスタマイズ
+        label: Helmオプション
+        subtext: アプリのデプロイ方法を変更
+        description: 追加のデプロイオプションを指定
     version: バージョン
     versions:
       current: '{ver}（現在）'
@@ -1344,8 +1344,8 @@ catalog:
     all: すべて
     gitBranch:
       label: Gitブランチ
-      placeholder: e.g. master
-      defaultMessage: Will default to "master" if left blank
+      placeholder: "例: master"
+      defaultMessage: "空白の場合は \"master\" がデフォルトになります"
     gitRepo:
       label: Git リポジトリURL
       placeholder: e.g. https://github.com/your-company/charts.git
@@ -1366,12 +1366,12 @@ catalog:
         title: OCIリポジトリ
         description: HelmチャートをアーティファクトとしてホストするOCI準拠レジストリ
       suseAppCollection:
-        title: SUSE App Collection
-        description: Curated, enterprise-ready applications from SUSE Application Collection
+        title: SUSEアプリコレクション
+        description: SUSEアプリケーションコレクションのキュレーションされたエンタープライズ向けアプリ
       label: ターゲット
     url:
       label: インデックスURL
-      placeholder: e.g. https://charts.rancher.io
+      placeholder: "例: myrule"
     oci:
       urlLabel: OCIリポジトリホストURL
       placeholder: e.g. oci://<registry-host>/<namespace>/<chart-name>:<tag>
@@ -1383,18 +1383,18 @@ catalog:
         label: 指数バックオフ
         minWait:
           label: 最小待機時間
-          placeholder: 'default: 1'
+          placeholder: "デフォルト: 1"
         maxWait:
           label: 最大待機時間
-          placeholder: 'default: 5'
+          placeholder: "デフォルト: 5"
         maxRetries:
           label: 最大リトライ回数
-          placeholder: 'default: 5'
+          placeholder: "デフォルト: 5"
     refreshInterval:
       label: 更新間隔
       placeholder: 'default: {hours}'
   tools:
-    iconAlt: Icon for {app} Cluster Tool
+    iconAlt: "{app} クラスターツールのアイコン"
     header: クラスターツール
     noTools: クラスターツールが見つかりません
     action:
@@ -1405,8 +1405,8 @@ catalog:
       remove: 削除
       manage: 管理
   os:
-    versionIncompatible: This version is not compatible with Windows nodes.
-    chartIncompatible: This chart is not compatible with Windows nodes.
+    versionIncompatible: このバージョンはWindowsノードと互換性がありません。
+    chartIncompatible: このチャートはWindowsノードと互換性がありません。
 changePassword:
   title: パスワードを変更
   cancel: キャンセル
@@ -1500,44 +1500,44 @@ compliance:
       noNodes: No Additional Information
 cluster:
   jwtAuthentication:
-    banner: Service Account access with JWT authentication can be configured after cluster creation from <br> <code>Cluster Management > Advanced > JWT Authentication</code>
+    banner: "サービスアカウントのJWT認証アクセスは、クラスター作成後に<br> <code>クラスター管理 > 詳細設定 > JWT認証</code>から設定できます。"
   addonChart:
     rancher-vsphere-cpi:
-      label: 'Add-on: vSphere CPI'
+      label: "アドオン: vSphere CPI"
       configuration: vSphere CPI
     rancher-vsphere-csi:
-      label: 'Add-on: vSphere CSI'
+      label: "アドオン: vSphere CSI"
       configuration: vSphere CSI
     rke2-calico:
-      label: 'Add-on: Calico'
+      label: "アドオン: Calico"
       configuration: Calico
     rke2-calico-crd:
-      label: 'Add-on: Calico'
+      label: "アドオン: Calico"
       configuration: Calico
     rke2-canal:
-      label: 'Add-on: Canal'
+      label: "アドオン: Canal"
       configuration: Canal
     rke2-cilium:
-      label: 'Add-on: Cilium'
+      label: "アドオン: Cilium"
       configuration: Cilium
     rke2-coredns:
-      label: 'Add-on: CoreDNS'
+      label: "アドオン: CoreDNS"
       configuration: CoreDNS
     rke2-ingress-nginx:
-      label: 'Add-on: NGINX'
+      label: "アドオン: NGINX"
       configuration: NGINX Ingress
     rke2-kube-proxy:
-      label: 'Add-on: Kube Proxy'
+      label: "アドオン: Kube Proxy"
       configuration: Kube Proxy
     rke2-metrics-server:
-      label: 'Add-on: Metrics Server'
+      label: "アドオン: Metrics Server"
       configuration: Metrics Server
     rke2-multus:
-      label: 'Add-on: Multus'
+      label: "アドオン: Multus"
       configuration: Multus
   agentEnvVars:
     label: エージェント環境
-    detail: Add additional environment variables to the agent container.  This is most commonly useful for configuring a HTTP proxy.
+    detail: エージェントコンテナに追加の環境変数を設定します。HTTPプロキシの設定に最もよく使用されます。
     keyLabel: 変数名
   cloudProvider:
     aws:
@@ -1550,7 +1550,7 @@ cluster:
       label: Google
     rancher-vsphere:
       label: vSphere
-      note: <b>Important:</b> Configure the vSphere Cloud Provider and Storage Provider options in the Add-on Configuration tab.
+      note: "<b>重要:</b> アドオン設定タブでvSphereクラウドプロバイダーとストレージプロバイダーのオプションを設定してください。"
     harvester:
       label: Harvester
   copyConfig: KubeConfigをクリップボードにコピー
@@ -1558,27 +1558,27 @@ cluster:
   custom:
     nodeRole:
       label: ノードロール
-      detail: Choose what roles the node will have in the cluster.  The cluster needs to have at least one node with each role.
-      warning: The cluster needs to have at least one node with each role to be usable.
+      detail: クラスター内でノードが持つ役割を選択してください。クラスターは各役割を持つノードを少なくとも1つ必要とします。
+      warning: クラスターを使用可能にするには、各役割を持つノードが少なくとも1つ必要です。
     advanced:
       label: 詳細
-      detail: Additional control over how the node will be registered.  These values will often need to be different for each node registered.
+      detail: ノードの登録方法を詳細に制御します。これらの値は登録する各ノードで異なる場合があります。
       nodeName: ノード名
       publicIp: ノードパブリックIP
       privateIp: ノードプライベートIP
       nodeLabel:
         title: ノードラベル
         label: ラベルを追加
-      ipv6: 'It looks like this cluster uses IPv6 networking: <code>Node Private IP</code> should be set to the cluster''s IPv6 address.'
+      ipv6: "このクラスターはIPv6ネットワークを使用しているようです: <code>ノードプライベートIP</code>はクラスターのIPv6アドレスに設定してください。"
     registrationCommand:
       label: 登録コマンド
-      linuxDetail: Run this command on each of the existing Linux machines you want to register.
-      windowsDetail: Run this command in PowerShell on each of the existing Windows machines you want to register.
-      windowsWorkersOnly: <b>Windows nodes can only be workers.</b>
-      windowsNotReady: The cluster must be up and running with Linux etcd, control plane, and worker nodes before the registration command for adding Windows workers will display.<br /> <br /><b>Windows nodes can only be workers.</b>
-      windowsWarning: Workload pods, including some deployed by Rancher charts, will be scheduled on both Linux and Windows nodes by default. Edit NodeSelector in the chart to direct them to be placed onto a compatible node.
-      windowsDeprecatedForRKE1: Windows support is being deprecated for RKE1. We suggest migrating to RKE2.
-      insecure: 'Insecure: Select this to skip TLS verification if your server has a self-signed certificate.'
+      linuxDetail: 登録する既存のLinuxマシンそれぞれでこのコマンドを実行してください。
+      windowsDetail: 登録する既存のWindowsマシンそれぞれのPowerShellでこのコマンドを実行してください。
+      windowsWorkersOnly: "<b>Windowsノードはワーカーのみ可能です。</b>"
+      windowsNotReady: "Linuxのetcdノードとコントロールプレーンノードおよびワーカーノードを持つクラスターが起動して実行中になるまで、Windowsワーカーを追加するための登録コマンドは表示されません。<br /> <br /><b>Windowsノードはワーカーのみ可能です。</b>"
+      windowsWarning: 一部のRancherチャートでデプロイされたものを含むワークロードポッドは、デフォルトでLinuxとWindowsの両方のノードにスケジュールされます。互換性のあるノードに配置するには、チャートのNodeSelectorを編集してください。
+      windowsDeprecatedForRKE1: RKE1ではWindowsサポートが廃止予定です。RKE2への移行をお勧めします。
+      insecure: "非セキュア: サーバーに自己署名証明書がある場合は、TLS検証をスキップするにはこれを選択してください。"
   credential:
     banner:
       createCredential: |-
@@ -1590,18 +1590,18 @@ cluster:
       label: 既存を選択
     select:
       option:
-        new: Create new...
-        none: Select a credential...
+        new: 新規作成...
+        none: 認証情報を選択...
     aws:
       accessKey:
         label: アクセスキー
-        placeholder: Your AWS Access Key
+        placeholder: APIアクセスキー
       defaultRegion:
-        help: The default region to use when creating clusters.  Also contacted to verify that this credential works.
+        help: クラスター作成時に使用するデフォルトのリージョン。この認証情報が機能することを確認するためにも使用されます。
         label: デフォルトリージョン
       secretKey:
         label: シークレットキー
-        placeholder: Your AWS Secret Key
+        placeholder: APIシークレットキー
     azure:
       clientId:
         label: クライアントID
@@ -1615,9 +1615,9 @@ cluster:
         label: テナントID
     digitalocean:
       accessToken:
-        help: Paste in a Personal Access Token from the DigitalOcean <a href="https://cloud.digitalocean.com/settings/api/tokens" target="_blank" rel="noopener noreferrer nofollow">Applications & API</a> screen.
+        help: "DigitalOceanのApplications & API画面からパーソナルアクセストークンを貼り付けてください。"
         label: アクセストークン
-        placeholder: Your DigitalOcean API Access Token
+        placeholder: Linode APIアクセストークン
     label: クラウド認証情報
     linode:
       accessToken:
@@ -1627,11 +1627,11 @@ cluster:
     pnap:
       clientIdentifier:
         label: クライアントID
-        placeholder: Your Client ID
+        placeholder: クライアントID
       clientSecret:
         help: From <a href="https://bmc.phoenixnap.com/credentials/" target="_blank" rel="nofollow noreferrer noopener">phoenixNAP BMC Portal</a> API Credentials
         label: クライアントシークレット
-        placeholder: Your Client Secret
+        placeholder: クライアントシークレット
     name:
       label: 認証情報名
       placeholder: Name for this credential
@@ -1644,16 +1644,16 @@ cluster:
         placeholder: 'Optional: The default region to use'
       defaultBucket:
         label: デフォルトバケット
-        placeholder: 'Optional: The default bucket to use'
+        placeholder: "省略可能: 使用するデフォルトのバケット"
       defaultEndpoint:
         label: デフォルトエンドポイント
-        placeholder: 'Optional: The default endpoint to use'
+        placeholder: "省略可能: 使用するデフォルトのエンドポイント"
       defaultFolder:
         label: デフォルトフォルダー
-        placeholder: 'Optional: The default folder to use'
+        placeholder: "省略可能: 使用するデフォルトのフォルダー"
       defaultEndpointCA:
-        label: Default Endpoint CA Cert
-        placeholder: 'Optional: The default CA certificate to use to verify the endpoint'
+        label: デフォルトエンドポイントCA証明書
+        placeholder: "省略可能: エンドポイント検証に使用するデフォルトのCA証明書"
       defaultSkipSSLVerify:
         label: 任意の証明書を受け入れる（安全でない）
       secretKey:
@@ -1664,16 +1664,16 @@ cluster:
         label: vCenter または ESXi サーバー
         placeholder: vcenter.domain.com
       port:
-        label: Port
+        label: ポート
       username:
         label: ユーザー名
       password:
         label: パスワード
-      note: 'Note: The free ESXi license does not support API access. Only servers with a valid or evaluation license are supported.'
+      note: "注意: 無料のESXiライセンスはAPIアクセスをサポートしていません。有効なライセンスまたは評価ライセンスを持つサーバーのみがサポートされています。"
     gcp:
       authEncodedJson:
         label: サービスアカウント
-        placeholder: Service Account private key JSON file
+        placeholder: サービスアカウントの秘密鍵JSONファイル
         gke: GKE
         gce: GCE
         help:
@@ -1707,7 +1707,7 @@ cluster:
         addNetwork: ネットワークを追加
         networkName: ネットワーク名
         macAddress: MACアドレス
-        macFormat: Invalid MAC address format.
+        macFormat: 無効なMACアドレス形式です。
       vGpus:
         warnings:
           minimumAllocatable: It's highly recommended to select a vGPU with a number of allocatable devices greater than the number of nodes (Machine Count) to avoid "un-schedulable" errors after cluster updates.
@@ -1716,38 +1716,38 @@ cluster:
       volume:
         title: ボリューム
         volume: ボリューム
-        imageVolume: Image Volume
+        imageVolume: イメージボリューム
         addVolume: ボリュームを追加
-        addVMImage: Add VM Image
+        addVMImage: VMイメージを追加
         storageClass: ストレージクラス
       reservedMemory: 予約メモリ
       sshUser: SSHユーザー
       userData:
-        label: User Data Template
-        title: 'User Data:'
+        label: デプロイイメージ
+        title: "ユーザーデータ:"
       networkData:
-        label: Network Data Template
-        title: 'Network Data:'
+        label: ネットワークデータテンプレート
+        title: "ネットワークデータ:"
       kubeconfigContent:
         label: KubeconfigContent
-      placeholder: Namespace/Name
+      placeholder: 名前空間/名前
       cluster: インポートされたHarvesterクラスター
-      enableTpm: Enable TPM
-      enableCpuPinning: Enable CPU Pinning
-      cpuPinningTooltip: Enable CPU Pinning brings better performance and reduce latency for the harvester virtual machine
-      cpuManagerWarning: You must enable CPU Manager for at least one node in harvester host page to enable CPU Pinning for VM
-      secureBoot: Secure Boot
+      enableTpm: TPMを有効にする
+      enableCpuPinning: CPUピニングを有効にする
+      cpuPinningTooltip: CPUピニングを有効にすると、Harvester仮想マシンのパフォーマンスが向上し、レイテンシが低下します。
+      cpuManagerWarning: VMのCPUピニングを有効にするには、HarvesterホストページのノードでCPUマネージャーを有効にする必要があります。
+      secureBoot: セキュアブート
       enableEfi: EFIモードで起動
       installGuestAgent: ゲストエージェントをインストール
       tokenExpirationWarning: 'Warning: Harvester Cloud Credentials use an underlying authentication token that may have an expiry time - please see the following <a href="https://harvesterhci.io/kb/renew_harvester_cloud_credentials" target="_blank" rel="noopener nofollow">knowledge base article</a> for possible implications on management operations.'
   description:
     label: クラスターの説明
-    placeholder: Any text you want that better describes this cluster
+    placeholder: このクラスターをより詳しく説明するテキスト
   harvester:
-    importNotice: Import Harvester Clusters via
+    importNotice: Harvesterクラスターをインポートするには
     warning:
       label: This is a Harvester Cluster - enable the Harvester feature flag to manage it
-      state: Warning
+      state: 警告
       cloudProvider:
         incompatible: You cannot select the Harvester cloud provider as the current Harvester version is not compatible with the selected RKE2 Kubernetes version, click <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">here</a> to see which Kubernetes versions are supported.
     clusterWarning: |-
@@ -1756,37 +1756,37 @@ cluster:
       other {are # Harvester clusters that are not shown}
       }
     registration:
-      step1: 1. Go to the <code>Advanced / Settings</code> page of the target Harvester's UI.
-      step2: 2. Find the <code>cluster-registration-url</code> setting and click the <code><i class="icon icon-actions" ></i></code> -> <code>Edit Setting</code> button.
-      step3: 3. Input the following registration URL and click the <code>Save</code> button.
-      step4: Registration URL
+      step1: "1. ターゲットHarvesterのUIの<code>詳細設定 / 設定</code>ページに移動します。"
+      step2: "2. <code>cluster-registration-url</code>の設定を見つけ、<code><i class=\"icon icon-actions\" ></i></code> -> <code>設定の編集</code>ボタンをクリックします。"
+      step3: "3. 以下の登録URLを入力し、<code>保存</code>ボタンをクリックします。"
+      step4: 登録URL
     machinePool:
       cpu:
-        placeholder: e.g. 2
+        placeholder: "例: 2"
       memory:
-        placeholder: e.g. 4
+        placeholder: "例: 4"
       reservedMemory:
-        placeholder: e.g. 256
+        placeholder: "例: 256"
       disk:
-        placeholder: e.g. 4
+        placeholder: "例: 4"
       namespace:
-        placeholder: e.g. default
+        placeholder: "例: default"
       image:
-        placeholder: Please select a image
+        placeholder: イメージを選択してください
       network:
-        placeholder: Please select a network
+        placeholder: ネットワークを選択してください
       sshUser:
-        placeholder: e.g. ubuntu
-        toolTip: SSH user to login with the selected OS image.
+        placeholder: "デフォルト: ubuntu"
+        toolTip: 選択したOSイメージでログインするSSHユーザー。
     kubeconfigSecret:
-      nameRequired: Cluster name is required.
-      error: 'Error generating Harvester kubeconfig secret: {err}'
+      nameRequired: クラスター名が必要です。
+      error: "Harvester kubeconfigシークレットの生成中にエラーが発生しました: {err}"
   haveOneOwner: オーナーロールを持つメンバーが少なくとも1人必要です。
   import:
     warningBanner: すでに別のRancherインスタンスに接続されているクラスターをインポートしないでください。データが破損する可能性があります。
-    commandInstructions: 'Run the <code>kubectl</code> command below on an existing Kubernetes cluster running a supported Kubernetes version to import it into {vendor}:'
+    commandInstructions: "サポートされているKubernetesバージョンを実行している既存のKubernetesクラスターで以下の<code>kubectl</code>コマンドを実行して、{vendor}にインポートします:"
     commandInstructionsInsecure: 'If you get a &quot;certificate signed by unknown authority&quot; error, your {vendor} installation has a self-signed or untrusted SSL certificate.  Run the command below instead to bypass the certificate verification:'
-    clusterRoleBindingInstructions: 'If you get permission errors creating some of the resources, your user may not have the <code>cluster-admin</code> role.  Use this command to apply it:'
+    clusterRoleBindingInstructions: "一部のリソース作成で権限エラーが発生した場合、ユーザーが<code>cluster-admin</code>ロールを持っていない可能性があります。このコマンドを使用して適用してください:"
     clusterRoleBindingCommand: kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user <your username from your kubeconfig>
   explore: 探索
   importAction: 既存をインポート
@@ -1797,37 +1797,37 @@ cluster:
     experimental: （実験的）
     deprecated: （非推奨）
     manual: （手動アップグレード済み）
-    deprecatedPatches: Show deprecated Kubernetes patch versions
-    deprecatedPatchWarning: We recommend using the latest patch version for each minor Kubernetes version. Deprecated patch versions can be useful for migration purposes.
+    deprecatedPatches: 非推奨のKubernetesパッチバージョンを表示
+    deprecatedPatchWarning: 各マイナーKubernetesバージョンの最新パッチバージョンの使用をお勧めします。非推奨のパッチバージョンは移行目的に役立つ場合があります。
   legacyWarning: The legacy feature flag is enabled and not all legacy features are supported in Kubernetes 1.21+.
   log:
-    connecting: Connecting…
-    noData: There are no provisioning log entries.
+    connecting: 接続中…
+    noData: プロビジョニングログエントリがありません。
   name:
     label: クラスター名
     placeholder: クラスターの一意の名前
   directoryConfig:
     title: データディレクトリ設定
-    banner: Data directory configuration can not be changed once the cluster has been created
+    banner: クラスターが作成された後はデータディレクトリの設定を変更できません
     radioInput:
-      defaultLabel: Use default data directory configuration
-      commonLabel: Use a common base directory for data directory configuration (sub-directories will be used for the system-agent, provisioning and distro paths)
-      customLabel: Use custom data directories
+      defaultLabel: デフォルトのデータディレクトリ設定を使用する
+      commonLabel: データディレクトリ設定に共通のベースディレクトリを使用する（サブディレクトリはシステムエージェント、プロビジョニング、ディストロパスに使用されます）
+      customLabel: カスタムデータディレクトリを使用する
     common:
-      label: Data directory base path
-      tooltip: Data directory base path. We will append the sub-directories appropriate for each directory (/agent, /provisioning and either /rke2 or /k3s)
+      label: データディレクトリのベースパス
+      tooltip: データディレクトリのベースパス。各ディレクトリに適したサブディレクトリ（/agent、/provisioning、/rke2または/k3s）が追加されます。
     systemAgent:
-      label: System-agent directory path
-      tooltip: Data directory for the system-agent connection info and plans
+      label: システムエージェントディレクトリパス
+      tooltip: システムエージェントの接続情報とプランのデータディレクトリ
     provisioning:
-      label: Provisioning directory path
-      tooltip: Data directory for provisioning related files
+      label: プロビジョニングディレクトリパス
+      tooltip: プロビジョニング関連ファイルのデータディレクトリ
     k8sDistro:
-      label: K8s Distro directory path
-      tooltip: Data directory for the k8s distro
+      label: K8sディストロディレクトリパス
+      tooltip: k8sディストロのデータディレクトリ
   machineConfig:
     banner:
-      updateInfo: Create a new pool to update machine configs
+      updateInfo: マシン設定を更新するには新しいプールを作成してください
     aws:
       sizeLabel: |-
         {apiName}: {cpu, plural,
@@ -1842,25 +1842,25 @@ cluster:
         label: アクセラレーテッドネットワーキング
       availabilitySet:
         label: 可用性セット
-        description: Availability sets are used to protect applications from hardware failures within an Azure data center.
+        description: 可用性セットは、Azureデータセンター内のハードウェア障害からアプリケーションを保護します。
       availabilityZone:
         label: 可用性ゾーン
-        description: Availability zones protect applications from complete Azure data center failures.
-        publicIpAndSKUWarning: Availability zones require Static Public IP and Use Standard SKU for Public IP to be enabled.
-        publicIpWarning: Availability zones require Static Public IP to be enabled.
-        standardSKUWarning: Availability zones require Use Standard SKU for Public IP to be enabled.
-        managedDisksWarning: Availability zones require Managed Disks to be enabled.
+        description: 可用性ゾーンは、Azureデータセンターの完全な障害からアプリケーションを保護します。
+        publicIpAndSKUWarning: 可用性ゾーンには、静的パブリックIPとパブリックIPの標準SKUの使用を有効にする必要があります。
+        publicIpWarning: 可用性ゾーンには静的パブリックIPを有効にする必要があります。
+        standardSKUWarning: 可用性ゾーンにはパブリックIPの標準SKUの使用を有効にする必要があります。
+        managedDisksWarning: 可用性ゾーンにはマネージドディスクを有効にする必要があります。
       dns:
-        help: A unique DNS label for the public IP address.
+        help: パブリックIPアドレスの一意のDNSラベル。
         label: DNSラベル
       environment:
         label: 環境
-        tooltip: The environment is configured when cloud credentials are created.
+        tooltip: 環境はクラウド認証情報の作成時に設定されます。
       faultDomainCount:
-        help: If the availability set has already been created, the fault domain count will be ignored.
-        label: Fault Domain Count
+        help: 可用性セットが既に作成されている場合、障害ドメイン数は無視されます。
+        label: 障害ドメイン数
       image:
-        help: Providing an ARM resource identifier requires using managed disk.
+        help: ARMリソース識別子を指定するにはマネージドディスクを使用する必要があります。
         label: イメージ
       location:
         label: 場所
@@ -1870,15 +1870,15 @@ cluster:
       managedDisksSize:
         label: マネージドディスクサイズ
       nsg:
-        help: When using a Rancher managed or providing an existing NSG, all nodes using this template will use the supplied NSG. If no NSG is provided, a new NSG will be created for each node.
+        help: Rancher管理のNSGを使用するか既存のNSGを提供する場合、このテンプレートを使用するすべてのノードが指定のNSGを使用します。NSGが提供されない場合、各ノードに新しいNSGが作成されます。
         label: ネットワークセキュリティグループ
       openPort:
         add: ポートを追加
-        help: When using an existing NSG, Open Ports are ignored.
+        help: 既存のNSGを使用する場合、オープンポートは無視されます。
         label: 開放ポート
       plan:
         label: 購入プラン
-        placeholder: publisher:product:plan
+        placeholder: "発行元:製品:プラン"
       privateIp:
         label: プライベートIPアドレス
       publicIpOptions:
@@ -1888,35 +1888,35 @@ cluster:
         staticPublicIp:
           label: 静的パブリックIP
         standardSKU:
-          label: Use Standard SKU for Public IP
+          label: パブリックIPに標準SKUを使用する
       resourceGroup:
         label: リソースグループ
       sections:
-        availabilitySetConfiguration: Availability Set Configuration
-        purchasePlan: Purchase Plan
+        availabilitySetConfiguration: 可用性セット設定
+        purchasePlan: 購入プラン
         network: ネットワーク
         disks: ディスク
       size:
         label: VMサイズ
-        tooltip: When accelerated networking is enabled, not all sizes are available.
-        supportsAcceleratedNetworking: Sizes that Support Accelerated Networking
-        doesNotSupportAcceleratedNetworking: Sizes Without Accelerated Networking
-        availabilityWarning: The selected VM size is not available in the selected region.
-        regionDoesNotSupportAzs: Availability zones are not supported in the selected region. Please select a different region or use an availability set instead.
-        regionSupportsAzsButNotThisSize: The selected region does not support availability zones for the selected VM size. Please select a different region or VM size.
-        selectedSizeAcceleratedNetworkingWarning: The selected VM size does not support accelerated networking. Please select another VM size or disable accelerated networking.
+        tooltip: アクセラレーティッドネットワーキングが有効な場合、すべてのサイズが利用可能ではありません。
+        supportsAcceleratedNetworking: アクセラレーティッドネットワーキングをサポートするサイズ
+        doesNotSupportAcceleratedNetworking: アクセラレーティッドネットワーキングなしのサイズ
+        availabilityWarning: 選択したVMサイズは選択したリージョンで利用できません。
+        regionDoesNotSupportAzs: 選択したリージョンでは可用性ゾーンがサポートされていません。別のリージョンを選択するか、代わりに可用性セットを使用してください。
+        regionSupportsAzsButNotThisSize: 選択したリージョンは、選択したVMサイズの可用性ゾーンをサポートしていません。別のリージョンまたはVMサイズを選択してください。
+        selectedSizeAcceleratedNetworkingWarning: 選択したVMサイズはアクセラレーティッドネットワーキングをサポートしていません。別のVMサイズを選択するか、アクセラレーティッドネットワーキングを無効にしてください。
       sshUser:
         label: SSHユーザー名
       storageType:
         label: ストレージタイプ
-        warning: StandardSSD_LRS requires managed disks. Please select Use Managed Disks or select another storage type.
+        warning: StandardSSD_LRSにはマネージドディスクが必要です。マネージドディスクを使用するを選択するか、別のストレージタイプを選択してください。
       subnet:
         label: サブネット
       subnetPrefix:
         label: サブネットプレフィックス
       updateDomainCount:
-        help: If the availability set has already been created, the update domain count will be ignored.
-        label: Update Domain Count
+        help: 可用性セットが既に作成されている場合、更新ドメイン数は無視されます。
+        label: 更新ドメイン数
       usePrivateIp:
         label: プライベートIPを使用
       vnet:
@@ -1941,7 +1941,7 @@ cluster:
         }, {disk} GB Disk ({value})
       tags:
         label: Dropletタグ
-        placeholder: e.g. my_server
+        placeholder: "例: my_server"
     linode:
       typeLabel: |-
         {label}, {vcpus, plural,
@@ -1950,88 +1950,88 @@ cluster:
         }, {disk} GB Disk ({value})
     vsphere:
       hostOptions:
-        any: Any
+        any: 任意
       vAppOptions:
         label: vAppオプション
         description: OVF環境プロパティを選択
-        disable: Do not use vApp
-        auto: Use vApp to configure networks with network protocol profiles
-        manual: Provide a custom vApp config
-        restoreType: Restore Type
+        disable: vAppを使用しない
+        auto: ネットワークプロトコルプロファイルでネットワークを設定するためにvAppを使用する
+        manual: カスタムvApp設定を指定する
+        restoreType: 復元タイプ
         transport:
-          label: OVF environment transport
+          label: OVF環境トランスポート
           tooltip: com.vmware.guestInfo or iso
-          placeholder: e.g. com.vmware.guestInfo
+          placeholder: "例: com.vmware.guestInfo"
         protocol:
-          label: vApp IP protocol
-          tooltip: IPv4 or IPv6
-          placeholder: e.g. IPv4
+          label: vApp IPプロトコル
+          tooltip: IPv4またはIPv6
+          placeholder: "例: IPv4"
         allocation:
-          label: vApp IP allocation policy
+          label: vApp IP割り当てポリシー
           tooltip: dhcp, fixed, transient or fixedAllocated
-          placeholder: e.g. fixedAllocated
+          placeholder: "例: fixedAllocated"
         properties:
-          label: vApp properties
-          add: Add Property
-          keyPlaceholder: e.g. guestinfo.interface.0.ip.0.address
-          valuePlaceholder: e.g. ip:VM Network, expression or string
+          label: vAppプロパティ
+          add: プロパティを追加
+          keyPlaceholder: "例: guestinfo.interface.0.ip.0.address"
+          valuePlaceholder: "例: ip:VM Network、式、または文字列"
       networks:
         label: ネットワーク
         add: ネットワークを追加
       guestinfo:
-        label: Configuration Parameters used for guestinfo
-        add: Add Parameter
-        keyPlaceholder: e.g. guestinfo.hostname
-        valuePlaceholder: e.g. myrancherhost
+        label: guestinfoに使用される設定パラメーター
+        add: パラメーターを追加
+        keyPlaceholder: "例: guestinfo.hostname"
+        valuePlaceholder: "例: myrancherhost"
       creationMethods:
-        template: 'Deploy from template: Data Center'
-        library: 'Deploy from template: Content Library'
-        vm: Clone an existing virtual machine
-        legacy: Install from boot2docker ISO (Legacy)
+        template: "テンプレートからデプロイ: データセンター"
+        library: "テンプレートからデプロイ: コンテンツライブラリ"
+        vm: 既存の仮想マシンをクローン
+        legacy: boot2docker ISOからインストール（レガシー）
       scheduling:
         label: スケジューリング
-        description: Choose what hypervisor the virtual machine will be scheduled to
+        description: 仮想マシンをスケジュールするハイパーバイザーを選択してください
         dataCenter: データセンター
         resourcePool: リソースプール
         dataStore: データストア
-        dataStoreCluster: Datastore Cluster
+        dataStoreCluster: データストアクラスター
         folder: フォルダー
         host:
-          label: Host
-          note: Specific host to create VM on (leave blank for standalone ESXi or for cluster with DRS)
+          label: ホスト
+          note: VMを作成する特定のホスト（スタンドアロンESXiまたはDRS搭載クラスターの場合は空白のまま）
         gracefulShutdownTimeout:
-          label: Graceful Shutdown Timeout
-          note: The time in seconds to wait before forcing deleting VMs in the infrastructure. Zero means disable graceful shutdown.
+          label: グレースフルシャットダウンタイムアウト
+          note: インフラストラクチャのVMを強制削除する前に待機する秒数。ゼロはグレースフルシャットダウンを無効にします。
       instanceOptions:
         label: インスタンスオプション
-        description: Choose the size and OS of the virtual machine
+        description: 仮想マシンのサイズとOSを選択してください
         cpus: CPU
         memory: メモリ
         disk: ディスク
-        creationMethod: Creation method
+        creationMethod: 作成方法
         template:
-          label: Template
-          none: No Templates Found
-        contentLibrary: Content library
-        libraryTemplate: Library template
-        virtualMachine: Virtual machine
+          label: テンプレート
+          none: テンプレートが見つかりません
+        contentLibrary: コンテンツライブラリ
+        libraryTemplate: ライブラリテンプレート
+        virtualMachine: 仮想マシン
         osIsoUrl:
-          label: OS ISO URL
-          placeholder: 'Default: Latest rancheros-vmware image'
+          label: OS ISOのURL
+          placeholder: "デフォルト: 最新のrancheros-vmwareイメージ"
         cloudInit:
           label: Cloud Init
-          placeholder: e.g. http://my_host/cloud-config.yml
-          note: Cloud-init file or url to set in the guestinfo
-        cloudConfigYaml: Cloud Config YAML
-        os: Operating System
+          placeholder: "例: http://my_host/cloud-config.yml"
+          note: guestinfoに設定するCloud-initファイルまたはURL
+        cloudConfigYaml: クラウド設定YAML
+        os: オペレーティングシステム
       tags:
         label: タグ
-        description: Tags allow you to attach metadata to objects in the vSphere inventory to make it easier to sort and search for these objects.
+        description: タグを使用すると、vSphereインベントリ内のオブジェクトにメタデータを付加して、オブジェクトの並べ替えと検索を容易にします。
         addTag: タグを追加
       customAttributes:
         label: カスタム属性（レガシー）
-        description: Custom attributes allow you to attach metadata to objects in the vSphere inventory to make it easier to sort and search for these objects.
-        add: カスタム属性を追加
+        description: カスタム属性を使用すると、vSphereインベントリ内のオブジェクトにメタデータを付加して、オブジェクトの並べ替えと検索を容易にします。
+        add: タグを追加
     amazonEc2:
       region: リージョン
       zone: ゾーン
@@ -2042,55 +2042,55 @@ cluster:
         suffix: GB
       selectedNetwork:
         label: VPC/サブネット
-        placeholder: Select a VPC or Subnet
+        placeholder: VPCまたはサブネットを選択
       iamInstanceProfile:
         label: IAMインスタンスプロファイル名
         tooltip: Kubernetes AWS Cloud Provider support requires an appropriate instance profile
       ami:
         label: AMI ID
-        placeholder: 'Default: A recent Ubuntu LTS'
+        placeholder: "デフォルト: 最近のUbuntu LTS"
       sshUser:
         label: AMIのSSHユーザー名
         placeholder: 'Default: ubuntu'
-        tooltip: The username that exists in the selected AMI; Provisioning will SSH to the node with this.
+        tooltip: 選択したAMIに存在するユーザー名。プロビジョニングはこれを使用してノードにSSHします。
       securityGroup:
         title: セキュリティグループ
-        vpcId: (select a VPC/Subnet first)
+        vpcId: （最初にVPC/サブネットを選択してください）
         mode:
           default: 'Standard: Automatically create and use a "{defaultGroup}" security group'
           custom: 'Choose one or more existing security groups:'
       volumeType:
         label: EBSルートボリュームタイプ
-        placeholder: 'Default: gp2'
+        placeholder: "デフォルト: gp2"
       encryptEbsVolume: EBSボリュームを暗号化
       kmsKey:
         label: KMSキーARN
-        text: You do not have permission to list KMS keys, but may still be able to enter a Key ARN if you know one.
+        text: KMSキーを一覧表示する権限がありませんが、キーARNがわかれば入力できる場合があります。
       requestSpotInstance: スポットインスタンスをリクエスト
       spotPrice:
         label: スポット価格
         placeholder: 'Default: 0.50'
         suffix: ドル/時間
       privateAddressOnly: プライベートアドレスのみ使用
-      useEbsOptimizedInstance: EBS-Optimized Instance
-      httpEndpoint: Allow access to EC2 metadata
-      httpTokens: Use tokens for metadata
+      useEbsOptimizedInstance: EBS最適化インスタンス
+      httpEndpoint: EC2メタデータへのアクセスを許可する
+      httpTokens: メタデータにトークンを使用する
       tagTitle: EC2タグ
       enableIpv6:
-        label: Enable Dual-Stack
+        label: デュアルスタックを有効にする
         description: To use dual-stack networking, you will need to update the <a aria-label='scroll to the networking section in cluster configuration' href="#networking">Network Stack Preference Order</a> to <b>DUAL</b> stack. For an IPv6-only cluster, check "Enable IPv6" and update the stack preference to <b>IPv6</b>.
       ipv6AddressCount:
-        label: IPv6 Address Count
-        tooltip: Specifies the number of IPv6 addresses to assign to the network interface
-        error: IPv6 Address Count must be greater than 0 when using an IPv6 vpc or subnet.
+        label: IPv6アドレス数
+        tooltip: ネットワークインターフェイスに割り当てるIPv6アドレスの数を指定します
+        error: IPv6 VPCまたはサブネットを使用する場合、IPv6アドレス数は0より大きくする必要があります。
       enablePrimaryIpv6:
-        label: Enable Static Primary IPv6
+        label: 静的プライマリIPv6を有効にする
         description: This designates the first assigned IPv6 address as the primary address, ensuring a consistent, non-changing IPv6 address for the instance. This option does not control whether IPv6 addresses are assigned.
       ipv6AddressOnly:
-        label: Enable IPv6
+        label: IPv6を有効にする
       httpProtocolIpv6:
-        label: Enable IPv6 endpoint for instance metadata service
-      ipv6ValidationWarning: When one pool uses an IPv6 or dual-stack subnet/vpc, all pools must use an IPv6 or dual-stack subnet/vpc.
+        label: インスタンスメタデータサービスのIPv6エンドポイントを有効にする
+      ipv6ValidationWarning: あるプールがIPv6またはデュアルスタックのサブネット/VPCを使用する場合、すべてのプールがIPv6またはデュアルスタックのサブネット/VPCを使用する必要があります。
     pnap:
       serverLocation:
         label: 場所
@@ -2103,9 +2103,9 @@ cluster:
       serverCpuCount:
         label: CPU数
       serverCpuFrequency:
-        label: CPU Frequency [GHz]
+        label: "CPU周波数 [GHz]"
       serverRam:
-        label: RAM [GB]
+        label: "RAM [GB]"
       serverStorage:
         label: ストレージ
       serverNetwork:
@@ -2115,16 +2115,16 @@ cluster:
     gce:
       machineImage:
         label: マシンイメージ
-        option: '{name} - {description}'
-        deprecatedOption: '{name}(deprecated) - {description}'
-        tooltip: Please select Image Family to get available images
+        option: "{name} - {description}"
+        deprecatedOption: "{name}（非推奨）- {description}"
+        tooltip: 利用可能なイメージを取得するにはイメージファミリーを選択してください
       imageProjects:
         label: イメージプロジェクト
       firewall:
-        header: Firewall Configuration
+        header: ファイアウォール設定
       showDeprecated:
-        label: Show Deprecated
-        tooltip: Includes deprecated images
+        label: 非推奨を表示する
+        tooltip: 非推奨のイメージを含む
       diskType:
         label: ディスクタイプ
       diskSize:
@@ -2141,11 +2141,11 @@ cluster:
         zone:
           label: ゾーン
       preemptible:
-        label: Make VM instance preemptible
-        tooltip: Preemptible machines offer significant cost savings, but may be abruptly stopped when Google Compute Engine needs to reclaim the compute resources for higher-priority VMs.
+        label: VMインスタンスをプリエンプティブルにする
+        tooltip: プリエンプティブルマシンは大幅なコスト削減を提供しますが、Google Compute Engineが優先度の高いVMのコンピューティングリソースを回収する必要がある場合、突然停止する可能性があります。
       scopes:
-        add: Add scope
-        label: Scopes
+        add: スコープを追加
+        label: スコープ
       tags:
         add: Add tags
         label: タグ
@@ -2155,28 +2155,28 @@ cluster:
       address:
         label: 外部アドレス
         placeholder: 10.0.0.0/14
-        tooltip: External IP address for the GCE VM instance.
+        tooltip: GCE VMインスタンスの外部IPアドレス。
       username:
         label: ユーザー名
         placeholder: docker-user
-        tooltip: This is the username used when SSH'ing into the node, and not a username associated with the GCP account.
+        tooltip: ノードへのSSHに使用するユーザー名であり、GCPアカウントに関連するユーザー名ではありません。
       internalFirewall:
-        label: Allow communication between cluster nodes
-        tooltip: Allows Rancher to open ports required for internal communication between nodes.
-        banner: Tags can be used to impose additional firewall rules.
+        label: クラスターノード間の通信を許可する
+        tooltip: Rancherがノード間の内部通信に必要なポートを開くことを許可します。
+        banner: タグを使用して追加のファイアウォールルールを適用できます。
       externalFirewall:
-        label: Expose external ports
-        tooltip: Allows Rancher to open ports required for external access.
+        label: 外部ポートを公開する
+        tooltip: Rancherが外部アクセスに必要なポートを開くことを許可します。
         banner: By default, the Kubernetes API server listens on port 6443. Exposing this port on control plane machine pools is required for the Authorized Cluster Endpoint feature to work as expected.
       error:
         diskSizeWithoutMax: Disk size has to be greater than {diskSizeMin} based on this image and disk type.
         diskSizeWithMax: Disk size has to be between {diskSizeMin} and {diskSizeMax} based on this image and disk type.
-        projects: Image projects should be a comma separated list of alphanumeric string which may contain '-' and '.'
+        projects: "イメージプロジェクトは、'-'と'.'を含むことができる英数字文字列のカンマ区切りリストである必要があります"
   addOns:
     dependencyBanner: Add-On Configuration has changed between Kubernetes versions <b>{previousKubeVersion}</b> and <b>{newKubeVersion}</b> and conflict with your previous values. Please re-apply them.
     additionalManifest:
       title: 追加マニフェスト
-      tooltip: Additional Kubernetes Manifest YAML to be applied to the cluster on startup.
+      tooltip: 起動時にクラスターに適用する追加のKubernetes Manifest YAML。
   agentConfig:
     tabs:
       agentsScheduling: エージェントスケジューリング
@@ -2191,55 +2191,55 @@ cluster:
       schedulingCustomization: スケジューリングカスタマイズ
       agentsScheduling:
         text: Ensure that cluster- and/or fleet-agent pods are not evicted due to node pressure, resource constraints or scheduler policies When enabled, these settings may be configured in the
-        textLink: Global Settings
-        label: 'Prevent agent pod eviction for:'
+        textLink: グローバル設定
+        label: "Rancher {agent}ポッドの退避を防ぐ"
     subGroups:
-      podAffinityAnti: Pod Affinity/Anti-Affinity
-      nodeAffinity: Node Affinity
+      podAffinityAnti: ポッドアフィニティ/アンチアフィニティ
+      nodeAffinity: ノードアフィニティ
       agentsScheduling:
-        cluster: Cluster Agent
-        fleet: Fleet Agent
+        cluster: クラスターエージェント
+        fleet: Fleetエージェント
         label: Prevent Rancher {agent} pod eviction
-        description: This ensures that the {agent} pod is not evicted due to node pressure, resource constraints or scheduler policies.
+        description: "これにより、{agent}ポッドがノードプレッシャー、リソース制約、またはスケジューラーポリシーによって退避されないようになります。"
         banner: This feature is currently configured with settings which differ to the default Global Settings. Enable the checkbox below to overwrite the current settings with the default Global Settings.
-        innerCheckbox: Apply global settings for Priority Class and Pod Disruption Budget
+        innerCheckbox: 優先クラスとポッド停止予算のグローバル設定を適用する
     banners:
       advanced: これは高度な設定オプションです。通常はそのままにしてください。
-      tolerations: Additional Pod Tolerations will be added to the default Tolerations applied by Rancher.
-      limits: Pod Requests and Limits do not have a default configuration.
-      windowsCompatibility: We do not recommend removing the Node Affinity rule that prevents the <b>agent</b> from running on Windows nodes as this is not a supported configuration.
+      tolerations: 追加のポッドトレランスがRancherによって適用されるデフォルトのトレランスに追加されます。
+      limits: ポッドリクエストと制限にはデフォルト設定がありません。
+      windowsCompatibility: "サポートされていない設定であるため、<b>エージェント</b>がWindowsノードで実行されないようにするノードアフィニティルールを削除することはお勧めしません。"
     affinity:
       default: Rancherで定義されたデフォルトのアフィニティルールを使用
       custom: カスタムアフィニティルールを使用
   advanced:
     argInfo:
-      title: Additional Kubelet Args
+      title: 追加のKubelet引数
       tooltip:
         mixed-args: Kubelet args are defined both at Global and Machine Selector level.<br> Click on "Add Global Argument" to add them as Global config.
         global-args: Kubelet args are defined at Global level.<br> Click on "Add Global Argument" to add them as Global config.
       machineGlobal:
-        listLabel: Add Global Argument
+        listLabel: グローバル引数を追加
       machineSelector:
-        label: Add Machine Selector
-        listLabel: Add Argument
+        label: マシンセレクターを追加
+        listLabel: 引数を追加
         bannerLabel: 'Note: The last selector that matches wins, and only args from it will be used.  Args from other matches above will not be combined together or merged.'
-        title: 'For machines with labels matching:'
-        subTitle: 'Use the Kubelet args:'
+        title: "以下のラベルに一致するマシンの場合:"
+        subTitle: "Kubelet引数を使用する:"
         titleAlt: |-
           {count, plural,
             =1 { For all machines, use the Kubelet args: }
             other { For machines without matched labels below: }
           }
-        kubeControllerManagerTitle: Additional Controller Manager Args
-        kubeApiServerTitle: Additional API Server Args
-        kubeSchedulerTitle: Additional Scheduler Args
+        kubeControllerManagerTitle: 追加のコントローラーマネージャー引数
+        kubeApiServerTitle: 追加のAPIサーバー引数
+        kubeSchedulerTitle: 追加のスケジューラー引数
     agentArgs:
-      label: Raise error if kernel parameters are different than the expected kubelet defaults
+      label: カーネルパラメーターが予期されるkubeletのデフォルトと異なる場合にエラーを発生させる
   banner:
-    warning: This cluster contains a machineSelectorConfig, which this form does not fully support; use the YAML editor to manage the full configuration.
+    warning: このクラスターにはmachineSelectorConfigが含まれており、このフォームでは完全にサポートされていません。完全な設定を管理するにはYAMLエディターを使用してください。
     os: 'You are attempting to add a {newOS} worker node to a cluster with one or more {existingOS} worker nodes: some installed apps may need to be upgraded or removed.'
     rke2-k3-reprovisioning: Making changes to cluster configuration may result in nodes reprovisioning. For more information see the <a href="{docsBase}/how-to-guides/new-user-guides/launch-kubernetes-with-rancher#launching-kubernetes-on-new-nodes-in-an-infrastructure-provider" target="_blank" rel="noopener nofollow">documentation</a>.
-    desiredNodeGroupWarning: There are 0 nodes available to run the cluster agent. The cluster will not become active until at least one node is available.
+    desiredNodeGroupWarning: クラスターエージェントを実行するために利用可能なノードが0台です。少なくとも1台のノードが利用可能になるまで、クラスターはアクティブになりません。
     haveArgInfo: Configuration information is not available for the selected Kubernetes version.  The options available on this screen will be limited; you may want to use the YAML editor.
     cloudProviderAddConfig: On Kubernetes 1.27 or greater, the <b>Amazon</b> Cloud Provider requires additional configuration. See <a href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/amazon" target="_blank" rel="noopener noreferrer nofollow">the documentation</a> for more information.
     cloudProviderUnsupportedAzure: On Kubernetes 1.30 or greater, the <b>Azure</b> Cloud Provider has been removed. See <a href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/azure" target="_blank" rel="noopener noreferrer nofollow">the documentation</a> for more information.
@@ -2250,15 +2250,15 @@ cluster:
         other { {pool_name}: The provided values for {fields} were not found in the list of expected values. This can happen with clusters provisioned outside of Rancher or when options for the provider have changed. }
       }
     rke1DeprecationMessage: Rancher Kubernetes Engine (RKE / RKE1) has reached end of life and these clusters are no longer supported. We recommend replatforming RKE1 clusters to RKE2 to ensure continued support and security updates. Learn more about the transition <a href="https://www.suse.com/support/kb/doc/?id=000021518" target="_blank" rel="noopener noreferrer nofollow">here</a>.
-    nginxDeprecated: The NGINX controller is deprecated and will be removed in upcoming versions
+    nginxDeprecated: NGINXコントローラーは非推奨となり、今後のバージョンで削除されます
   rke1Unsupported: RKE1クラスターはサポートされていません
   architecture:
     label:
       unknown: 不明
       mixed: 混在
   availabilityWarnings:
-    node: Node {name} is inactive
-    machine: Machine {name} is inactive
+    node: "ノード{name}が非アクティブです"
+    machine: "マシン{name}が非アクティブです"
   detail:
     provisioner: プロビジョナー
     kubernetesVersion: Kubernetesバージョン
@@ -2272,21 +2272,21 @@ cluster:
     autoscaler:
       heading: オートスケーラー
       enable: オートスケーラーを有効にして「マシン数」の値を上書き
-      machineCountValueOverride: Controlled by autoscaler
+      machineCountValueOverride: オートスケーラーによって制御されます
       baseUnit: マシン
       min: 最小
       max: 最大
       validation:
-        isAutoscalerMaxGreaterThanMin: The max machines count must be equal or exceed the min machine count.
-      etcdControlPlaneWarning: We don't recommend using Autoscaler with machine pools that have the etcd or Control Plane roles. You can modify the yaml if you want to override the current value.
+        isAutoscalerMaxGreaterThanMin: 最大マシン数は最小マシン数以上である必要があります。
+      etcdControlPlaneWarning: etcdまたはコントロールプレーンの役割を持つマシンプールにオートスケーラーを使用することはお勧めしません。現在の値を上書きする場合はYAMLを変更してください。
     name:
       label: プール名
       placeholder: A random one will be generated by default
     nodeTotals:
       label:
-        controlPlane: '{count} Control Plane'
-        etcd: '{count} etcd'
-        worker: '{count} Worker'
+        controlPlane: "{count} コントロールプレーン"
+        etcd: "{count} etcd"
+        worker: "{count} ワーカー"
       tooltip:
         controlPlane: |-
           {count, plural,
@@ -2324,45 +2324,45 @@ cluster:
       worker: ワーカー
     labels:
       label: Kubernetesノードラベル
-    noAccessBanner: You do not have access to see this machine pool's configuration.
-    configNotFound: We could not find this machine pool's configuration. We recommend that you create a new cluster with the desired configuration.
-    noPoolsDisclaimer: You do not have any machine pools defined, click the plus to add one.
-    truncationPool: Hostname truncation has been manually configured for this pool to {limit}
-    truncationCluster: Hostname truncation has been manually configured for this cluster to {limit}
+    noAccessBanner: このマシンプールの設定を表示するアクセス権がありません。
+    configNotFound: このマシンプールの設定が見つかりませんでした。希望する設定で新しいクラスターを作成することをお勧めします。
+    noPoolsDisclaimer: マシンプールが定義されていません。プラスボタンをクリックして追加してください。
+    truncationPool: "このプールのホスト名切り捨てが手動で{limit}に設定されています"
+    truncationCluster: "このクラスターのホスト名切り捨てが手動で{limit}に設定されています"
     autoReplace:
       label: 自動置換
-      toolTip: If greater than 0, nodes that are unreachable for this duration will be automatically deleted and replaced.
+      toolTip: ドレインはアップグレード前に各ノードのポッドを事前に削除するため、アップグレード中のノードにはワークロードが実行されません。ドレインなしのアップグレードは高速で移動が少ないですが、実行されるアップグレードによってはポッドが再起動する場合があります。
       unit: 秒
-  managementTimeout: The cluster to become available. It's possible the cluster was created. We suggest checking the clusters page before trying to create another.
+  managementTimeout: クラスターが利用可能になります。クラスターが作成された可能性があります。別のクラスターを作成する前にクラスターページを確認することをお勧めします。
   memberRoles:
-    removeMessage: 'Note: Removing a user will not remove their project permissions'
+    removeMessage: "注意: ユーザーを削除してもプロジェクト権限は削除されません"
     addClusterMember:
       labelSelect: メンバーを選択
       labelAdd: メンバーを追加
-      placeholder: Search for a member to provide cluster access
-      searchPlaceholder: Start typing to search
+      placeholder: クラスターアクセスを提供するメンバーを検索
+      searchPlaceholder: 検索するには入力を開始してください
       noResults: 結果が見つかりません
-      minCharacters: Type at least {count} characters to search
+      minCharacters: "検索するには少なくとも{count}文字を入力してください"
   privateRegistry:
     header: Rancherシステムコンテナイメージのレジストリ
-    label: Enable cluster scoped container registry for Rancher system container images
+    label: Rancherシステムコンテナイメージのクラスタースコープのコンテナレジストリを有効にする
     description: If enabled, Rancher will pull container images from this registry during cluster provisioning. By default, Rancher will also use this registry when installing Rancher's official Helm chart apps. If the cluster scoped registry is disabled, system images are pulled from the System Default Registry in the global settings.
     importedDescription: By default, Rancher will also use this registry when installing Rancher's official Helm chart apps. If the cluster scoped registry is disabled, system images are pulled from the System Default Registry in the global settings.
     docsLinkRke2: For help configuring private registry mirrors, see the RKE2 <a href="https://docs.rke2.io/install/private_registry" target="_blank">documentation.</a>
     docsLinkK3s: For help configuring private registry mirrors, see the K3s <a href="https://docs.k3s.io/installation/private-registry" target="_blank">documentation.</a>
-    privateRegistryUrlError: A registry must be a valid url. Scheme is optional.
+    privateRegistryUrlError: レジストリは有効なURLである必要があります。スキームは省略可能です。
   provider:
     aliyunecs: Aliyun ECS
     aliyunkubernetescontainerservice: Alibaba ACK
     aliyun: Alibaba ACK
     amazonec2: Amazon EC2
     amazoneks: Amazon EKS
-    amazonelasticcontainerservice: Amazon EKS (Unsupported Kev1)
+    amazonelasticcontainerservice: Amazon EKS（非サポートKev1）
     aws: Amazon
     azure: Azure
     azureaks: Azure AKS
     aks: Azure AKS
-    azurekubernetesservice: Azure AKS (Unsupported Kev1)
+    azurekubernetesservice: Azure AKS（非サポートKev1）
     baiducloudcontainerengine: Baidu CCE
     baidu: Baidu CCE
     cloudca: Cloud.ca
@@ -2377,7 +2377,7 @@ cluster:
     google: Google GCE
     googlegke: Google GKE
     gke: Google GKE
-    googlekubernetesengine: Google GKE (Unsupported Kev1)
+    googlekubernetesengine: Google GKE（非サポートKev1）
     harvester: Harvester
     huaweicce: Huawei CCE
     import: 汎用
@@ -2404,14 +2404,14 @@ cluster:
     rancherkubernetesengine: RKE1
     rke2: RKE2
     rke: RKE1
-    rkeWindows: Windows (RKE1 only)
+    rkeWindows: Windows（RKE1のみ）
     s3: S3-Compatible
     softlayer: IBM Cloud
     tencenttke: Tencent TKE
     upcloud: UpCloud
     vmwarevsphere: VMware vSphere
     zstack: ZStack
-    machineinventoryselectortemplate: Elemental Cluster
+    machineinventoryselectortemplate: Elementalクラスター
   providerTag:
     rke2:
       harvester: '{tag}'
@@ -2419,30 +2419,30 @@ cluster:
     create-custom1: 既存のノードを使用してRKEでクラスターを作成
     create-custom2: 既存のノードを使用してRKE2/K3sでクラスターを作成
     create-hosted: ホスト型Kubernetesプロバイダーでクラスターを作成
-    register-hosted: Register an existing cluster in a hosted Kubernetes provider
+    register-hosted: ホスト型Kubernetesプロバイダーで既存のクラスターを登録する
     create-rke1: 新しいノードをプロビジョニングしてRKEでクラスターを作成
     create-rke2: 新しいノードをプロビジョニングしてRKE2/K3sでクラスターを作成
     create-template: Use a Catalog Template to create a cluster
     register-custom: 任意のKubernetesクラスターをインポート
   rke2:
     banner:
-      psaChange: PSACT is now set to Rancher default automatically
-      complianceOverride: Changing this setting may affect cluster security as it overrides default compliance settings
+      psaChange: PSACTがRancherのデフォルトに自動設定されました
+      complianceOverride: この設定を変更すると、デフォルトのコンプライアンス設定が上書きされるためクラスターのセキュリティに影響する可能性があります
       complianceUnsupported: The selected Kubernetes Version no longer supports compliance profile "{profile}". Please select a supported profile. We recommend reviewing the <a href="https://docs.rke2.io/security/hardening_guide" target="_blank" rel="noopener noreferrer nofollow">documentation</a> to evaluate the impact of changing the compliance profile.
     modal:
       editYamlMachinePool:
-        title: Save Machine Configurations
-        body: Machine Configurations define how machines in Pools are deployed.<br><br> They will be saved upfront to ensure valid Cluster YAML can be saved.
+        title: マシン設定を保存
+        body: "マシン設定はプール内のマシンのデプロイ方法を定義します。<br><br> 有効なクラスターYAMLが保存できるように、事前に保存されます。"
       ipv6Warning:
-        title: Verify IPv6 Settings
-        body: The machine pools in this cluster are configured to use IPv6 networks, but the cluster's networking settings may not support it.
+        title: IPv6設定の確認
+        body: このクラスターのマシンプールはIPv6ネットワークを使用するように設定されていますが、クラスターのネットワーク設定がそれをサポートしていない可能性があります。
         stackPrefInvalid: The <a href="{docsBase}/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#stack-preference" target="_blank" rel="noopener noreferrer nofollow" aria-label="rke2 documentation for the stack preference setting">Stack Preference</a> should be set to "Dual" or "IPv6" to use dual-stack or IPv6-only networking, respectively.
         flannelMasqInvalid: K3s uses the Flannel cni plugin by default. Enabling Flannel Masq is generally advised when using IPv6 networking.
         cidrInvalidRke2: To enable dual-stack networking in RKE2 clusters, you must define valid dual-stack cluster and service CIDR ranges.
         cidrInvalidK3s: To enable dual-stack or IPv6-only networking in K3s clusters, you must define valid dual-stack or IPv6 cluster and service CIDR ranges.
         readMoreK3s: <a href="https://docs.k3s.io/networking/basic-network-options#dual-stack-ipv4--ipv6-networking" target="_blank" rel="noopener noreferrer nofollow" aria-label="k3s dual-stack networking documentation">Learn more about K3s networking</a>
         readMoreRke2: <a href="https://docs.rke2.io/networking/basic_network_options#ipv6-setup" target="_blank" rel="noopener noreferrer nofollow" aria-label="rke2 ipv6 networking documentation">Learn more about RKE2 networking</a>
-        verifySettings: 'Before continuing, please verify the following settings:'
+        verifySettings: "続行する前に、以下の設定を確認してください:"
     snapshots:
       suffix: ノードあたりのスナップショット数
       s3Suffix: スナップショット
@@ -2457,63 +2457,63 @@ cluster:
       cniNoneBanner: When CNI is set to 'none' an <a href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#additionalmanifest" target="_blank" rel="noopener noreferrer nofollow">Additional Manifest</a> deploying an alternate CNI must be specified for successful cluster provisioning.
       cilium:
         BandwidthManager:
-          enable: Enable Bandwidth Manager
+          enable: 帯域幅マネージャーを有効にする
     cloudProvider:
       label: クラウドプロバイダー
       header: クラウドプロバイダー設定
       defaultValue:
-        label: Default - RKE2 Embedded
+        label: デフォルト - RKE2組み込み
     security:
       header: セキュリティ
     compliance:
       server: サーバーコンプライアンスプロファイル
       agent: コンプライアンスプロファイル
-      override: Allow the default Pod Security Admission Configuration Template to be overridden when using a compliance profile
-      warning: After saving changes, and if this cluster has already been provisioned, please restart the rke2-server service on all nodes to ensure etcd file permissions are correct
+      override: コンプライアンスプロファイルを使用する場合にデフォルトのポッドセキュリティ承認設定テンプレートの上書きを許可する
+      warning: 変更を保存後、このクラスターが既にプロビジョニングされている場合は、etcdファイルのアクセス権が正しいことを確認するためにすべてのノードでrke2-serverサービスを再起動してください
     defaultPodSecurityPolicyTemplateName:
       label: デフォルトPodセキュリティポリシー
-      option: Default - RKE2 Embedded
+      option: デフォルト - RKE2組み込み
     defaultPodSecurityAdmissionConfigurationTemplateName:
       label: Podセキュリティアドミッション設定テンプレート
       option:
         none: （なし）
-        default: Default - RKE2 Embedded
+        default: デフォルト - RKE2組み込み
     secretEncryption:
       label: シークレットを暗号化
     complianceProfile:
-      option: (None)
+      option: （なし）
     enableNetworkPolicy:
       label: プロジェクトネットワーク分離
-      warning: Per default, the ingress controller will not be able to route requests to pods on other nodes.
+      warning: デフォルトでは、Ingressコントローラーは他のノードのポッドへのリクエストをルーティングできません。
     workNode:
       label: ワーカーノード
     controlPlaneConcurrency:
       header: コントロールプレーン
       label: コントロールプレーン並行性
-      toolTip: This can be either a fixed number of nodes (e.g. 1) at a time or a percentage (e.g. 10%)
+      toolTip: "一度に固定数のノード（例: 1）またはパーセンテージ（例: 10%）のいずれかを指定できます"
     workerConcurrency:
       header: ワーカーノード
       label: ワーカー並行性
-      toolTip: This can be either a fixed number of nodes (e.g. 1) at a time or a percentage (e.g. 10%)
+      toolTip: "一度に固定数のノード（例: 1）またはパーセンテージ（例: 10%）のいずれかを指定できます"
     drain:
       label: ノードをドレイン
       toolTip: Draining preemptively removes the pods on each node so there are no running workloads on the nodes being upgraded.  Upgrading without draining is faster and causes less shuffling around, but pods may still be restarted depending on the upgrade being performed.
       deleteEmptyDir:
-        warning: By default, pods using emptyDir volumes will be deleted on upgrade. Operations reliant on emptyDir volumes persisting through the pod's lifecycle may be impacted.
+        warning: デフォルトでは、emptyDirボリュームを使用するポッドはアップグレード時に削除されます。ポッドのライフサイクル中にemptyDirボリュームの永続性に依存する操作に影響する可能性があります。
         label: emptyDirボリュームを使用するポッドを削除
-        tooltip: emptyDir volumes are often used for ephemeral data, but the data will be permanently deleted.  Draining will fail if this is not set and there are pods using emptyDir.
+        tooltip: emptyDirボリュームはエフェメラルデータによく使用されますが、データは永久に削除されます。これが設定されておらずemptyDirを使用するポッドがある場合、ドレインは失敗します。
       force:
         label: スタンドアロンポッドを削除
-        tooltip: Delete standalone pods which are not managed by a Workload controller (Deployment, Job, etc).  Draining will fail if this is not set and there are standalone pods.
+        tooltip: ワークロードコントローラー（Deployment、Jobなど）によって管理されていないスタンドアロンポッドを削除します。これが設定されておらずスタンドアロンポッドがある場合、ドレインは失敗します。
       gracePeriod:
-        checkboxLabel: Override pod termination grace periods
-        inputLabel: Grace Period
+        checkboxLabel: ポッド終了グレース期間を上書きする
+        inputLabel: グレース期間
       timeout:
-        checkboxLabel: Timeout after
-        inputLabel: Drain Timeout
+        checkboxLabel: タイムアウト後
+        inputLabel: ドレインタイムアウト
     truncateHostnames: NetBIOS互換性のためにホスト名を15文字に切り詰める。
     address:
-      tooltip: Cluster networking values cannot be changed after the cluster is created.
+      tooltip: クラスターのネットワーク値はクラスター作成後に変更できません。
       header: アドレッシング
       clusterCidr:
         label: クラスターCIDR
@@ -2529,7 +2529,7 @@ cluster:
         label: TLS代替名
       fqdn:
         label: FQDN
-        toolTip: A FQDN which will resolve to the healthy control plane nodes of the cluster.
+        toolTip: クラスターの正常なコントロールプレーンノードに解決されるFQDN。
       caCerts:
         label: CA証明書
         toolTip: Certificates required for the client to successfully verify the validity of the certificate returned by the endpoint.
@@ -2552,9 +2552,9 @@ cluster:
           title: S3スナップショット保持
           label: S3スナップショット保持数
           options:
-            manual: Set manually
-            localDefined: Same as local ({count} Snaphots)
-            localUndefined: Same as local
+            manual: 手動で設定
+            localDefined: "ローカルと同じ（{count}スナップショット）"
+            localUndefined: ローカルと同じ
         bucket:
           label: バケット
         folder:
@@ -2581,7 +2581,7 @@ cluster:
       banner: It looks like you're using IPv6. If your IPv6 addresses are not publically routed, for example in the ULA range, you might want to check this option to enable IPv6 NAT; by default, pods use their IPv6 address for outgoing communication.
     systemService:
       coredns: CoreDNS
-      local-storage: Local Storage
+      local-storage: ローカルストレージ
       metrics-server: Metrics Server
       servicelb: Klipper Service LB
       traefik: Traefik Ingress
@@ -2591,39 +2591,39 @@ cluster:
     successTitle: スナップショット開始
     errorTitle: '{name}のスナップショットエラー'
     successMessage: '{name}のスナップショットがリクエストされました'
-    bulkSuccessTitle: Snapshot Started
+    bulkSuccessTitle: スナップショット開始
     bulkSuccessMessage: |-
       {count, plural,
         =1 { A snapshot has been requested for 1 cluster }
         other {A snapshot has been requested for {count} clusters}
       }
     groupLabel: 場所
-    failed: Snapshot from {time} failed
+    failed: "{time}のスナップショットが失敗しました"
     rke1:
-      local: local
-      s3: s3
+      local: ローカル
+      s3: S3
   ingress:
     title: Ingress
     enableIngress: 外部ルーティングを有効にするためにIngressコントローラーをインストール
     nginx:
       header: Ingress-NGINX
-      content: Choose this only if your workloads are not yet ready for Traefik.
+      content: ワークロードがまだTraefikに対応していない場合のみこれを選択してください。
     dual:
-      header: Dual Mode
-      content: Use this to safely test and migrate traffic from Ingress-NGINX to Traefik.
+      header: デュアルモード
+      content: Ingress-NGINXからTraefikへのトラフィックを安全にテストおよび移行するために使用します。
     traefik:
       header: Traefik
-      content: The new default provider for high-performance routing and modern feature support.
+      content: 高パフォーマンスなルーティングと最新の機能サポートのための新しいデフォルトプロバイダー。
     recommended: 推奨
     legacy: レガシー
     migration: 移行
     learnMore:
-      label: Learn more
+      label: 詳細を見る
     showAdvanced: 詳細設定を表示
     hideAdvanced: 詳細設定を非表示
     configurationOptions:
       title: 設定オプション
-      compatibilityMode: Enable Traefik Ingress NGINX compatibility mode for annotations
+      compatibilityMode: アノテーション用のTraefik Ingress NGINX互換モードを有効にする
       traefik:
         http: Traefik HTTP
         https: Traefik HTTPS
@@ -2643,13 +2643,13 @@ cluster:
         dual:
           label: Please review our <docsUrl>migration documentation</docsUrl> to ensure your current workloads and annotations are compatible. Taking this step now helps prevent unexpected routing issues during the transition.
     validation:
-      portsMatch: Traefik and Ingress-NGINX ports cannot match
+      portsMatch: TraefikとIngress-NGINXのポートは一致できません
   tabs:
     ace: 認証済みエンドポイント
-    addOnAdditionalManifest: Additional Manifest
+    addOnAdditionalManifest: 追加マニフェスト
     addons: アドオン設定
     advanced: 詳細
-    agentEnv: Agent Environment Vars
+    agentEnv: エージェント環境変数
     basic: 基本
     cluster: クラスター設定
     etcd: etcd
@@ -2671,9 +2671,9 @@ cluster:
     v1: RKE1
     v2: RKE2/K3s
   validation:
-    iamInstanceProfileName: If the Amazon cloud provider is selected the "IAM Instance Profile Name" must be defined for each Machine Pool
+    iamInstanceProfileName: Amazonクラウドプロバイダーが選択されている場合、各マシンプールに「IAMインスタンスプロファイル名」を定義する必要があります
   capi:
-    notSupported: Managing clusters provisioned using CAPI infrastructure providers via the UI is currently limited to Rancher Turtles provisioned clusters.
+    notSupported: CAPIインフラストラクチャプロバイダーを使用してプロビジョニングされたクラスターのUI管理は、現在Rancher Turtlesプロビジョニングのクラスターに限定されています。
 clusterIndexPage:
   hardwareResourceGauge:
     consumption: '{useful} of {total} {units} {suffix}'
@@ -2886,7 +2886,7 @@ fleet:
   settings:
     label: 継続的デリバリー
     title: 継続的デリバリー設定
-    info: Rancher will reboot Fleet agent and controller on settings change.
+    info: Rancherはフリートエージェントと設定変更時にコントローラーを再起動します。
     apply: 変更を適用
     noPermissions: Fleet設定を変更する権限がありません
     parseError: Cannot parse values from "{ path }" in "{ id }" ConfigMap
@@ -2894,7 +2894,7 @@ fleet:
       ariaLabel: Fleet {name}設定
     agentTLSMode:
       label: TLSモード
-      description: Determines whether the agent should trust CA bundles from the operating system's trust store when connecting to a management cluster.
+      description: エージェントが管理クラスターに接続する際にオペレーティングシステムのトラストストアからCAバンドルを信頼するかどうかを決定します。
       options:
         system-store:
           label: system-store
@@ -2902,54 +2902,54 @@ fleet:
           label: strict
     agentCheckinInterval:
       label: チェックイン間隔
-      description: A duration string for how often agents should report a heartbeat.
+      description: エージェントがハートビートを報告する頻度の期間文字列。
     garbageCollectionInterval:
       label: ガベージコレクション間隔
-      description: The amount of time that agents will wait before they clean up old Helm releases. A non-existent value or 0 will result in an interval of 15 minutes.
+      description: エージェントが古いHelmリリースをクリーンアップするまでの待機時間。値が存在しないか0の場合、15分の間隔になります。
     clusterEnqueueDelay:
       label: クラスターエンキュー遅延
-      description: Interval to sync a repo with bundle deployments states.
+      description: バンドルデプロイメント状態とリポジトリを同期する間隔。
     proxy:
       label: プロキシ
-      description: Fleet http[s] proxy server.
+      description: "Fleetのhttp[s]プロキシサーバー。"
       placeholder: http://<username>@<password>:<url>:<port>
     noProxy:
       label: プロキシ除外
-      description: Comma separated list of domains or ip addresses that will not use the proxy.
+      description: プロキシを使用しないドメインまたはIPアドレスのカンマ区切りリスト。
     gitClientTimeout:
       label: Gitクライアントタイムアウト
       description: The amount of time to wait for a response from the server before canceling the request. Used to retrieve the latest commit of configured git repositories. A non-existent value or 0 will result in a timeout of 30 seconds.
     nodeSelector:
       label: ノードセレクター
-      description: Node labels for pod assignment.
+      description: ポッド割り当てのノードラベル。
       add: セレクターを追加
     tolerations:
       label: トレレーション
-      description: List of node taints to tolerate (requires Kubernetes >= 1.6)
+      description: 許容するノードテイントのリスト（Kubernetes 1.6以上が必要）
       add: トレレーションを追加
     priorityClassName:
       label: 優先度クラス名
-      description: PriorityClassName assigned to deployment.
+      description: デプロイメントに割り当てられるPriorityClassName。
     metrics:
       label: メトリクス
-      description: Enable metrics
+      description: メトリクスを有効にする
     debug:
       label: デバッグ
-      description: Enable debug mode
+      description: デバッグモードを有効にする
     controllerAnnotations:
-      label: Controller
+      label: コントローラー
       description: ''
-      add: Add Annotation
+      add: アノテーションを追加
     gitjobAnnotations:
       label: Gitjob
       description: ''
-      add: Add Annotation
+      add: アノテーションを追加
     helmopsAnnotations:
       label: Helmops
       description: ''
-      add: Add Annotation
+      add: アノテーションを追加
     controllerReplicas:
-      label: Controller
+      label: コントローラー
       description: ''
     gitjobReplicas:
       label: Gitjob
@@ -2958,23 +2958,23 @@ fleet:
       label: Helmops
       description: ''
     agentReplicas:
-      label: Agent
+      label: エージェント
       description: ''
     general:
       label: 一般
-      description: General settings.
+      description: 一般設定。
     agent:
       label: エージェント
-      description: Agent deployment settings.
+      description: エージェントデプロイメント設定。
     replicas:
       label: レプリカ数
-      description: Number of replicas of Fleet pods.
+      description: Fleetポッドのレプリカ数。
     annotations:
-      label: Extra Annotations
-      description: Extra annotations passed to the Fleet pods.
+      label: 追加アノテーション
+      description: Fleetポッドに渡す追加アノテーション。
     developer:
       label: 開発者
-      description: Enable debug info from Fleet.
+      description: FleetからのデバッグInfoを有効にする。
   tableHeaders:
     applicationType: タイプ
     applicationSource: ソース
@@ -2985,8 +2985,8 @@ fleet:
     pageTitle: 継続的デリバリーダッシュボード
     menuLabel: ダッシュボード
     welcome: Fleet継続的デリバリーへようこそ
-    gitOpsScale: GitOps at scale.
-    learnMore: Learn More.
+    gitOpsScale: スケーラブルなGitOps。
+    learnMore: 詳細を見る。
     learnMoreLink: https://fleet.rancher.io
     noApplications: ワークスペースにアプリバンドルがありません
     getStarted: 始める
@@ -3001,21 +3001,21 @@ fleet:
       resources: リソース
       source: ソース
     viewMode:
-      table: Show table
-      cards: Show cards
+      table: テーブルを表示
+      cards: カードを表示
     cards:
       filters:
-        gitRepos: Show Git Repos
-        helmOps: Show Helm Ops
-      search: Filter
+        gitRepos: Gitリポジトリを表示
+        helmOps: Helm Opsを表示
+      search: フィルター
       resourceSummary:
-        part1: in
+        part1: 内
         part2: |-
           {count, plural,
           =1 { cluster }
           other { clusters }
           }
-      noClusters: Not targeting any clusters
+      noClusters: クラスターをターゲットにしていません
     resources: リソース
     source: ソース
   cluster:
@@ -3023,8 +3023,8 @@ fleet:
     summary: リソースの概要
     nonReady: 準備未完了バンドル
     labels: ラベル
-    hideLabels: Show less
-    showLabels: Show more
+    hideLabels: 少なく表示
+    showLabels: もっと表示
   clusters:
     harvester: |-
       There {count, plural,
@@ -3055,13 +3055,13 @@ fleet:
       error: エラー
       unknown: 不明
       notReady: 準備未完了
-      waitApplied: Wait Applied
+      waitApplied: 適用待ち
   clusterTargets:
-    advancedConfigs: Advanced target configurations are defined, check the YAML file for further details.
+    advancedConfigs: 高度なターゲット設定が定義されています。詳細はYAMLファイルを確認してください。
     clusters:
       title: クラスター
       byName:
-        placeholder: Select Multiple Clusters
+        placeholder: 複数のクラスターを選択
         label: クラスター名で選択
       byLabel:
         title: ラベルで選択
@@ -3114,7 +3114,7 @@ fleet:
       forceUpdate:
         label: 強制更新
         promptTitle: 強制更新
-        promptNames: 'You are attempting to update: '
+        promptNames: "更新しようとしています: "
         promptWarning: |-
           {
             count, plural,
@@ -3192,49 +3192,49 @@ fleet:
       steps:
         metadata:
           label: メタデータ
-          title: Specify the Git Repository name and labels/annotations
-          subtext: Define metadata details
-          description: Git repository basic info
+          title: Helm Op名とラベル/アノテーションを指定する
+          subtext: メタデータの詳細を定義する
+          description: Helm Opの基本情報
         repo:
           label: リポジトリの詳細
-          title: Specify the Git Repository to add to fleet
-          subtext: Define repository details
-          description: Fleet will continuously monitor the Git Repository you configure below and synchronise the resources contained in it to the configured targets.
+          title: Fleetに追加するGitリポジトリを指定する
+          subtext: リポジトリの詳細を定義する
+          description: Fleetは以下で設定するGitリポジトリを継続的に監視し、そこに含まれるリソースを設定されたターゲットに同期します。
         advanced:
           label: 詳細
-          title: Specify advanced settings like authenticaion credentials and polling
-          subtext: Define advanced settings
-          description: Fleet will use the authentication settings and polling to synchronise the resources contained in it.
-          info: These settings are for advanced usage and optional. You can skip them and finish the creation process.
+          title: 認証情報やポーリングなどの高度な設定を指定する
+          subtext: 高度な設定を定義する
+          description: Fleetは認証設定とポーリングを使用してそこに含まれるリソースを同期します。
+          info: これらの設定は高度な使用のためのもので省略可能です。スキップして作成プロセスを完了できます。
         targetInfo:
           label: ターゲットの詳細
-          title: Specify which target to synchronise this repository to
-          subtext: Define target details
-          description: You can configure which clusters will be used as the target of synchronisation with the resources in the repository.
+          title: このリポジトリを同期するターゲットを指定する
+          subtext: ターゲットの詳細を定義する
+          description: リポジトリ内のリソースとの同期のターゲットとして使用するクラスターを設定できます。
     ref:
       label: 監視
       branch: ブランチ
       revision: リビジョン
       branchLabel: ブランチ名
-      branchPlaceholder: e.g. master
+      branchPlaceholder: "例: master"
       revisionLabel: タグまたはコミットハッシュ
-      revisionPlaceholder: e.g. v1.0.0
+      revisionPlaceholder: "例: v1.0.0"
     serviceAccount:
       label: サービスアカウント名
-      placeholder: 'Optional: Use a service account in the target clusters'
+      placeholder: "省略可能: ターゲットクラスターのサービスアカウントを使用する"
     targetNamespace:
       label: ターゲット名前空間
-      placeholder: 'Optional: Require all resources to be in this namespace'
+      placeholder: "省略可能: すべてのリソースをこの名前空間に配置する"
     target:
       selectLabel: ターゲット
       advanced: 詳細
       cluster: クラスター
       clusterGroup: クラスターグループ
       label: デプロイ先
-      labelLocal: Deploy With
-      additionalOptions: Additional settings
+      labelLocal: デプロイ先
+      additionalOptions: 追加設定
     targetDisplay:
-      advanced: Advanced
+      advanced: 詳細設定
       clusters: クラスター
       all: すべて
       none: なし
@@ -3247,7 +3247,7 @@ fleet:
     workspace:
       label: ワークスペース
       addWorkspace: ワークスペースを作成
-    helmRepoURLRegex: Helm Repos (URL Regex)
+    helmRepoURLRegex: Helmリポジトリ（URL正規表現）
   helmOp:
     intro:
       add: Helm Opを作成
@@ -3282,12 +3282,12 @@ fleet:
         chart:
           label: チャート
           title: chart
-          subtext: Define Helm Chart source details
+          subtext: Helmチャートソースの詳細を定義する
           description: chart
         values:
           label: 値
           title: values
-          subtext: Define Helm Values for the chart
+          subtext: チャートのHelm値を定義する
           description: values
         targetInfo:
           label: ターゲットの詳細
@@ -3313,33 +3313,33 @@ fleet:
       repo:
         repo:
           label: リポジトリURL
-          placeholder: e.g. https://foo.bar/baz
+          placeholder: "例: https://foo.bar/baz"
         chart:
           label: チャート
-          placeholder: The path to the chart name in the repository
+          placeholder: リポジトリ内のチャート名へのパス
       oci:
         chart:
           label: OCIレジストリURL
           placeholder: e.g. oci://foo.bar/baz
       version:
         label: バージョン
-        placeholder: The Chart version
+        placeholder: チャートバージョン
       release:
         title: リリース
         label: 名前
-        placeholder: The Helm release name
+        placeholder: Helmリリース名
     values:
       title: 値
       selectLabel: 値
-      description: Configure Values used by Helm that help define the App.
+      description: アプリを定義するのに役立つHelmが使用する値を設定します。
       types:
         values: 値
         valuesFiles: 値ファイル
         valuesFrom: 値の参照元
       yaml:
         options:
-          edit: Edit YAML
-          diff: Compare Changes
+          edit: YAMLを編集
+          diff: 変更を比較
       values:
         selectLabel: YAML
         loading: Loading from chart
@@ -3756,7 +3756,7 @@ ingress:
     hostname: ホスト名
     path:
       label: パス
-      placeholder: e.g. /foo
+      placeholder: "例: /mnt/disks/ssd1"
     port:
       label: ポート
       placeholder: e.g. 80 or http
@@ -3788,101 +3788,101 @@ istio:
     jaeger:
       label: Jaeger
       description: マイクロサービスベースの分散システムを監視してトラブルシューティング。
-    disabled: '{app} is not installed'
+    disabled: "{app}はインストールされていません"
   cni: CNIを有効にする
   customOverlayFile:
-    label: Custom Overlay File
+    label: カスタムオーバーレイファイル
     tip: The <a target="_blank" rel="noopener noreferrer nofollow" href="https://istio.io/latest/docs/setup/additional-setup/customize-installation/#patching-the-output-manifest">overlay file</a> allows for additional configuration on top of the base {vendor} Istio installation. You can utilize the <a href="https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/" target="_blank" rel="noopener noreferrer nofollow" >IstioOperator API</a> to make changes and additions for all components and apply those changes via this overlay YAML file.
   description: '{vendor} Istio helm chart installs a minimal Istio configuration for you to get started integrating with your applications. If you would like to get additional information about Istio, visit <a target="_blank" href="https://istio.io/latest/docs/concepts/what-is-istio" rel="noopener noreferrer nofollow">https://istio.io/latest/docs/concepts/what-is-istio/</a>'
   destinationRule:
     title:
       new: 宛先ルールを追加
       edit: 宛先ルールを編集
-      view: 'Destination Rule: {name}'
+      view: "宛先ルール: {name}"
     port:
       label: ポート
       placeholder: e.g. 8080 or myport
     host:
       label: ホストを入力
-      error: Host is required.
+      error: ホストは必須です。
     name:
       placeholder: e.g. myrule
     loadBalancer:
       title: ロードバランサー
       label: アルゴリズム
-      detail: Configure the load balancer algorithms
+      detail: ロードバランサーアルゴリズムを設定する
       simple:
         label: 標準ロードバランシングアルゴリズムを使用
         roundRobin:
-          label: Round Robin Policy
+          label: ラウンドロビンポリシー
         leastConn:
-          label: Least Request Load Balancer
+          label: 最少リクエストロードバランサー
         random:
-          label: Random Load Balancer
+          label: ランダムロードバランサー
         passthrough:
-          label: Passthrough
+          label: パススルー
       consistentHash:
-        label: Use consistent hash-based load balancing for soft session affinity
+        label: ソフトセッションアフィニティのための一貫したハッシュベースのロードバランシングを使用する
         httpHeaderName:
-          label: HTTP Header Name
-          placeholder: e.g. end-user
-          error: HTTP Header Name is required.
+          label: HTTPヘッダー名
+          placeholder: "例: end-user"
+          error: HTTPヘッダー名は必須です。
         minimumRingSize:
-          label: Minimum Ring Size
+          label: 最小リングサイズ
           placeholder: e.g. 1024
         httpCookie:
           name:
-            label: Cookie Name
-            placeholder: e.g. username
-            error: Cookie Name is required.
+            label: Cookie名
+            placeholder: "例: username"
+            error: Cookie名は必須です。
           path:
-            label: Cookie Path
+            label: Cookieパス
             placeholder: e.g. /
           ttl:
             label: TTL
             placeholder: e.g. 0s
-            error: TTL is required.
+            error: TTLは必須です。
         mode:
-          label: Hash Mode
+          label: ハッシュモード
           header:
-            label: Hash based on a specific HTTP header
+            label: 特定のHTTPヘッダーに基づくハッシュ
           cookie:
-            label: Hash based on HTTP cookie
+            label: HTTPクッキーに基づくハッシュ
           sourceIp:
-            label: Hash based on the source IP address
+            label: 送信元IPアドレスに基づくハッシュ
     connectionPool:
       label: 接続プール
-      detail: Configure the volume of connections to an upstream service
+      detail: アップストリームサービスへの接続量を設定する
       http1MaxPendingRequests:
         label: HTTP1最大保留リクエスト数
         placeholder: e.g. 1024
-        help: Maximum number of pending HTTP requests to a destination.
+        help: 宛先への保留中HTTPリクエストの最大数。
       http2MaxRequests:
         label: HTTP2最大リクエスト数
         placeholder: e.g. 1024
-        help: Maximum number of requests to a backend.
+        help: バックエンドへのリクエストの最大数。
       maxRequestsPerConnection:
         label: HTTP接続あたりの最大リクエスト数
         placeholder: e.g. 10
-        help: Maximum number of requests per connection to a backend. Setting this parameter to 1 disables keep alive.
+        help: バックエンドへの接続ごとのリクエストの最大数。このパラメーターを1に設定するとキープアライブが無効になります。
       maxRetries:
         label: HTTP最大リトライ数
         placeholder: e.g. 1024
-        help: Maximum number of retries that can be outstanding to all hosts in a cluster at a given time.
+        help: 特定の時点でクラスター内のすべてのホストに対して未処理のリトライの最大数。
       connectTimeout:
-        label: TCP Connection Timeout
-        placeholder: e.g. 30ms
-        help: TCP connection timeout.
+        label: TCP接続タイムアウト
+        placeholder: "例: 30ms"
+        help: TCP接続タイムアウト。
       maxConnections:
-        label: TCP Max Connections
+        label: TCP最大接続数
         placeholder: e.g. 1024
-        help: Maximum number of HTTP1 /TCP connections to a destination host.
+        help: 宛先ホストへのHTTP1/TCP接続の最大数。
     outlierDetection:
       label: 異常検知
-      detail: Configure eviction of unhealthy hosts from the load balancing pool
+      detail: ロードバランシングプールから不健全なホストを排除する設定
       baseEjectionTime:
         label: 基本排除時間
-        placeholder: e.g. 30s
+        placeholder: "例: 30s"
         help: Minimum ejection duration. A host will remain ejected for a period equal to the product of minimum ejection duration and the number of times the host has been ejected.
       consecutiveErrors:
         label: 連続エラー
@@ -3938,24 +3938,24 @@ istio:
         placeholder: e.g. nginx.example.com
       subjectAltNames:
         label: サブジェクト代替名
-        placeholder: e.g. example.com
-        add: Add Subject Alternative Name
+        placeholder: "例: example.com"
+        add: サブジェクト代替名を追加
   egressGateway: Egressゲートウェイを有効にする
   ingressGateway: Ingressゲートウェイを有効にする
-  istiodRemote: Enable istiodRemote
+  istiodRemote: istiodRemoteを有効にする
   kiali: Kialiを有効にする
   pilot: Pilotを有効にする
   policy: Policyを有効にする
-  pilotRequired: Pilot must be enabled in order to enable Kiali
+  pilotRequired: Kialiを有効にするにはPilotを有効にする必要があります
   poweredBy: Powered by <a target="_blank" rel="noopener noreferrer nofollow" href='https://istio.io/latest/'>Istio</a>
   telemetry: Telemetryを有効にする
   titles:
     components: コンポーネント
-    customAnswers: Custom Answers
-    advanced: Advanced Settings
+    customAnswers: カスタム回答
+    advanced: 詳細設定
     description: 説明
   tracing: Jaegerトレーシングを有効にする（限定）
-  v1Warning: Please uninstall the current Istio version in the <code>istio-system</code> namespace before attempting to install this version.
+  v1Warning: "このバージョンをインストールする前に<code>istio-system</code>名前空間の現在のIstioバージョンをアンインストールしてください。"
 itemCard:
   ariaLabel:
     clickable: Click on card for {cardTitle}
@@ -4101,10 +4101,10 @@ logging:
     user: ユーザー
     password: シークレットからのパスワード
     caFile:
-      label: シークレットからのCAファイル
+      label: ユーザー
     clientCert:
       label: シークレットからのクライアント証明書
-      placeholder: CA証明書を貼り付けてください
+      placeholder: "例: root"
     clientKey:
       label: シークレットからのクライアントキー
       placeholder: クライアントキーを貼り付けてください
@@ -4114,7 +4114,7 @@ logging:
     suppressTypeName:
       label: タイプ名を抑制
       elasticSearchTips: ログサーバーとの互換性のためにデフォルトでタイプ名を抑制します。Elasticsearch >= 8.0.0では有効にしてください
-      openSearchTips: Suppress type names by default to be compatible with log server. You should enable it for OpenSearch >= 2.0.0
+      openSearchTips: ログサーバーとの互換性のためにデフォルトでタイプ名を抑制します。OpenSearch 2.0.0以上では有効にしてください
   redis:
     host: ホスト
     port: ポート
@@ -4122,82 +4122,82 @@ logging:
     ttl: 各キーのTTL
     password: シークレットからのパスワード
     format:
-      title: Format
-      type: Type
+      title: フォーマット
+      type: タイプ
   gelf:
     host: ホスト
     port: ポート
     protocol: プロトコル
     tls: TLSを有効にする
     tlsOptions:
-      clientCert: Client Cert
-      clientKey: Client Cert Key
-      allCiphers: Allow any ciphers to be used
-      tlsVersion: TLS version
-      noVerify: Skip TLS verification
+      clientCert: クライアント証明書
+      clientKey: クライアント証明書キー
+      allCiphers: 任意の暗号を許可する
+      tlsVersion: TLSバージョン
+      noVerify: TLS検証をスキップ
   kafka:
     brokers: ブローカー
     defaultTopic: デフォルトトピック
     saslOverSsl: SASL Over SSL
-    scramMechanism: Scram Mechanism
+    scramMechanism: SCRAMメカニズム
     username: シークレットからのユーザー名
     password: シークレットからのパスワード
     sslCaCert:
-      label: CA Cert from Secret
-      placeholder: Paste in the CA certificate
+      label: シークレットのCA証明書
+      placeholder: CA証明書を貼り付けてください
     sslClientCert:
-      label: Cert from Secret
-      placeholder: Paste in the client cert
+      label: シークレットの証明書
+      placeholder: クライアント証明書を貼り付けてください
     sslClientCertChain:
-      label: Cert Chain from Secret
-      placeholder: Paste in the client cert chain
-    sslClientCertKey: Cert Key from Secret
+      label: シークレットの証明書チェーン
+      placeholder: クライアント証明書チェーンを貼り付けてください
+    sslClientCertKey: シークレットの証明書キー
   loki:
     url: URL
-    urlInvalid: Incorrect URL format. Please  check and correct your URL format before saving.
+    urlInvalid: URLフォーマットが正しくありません。保存前にURLフォーマットを確認して修正してください。
     tenant: テナント
     username: シークレットからのユーザー
-    password: Password from Secret
-    configureKubernetesLabels: Configure Kubernetes metadata in a Prometheus like format
-    extractKubernetesLabels: Extract Kubernetes labels as Loki labels
-    dropSingleKey: If a record only has 1 key, then just set the log line to the value and discard the key
+    password: シークレットのパスワード
+    configureKubernetesLabels: PrometheusのようなフォーマットでKubernetesメタデータを設定する
+    extractKubernetesLabels: KubernetesラベルをLokiラベルとして抽出する
+    dropSingleKey: レコードにキーが1つしかない場合は、ログ行をその値に設定してキーを破棄する
     caCert: シークレットからのCA証明書
     cert: シークレットからの証明書
     key: シークレットからのキー
   awsElasticsearch:
     url: URL
-    keyId: Key Id from Secret
-    secretKey: Secret Key from Secret
+    keyId: シークレットのキーID
+    secretKey: シークレットのシークレットキー
   azurestorage:
-    storageAccount: Account from Secret
-    accessKey: Access Key from Secret
+    storageAccount: シークレットのアカウント
+    accessKey: シークレットのアクセスキー
     container: コンテナ
     path: パス
-    storeAs: Store As
+    storeAs: 保存形式
   cloudwatch:
-    keyId: Key Id from Secret
-    secretKey: Secret Key from Secret
+    keyId: シークレットのキーID
+    secretKey: シークレットのシークレットキー
     endpoint: エンドポイント
     region: リージョン
     logGroupName: ロググループ名
     logStreamName: ログストリーム名
   datadog:
-    apiKey: API Key from Secret
-    useSSL: Use SSL
-    useCompression: Use Compression
+    apiKey: シークレットのAPIキー
+    useSSL: SSLを使用する
+    useCompression: 圧縮を使用する
     host: ホスト
   file:
     path: パス
   gcs:
     project: プロジェクト
-    credentialsJson: Credentials from Secret
+    credentialsJson: シークレットの認証情報
     bucket: バケット
     path: パス
-    overwriteExistingPath: Overwrite Existing Path
+    overwriteExistingPath: 既存のパスを上書きする
   kinesisStream:
     streamName: ストリーム名
-    keyId: Key Id from Secret
-    secretKey: Secret Key from Secret
+    keyId: シークレットのキーID
+    secretKey: シークレットのシークレットキー
   logdna:
     apiKey: APIキー
     hostname: ホスト名
@@ -4205,21 +4205,21 @@ logging:
   logz:
     url: URL
     port: ポート
-    token: Api Token from Secret
-    enableCompression: Enable Compression
+    token: シークレットのAPIトークン
+    enableCompression: 圧縮を有効にする
   newrelic:
-    apiKey: API Key from Secret
-    licenseKey: License Key from Secret
+    apiKey: シークレットのAPIキー
+    licenseKey: シークレットのライセンスキー
     baseURI: ベースURI
   sumologic:
-    endpoint: Endpoint from Secret
+    endpoint: シークレットのエンドポイント
     sourceName: ソース名
   syslog:
     host: ホスト
     port: ポート
     transport: トランスポート
-    insecure: insecure
-    trustedCaPath: CA Path from Secret
+    insecure: 非セキュア
+    trustedCaPath: シークレットのCAパス
     format:
       title: Format
       type: Type
@@ -4290,22 +4290,22 @@ logging:
     protocol: プロトコル
     index: Index
     token: Token from Secret
-    insecureSsl: Insecure SSL
-    indexName: Index Name
-    source: Source
-    caFile: CA File from Secret
-    caPath: CA Path from Secret
-    clientCert: Client Cert from Secret
-    clientKey: Client Key from Secret
+    insecureSsl: 非セキュアSSL
+    indexName: インデックス名
+    source: ソース
+    caFile: シークレットのCAファイル
+    caPath: シークレットのCAパス
+    clientCert: シークレットのクライアント証明書
+    clientKey: シークレットのクライアントキー
   forward:
     host: ホスト
     port: ポート
-    sharedKey: Shared Key from Secret
-    username: Username from Secret
-    password: Password from Secret
-    clientCertPath: Client Cert Path from Secret
-    clientPrivateKeyPath: Client Private Key Path from Secret
-    clientPrivateKeyPassphrase: Client Private Key Passphrase from Secret
+    sharedKey: シークレットの共有キー
+    username: シークレットのユーザー名
+    password: シークレットのパスワード
+    clientCertPath: シークレットのクライアント証明書パス
+    clientPrivateKeyPath: シークレットのクライアント秘密鍵パス
+    clientPrivateKeyPassphrase: シークレットのクライアント秘密鍵パスフレーズ
 longhorn:
   overview:
     title: 概要
@@ -4396,7 +4396,7 @@ members:
     viewClusterMembers: クラスターメンバーを表示
     viewNodes: ノードを表示
     owner:
-      label: オーナー
+      label: 説明
       description: Owners have full control over the Cluster and all resources inside it.
     member:
       label: メンバー
@@ -4457,51 +4457,51 @@ monitoring:
     storage:
       annotations: PVC Annotations
       className: ストレージクラス名
-      existingClaim: Use Existing Claim
+      existingClaim: 既存のクレームを使用する
       finalizers: PVC Finalizers
       label: Grafanaストレージ
       mode: アクセスモード
       selector: Selector
       size: サイズ
-      subpath: Use Subpath
-      type: Persistent Storage Types
+      subpath: サブパスを使用する
+      type: 永続ストレージタイプ
       types:
-        existing: Enable With Existing PVC
-        statefulset: Enable with StatefulSet Template
-        template: Enable with PVC Template
-      volumeName: Volume Name
+        existing: 既存のPVCで有効にする
+        statefulset: StatefulSetテンプレートで有効にする
+        template: PVCテンプレートで有効にする
+      volumeName: ボリューム名
     title: Grafanaを設定
   hostNetwork:
-    label: Use Host Network For Prometheus Operator
+    label: Prometheusオペレーターにホストネットワークを使用する
     tip: If you are using a managed Kubernetes cluster with custom CNI (e.g. Calico), you must enable this option to allow a managed control plane to contact the admission webhook exposed by Prometheus Operator to mutate or validate incoming PrometheusRules.
   overview:
     alertsList:
       ends:
-        label: Ends At
+        label: 終了時刻
       label: アクティブアラート
       message:
-        label: Message
+        label: メッセージ
       severity:
         label: 重大度
       start:
-        label: Starts At
+        label: 開始時刻
     linkedList:
       alertManager:
-        description: Active Alerts
+        description: アクティブなアラート
         label: Alertmanager
       grafana:
-        description: Metrics Dashboards
+        description: メトリクスダッシュボード
         label: Grafana
-      na: Resource Unavailable
+      na: リソース利用不可
       prometheusPromQl:
-        description: PromQL Graph
-        label: Prometheus Graph
+        description: PromQLグラフ
+        label: Prometheusグラフ
       prometheusRules:
-        description: Configured Rules
+        description: 設定されたルール
         label: PrometheusRules
       prometheusTargets:
-        description: Configured Targets
-        label: Prometheus Targets
+        description: 設定されたターゲット
+        label: Prometheusターゲット
     subtitle: 'Powered By: <a href="https://github.com/coreos/prometheus-operator" target="_blank" rel="noopener noreferrer nofollow">Prometheus</a>'
     title: ダッシュボード
   prometheus:
@@ -4510,7 +4510,7 @@ monitoring:
       evaluation: 評価間隔
       ignoreNamespaceSelectors:
         help: Ignoring Namespace Selectors allows Cluster Admins to limit teams from monitoring resources outside of namespaces they have permissions to but can break the functionality of Apps that rely on setting up Monitors that scrape targets across multiple namespaces, such as Istio.
-        label: Namespace Selectors
+        label: 名前空間セレクター
         radio:
           enforced: 'Use: Monitors can access resources based on namespaces that match the namespace selector field'
           ignored: 'Ignore: Monitors can only access resources in the namespace they are deployed in'
@@ -4543,14 +4543,14 @@ monitoring:
     tls:
       label: SSL
       caFilePath:
-        label: CA File Path
-        placeholder: e.g. ./ca-file.csr
+        label: CAファイルパス
+        placeholder: "例: ./ca-file.csr"
       certFilePath:
-        label: Cert File Path
-        placeholder: e.g. ./cert-file.crt
+        label: 証明書ファイルパス
+        placeholder: "例: ./cert-file.crt"
       keyFilePath:
-        label: Key File Path
-        placeholder: e.g. ./key-file.pfx
+        label: キーファイルパス
+        placeholder: "例: ./key-file.pfx"
       secretsBanner: The file paths below must be referenced in <pre class="inline-block m-0 p-0 vertical-middle">alertmanager.alertmanagerSpec.secrets</pre> when deploying the Monitoring chart. For more information see our <a href="{docsBase}/how-to-guides/advanced-user-guides/monitoring-alerting-guides" target="_blank" rel="noopener noreferrer nofollow">documentation</a>.
   projectMonitoring:
     detail:
@@ -4609,7 +4609,7 @@ monitoring:
     general: 一般
     grafana: Grafana
     prometheus: Prometheus
-    projectMetrics: Project Metrics
+    projectMetrics: プロジェクトメトリクス
   v1Warning: Monitoring is currently deployed from Cluster Manager. If you are migrating from an older version of {vendor} with monitoring enabled, please disable monitoring in Cluster Manager before attempting to install the new {vendor} Monitoring chart in Cluster Explorer.
 monitoringReceiver:
   addButton: Add {type}
@@ -4797,13 +4797,13 @@ navLink:
           placeholder: e.g. cattle-system/rancher-webhook
         path:
           label: パス
-          placeholder: e.g. proxy/?orgId=1
+          placeholder: "例: app/bin/endpoint?param=value"
         port:
           label: ポート
-          placeholder: e.g. 80
+          placeholder: "例: 80"
         scheme:
           label: スキーム
-          placeholder: e.g. http
+          placeholder: "例: HTTP"
     target:
       label: ウィンドウターゲット
       option:
@@ -5000,7 +5000,7 @@ persistentVolume:
       label: 読み取り専用
     filesystemType:
       label: ファイルシステムタイプ
-      placeholder: '例: ext4'
+      placeholder: "例: ext4"
     secretName:
       label: シークレット名
       placeholder: '例: secret'
@@ -5028,7 +5028,7 @@ persistentVolume:
       placeholder: '例: driver.longhorn.io'
     volumeHandle:
       label: ボリュームハンドル
-      placeholder: '例: pvc-xxxx'
+      placeholder: "例: pvc-xxxx"
     volumeAttributes:
       add: ボリューム属性を追加
     nodePublishSecretName:
@@ -5147,29 +5147,29 @@ persistentVolume:
       label: LUN
       placeholder: '例: 2'
     targetPortal:
-      label: Target Portal
-      placeholder: e.g. portal
+      label: ターゲットポータル
+      placeholder: "例: portal"
     portals:
-      add: Add Portal
+      add: ポータルを追加
   cinder:
-    label: Openstack Cinder Volume (Unsupported)
+    label: Openstack Cinderボリューム（非サポート）
     volumeId:
-      label: Volume ID
-      placeholder: e.g. vol
+      label: ボリュームID
+      placeholder: "例: vol"
   quobyte:
-    label: Quobyte Volume (Unsupported)
+    label: Quobyteボリューム（非サポート）
     volume:
-      label: Volume
-      placeholder: e.g. vol
+      label: ボリューム
+      placeholder: "例: vol"
     user:
       label: User
       placeholder: e.g. root
     group:
       label: Group
-      placeholder: e.g. abc
+      placeholder: "例: abc"
     registry:
       label: Registry
-      placeholder: e.g. abc
+      placeholder: "例: abc"
   photonPersistentDisk:
     label: Photon Volume (Unsupported)
     pdId:
@@ -5183,33 +5183,33 @@ persistentVolume:
   scaleIO:
     label: ScaleIO Volume (Unsupported)
     volumeName:
-      label: Volume Name
-      placeholder: e.g. vol-0
+      label: ボリューム名
+      placeholder: "例: vol"
     gateway:
       label: Gateway
       placeholder: e.g. https://localhost:443/api
     protectionDomain:
-      label: Protection Domain
+      label: 保護ドメイン
       placeholder: e.g. pd01
     storageMode:
-      label: Storage Mode
+      label: ストレージモード
       placeholder: e.g. ThinProvisioned
     storagePool:
-      label: Storage Pool
+      label: ストレージプール
       placeholder: e.g. sp01
     system:
-      label: System
+      label: システム
       placeholder: e.g. scaleio
     sslEnabled:
-      label: SSL Enabled
+      label: SSL有効
   storageos:
-    label: StorageOS (Unsupported)
+    label: StorageOS（非サポート）
     volumeName:
       label: Volume Name
       placeholder: e.g. vol
     volumeNamespace:
-      label: Volume Namespace
-      placeholder: e.g. default
+      label: ボリューム名前空間
+      placeholder: "例: default"
   nfs:
     label: NFS共有
     path:
@@ -5224,8 +5224,8 @@ persistentVolume:
       label: Volume Handle
       placeholder: e.g. pvc-xxxx
     options:
-      label: Options
-      addLabel: Add
+      label: オプション
+      addLabel: 追加
   local:
     label: ローカル
     path:
@@ -5237,19 +5237,19 @@ persistentVolume:
       label: ノード上のパス
       placeholder: /mnt/disks/ssd1
     mustBe:
-      label: The Path on the Node must be
-      anything: 'Anything: do not check the target path'
-      directory: A directory, or create if it does not exist
-      file: A file, or create if it does not exist
-      existingDirectory: An existing directory
-      existingFile: An existing file
-      existingSocket: An existing socket
-      existingCharacter: An existing character device
-      existingBlock: An existing block device
+      label: ノード上のパスの要件
+      anything: "何でも: ターゲットパスを確認しない"
+      directory: ディレクトリ、存在しない場合は作成
+      file: ファイル、存在しない場合は作成
+      existingDirectory: 既存のディレクトリ
+      existingFile: 既存のファイル
+      existingSocket: 既存のソケット
+      existingCharacter: 既存のキャラクターデバイス
+      existingBlock: 既存のブロックデバイス
   gcePersistentDisk:
     label: Google永続ディスク
     persistentDiskName:
-      label: Persistent Disk Name
+      label: パーシステントディスク名
       placeholder: e.g. abc
   awsElasticBlockStore:
     label: Amazon EBSディスク
@@ -5259,26 +5259,26 @@ persistentVolume:
   azureFile:
     label: Azureファイルシステム
     shareName:
-      label: Share Name
+      label: 共有名
       placeholder: e.g. abc
   azureDisk:
     label: Azureディスク
     diskName:
-      label: Disk Name
+      label: ディスク名
       placeholder: e.g. kubernetes-pvc
     diskURI:
-      label: Disk URI
+      label: ディスクURI
       placeholder: e.g. https://example.com/disk
     kind:
       label: 種類
-      dedicated: Dedicated
-      managed: Managed
-      shared: Shared
+      dedicated: 専用
+      managed: マネージド
+      shared: 共有
     cachingMode:
       label: キャッシュモード
-      none: None
-      readOnly: Read Only
-      readWrite: Read Write
+      none: なし
+      readOnly: 読み取り専用
+      readWrite: 読み書き
     filesystemType:
       label: Filesystem Type
       placeholder: e.g. ext4
@@ -5445,13 +5445,13 @@ plugins:
             message: 名前{repo}のリポジトリがすでに存在します
       success:
         title: '{name}から拡張機能カタログをインポートしました'
-        message: Extension Catalog image was imported successfully
+        message: 拡張機能カタログイメージが正常にインポートされました
     headers:
       image:
         name: images
         label: Deployment Image
       repository:
-        label: Repository Name
+        label: リポジトリ名
   tabs:
     all: すべて
     available: 利用可能
@@ -5463,22 +5463,22 @@ plugins:
   version: 'Version: {version}'
   install:
     label: インストール
-    title: Install extension {name}
-    prompt: Are you sure that you want to install this extension?
-    version: Version
-    warnNotCertified: Please ensure that you are aware of the risks of installing Extensions from untrusted authors
+    title: "拡張機能 {name} をインストール"
+    prompt: この拡張機能をインストールしてよろしいですか？
+    version: バージョン
+    warnNotCertified: 信頼されていない作者の拡張機能をインストールするリスクを認識してください
   upgrade:
     label: アップグレード
-    title: Upgrade extension {name}
-    prompt: Are you sure that you want to upgrade this extension?
+    title: "拡張機能 {name} をアップグレード"
+    prompt: この拡張機能をアップグレードしてよろしいですか？
   downgrade:
     label: ダウングレード
-    title: Downgrade extension {name}
-    prompt: Are you sure that you want to downgrade this extension?
+    title: "拡張機能 {name} をダウングレード"
+    prompt: この拡張機能をダウングレードしてよろしいですか？
   uninstall:
     label: アンインストール
-    title: Uninstall extension {name}
-    prompt: Are you sure that you want to uninstall this extension?
+    title: "拡張機能 {name} をアンインストール"
+    prompt: この拡張機能をアンインストールしてよろしいですか？
     catalog: Are you sure that you want to uninstall this Extension Catalog Image? This will also remove any Extensions provided by this image.
   upgradeAvailable: このエクステンションの新しいバージョンが利用可能です
   reload: エクステンションが変更されました。リロードが必要です
@@ -5486,40 +5486,40 @@ plugins:
     title: エクステンションセーフモード
     message: エクステンションが読み込まれませんでした
   addRepos:
-    banner: There are new extensions repositories available. To enable these repositories, click the button on the right.
-    bannerBtn: Add repositories
-    title: Add Extensions repositories
-    prompt: You can install multiple Rancher extension repositories to increase your extensions catalog
+    banner: 新しい拡張機能リポジトリが利用可能です。これらのリポジトリを有効にするには、右側のボタンをクリックしてください。
+    bannerBtn: リポジトリを追加
+    title: 拡張機能リポジトリを追加
+    prompt: 複数のRancher拡張機能リポジトリをインストールして拡張機能カタログを拡充できます
   setup:
     installed: すでにインストール済み
     uninstalled: すでにアンインストール済み
     title: エクステンションサポートが有効になっていません
     prompt:
-      cant: Automatic installation is not available - required Helm Charts could not be found
+      cant: 自動インストールは利用できません - 必要なHelmチャートが見つかりませんでした
       can: You need to enable the <code>{ff}</code> Feature Flag in Global Settings. Once enabled, Rancher will require a restart.
-      official: The Official Rancher Extensions Repository provides extensions published by Rancher
-      partners: The Partners Extensions Repository provides extensions published by Rancher Partners
-      community: The Community Extensions Repository provides extensions published by Rancher Community
+      official: 公式Rancher拡張機能リポジトリはRancherが公開した拡張機能を提供します
+      partners: パートナー拡張機能リポジトリはRancherパートナーが公開した拡張機能を提供します
+      community: コミュニティ拡張機能リポジトリはRancherコミュニティが公開した拡張機能を提供します
     install:
       title: エクステンションサポートを有効にしますか？
       prompt: This will lead you to the page where you can enable the Feature Flag needed to enable Extension support.
       featuresButton: 機能フラグに移動
-      airgap: Air-gapped installations should NOT enable this feature
+      airgap: エアギャップインストールでは、この機能を有効にしないでください
       addRancherRepo: 公式Rancherエクステンションリポジトリを追加
-      addPartnersRancherRepo: Add Partners Extensions Repository
+      addPartnersRancherRepo: パートナー拡張機能リポジトリを追加
     remove:
       label: エクステンションサポートを無効にする
       title: エクステンションサポートを無効にしますか？
-      prompt: This will un-install the Helm charts that enable Extension support
+      prompt: これにより、拡張機能サポートを有効にするHelmチャートがアンインストールされます
       registry:
         official:
-          title: Remove the Official Rancher Extensions Repository
+          title: 公式Rancher拡張機能リポジトリを削除
         partners:
-          title: Remove the Partners Extensions Repository
+          title: パートナー拡張機能リポジトリを削除
         community:
-          title: Remove the Community Extensions Repository
+          title: コミュニティ拡張機能リポジトリを削除
       crd:
-        title: Remove the Rancher Extensions Custom Resource Definition
+        title: Rancher拡張機能カスタムリソース定義を削除
         prompt: There are one or more extensions installed - removing the CRD will require you to manually reinstall these extensions if you subsequently re-enable extensions support.
 podSecurityAdmission:
   name: ポッドセキュリティアドミッション
@@ -5895,59 +5895,59 @@ rbac:
           false {グループ}}のアクセスを制御します。
       custom:
         label: カスタム
-        description: Roles not created by {vendor}.
+        description: "{vendor}が作成していないロール。"
       builtin:
         label: 組み込み
-        description: Additional roles to define more fine-grain permissions model.
+        description: より細かい権限モデルを定義するための追加ロール。
     unknownRole:
-      description: No description provided
+      description: 説明がありません
     assignOnlyRole: このロールはすでに割り当てられています
     role:
       admin:
         label: 管理者
-        description: Administrators have full control over the entire installation and all resources in all clusters.
+        description: 管理者はインストール全体およびすべてのクラスターのすべてのリソースを完全に制御できます。
       user:
         label: 標準ユーザー
-        description: Standard Users can create new clusters and manage clusters and projects they have been granted access to.
+        description: 標準ユーザーは新しいクラスターを作成し、アクセスが許可されたクラスターとプロジェクトを管理できます。
       user-base:
         label: ユーザーベース
-        description: User-Base users have login-access only.
+        description: User-Baseユーザーはログインアクセスのみできます。
       clusters-create:
         label: 新しいクラスターを作成
-        description: Allows the user to create new clusters and become the owner of them.  Standard Users have this permission by default.
+        description: ユーザーが新しいクラスターを作成してその所有者になることができます。標準ユーザーはデフォルトでこの権限を持ちます。
       clustertemplates-create:
-        label: Create new RKE Cluster Templates
-        description: Allows the user to create new RKE cluster templates and become the owner of them.
+        label: 新しいRKEクラスターテンプレートを作成
+        description: ユーザーが新しいRKEクラスターテンプレートを作成してその所有者になることができます。
       authn-manage:
         label: 認証を設定
-        description: Allows the user to enable, configure, and disable all Authentication provider settings.
+        description: ユーザーがすべての認証プロバイダー設定を有効化、設定、および無効化できます。
       catalogs-manage:
-        label: Legacy Configure Catalogs
-        description: Allows the user to add, edit, and remove management.cattle.io based catalogs resources.
+        label: レガシーカタログの設定
+        description: ユーザーがmanagement.cattle.ioベースのカタログリソースを追加、編集、削除できます。
       clusters-manage:
         label: すべてのクラスターを管理
-        description: Allows the user to manage all clusters, including ones they are not a member of.
+        description: ユーザーがメンバーでないクラスターを含むすべてのクラスターを管理できます。
       clusterscans-manage:
-        label: Manage Compliance Cluster Scans
-        description: Allows the user to launch new and manage compliance cluster scans.
+        label: コンプライアンスクラスタースキャンの管理
+        description: ユーザーが新しいコンプライアンスクラスタースキャンを起動して管理できます。
       kontainerdrivers-manage:
-        label: Create new Cluster Drivers
-        description: Allows the user to create new cluster drivers and become the owner of them.
+        label: 新しいクラスタードライバーを作成
+        description: ユーザーが新しいクラスタードライバーを作成してその所有者になることができます。
       features-manage:
         label: 機能フラグを設定
-        description: Allows the user to enable and disable custom features via feature flag settings.
+        description: ユーザーが機能フラグ設定でカスタム機能を有効化・無効化できます。
       nodedrivers-manage:
         label: ノードドライバーを設定
-        description: Allows the user to enable, configure, and remove all Node Driver settings.
+        description: ユーザーがすべてのノードドライバー設定を有効化、設定、削除できます。
       nodetemplates-manage:
-        label: Manage Node Templates
-        description: Allows the user to define, edit, and remove Node Templates.
+        label: ノードテンプレートの管理
+        description: ユーザーがノードテンプレートを定義、編集、削除できます。
       roles-manage:
         label: ロールを管理
-        description: Allows the user to define, edit, and remove Role definitions.
+        description: ユーザーがロール定義を定義、編集、削除できます。
       settings-manage:
         label: 設定を管理
-        description: Allows the user to manage {vendor} Settings.
+        description: "ユーザーが{vendor}の設定を管理できます。"
       users-manage:
         label: ユーザーを管理
         description: Allows the user to create, remove, and set passwords for all Users.
@@ -6581,7 +6581,7 @@ storageClass:
       label: 管理者ID
       placeholder: '例: kube'
     adminSecretNamespace:
-      label: 管理者シークレット名前空間
+      label: 管理者シークレットネームスペース
       placeholder: '例: kube-system'
     adminSecret:
       label: 管理者シークレット
@@ -6672,10 +6672,10 @@ storageClass:
       placeholder: e.g. sp1
     storageMode:
       label: StorageMode
-      thin: Thin Provisioned
-      thick: Thick Provisioned
+      thin: シンプロビジョニング
+      thick: シックプロビジョニング
     secretRef:
-      label: Secret Ref
+      label: シークレット参照
       placeholder: e.g. sio-secret
     readOnly:
       label: Read Only
@@ -7260,35 +7260,35 @@ wm:
     title: 'Kubectl: {name}'
 workload:
   scaleWorkloads: ワークロードをスケール
-  healthWorkloads: Jobs/Pods health status
-  healthScaleToggle: Toggle/Expand workloads scaling/health
-  plus: Scale up workload
-  minus: Scale down workload
+  healthWorkloads: ジョブ/ポッドの健全性ステータス
+  healthScaleToggle: ワークロードのスケーリング/健全性の切り替え/展開
+  plus: ワークロードをスケールアップ
+  minus: ワークロードをスケールダウン
   container:
     command:
       addEnvVar: 変数を追加
       args: 引数
-      as: as
+      as: として
       command: コマンド
       env: 環境変数
       fromResource:
         key:
-          label: Key
-          placeholder: e.g. metadata.labels['<KEY>']
+          label: キー
+          placeholder: "例: metadata.labels['<KEY>']"
         name:
-          label: Variable Name
-          placeholder: e.g. FOO
-        prefix: Prefix
+          label: 名前
+          placeholder: "例: accept-ranges"
+        prefix: プレフィックス
         source:
-          label: Source
-          placeholder: e.g. my-container
-        secret: Secret
+          label: ソース
+          placeholder: "例: my-container"
+        secret: シークレット
         configMap: ConfigMap
-        containerName: Container Name
-        type: Type
+        containerName: コンテナ名
+        type: タイプ
         value:
-          label: Value
-          placeholder: e.g. bar
+          label: 値
+          placeholder: "例: bytes"
       tty: TTY
       workingDir: 作業ディレクトリ
       stdin: Stdin
@@ -7296,53 +7296,53 @@ workload:
     healthCheck:
       checkInterval: チェック間隔
       command:
-        command: Command to run
+        command: 実行するコマンド
       failureThreshold: 失敗しきい値
       httpGet:
-        headers: Request Headers
-        path: Request Path
-        port: Check Port
+        headers: リクエストヘッダー
+        path: リクエストパス
+        port: チェックポート
       initialDelay: 初期遅延
       livenessProbe: 生存チェック
-      livenessTip: Containers will be restarted when this check is failing.  Not recommended for most uses.
-      noHealthCheck: There is not a Readiness Check, Liveness Check or Startup Check configured.
+      livenessTip: このチェックが失敗するとコンテナが再起動されます。ほとんどの用途にはお勧めしません。
+      noHealthCheck: Readinessチェック、Livenessチェック、またはStartupチェックが設定されていません。
       readinessProbe: 準備チェック
-      readinessTip: Containers will be removed from service endpoints when this check is failing.  Recommended.
+      readinessTip: このチェックが失敗するとコンテナがサービスエンドポイントから削除されます。推奨されます。
       startupProbe: スタートアップチェック
-      startupTip: Containers will wait until this check succeeds before attempting other health checks.
+      startupTip: コンテナは他のヘルスチェックを試みる前に、このチェックが成功するまで待機します。
       successThreshold: 成功しきい値
       timeout: タイムアウト
       kind:
-        none: None
-        HTTP: HTTP request returns a successful status (200-399)
-        HTTPS: HTTPS request returns a successful status
-        tcp: TCP connection opens successfully
-        exec: Command run inside the container exits with status 0
+        none: なし
+        HTTP: HTTPリクエストが成功ステータス（200-399）を返す
+        HTTPS: HTTPSリクエストが成功ステータスを返す
+        tcp: TCP接続が正常に開かれる
+        exec: コンテナ内で実行されたコマンドがステータス0で終了する
     image: コンテナイメージ
     imagePullPolicy: プルポリシー
     imagePullSecrets:
-      label: Pull Secrets
-      tooltip: Must be of Type `kubernetes.io/dockercfg` or `kubernetes.io/dockerconfigjson`
+      label: プルシークレット
+      tooltip: "タイプ`kubernetes.io/dockercfg`または`kubernetes.io/dockerconfigjson`である必要があります"
     init: Initコンテナ
     lifecycleHook:
       postStart:
         label: PostStart
-        add: Add PostStart Hook
+        add: PostStartフックを追加
       preStop:
         label: PreStop
-        add: Add PreStop Hook
+        add: PreStopフックを追加
       exec:
         title: Exec
-        add: Add command to execute
+        add: 実行するコマンドを追加
         command:
-          label: Command
-          placeholder: e.g. sh -c 'sleep 10'
+          label: コマンド
+          placeholder: "例: sh -c 'sleep 10'"
       httpGet:
         title: HttpGet
-        add: Create HTTP request
+        add: HTTPリクエストを作成
         host:
           label: Host IP
-          placeholder: e.g. 172.17.0.2
+          placeholder: "例: 192.168.0.1"
         path:
           label: Path
           placeholder: e.g. app/bin/endpoint?param=value
@@ -7353,7 +7353,7 @@ workload:
           label: Scheme
           placeholder: e.g. HTTP
       httpHeaders:
-        title: HTTP Headers
+        title: HTTPヘッダー
         name:
           label: Name
           placeholder: e.g. accept-ranges
@@ -7362,7 +7362,7 @@ workload:
           placeholder: e.g. bytes
       tcpSocket:
         title: TCPSocket
-        add: Open a TCP socket
+        add: TCPソケットを開く
         host:
           label: Host
           placeholder: e.g. 192.168.0.1
@@ -7372,26 +7372,26 @@ workload:
     name: コンテナ名
     noResourceLimits: リソース要件が設定されていません。
     noPorts: ポートが設定されていません。
-    noServiceAccess: You do not have permission to create or manage services
+    noServiceAccess: サービスを作成または管理する権限がありません
     ports:
       expose: ネットワーキング
       description: Define a Service to expose the container, or define a non-functional, named port so that humans will know where the app within the container is expected to run.
       detailedDescription: If ClusterIP, LoadBalancer, or NodePort is selected, a Service is automatically created that will select the Pods in this workload using labels.
       toolTip: For help exposing workloads on Kubernetes, see the official Kubernetes documentation on Services. You can also manually create a Service to expose Pods by selecting their labels, and you can use an Ingress to map HTTP routes to Services.
       createService: サービスタイプ
-      noCreateService: Do not create a service
+      noCreateService: サービスを作成しない
       containerPort: プライベートコンテナポート
-      hostIP: Host IP
-      hostPort: Public Host Port
+      hostIP: ホストIP
+      hostPort: パブリックホストポート
       name: 名前
       protocol: プロトコル
-      listeningPort: Listening Port
+      listeningPort: リスニングポート
     removeContainer: コンテナを削除
     addContainer: コンテナを追加
     security:
-      addGroupIDs: Add Group IDs
+      addGroupIDs: グループIDを追加
       allowPrivilegeEscalation:
-        title: Privilege Escalation
+        title: 特権昇格
         'true': Container can gain more privileges than its parent process
       capabilities:
         title: ケイパビリティ
@@ -7400,59 +7400,59 @@ workload:
       fsGroup: ファイルシステムグループ
       hostIPC: ホストIPCネームスペースを使用
       hostPID: ホストPIDネームスペースを使用
-      podFsGroup: Pod Filesystem Group
+      podFsGroup: ポッドファイルシステムグループ
       privileged:
-        title: Privileged
+        title: 特権
         'true': Container has full access to the host
-        help: Enabling privilege will hide Privilege Escalation and seccompProfile.
+        help: 特権を有効にすると、特権昇格とseccompProfileが非表示になります。
         afterTick:
           'true': Privilege Escalation and seccompProfile have been hidden.
           'false': Privilege Escalation and seccompProfile appeared.
       readOnlyRootFilesystem:
-        title: Read-Only Root Filesystem
+        title: 読み取り専用ルートファイルシステム
         'true': Container has a read-only root filesystem
       runAsGroup: グループIDで実行
       runAsNonRoot:
-        title: Run as Non-Root
+        title: 非rootとして実行
         'true': Container must run as a non-root user
       runAsNonRootOptions:
         'true': Containers must run as non-root-user
       runAsUser:
         title: ユーザーIDで実行
-        label: User ID
+        label: ユーザーID
       seccompProfile:
-        pod: Pod Seccomp Profile
-        container: Seccomp Profile
-        type: Type
+        pod: ポッドSeccompプロファイル
+        container: Seccompプロファイル
+        type: タイプ
         localhostProfile:
-          label: Localhost Profile Path
+          label: Localhostプロファイルパス
           tooltip: Points to a specific seccomp file that must already exist on the machine running the container.
-          placeholder: e.g. path/to/json
+          placeholder: "例: path/to/json"
         afterLocalhostProfile:
-          selected: Localhost Profile input appeared.
-          unselected: Localhost Profile input has been hidden.
+          selected: Localhostプロファイルの入力が表示されました。
+          unselected: Localhostプロファイルの入力が非表示になりました。
         types:
           none:
-            label: None
+            label: なし
           runtimeDefault:
-            label: RuntimeDefault - inherit the default seccomp profile
+            label: RuntimeDefault - デフォルトのseccompプロファイルを継承
           localhost:
-            label: Localhost - define a custom seccomp profile
+            label: Localhost - カスタムseccompプロファイルを定義
           unconfined:
-            label: Unconfined - no seccomp profile
+            label: Unconfined - seccompプロファイルなし
       shareProcessNamespace: 単一プロセスネームスペースを共有
       supplementalGroups: 追加グループID
       sysctls: Sysctls
-      sysctlsKey: Name
+      sysctlsKey: 名前
     standard: 標準コンテナ
     initContainer:
-      label: Init Containers
+      label: Initコンテナ
     terminationState: 'Last state: Terminated with {lsExitCode}: {lsDescription}, started: {lsStartedAt}, finished: {lsFinishedAt}'
     titles:
       pods: ポッド
       container: コンテナ
       command: コマンド
-      containers: Containers
+      containers: コンテナ
       env: 環境変数
       events: イベント
       general: 一般
@@ -7460,178 +7460,178 @@ workload:
       image: イメージ
       lifecycle: ライフサイクルフック
       networking: ネットワーキング
-      networkSettings: Network Settings
-      podAnnotations: Pod Annotations
-      podLabels: Pod Labels
-      metrics: Metrics
-      podScheduling: Pod Scheduling
-      nodeScheduling: Node Scheduling
+      networkSettings: ネットワーク設定
+      podAnnotations: ポッドアノテーション
+      podLabels: ポッドラベル
+      metrics: メトリクス
+      podScheduling: ポッドスケジューリング
+      nodeScheduling: ノードスケジューリング
       ports: ポート
       resources: リソース
       securityContext: セキュリティコンテキスト
       status: ステータス
-      volumeClaimTemplates: Volume Claim Templates
-      upgrading: Scaling and Upgrade Policy
-  cronSchedule: Schedule
+      volumeClaimTemplates: ボリュームクレームテンプレート
+      upgrading: スケーリングとアップグレードポリシー
+  cronSchedule: スケジュール
   detail:
     services: サービス
     ingresses: Ingress
-    cannotViewServices: Could not list Services due to lack of permission.
-    cannotFindServices: Could not find any Services that select Pods from this workload.
-    serviceListCaption: 'The following Services select Pods from this workload:'
-    cannotViewIngresses: Could not list Ingresses due to lack of permission.
-    cannotFindIngresses: Could not find any Ingresses that forward traffic to Services that select Pods in this workload.
-    ingressListCaption: 'The following Ingresses forward traffic to Services that select Pods from this workload:'
+    cannotViewServices: 権限がないためサービスを一覧表示できませんでした。
+    cannotFindServices: このワークロードのポッドを選択するサービスが見つかりませんでした。
+    serviceListCaption: "以下のサービスがこのワークロードのポッドを選択しています:"
+    cannotViewIngresses: 権限がないためIngressを一覧表示できませんでした。
+    cannotFindIngresses: このワークロードのポッドを選択するサービスにトラフィックを転送するIngressが見つかりませんでした。
+    ingressListCaption: "以下のIngressがこのワークロードのポッドを選択するサービスにトラフィックを転送しています:"
     cannotViewIngressesBecauseCannotViewServices: Could not find relevant relevant Ingresses due to lack of permission to view Services.
     pods:
-      title: Pods
+      title: ポッド
   detailTop:
     node: ノード
     podIP: ポッドIP
     podRestarts: ポッドの再起動
     workload: ワークロード
     pods: 状態別ポッド
-    runs: Runs
-    started: Started
-    duration: Last Scheduled Time
-    image: Image
+    runs: 実行回数
+    started: 開始
+    duration: 最終スケジュール時刻
+    image: イメージ
   error: Pod { name } Security Policy Violation { policy }
   gaugeStates:
     succeeded: 成功
     running: 実行中
     failed: 失敗
-  hideTabs: Hide Advanced Options
+  hideTabs: 詳細オプションを非表示
   job:
     activeDeadlineSeconds:
-      label: アクティブ期限
-      tip: The duration that the job may be active before the system tries to terminate it.
+      label: ポッドアクティブデッドライン
+      tip: システムが失敗としてマークし関連するコンテナを終了しようとするまでポッドがアクティブであり続けられる時間。
     backoffLimit:
       label: バックオフ制限
-      tip: The number of retries before marking this job failed.
+      tip: このジョブを失敗としてマークするまでの再試行回数。
     completions:
       label: 完了
-      tip: The number of successfully finished pods the job should be run with.
+      tip: ジョブを実行するための正常に完了したポッドの数。
     failedJobsHistoryLimit:
-      label: Failed Job History Limit
-      tip: The number of failed finished jobs to retain.
+      label: 失敗ジョブ履歴の上限
+      tip: 保持する失敗したジョブの数。
     parallelism:
       label: 並列性
-      tip: The maximum number of pods the job should run at any given time.
+      tip: 任意の時点でジョブが実行する最大ポッド数。
     startingDeadlineSeconds:
-      label: Starting Deadline Seconds
-      tip: The deadline in seconds for starting the job if it misses scheduled time
+      label: 開始デッドライン秒数
+      tip: スケジュールされた時刻を逃した場合にジョブを開始するための期限（秒）
     successfulJobsHistoryLimit:
-      label: Successful Job History Limit
-      tip: The number of successful finished jobs to retain.
+      label: 成功ジョブ履歴の上限
+      tip: 保持する成功したジョブの数。
     suspend: 一時停止
   list:
     errorCannotScale: Failed to scale {workloadName} {direction, select, up { up } down { down } }
   metrics:
     pod: ポッドメトリクス
-    metricsView: Metrics View
+    metricsView: メトリクスビュー
   networking:
     dnsPolicy:
       label: DNSポリシー
       options:
-        clusterFirst: Cluster First
-        clusterFirstWithHostNet: Cluster First With Host Network
-        default: Default
+        clusterFirst: クラスターファースト
+        clusterFirstWithHostNet: ホストネットワーク付きクラスターファースト
+        default: "何でも: ターゲットパスを確認しない"
         none: None
-      placeholder: Select a Policy...
+      placeholder: ポリシーを選択...
     hostAliases:
       add: エイリアスを追加
-      keyLabel: IP Address
+      keyLabel: IPアドレス
       keyPlaceholder: e.g. 1.1.1.1
       label: ホストエイリアス
-      tip: Additional /etc/hosts entries to be injected in the container.
-      valueLabel: Hostname
-      valuePlaceholder: e.g. foo.com, bar.com
+      tip: コンテナに注入する追加の/etc/hostsエントリ。
+      valueLabel: ホスト名
+      valuePlaceholder: "例: foo.com, bar.com"
     hostname:
       label: ホスト名
       placeholder: e.g. web
     nameservers:
-      add: Add Nameserver
+      add: ネームサーバーを追加
       label: ネームサーバー
       placeholder: e.g. 1.1.1.1
     networkMode:
       label: ネットワークモード
       options:
-        hostNetwork: Host Network
-        normal: Normal
-      placeholder: Select a Mode...
+        hostNetwork: ホストネットワーク
+        normal: 通常
+      placeholder: モードを選択...
     dns: DNS
     resolver:
-      label: Resolver Options
-      add: Add Option
+      label: リゾルバーオプション
+      add: オプションを追加
     searches:
-      add: Add Search Domain
+      add: 検索ドメインを追加
       label: 検索ドメイン
       placeholder: e.g. mycompany.com
     subdomain:
-      label: Subdomain
+      label: サブドメイン
       placeholder: e.g. web
   normanWarning: It looks like this workload was created in the legacy Rancher UI. You may need to manually delete any services that were automatically created for it.
   validation:
-    containers: Containers
-    containerImage: Container {name} - "Container Image" is required.
-    localhostProfile: Container {name} - "Container Localhost Profile" is required when SeccompProfile Type is Localhost.
+    containers: コンテナ
+    containerImage: "コンテナ{name} - 「コンテナイメージ」は必須です。"
+    localhostProfile: "コンテナ{name} - SeccompProfileタイプがLocalhostの場合、「コンテナLocalhostプロファイル」は必須です。"
   replicas: レプリカ
-  showTabs: Show Advanced Options
+  showTabs: 詳細オプションを表示
   scheduling:
-    activeDeadlineSeconds: Pod Active Deadline
-    activeDeadlineSecondsTip: The duration that the pod may be active before the system tries to mark it failed and kill associated containers.
+    activeDeadlineSeconds: ポッドアクティブデッドライン
+    activeDeadlineSecondsTip: システムが失敗としてマークし関連するコンテナを終了しようとするまでポッドがアクティブであり続けられる時間。
     affinity:
       addNodeSelector: ノードセレクターを追加
       anyNode: 利用可能な任意のノードでポッドを実行
-      affinityTitle: Run pods on nodes with pods matching these selectors
-      antiAffinityTitle: Run pods on nodes without pods matching these selectors
-      affinityOption: Affinity
-      antiAffinityOption: Anti-Affinity
+      affinityTitle: これらのセレクターに一致するポッドを持つノードでポッドを実行する
+      antiAffinityTitle: これらのセレクターに一致するポッドを持たないノードでポッドを実行する
+      affinityOption: アフィニティ
+      antiAffinityOption: アンチアフィニティ
       matchFields:
-        label: Fields
+        label: フィールド
       matchExpressions:
-        label: Expressions
-        addRule: Add Rule
-        doesNotExist: is not set
-        exists: is set
-        greaterThan: '>'
-        in: in list
-        inNamespaces: Specific namespaces
-        key: Key
+        label: 式
+        addRule: ルールを追加
+        doesNotExist: 設定されていない
+        exists: 設定されている
+        greaterThan: ">"
+        in: リスト内
+        inNamespaces: 特定の名前空間
+        key: キー
         lessThan: <
-        matchType: Match Type
-        namespaces: Namespaces
-        notIn: not in list
-        operator: Operator
-        value: Value
-        weight: Weight
-      noPodRules: There are no pod scheduling rules configured.
+        matchType: マッチタイプ
+        namespaces: 名前空間
+        notIn: リスト外
+        operator: 演算子
+        value: 値
+        weight: 重み
+      noPodRules: ポッドスケジューリングルールが設定されていません。
       nodeName: ノード名
-      priority: Priority
-      preferAny: 'Prefer any of:'
+      priority: 優先度
+      preferAny: "以下のいずれかを優先:"
       preferred: 優先
       required: 必須
-      requireAny: 'Require any of:'
-      schedulingRules: Run pods on node(s) matching scheduling rules
-      specificNode: Run pods on specific node(s)
-      thisPodNamespace: This pod's namespace
-      allNamespaces: All namespaces
+      requireAny: "以下のいずれかが必要:"
+      schedulingRules: スケジューリングルールに一致するノードでポッドを実行する
+      specificNode: 特定のノードでポッドを実行する
+      thisPodNamespace: このポッドの名前空間
+      allNamespaces: すべての名前空間
       topologyKey:
-        label: Topology Key
+        label: トポロジーキー
         placeholder: e.g. failure-domain.beta.kubernetes.io/zone
       type: タイプ
       weight:
-        label: Weight
-        placeholder: Must be a weight between 1 and 100
+        label: 重み
+        placeholder: "1から100の重みを入力してください"
     priority:
       className: 優先クラス名
       priority: 優先度
     terminationGracePeriodSeconds: 終了グレース期間
-    terminationGracePeriodSecondsTip: The duration that the pod needs to terminate gracefully.
+    terminationGracePeriodSecondsTip: ポッドが正常に終了するのに必要な時間。
     titles:
       advanced: 詳細
       nodeScheduling: ノードスケジューリング
-      nodeSelector: Nodes with these labels
+      nodeSelector: これらのラベルを持つノード
       podScheduling: ポッドスケジューリング
       priority: 優先度
       tab: スケジューリング
@@ -7641,7 +7641,7 @@ workload:
       addToleration: テレレーションを追加
       effect: 効果
       effectOptions:
-        all: All
+        all: すべて
         noExecute: NoExecute
         noSchedule: NoSchedule
         preferNoSchedule: PreferNoSchedule
@@ -7649,8 +7649,8 @@ workload:
       operator: オペレーター
       operatorOptions:
         equal: '='
-        exists: Exists
-      tolerationSeconds: Toleration Seconds
+        exists: 存在する
+      tolerationSeconds: トレランス秒数
       value: 値
   serviceAccountName:
     label: サービスアカウント名
@@ -7660,83 +7660,83 @@ workload:
     subtypes:
       secret: シークレット
       configMap: ConfigMap
-      hostPath: Bind-Mount
+      hostPath: バインドマウント
       persistentVolumeClaim: 永続ボリューム要求
-      createPVC: Create Persistent Volume Claim
+      createPVC: 永続ボリュームクレームを作成
       csi: CSI
       nfs: NFS
-      awsElasticBlockStore: Amazon EBS Disk
-      azureDisk: Azure Disk
-      azureFile: Azure File
-      gcePersistentDisk: Google Persistent Disk
+      awsElasticBlockStore: Amazon EBSディスク
+      azureDisk: Azureディスク
+      azureFile: Azureファイル
+      gcePersistentDisk: Googleパーシステントディスク
       driver.longhorn.io: Longhorn
-      vsphereVolume: VMWare vSphere Volume
+      vsphereVolume: VMware vSphereボリューム
       emptyDir: 空のDir
     addClaim: 要求を追加
     addMount: マウントを追加
     addVolume: ボリュームを追加
     selectVolume: ボリュームを選択
-    noVolumes: Volumes will appear here after they are added in the Pod tab
+    noVolumes: ポッドタブでボリュームを追加するとここに表示されます
     certificate: 証明書
     csi:
-      diskName: Disk Name
+      diskName: ディスク名
       diskURI: Disk URI
       cachingMode:
-        label: Caching Mode
+        label: キャッシングモード
         options:
-          none: None
-          readOnly: Read Only
-          readWrite: Read Write
+          none: なし
+          readOnly: 読み取り専用
+          readWrite: 読み書き
       kind:
-        label: Kind
+        label: 種類
         options:
-          dedicated: Dedicated
-          managed: Managed
-          shared: Shared
+          dedicated: 専用
+          managed: マネージド
+          shared: 共有
       drivers:
         driver-longhorn-io: Longhorn
-      fsType: Filesystem Type
-      shareName: Share Name
-      secretName: Secret Name
-      volumeID: Volume ID
-      partition: Partition
-      pdName: Persistent Disk Name
-      storagePolicyID: Storage Policy ID
-      storagePolicyName: Storage Policy Name
-      volumePath: Volume Path
-    defaultMode: Default Mode
+      fsType: ファイルシステムタイプ
+      shareName: 共有名
+      secretName: シークレット名
+      volumeID: ボリュームID
+      partition: パーティション
+      pdName: パーシステントディスク名
+      storagePolicyID: ストレージポリシーID
+      storagePolicyName: ストレージポリシー名
+      volumePath: ボリュームパス
+    defaultMode: デフォルトモード
     driver: driver
     hostPath:
-      label: The Path on the Node must be
+      label: ノード上のパスの要件
       options:
         default: 'Anything: do not check the target path'
-        directoryOrCreate: A directory, or create if it doesn't exist
-        directory: An existing directory
-        fileOrCreate: A file, or create if it doesn't exist
-        file: An existing file
-        socket: An existing socket
-        charDevice: An existing character device
-        blockDevice: An existing block device
+        directoryOrCreate: ディレクトリ、存在しない場合は作成
+        directory: 既存のディレクトリ
+        fileOrCreate: ファイル、存在しない場合は作成
+        file: 既存のファイル
+        socket: 既存のソケット
+        charDevice: 既存のキャラクターデバイス
+        blockDevice: 既存のブロックデバイス
     mountPoint: マウントポイント
     nodePath: ノード上のパス
     optional:
-      label: Optional
+      label: 省略可能
       'no': 'No'
       'yes': 'Yes'
     path: パス
     readOnly: 読み取り専用
     server: サーバー
-    subPath: Sub Path in Volume
+    subPath: ボリューム内のサブパス
     title: ストレージ
     volumeName: ボリューム名
     volumePath: Volume Path
     emptyDir:
       medium:
-        label: Medium
-        default: Node's Default Medium
-        memory: Memory
+        label: メディア
+        default: ノードのデフォルトメディア
+        memory: メモリ
       sizeLimit:
-        label: Size Limit
+        label: サイズ制限
         placeholder: e.g. 300
   typeDescriptions:
     apps.daemonset: DaemonSets run exactly one pod on every eligible node. When new nodes are added to the cluster, DaemonSets automatically deploy to them. Recommended for system-wide or vertically-scalable workloads that never need more than one pod per node.
@@ -7750,36 +7750,36 @@ workload:
       label: Pod Active Deadline
       tip: The duration the pod may be active before the system will try to mark it failed and kill associated containers.
     concurrencyPolicy:
-      label: Concurrency
+      label: 並行性
       options:
-        allow: Allow CronJobs to run concurrently
-        forbid: Skip next run if current run hasn't finished
-        replace: Replace run if current run hasn't finished
+        allow: CronJobの並行実行を許可する
+        forbid: 現在の実行が終了していない場合は次の実行をスキップする
+        replace: 現在の実行が終了していない場合は実行を置き換える
     maxSurge:
       label: 最大サージ
-      tip: The maximum number of pods allowed beyond the desired scale at any given time.
+      tip: 任意の時点で許容される最大ポッド数（目的のスケールを超えて）。
     maxUnavailable:
       label: 最大利用不可
-      tip: The maximum number of pods which can be unavailable at any given time.
+      tip: 任意の時点で利用できない最大ポッド数。
     minReadySeconds:
       label: 最小準備完了
-      tip: The minimum duration a pod should be ready without containers crashing for it to be considered available.
+      tip: コンテナがクラッシュせずにポッドが利用可能とみなされるために準備完了状態であるべき最小時間。
     podManagementPolicy:
       label: ポッド管理ポリシー
     progressDeadlineSeconds:
       label: 進行期限
-      tip: The minimum duration to wait for a deployment to progress before marking it failed.
+      tip: デプロイメントが失敗としてマークされる前に待機する最小時間。
     revisionHistoryLimit:
       label: リビジョン履歴制限
-      tip: The number of old ReplicaSets to retain for rollback.
+      tip: ロールバックのために保持する古いReplicaSetの数。
     strategies:
       labels:
-        delete: 'On Delete: New pods are only created when old pods are manually deleted.'
-        recreate: 'Recreate: Kill ALL pods, then start new pods.'
-        rollingUpdate: 'Rolling Update: Create new pods, until max surge is reached, before deleting old pods. Don''t stop more pods than max unavailable.'
+        delete: "OnDelete: 古いポッドが手動で削除された場合のみ新しいポッドが作成されます。"
+        recreate: "Recreate: すべてのポッドを終了してから新しいポッドを起動します。"
+        rollingUpdate: "RollingUpdate: 古いポッドを削除する前に最大サージに達するまで新しいポッドを作成します。最大利用不可数より多くのポッドを停止しません。"
     terminationGracePeriodSeconds:
       label: 終了グレース期間
-      tip: The duration the pod needs to terminate successfully.
+      tip: ポッドが正常に終了するために必要な時間。
     title: アップグレード
   tabs:
     labels:
@@ -8650,40 +8650,40 @@ advancedSettings:
     auth-token-max-ttl-minutes: Max TTL (in minutes) for all tokens except those controlled by "auth-user-session-ttl-minutes" (user session tokens). When set to 0, the token never expires.
     kubeconfig-generate-token: kubeconfigがリクエストされた際にユーザーのトークンを自動的に生成します。
     kubeconfig-default-token-ttl-minutes: TTL (in minutes) applied on all kubeconfig tokens. When set to 0, the token never expires.
-    rke-metadata-config: Configure RKE metadata refresh parameters.
-    ui-banners: Classification banner is used to display a custom fixed banner in the header, footer, or both.
-    custom-notifications: Edit custom notifications
-    ui-consent-banner: Banner is used to display a custom consent banner presented to users during login.
-    ui-default-landing: The default page users land on after login.
-    brand: Folder name for an alternative theme defined in '/assets/brand'
-    hide-local-cluster: Hide the local cluster
+    rke-metadata-config: RKEメタデータの更新パラメーターを設定します。
+    ui-banners: 分類バナーは、ヘッダー、フッター、またはその両方にカスタム固定バナーを表示するために使用されます。
+    custom-notifications: カスタム通知を編集
+    ui-consent-banner: バナーはログイン時にユーザーに表示されるカスタム同意バナーを表示するために使用されます。
+    ui-default-landing: ログイン後にユーザーがアクセスするデフォルトページ。
+    brand: "'/assets/brand'で定義された代替テーマのフォルダ名"
+    hide-local-cluster: ローカルクラスターを非表示
     agent-tls-mode: Rancher Certificate Verification. In `strict` mode the agents (system, cluster, fleet, etc) will only trust Rancher installations which are using a certificate signed by the CABundle in the `cacerts` setting. When the mode is system-store, the agents will trust any certificate signed by a CABundle in the operating system’s trust store.
     k3s-based-upgrader-uninstall-concurrency: Defines the maximum number of clusters in which Rancher can concurrently uninstall the legacy `rancher-k3s-upgrader` or `rancher-rke2-upgrader` app from imported or node-driver K3s or RKE2 clusters.
     system-agent-upgrader-install-concurrency: Defines the maximum number of clusters in which Rancher can concurrently install the resources required for upgrading system-agent.
     imported-cluster-version-management: Enables version management for imported RKE2/K3s clusters, and the local cluster if it is an RKE2/K3s cluster. The per-cluster version management setting overrides this global setting at the cluster level. For existing clusters where the cluster-level version management is set to 'system-default', changing this flag will trigger a redeployment of the cluster agent during the next reconciliation (by default every 5 minutes, or as soon as the cluster is edited, whichever comes first).
   warnings:
-    agent-tls-mode: Changing this setting will cause all agents to be redeployed.
+    agent-tls-mode: この設定を変更すると、すべてのエージェントが再デプロイされます。
   editHelp:
     ui-banners: This setting takes a JSON object containing 3 root parameters; <code>banner</code>, <code>showHeader</code>, <code>showFooter</code>. <code>banner</code> is an object containing; <code>textColor</code>, <code>background</code>, and <code>text</code>, where <code>textColor</code> and <code>background</code> are any valid CSS color value.
   enum:
     ui-default-landing:
-      ember: Cluster Manager
-      vue: Cluster Explorer
+      ember: クラスターマネージャー
+      vue: クラスターエクスプローラー
     ui-offline-preferred:
-      dynamic: Dynamic
+      dynamic: 動的
       'true': Local
       'false': Remote
     harv-ui-source:
-      auto: Auto
-      bundled: Bundled
-      external: External
+      auto: 自動
+      bundled: バンドル
+      external: 外部
     harv-log-level:
-      info: Info
-      debug: Debug
-      trace: Trace
+      info: 情報
+      debug: デバッグ
+      trace: トレース
     agent-tls-mode:
-      strict: Strict
-      system-store: System Store
+      strict: 厳格
+      system-store: システムストア
   provisioning:
     header: クラスタープロビジョニング
 featureFlags:
@@ -9189,25 +9189,25 @@ component:
         labelsAndAnnotations: ラベルとアノテーション
         identifyingInformation:
           namespace: 名前空間
-          project: Project
-          age: Age
-          image: Image
-          ready: Ready
-          up-to-date: Up-to-date
-          available: Available
-          serviceAccount: Service Account
-          type: Type
-          certificate: Certificate
-          issuer: Issuer
-          expires: Expires
-          workspace: Workspace
+          project: プロジェクト
+          age: 経過時間
+          image: イメージ
+          ready: 準備完了
+          up-to-date: 最新
+          available: 利用可能
+          serviceAccount: サービスアカウント
+          type: タイプ
+          certificate: 証明書
+          issuer: 発行者
+          expires: 有効期限
+          workspace: ワークスペース
         annotations:
           title: アノテーション
         labels:
           title: ラベル
         keyValue:
           noRows: There are no {propertyName} configured on this resource.
-          showConfiguration: Show Configuration
+          showConfiguration: 設定を表示
           ariaLabel:
             showPreview: Show Preview
       glance:
@@ -9230,40 +9230,40 @@ component:
       invalidValue: 無効な値
       invalidCronExpression: 無効なCron式
       minute:
-        any: any value (every minute)
+        any: 任意の値（毎分）
         at1and5: at 1 and 5 min past the hour
-        range: every minute from 1 to 5
-        every5: every 5 minutes
+        range: "1分から5分ごと"
+        every5: "5分ごと"
         start8: every 5 minutes, starting at 8 minutes past the hour
-        allowed: 'Allowed literal values: 0-59'
+        allowed: "使用できる値: 0-59"
       hour:
-        any: any value (every hour)
+        any: 任意の値（毎時）
         at1and5: at 1 AM and 5 AM
-        range: every hour from 1 to 5 AM
-        every5: every 5 hours
+        range: "1時から5時まで毎時"
+        every5: "5時間ごと"
         start8: every 5 hours starting at 8 AM
-        allowed: 'Allowed literal values: 0-23'
+        allowed: "使用できる値: 0-23"
       dayOfMonth:
-        any: any value (every day of the month)
-        omit: omit
+        any: 任意の値（毎日）
+        omit: 省略
         1and5: on the 1st and 5th days of the month
-        range: every day from 1st to 5th
-        every5: every 5 days
+        range: "1日から5日まで毎日"
+        every5: "5日ごと"
         start8: every 5 days starting at the 8th
-        allowed: 'Allowed literal values: 1-31'
+        allowed: "使用できる値: 1-31"
       month:
-        any: any value (every month)
+        any: 任意の値（毎月）
         1and5: on months 1 and 5 (January and May)
-        range: every month from January to May
-        every2: every 2 months
+        range: "1月から5月まで毎月"
+        every2: "2ヶ月ごと"
         start3: every 2 months, starting on month 3 (March)
-        allowed: 'Allowed literal values: 1-12'
-        alias: 'Allowed alias values: jan-dec'
+        allowed: "使用できる値: 1-12"
+        alias: "使用できるエイリアス: jan-dec"
       dayOfWeek:
-        any: any value (every day of the week)
-        omit: omit
+        any: 任意の値（毎日）
+        omit: 省略
         1and5: on days 1 and 5 (Monday and Friday)
-        range: every day from Monday to Friday
+        range: 月曜日から金曜日まで毎日
         allowed: 'Allowed literal values: 0-7'
         alias: 'Allowed alias values: mon-sun'
       a11y:
