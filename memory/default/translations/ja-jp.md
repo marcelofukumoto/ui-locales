@@ -1,5 +1,5 @@
 # Japanese (ja-jp) Translation
-Last updated: 2026-05-27
+Last updated: 2026-05-28
 
 ## Key facts
 - PR #17: add-japanese-ja-jp-translation-2c6f0f46d65dbc33
@@ -7,27 +7,23 @@ Last updated: 2026-05-27
 - YAML: valid ✅, key parity ✅, ordering ✅, structure ✅
 
 ## Coverage (attempt 1 verify — 2026-05-27)
-- Translated: 2603
-- Kept in English: 681
-- Skipped: 67
-- Untranslated: 2998
-- **Coverage: 52.3%**
+- **Coverage: 52.3%** (Translated: 2603, Untranslated: 2998)
 
-## Biggest gaps (by untranslated count)
-- cluster: 420 (45%)
-- workload: 201 (51%)
-- storageClass: 148 (25%)
-- persistentVolume: 145 (29%)
-- fleet: 144 (59%)
-- typeLabel: 116 (0% — all ICU plurals with English text, none translated)
-- catalog: 100 (56%)
-- logging: 98 (53%)
-- validation: 96 (14%)
-- authConfig: 87 (63%)
-- typeDescription: 31 (0% — all English descriptions)
+## Coverage (attempt 2 improve — 2026-05-28)
+- Translated: 3602 (+999)
+- Untranslated: ~2696
+- **Coverage: 57.2%**
+- Sections completed: typeLabel, typeDescription, validation, tableHeaders, model, secret, rbac, user, gitPicker, servicesPage, performance, backupRestoreOperator, resourceQuota, component, monitoring (partial), storageClass, persistentVolume, catalog, authConfig, plugins, logging
 
-## Known issues to fix
-- `istio.links.kiali.description`: truncated translation missing {link} and {vendor} placeholders
+## Biggest remaining gaps (estimated)
+- cluster: ~300+ untranslated
+- workload: ~150+ untranslated
+- fleet: ~100+ untranslated
+
+## Known issues FIXED
+- ✅ `istio.links.kiali.description`: fixed to include {link} and {vendor} placeholders
+
+## Known issues remaining
 - `principal.loading`, `wm.connection.connecting`: use `…` instead of `&hellip;` (minor)
 
 ## Translation notes
