@@ -10,16 +10,22 @@ Last updated: 2026-05-27
 - Attempt 1 verify: 52.3% (Translated: 2603, Untranslated: 2998)
 - Attempt 2 improve: 57.2% (+999 translated)
 - Attempt 2 verify: **59.7%** (Translated: 3602, KeptEN: 153, Untranslated: 2536, Skipped: 58)
+- Attempt 3 improve: **71%** (Translated: 4508, +906 this run, Untranslated: 1798)
 
-## Sections needing most work (attempt 2 verify)
-- cluster: 457 untranslated (40%)
-- workload: 276 untranslated (33%)
-- fleet: 171 untranslated (52%)
-- logging: 98 untranslated (53%)
-- istio: 79 untranslated (35%)
-- persistentVolume: 79 untranslated (61%)
-- monitoring: 75 untranslated (45%)
-- component: 66 untranslated (44%)
+## Sections needing most work (after attempt 3)
+- cluster: 190 untranslated
+- fleet: 104 untranslated
+- workload: 75 untranslated
+- monitoring: 53 untranslated
+- logging: 50 untranslated
+- persistentVolume: 42 untranslated
+- istio: 41 untranslated
+- authConfig: 37 untranslated
+- model: 37 untranslated
+- typeLabel: 37 untranslated
+- rbac: 36 untranslated (partially done)
+- storageClass: 36 untranslated (partially done)
+- plugins: 35 untranslated (partially done)
 
 ## Placeholder validation notes
 - ICU select/plural option text (e.g. `{item}`, `{user}`, `{group}` inside `{count, plural, =1 {item} ...}`) triggers false positives in simple `{word}` regex
