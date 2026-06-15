@@ -12,27 +12,17 @@
 2. **Bare comma value** (e.g. `comma: , `) — must be quoted: `comma: ", "`
 3. **Multi-line string values** — patch.js block scalar handling works, but some complex multi-line strings may need manual fixes
 
-## Fix Script for Colon-Ending Values
-```python
-import re
-with open('file.yaml', 'r', encoding='utf-8') as f:
-    lines = f.readlines()
-result = []
-for line in lines:
-    stripped = line.rstrip('\n')
-    m = re.match(r'^(\s+\S+: )(.+):$', stripped)
-    if m:
-        prefix, value = m.group(1), m.group(2)
-        if not value.startswith('"') and not value.startswith("'") and not value.startswith('|') and not value.startswith('>'):
-            line = prefix + '"' + value.replace('"', '\\"') + ':"' + '\n'
-    result.append(line)
-with open('file.yaml', 'w', encoding='utf-8') as f:
-    f.writelines(result)
-```
-
 ## patch.js Warnings
 - "Key not found" for some paths is benign — the key may live at a different nesting level
 - E.g. `cluster.harvester.*` keys live under `cluster.credential.harvester.*`
+
+## en-us.yaml Sync History
+
+- **2026-06-15** — PR #25 (supersedes #24): 69 lines added, 40 removed; ~40 new keys, ~20 removed, ~16 modified
+  - Major: Azure AD → Microsoft Entra ID rebranding, CAPI provider labels, CIS/compliance XCCDF download buttons
+  - PR #24 was missing: `cluster.create-capi` and `typeLabel.turtles-capi.cattle.io.capiprovider`
+- **2026-06-11** — PR #24 (supersedes #23): 63 lines added, 40 removed
+  - PR #23 was missing: `cluster.tableOfContents.jumpTo`
 
 ## Language-Specific Notes
 
