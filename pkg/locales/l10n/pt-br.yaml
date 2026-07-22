@@ -2,7 +2,7 @@
 # locale: pt-br (Portuguese - Brazil)
 # source-locale: en-us
 # synced-against-en-us-commit: 02a2364 (2026-07-20)
-# last-updated: 2026-07-20
+# last-updated: 2026-07-22
 # ---
 ##############################
 # Special stuff
@@ -3228,7 +3228,7 @@ fleet:
       fleet.cattle.io.helmop:
         description: 'HelmOp é uma forma simplificada de criar bundles apontando diretamente para um repositório Helm ou registro OCI, sem precisar configurar um repositório git.'
       suse-application-collection:
-        label: SUSE Application Collection
+        label: Coleção de Aplicativos SUSE
         description: Explore nossa Application Collection mantida e segura, selecione um Helm chart e implante-o em seus clusters.
     warningTooltip:
       clusterGroup: Não há clusters neste Grupo de Cluster
@@ -3393,7 +3393,7 @@ fleet:
       accessTokenField: Token de Acesso
       accessTokenPlaceholder: Seu token de acesso da SUSE Application Collection
     chart:
-      title: Charts
+      title: Gráficos
       loadError: Chart não encontrado ou sem versões disponíveis.
   helmOp:
     intro:
@@ -3467,7 +3467,7 @@ fleet:
             description: Por favor, aguarde enquanto o repositório é criado
           repoError:
             description: 'Por favor, verifique suas credenciais ou o repositório no cluster upstream:'
-            link: SUSE App Collection
+            link: Coleção de Apps SUSE
     appCoConfig:
       chartVersion: Versão do chart
       name: Nome do App Bundle
