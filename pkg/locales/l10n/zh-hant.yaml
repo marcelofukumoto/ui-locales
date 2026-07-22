@@ -2,7 +2,7 @@
 # locale: zh-hant (Chinese - Traditional)
 # source-locale: en-us
 # synced-against-en-us-commit: 02a2364 (2026-07-20)
-# last-updated: 2026-07-21
+# last-updated: 2026-07-22
 # ---
 ##############################
 # Special stuff
@@ -3295,7 +3295,7 @@ fleet:
       placeholder: 例如 https://github.com/rancher/fleet-examples.git 或 git@github.com:rancher/fleet-examples.git
       addRepo: 添加倉庫
       noRepos: 未添加任何倉庫
-      noWorkspaces: 沒有工作空間。<br/>請在添加倉庫之前創建一個工作空間
+      noWorkspaces: 沒有工作空間。
     resources:
       label: '資源處理'
       keepResources: 永遠保留資源
