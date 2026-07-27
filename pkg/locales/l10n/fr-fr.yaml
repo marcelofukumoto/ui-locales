@@ -2,7 +2,7 @@
 # locale: fr-fr (French - France)
 # source-locale: en-us
 # synced-against-en-us-commit: 02a2364 (2026-07-20)
-# last-updated: 2026-07-21
+# last-updated: 2026-07-27
 # ---
 ##############################
 # Special stuff
@@ -1421,7 +1421,7 @@ catalog:
       defaultMessage: 'Par défaut "master" si laissé vide'
     gitRepo:
       label: URL du dépôt Git
-      placeholder: "ex. https://github.com/votre-entreprise/charts.git"
+      placeholder: "ex. https://github.com/your-company/charts.git"
     name:
       rancher-charts: '{vendor}'
       rancher-partner-charts: Partenaires
@@ -1448,7 +1448,7 @@ catalog:
       placeholder: "ex. https://charts.rancher.io"
     oci:
       urlLabel: "URL de l’hôte du dépôt OCI"
-      placeholder: "ex. oci://<hôte-registre>/<espace-noms>/<nom-chart>:<tag>"
+      placeholder: "ex. oci://<registry-host>/<namespace>/<chart-name>:<tag>"
       warning: Les URL OCI doivent UNIQUEMENT cibler des charts Helm.
       info: Pour les grands dépôts contenant de nombreux charts, envisagez de cibler un espace de noms ou un chart spécifique pour améliorer les performances, par exemple avec oci://<registry-host>/<namespace> ou oci://<registry-host>/<namespace>/<chart-name>.
       skipTlsVerifications: Ignorer les vérifications TLS
@@ -2111,7 +2111,7 @@ cluster:
           placeholder: "Défaut : dernière image rancheros-vmware"
         cloudInit:
           label: Cloud Init
-          placeholder: "ex. http://mon_hôte/cloud-config.yml"
+          placeholder: "ex. http://my_host/cloud-config.yml"
           note: Fichier ou URL cloud-init à définir dans le guestinfo
         cloudConfigYaml: Cloud Config YAML
         os: "Système d’exploitation"
@@ -4891,7 +4891,7 @@ monitoringReceiver:
   shared:
     proxyUrl:
       label: URL du proxy
-      placeholder: "ex. http://mon-proxy/"
+      placeholder: "ex. http://my-proxy/"
     sendResolved:
       label: "Activer l’envoi des alertes résolues"
 
