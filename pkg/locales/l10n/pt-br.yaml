@@ -2,7 +2,7 @@
 # locale: pt-br (Portuguese - Brazil)
 # source-locale: en-us
 # synced-against-en-us-commit: 02a2364 (2026-07-20)
-# last-updated: 2026-07-22
+# last-updated: 2026-07-27
 # ---
 ##############################
 # Special stuff
@@ -1878,7 +1878,7 @@ cluster:
     commandInstructions: 'Execute o comando <code>kubectl</code> abaixo em um cluster Kubernetes existente rodando uma versão suportada do Kubernetes para importá-lo no {vendor}:'
     commandInstructionsInsecure: 'Se você receber um erro de &quot;certificado assinado por autoridade desconhecida&quot;, sua instalação do {vendor} tem um certificado SSL autoassinado ou não confiável. Execute o comando abaixo para ignorar a verificação de certificado:'
     clusterRoleBindingInstructions: 'Se você obtiver erros de permissão ao criar alguns dos recursos, seu usuário pode não ter a função <code>cluster-admin</code>. Use este comando para aplicá-la:'
-    clusterRoleBindingCommand: 'kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user <your username from your kubeconfig>'
+    clusterRoleBindingCommand: 'kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user <seu nome de usuário do seu kubeconfig>'
   explore: Explorar
   importAction: Importar Existente
   manageAction: Gerenciar
