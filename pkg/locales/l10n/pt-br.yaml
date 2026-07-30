@@ -2,7 +2,7 @@
 # locale: pt-br (Portuguese - Brazil)
 # source-locale: en-us
 # synced-against-en-us-commit: 02a2364 (2026-07-20)
-# last-updated: 2026-07-27
+# last-updated: 2026-07-30
 # ---
 ##############################
 # Special stuff
@@ -5186,7 +5186,7 @@ node:
           osImage: Imagem
           systemUUID: UUID do Sistema
       pods: Pods
-      taints: Manchas
+      taints: Taints
   actions:
     downloadSSHKey: Baixar Chave SSH
     downloadNodeConfig: Baixar Chaves
@@ -7076,7 +7076,7 @@ tableHeaders:
   groups: Grupos
   groupName: Nome do Grupo
   groupRoleNames: Nomes de Funções do Grupo
-  global-Default: Global-Default
+  global-Default: Padrão Global
   helmOpsReady: Helm Ops Prontos
   host: Host
   hostIp: IP do Host
@@ -7142,7 +7142,7 @@ tableHeaders:
   podRestarts: Reinicializações do Pod
   podLastRestart: Última Reinicialização
   pods: Pods
-  pod-Selector: Pod-Selector
+  pod-Selector: Seletor de Pod
   providers: Provedores
   providerID: ID do Provedor
   port: Porta
@@ -7198,7 +7198,7 @@ tableHeaders:
   schedule: Agendamento
   service: Serviço
   serviceAccounts: Contas de Serviço
-  secret-Name: Secret-Name
+  secret-Name: Nome do Segredo
   simpleName: Nome
   simpleScale: Escala
   simpleType: Tipo
@@ -7216,7 +7216,7 @@ tableHeaders:
   success: Sucesso
   summary: Resumo
   subobject: Subobjeto
-  taints: Marcações
+  taints: Taints
   target: Destino
   targetKind: Tipo de Destino
   targetPort: Destino
@@ -8241,8 +8241,8 @@ typeDescription:
 typeLabel:
   management.cattle.io.oidcclient: |-
     {count, plural,
-      one { OIDC App }
-      other { OIDC Apps }
+      one { Aplicativo OIDC }
+      other { Aplicativos OIDC }
     }
   management.cattle.io.token: |-
     {count, plural,
@@ -8286,13 +8286,13 @@ typeLabel:
     }
   chartinstallaction: |-
     {count, plural,
-      one { App }
-      other { Apps }
+      one { Aplicativo }
+      other { Aplicativos }
     }
   chartupgradeaction: |-
     {count, plural,
-      one { App }
-      other { Apps }
+      one { Aplicativo }
+      other { Aplicativos }
     }
   cloudcredential: |-
     {count, plural,
@@ -8331,8 +8331,8 @@ typeLabel:
     }
   fleet.cattle.io.gitrepo: |-
     {count, plural,
-      one { Git Repo }
-      other {Git Repos }
+      one { Repo Git }
+      other { Repos Git }
     }
   fleet.cattle.io.helmop: |-
     {count, plural,
@@ -8432,8 +8432,8 @@ typeLabel:
     }
   monitoring.coreos.com.thanosruler: |-
     {count, plural,
-      one { Thanos Rule }
-      other { Thanos Rules }
+      one { Regra Thanos }
+      other { Regras Thanos }
     }
   monitoring.coreos.com.receiver: |-
     {count, plural,
@@ -8452,8 +8452,8 @@ typeLabel:
     }
   'cluster.x-k8s.io.cluster': |-
     {count, plural,
-      one { CAPI Cluster }
-      other { CAPI Clusters }
+      one { Cluster CAPI }
+      other { Clusters CAPI }
     }
   'provisioning.cattle.io.cluster': |-
     {count, plural,
@@ -8527,8 +8527,8 @@ typeLabel:
     }
   service: |-
     {count, plural,
-      one { Service }
-      other { Services }
+      one { Serviço }
+      other { Serviços }
     }
   persistentvolume: |-
     {count, plural,
@@ -8552,8 +8552,8 @@ typeLabel:
     }
   secret: |-
     {count, plural,
-      one { Secret }
-      other { Secrets }
+      one { Segredo }
+      other { Segredos }
     }
   projectsecret: |-
     {count, plural,
@@ -8627,8 +8627,8 @@ typeLabel:
     }
   harvesterhci.io.management.cluster: |-
     {count, plural,
-      one { Harvester Cluster }
-      other { Harvester Clusters }
+      one { Cluster Harvester }
+      other { Clusters Harvester }
     }
   harvesterhci.io.cloudtemplate: |-
     {count, plural,
@@ -8782,8 +8782,8 @@ typeLabel:
     }
   rbac.authorization.k8s.io.role: |-
     {count, plural,
-      one { Role }
-      other { Roles }
+      one { Função }
+      other { Funções }
     }
   replicationcontroller: |-
     {count, plural,
@@ -8812,8 +8812,8 @@ typeLabel:
     }
   cluster.x-k8s.io.machine: |-
     {count, plural,
-      one { Machine }
-      other { Machines }
+      one { Máquina }
+      other { Máquinas }
     }
   fleet.cattle.io.clusterregistrationtoken: |-
     {count, plural,
