@@ -4771,10 +4771,10 @@ monitoring:
         placeholder: "ex. ./ca-file.csr"
       certFilePath:
         label: Chemin du fichier de certificat
-        placeholder: "ex. ./cert-file.pem"
+        placeholder: "ex. ./cert-file.crt"
       keyFilePath:
         label: Chemin du fichier de clé
-        placeholder: "ex. ./key-file.pem"
+        placeholder: "ex. ./key-file.pfx"
       secretsBanner: "Les chemins de fichiers ci-dessous doivent être référencés dans <pre class=\"inline-block m-0 p-0 vertical-middle\">alertmanager.alertmanagerSpec.secrets</pre> lors du déploiement du chart Monitoring. Pour plus d’informations, consultez notre <a href=\"{docsBase}/how-to-guides/advanced-user-guides/monitoring-alerting-guides\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">documentation</a>."
   projectMonitoring:
     detail:
@@ -5612,7 +5612,7 @@ plugins:
     message: "Impossible de charger le code de l’extension"
     generic: "Erreur d’extension"
     primeOnly: "Impossible de charger l’extension Rancher Prime dans Rancher Community"
-    apiAnnotationMissing: "Impossible de charger l’extension. La version installée n’est pas compatible avec la version actuelle de l’API Extensions."
+    apiAnnotationMissing: "Impossible de charger l’extension. La version installée n’est pas compatible avec la version actuelle de l’API Extensions (l’annotation catalog.cattle.io/ui-extensions-version est absente de l’extension, ce qui implique une incompatibilité avec Rancher 2.10 et versions ultérieures)"
     api: "Impossible de charger l’extension. La version installée n’est pas compatible avec la version actuelle de l’API Extensions."
     host: "Impossible de charger l’extension. La version installée n’est pas compatible avec cet hôte d’application."
     version: "Impossible de charger l’extension. La version installée n’est pas compatible avec la version actuelle de Rancher."
@@ -7471,7 +7471,7 @@ validation:
       localhost: "Si l’URL du serveur est interne au serveur Rancher (ex. localhost), les clusters en aval pourraient ne pas être accessibles."
       trailingForwardSlash: "L’URL du serveur ne doit pas se terminer par une barre oblique."
       url: "L’URL du serveur doit être une URL valide."
-      awsStyleEndpoint: "L’URL du point de terminaison doit être une URL basée sur un domaine valide et ne peut pas commencer par un protocole."
+      awsStyleEndpoint: "L’URL du point de terminaison doit être une URL basée sur un domaine valide et ne peut pas commencer par un protocole (par ex. https:// ou http://)"
   genericUrl: Le champ doit être une URL valide
   stringLength:
     between: '"{key}" doit contenir entre {min} et {max} {max, plural, =1 {caractère} other {caractères}}'
