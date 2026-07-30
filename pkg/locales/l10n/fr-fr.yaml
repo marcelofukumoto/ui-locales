@@ -2382,9 +2382,9 @@ cluster:
       unique: Les noms de pools doivent être uniques
     nodeTotals:
       label:
-        controlPlane: "'{count} Plan de contrôle'"
+        controlPlane: '{count} Plan de contrôle'
         etcd: '{count} etcd'
-        worker: "'{count} Nœud de travail'"
+        worker: '{count} Nœud de travail'
       tooltip:
         controlPlane: |-
           {count, plural,
