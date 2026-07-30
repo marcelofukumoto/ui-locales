@@ -2,7 +2,7 @@
 # locale: pt-br (Portuguese - Brazil)
 # source-locale: en-us
 # synced-against-en-us-commit: 02a2364 (2026-07-20)
-# last-updated: 2026-07-20
+# last-updated: 2026-07-30
 # ---
 ##############################
 # Special stuff
@@ -354,7 +354,7 @@ product:
 
 suffix:
   percent: "%"
-  milliCpus: milli CPUs
+  milliCpus: mili CPUs
   cores: Núcleos
   cpus: CPUs
   gpus: GPUs
@@ -1357,15 +1357,15 @@ catalog:
       basics:
         label: Metadados
         subtext: Definir metadados do App
-        description: Este processo vai ajudá-lo {action, select,
-            install { create }
-            upgrade { upgrade }
-            downgrade { upgrade }
-            editVersion { update }
-          } the {existing, select,
-            true { app}
+        description: Este processo vai ajudá-lo a {action, select,
+            install { criar }
+            upgrade { atualizar }
+            downgrade { atualizar }
+            editVersion { atualizar }
+          } o {existing, select,
+            true { aplicativo}
             false { chart}
-          }. Start by setting some basic information used by {vendor} to manage the App.
+          }. Comece definindo algumas informações básicas usadas pelo {vendor} para gerenciar o App.
         nsCreationDescription: "Para instalar o app em um novo namespace, insira o nome no campo Namespace e selecione-o."
         createNamespace: 'O Namespace <code>{namespace}</code> será criado.'
         requiresImagePullSecret: Este Chart requer um Image Pull Secret para que as imagens sejam extraídas com sucesso.
@@ -1878,7 +1878,7 @@ cluster:
     commandInstructions: 'Execute o comando <code>kubectl</code> abaixo em um cluster Kubernetes existente rodando uma versão suportada do Kubernetes para importá-lo no {vendor}:'
     commandInstructionsInsecure: 'Se você receber um erro de &quot;certificado assinado por autoridade desconhecida&quot;, sua instalação do {vendor} tem um certificado SSL autoassinado ou não confiável. Execute o comando abaixo para ignorar a verificação de certificado:'
     clusterRoleBindingInstructions: 'Se você obtiver erros de permissão ao criar alguns dos recursos, seu usuário pode não ter a função <code>cluster-admin</code>. Use este comando para aplicá-la:'
-    clusterRoleBindingCommand: 'kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user <your username from your kubeconfig>'
+    clusterRoleBindingCommand: 'kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user <seu nome de usuário do seu kubeconfig>'
   explore: Explorar
   importAction: Importar Existente
   manageAction: Gerenciar
@@ -3144,9 +3144,9 @@ fleet:
     showLabels: Mostrar mais
   clusters:
     harvester: |-
-      There {count, plural,
-      =1 {is 1 Harvester cluster that is hidden as this can not be used with Continuous Delivery}
-      other {are # Harvester clusters that are hidden as these can not be used with Continuous Delivery}
+      {count, plural,
+      =1 {1 cluster Harvester está oculto pois não pode ser usado com Entrega Contínua}
+      other {# clusters Harvester estão ocultos pois não podem ser usados com Entrega Contínua}
       }
   tokens:
     harvester: |-
@@ -3228,7 +3228,7 @@ fleet:
       fleet.cattle.io.helmop:
         description: 'HelmOp é uma forma simplificada de criar bundles apontando diretamente para um repositório Helm ou registro OCI, sem precisar configurar um repositório git.'
       suse-application-collection:
-        label: SUSE Application Collection
+        label: Coleção de Aplicativos SUSE
         description: Explore nossa Application Collection mantida e segura, selecione um Helm chart e implante-o em seus clusters.
     warningTooltip:
       clusterGroup: Não há clusters neste Grupo de Cluster
@@ -3393,7 +3393,7 @@ fleet:
       accessTokenField: Token de Acesso
       accessTokenPlaceholder: Seu token de acesso da SUSE Application Collection
     chart:
-      title: Charts
+      title: Gráficos
       loadError: Chart não encontrado ou sem versões disponíveis.
   helmOp:
     intro:
@@ -3467,7 +3467,7 @@ fleet:
             description: Por favor, aguarde enquanto o repositório é criado
           repoError:
             description: 'Por favor, verifique suas credenciais ou o repositório no cluster upstream:'
-            link: SUSE App Collection
+            link: Coleção de Apps SUSE
     appCoConfig:
       chartVersion: Versão do chart
       name: Nome do App Bundle
@@ -4868,7 +4868,7 @@ monitoringReceiver:
       msTeams: MS Teams
       alibabaCloudSms: SMS
   auth:
-    label: Auth
+    label: Autenticação
     authType: Tipo de Autenticação
     username: Nome de usuário
     password: Senha
@@ -5186,7 +5186,7 @@ node:
           osImage: Imagem
           systemUUID: UUID do Sistema
       pods: Pods
-      taints: Manchas
+      taints: Taints
   actions:
     downloadSSHKey: Baixar Chave SSH
     downloadNodeConfig: Baixar Chaves
@@ -7076,7 +7076,7 @@ tableHeaders:
   groups: Grupos
   groupName: Nome do Grupo
   groupRoleNames: Nomes de Funções do Grupo
-  global-Default: Global-Default
+  global-Default: Padrão Global
   helmOpsReady: Helm Ops Prontos
   host: Host
   hostIp: IP do Host
@@ -7142,7 +7142,7 @@ tableHeaders:
   podRestarts: Reinicializações do Pod
   podLastRestart: Última Reinicialização
   pods: Pods
-  pod-Selector: Pod-Selector
+  pod-Selector: Seletor de Pod
   providers: Provedores
   providerID: ID do Provedor
   port: Porta
@@ -7198,7 +7198,7 @@ tableHeaders:
   schedule: Agendamento
   service: Serviço
   serviceAccounts: Contas de Serviço
-  secret-Name: Secret-Name
+  secret-Name: Nome do Segredo
   simpleName: Nome
   simpleScale: Escala
   simpleType: Tipo
@@ -7216,7 +7216,7 @@ tableHeaders:
   success: Sucesso
   summary: Resumo
   subobject: Subobjeto
-  taints: Marcações
+  taints: Taints
   target: Destino
   targetKind: Tipo de Destino
   targetPort: Destino
@@ -8241,8 +8241,8 @@ typeDescription:
 typeLabel:
   management.cattle.io.oidcclient: |-
     {count, plural,
-      one { OIDC App }
-      other { OIDC Apps }
+      one { Aplicativo OIDC }
+      other { Aplicativos OIDC }
     }
   management.cattle.io.token: |-
     {count, plural,
@@ -8286,13 +8286,13 @@ typeLabel:
     }
   chartinstallaction: |-
     {count, plural,
-      one { App }
-      other { Apps }
+      one { Aplicativo }
+      other { Aplicativos }
     }
   chartupgradeaction: |-
     {count, plural,
-      one { App }
-      other { Apps }
+      one { Aplicativo }
+      other { Aplicativos }
     }
   cloudcredential: |-
     {count, plural,
@@ -8331,8 +8331,8 @@ typeLabel:
     }
   fleet.cattle.io.gitrepo: |-
     {count, plural,
-      one { Git Repo }
-      other {Git Repos }
+      one { Repo Git }
+      other { Repos Git }
     }
   fleet.cattle.io.helmop: |-
     {count, plural,
@@ -8432,8 +8432,8 @@ typeLabel:
     }
   monitoring.coreos.com.thanosruler: |-
     {count, plural,
-      one { Thanos Rule }
-      other { Thanos Rules }
+      one { Regra Thanos }
+      other { Regras Thanos }
     }
   monitoring.coreos.com.receiver: |-
     {count, plural,
@@ -8452,8 +8452,8 @@ typeLabel:
     }
   'cluster.x-k8s.io.cluster': |-
     {count, plural,
-      one { CAPI Cluster }
-      other { CAPI Clusters }
+      one { Cluster CAPI }
+      other { Clusters CAPI }
     }
   'provisioning.cattle.io.cluster': |-
     {count, plural,
@@ -8527,8 +8527,8 @@ typeLabel:
     }
   service: |-
     {count, plural,
-      one { Service }
-      other { Services }
+      one { Serviço }
+      other { Serviços }
     }
   persistentvolume: |-
     {count, plural,
@@ -8552,8 +8552,8 @@ typeLabel:
     }
   secret: |-
     {count, plural,
-      one { Secret }
-      other { Secrets }
+      one { Segredo }
+      other { Segredos }
     }
   projectsecret: |-
     {count, plural,
@@ -8627,8 +8627,8 @@ typeLabel:
     }
   harvesterhci.io.management.cluster: |-
     {count, plural,
-      one { Harvester Cluster }
-      other { Harvester Clusters }
+      one { Cluster Harvester }
+      other { Clusters Harvester }
     }
   harvesterhci.io.cloudtemplate: |-
     {count, plural,
@@ -8782,8 +8782,8 @@ typeLabel:
     }
   rbac.authorization.k8s.io.role: |-
     {count, plural,
-      one { Role }
-      other { Roles }
+      one { Função }
+      other { Funções }
     }
   replicationcontroller: |-
     {count, plural,
@@ -8812,8 +8812,8 @@ typeLabel:
     }
   cluster.x-k8s.io.machine: |-
     {count, plural,
-      one { Machine }
-      other { Machines }
+      one { Máquina }
+      other { Máquinas }
     }
   fleet.cattle.io.clusterregistrationtoken: |-
     {count, plural,
