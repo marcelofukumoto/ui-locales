@@ -24,7 +24,7 @@ generic:
   add: Agregar
   all: Todos
   ascending: ascendente
-  and: 'y'
+  and: ' y '
   back: Atrás
   cancel: Cancelar
   confirm: Confirmar
@@ -1293,7 +1293,12 @@ catalog:
         timeoutWaiting: Se agotó el tiempo de espera para los registros
     chart: Gráfico
     warning:
-      managed: Advertencia, {manager} gestiona el despliegue y actualización de la aplicación {name}. No se admite la actualización de esta aplicación.<br> {version, select, null { } other { En la mayoría de las circunstancias, no debería ser necesaria la intervención del usuario para garantizar que la versión {version} sea compatible con la versión de Rancher que está ejecutando.} }
+      managed:
+        Advertencia, {manager} gestiona el despliegue y actualización de la aplicación {name}. No se admite la actualización de esta aplicación.<br>
+        {version, select,
+          null { }
+          other { En la mayoría de las circunstancias, no debería ser necesaria la intervención del usuario para garantizar que la versión {version} sea compatible con la versión de Rancher que está ejecutando.}
+        }
     error:
       requiresFound: <a href="{url}">{name}</a> debe estar instalado antes de poder instalar este gráfico.
       requiresMissing: Este gráfico requiere otro gráfico que proporcione {name}, pero no se encontró ninguno.
@@ -1352,7 +1357,15 @@ catalog:
       basics:
         label: Metadatos
         subtext: Configurar metadatos de la Aplicación
-        description: Este proceso ayudará a {action, select, install { crear } upgrade { actualizar } downgrade { actualizar } editVersion { actualizar } } {existing, select, true { la aplicación} false { el gráfico} }. Comience configurando información básica que utiliza {vendor} para gestionar la aplicación.
+        description: Este proceso ayudará a {action, select,
+            install { crear }
+            upgrade { actualizar }
+            downgrade { actualizar }
+            editVersion { actualizar }
+          } {existing, select,
+            true { la aplicación}
+            false { el gráfico}
+          }. Comience configurando información básica que utiliza {vendor} para gestionar la aplicación.
         nsCreationDescription: Para instalar la aplicación en un nuevo espacio de nombres, ingrese su nombre en el campo Espacio de Nombres y selecciónelo.
         createNamespace: El espacio de nombres <code>{namespace}</code> será creado.
         requiresImagePullSecret: Este Gráfico requiere un Secreto de Extracción de Imágenes para que las imágenes se extraigan correctamente.
@@ -1435,7 +1448,7 @@ catalog:
       placeholder: ej. https://charts.rancher.io
     oci:
       urlLabel: URL del host del repositorio OCI
-      placeholder: e.g. oci://<registry-host>/<namespace>/<chart-name>:<tag>
+      placeholder: 'p. ej. oci://<registry-host>/<namespace>/<chart-name>:<tag>'
       warning: Las URLs OCI deben apuntar SOLO a gráficos de Helm.
       info: "Para repositorios grandes con muchos gráficos, considere apuntar a un espacio de nombres o gráfico específico para mejorar el rendimiento, por ejemplo con oci://<registry-host>/<namespace> o oci://<registry-host>/<namespace>/<chart-name>."
       skipTlsVerifications: Omitir verificaciones de TLS
@@ -1576,7 +1589,8 @@ compliance:
 
 cluster:
   jwtAuthentication:
-    banner: El acceso a la cuenta de servicio con autenticación JWT puede configurarse después de la creación del clúster desde <br> <code>Gestión de clúster > Avanzado > Autenticación JWT</code>
+    banner: "El acceso a la cuenta de servicio con autenticación JWT puede configurarse después de la creación del clúster desde <br>
+      <code>Gestión de clúster > Avanzado > Autenticación JWT</code>"
   addonChart:
     rancher-vsphere-cpi:
       label: 'Complemento: vSphere CPI'
@@ -1825,7 +1839,8 @@ cluster:
       label: 'Este es un clúster Harvester: habilite el indicador de función Harvester para administrarlo'
       state: Advertencia
       cloudProvider:
-        incompatible: No puede seleccionar el proveedor cloud de Harvester ya que la versión actual de Harvester no es compatible con la versión de Kubernetes RKE2 seleccionada, haga clic <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">aquí</a> para ver qué versiones de Kubernetes son compatibles.
+        incompatible:
+          No puede seleccionar el proveedor cloud de Harvester ya que la versión actual de Harvester no es compatible con la versión de Kubernetes RKE2 seleccionada, haga clic <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">aquí</a> para ver qué versiones de Kubernetes son compatibles.
     clusterWarning: |-
       Hay {count, plural,
       =1 {1 clúster de Harvester que no se muestra}
@@ -2109,7 +2124,7 @@ cluster:
         description: Los atributos personalizados le permiten adjuntar metadatos a objetos en el inventario de vSphere para facilitar la clasificación y búsqueda de estos objetos.
         add: Agregar atributo personalizado
     amazonEc2:
-      region: Region
+      region: Región
       zone: Zona
       instanceType: Tipo de Instancia
       rootSize:
@@ -2830,15 +2845,15 @@ configmap:
       label: Datos binarios
 
 containerResourceLimit:
-  cpuPlaceholder: e.g. 1000
-  gpuPlaceholder: e.g. 1
+  cpuPlaceholder: p. ej. 1000
+  gpuPlaceholder: p. ej. 1
   helpText: Configure cuántos recursos puede consumir el contenedor de forma predeterminada.
   helpTextDetail: La cantidad de recursos que el contenedor puede consumir de forma predeterminada.
   label: Límite de recursos predeterminado del contenedor
   limitsCpu: Límite de CPU
   limitsGpu: Límite/Reserva de GPU NVIDIA
   limitsMemory: Límite de memoria
-  memPlaceholder: e.g. 128
+  memPlaceholder: p. ej. 128
   requestsCpu: CPU solicitada
   requestsMemory: Memoria solicitada
 
@@ -3543,7 +3558,7 @@ fleet:
       clusterDeploymentLink: Opciones de despliegue del Bundle
     targetDisplay:
       advanced: Avanzado
-      clusters: Clusters
+      clusters: Clústeres
       all: Todos
       none: Ninguno
       local: Local
@@ -3606,7 +3621,10 @@ fleet:
   restrictions:
     addTitle: allowedTargetNamespaces
     addLabel: Agregar
-    banner: '{count, plural, =0 { Agregar espacios de nombres aquí creará una GitRepoRestriction. } other { Solo los <code>allowedTargetNamespaces</code> de la Restricción de Repositorio Git se administran aquí. Puede realizar cambios adicionales a la Restricción de Repositorio Git} }'
+    banner: "{count, plural,
+          =0 { Agregar espacios de nombres aquí creará una GitRepoRestriction. }
+          other { Solo los <code>allowedTargetNamespaces</code> de la Restricción de Repositorio Git se administran aquí. Puede realizar cambios adicionales a la Restricción de Repositorio Git}
+        }"
   configMaps:
     label: Mapas de configuración
   secrets:
@@ -4635,7 +4653,10 @@ monitoring:
         info: Los secretos deben montarse en <pre class='inline-block m-0'>/etc/alertmanager/secrets/</pre>
         label: Secretos adicionales
       existing: Elegir un secreto de configuración existente
-      info: "<span class=\"text-bold\">Crear configuración predeterminada</span>:<br>Se creará un Secreto con su Configuración de Alertmanager en el espacio de nombres <pre class='inline-block m-0'>cattle-monitoring-system</pre> al implementar este gráfico bajo el nombre <pre class='inline-block m-0'>alertmanager-rancher-monitoring-alertmanager</pre>. Por defecto, este Secreto nunca se modificará al desinstalar o actualizar este gráfico. <br /><br />\nUna vez implementado, debe editar el Secreto desde la UI para añadir sus configuraciones de notificación personalizadas que Alertmanager usará para enviar alertas. <br /> <br />\n<span class=\"text-bold\">Elegir un secreto de configuración existente</span>:<br>Debe especificar un Secreto existente en el espacio de nombres <pre class='inline-block m-0'>cattle-monitoring-system</pre>. Si el espacio de nombres no existe, no podrá seleccionar un secreto existente.\n"
+      info: |
+        <span class="text-bold">Crear configuración predeterminada</span>:<br>Se creará un Secreto con su Configuración de Alertmanager en el espacio de nombres <pre class='inline-block m-0'>cattle-monitoring-system</pre> al implementar este gráfico bajo el nombre <pre class='inline-block m-0'>alertmanager-rancher-monitoring-alertmanager</pre>. Por defecto, este Secreto nunca se modificará al desinstalar o actualizar este gráfico. <br /><br />
+        Una vez implementado, debe editar el Secreto desde la UI para añadir sus configuraciones de notificación personalizadas que Alertmanager usará para enviar alertas. <br /> <br />
+        <span class="text-bold">Elegir un secreto de configuración existente</span>:<br>Debe especificar un Secreto existente en el espacio de nombres <pre class='inline-block m-0'>cattle-monitoring-system</pre>. Si el espacio de nombres no existe, no podrá seleccionar un secreto existente.
       label: Secreto de Alertmanager
       new: Crear configuración predeterminada
       radio:
@@ -5784,14 +5805,16 @@ prefs:
     detail: Cambia la forma en que se muestra la información en la interfaz.
   clusterToShow:
     label: Número de clústeres a mostrar en el menú lateral
-    value: '{count, number}'
+    value: |-
+      {count, number}
   dateFormat:
     label: Formato de fecha
   timeFormat:
     label: Formato de hora
   perPage:
     label: Elementos por página
-    value: '{count, number}'
+    value: |-
+      {count, number}
   keymap:
     label: Mapa de teclas
     sublime: Sublime
@@ -6274,8 +6297,7 @@ resourceDetail:
     managedWarning: |-
       Este {type} es administrado por {hasName, select,
         no {una aplicación de {managedBy}}
-        yes {la aplicación {managedBy} {appName}}
-      }; los cambios realizados aquí probablemente serán sobrescritos la próxima vez que se ejecute {managedBy}.
+        yes {la aplicación {managedBy} {appName}}}; los cambios realizados aquí probablemente serán sobrescritos la próxima vez que se ejecute {managedBy}.
 resourceList:
   head:
     create: Crear
@@ -6508,18 +6530,18 @@ servicePorts:
   rules:
     listening:
       label: Puerto de escucha
-      placeholder: e.g. 8080
+      placeholder: p. ej. 8080
     name:
       label: Nombre del puerto
-      placeholder: e.g. myport
+      placeholder: p. ej. myport
     node:
       label: Puerto del nodo
-      placeholder: e.g. 30000
+      placeholder: p. ej. 30000
     protocol:
       label: Protocolo
     target:
       label: Puerto de destino
-      placeholder: e.g. 80 or http
+      placeholder: p. ej. 80 o http
 
 serviceTypes:
   clusterip: IP del clúster
@@ -6669,14 +6691,12 @@ sortableTable:
       {pages, plural,
       =0 {Sin elementos}
       =1 {{count} {count, plural, =1 {Elemento} other {Elementos}}}
-      other {{from} - {to} de {count} Elementos}
-      }
+      other {{from} - {to} de {count} Elementos}}
     resource: |-
       {pages, plural,
       =0 {Sin {pluralLabel}}
       =1 {{count} {count, plural, =1 {{singularLabel}} other {{pluralLabel}}}}
-      other {{from} - {to} de {count} {pluralLabel}}
-      }
+      other {{from} - {to} de {count} {pluralLabel}}}
   search: Filtrar
   searchLabel: Filtrar resultados de la tabla
   in: en
@@ -7521,8 +7541,8 @@ wm:
       lines: '{value, number} Líneas'
       minutes: |-
         {value, number} {value, plural,
-        =1 {Minute}
-        other {Minutes}
+        =1 {Minuto}
+        other {Minutos}
         }
     search: Filtrar
     timestamps: Mostrar marcas de tiempo
@@ -9061,7 +9081,8 @@ performance:
   incrementalLoad:
     label: Carga incremental
     setting: Puede configurar el umbral por encima del cual se usará la carga incremental.
-    description: Cuando se habilita, los recursos aparecerán más rápidamente, pero puede tardar un poco más en cargar el conjunto completo. Esta configuración solo aplica a recursos de la API de Kubernetes.
+    description: |-
+      Cuando se habilita, los recursos aparecerán más rápidamente, pero puede tardar un poco más en cargar el conjunto completo. Esta configuración solo aplica a recursos de la API de Kubernetes.
     checkboxLabel: Habilitar carga incremental
     inputLabel: Umbral de recursos
     incompatibleDescription: La carga incremental es incompatible con el filtrado por Namespace/Proyecto y la paginación del lado del servidor. Habilitarla deshabilitará esos.
@@ -9069,13 +9090,15 @@ performance:
     label: Actualización manual
     setting: Puede configurar un umbral por encima del cual se habilitará la actualización manual.
     buttonTooltip: Actualizar lista
-    description: Cuando se habilita, los datos de lista no se actualizarán automáticamente; el usuario deberá activar manualmente una actualización de vista de lista. Esta configuración solo aplica a recursos de la API de Kubernetes.
+    description: |-
+      Cuando se habilita, los datos de lista no se actualizarán automáticamente; el usuario deberá activar manualmente una actualización de vista de lista. Esta configuración solo aplica a recursos de la API de Kubernetes.
     checkboxLabel: Habilitar actualización manual de datos para listas
     inputLabel: Umbral de recursos
     incompatibleDescription: La actualización manual es incompatible con el filtrado por Namespace/Proyecto y la paginación del lado del servidor. Habilitarla deshabilitará esos.
   websocketNotification:
     label: Notificaciones de Websocket
-    description: Cuando está marcada, las notificaciones de websocket no aparecerán cuando la UI detecte una desconexión.
+    description: |-
+      Cuando está marcada, las notificaciones de websocket no aparecerán cuando la UI detecte una desconexión.
     checkboxLabel: Deshabilitar notificaciones de websocket
   gc:
     label: Recolección de basura de recursos
