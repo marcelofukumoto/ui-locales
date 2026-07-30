@@ -4005,7 +4005,7 @@ istio:
   customOverlayFile:
     label: 自定義覆蓋文件
     tip: '<a target="_blank" rel="noopener noreferrer nofollow" href="https://istio.io/latest/docs/setup/additional-setup/customize-installation/#patching-the-output-manifest">覆蓋文件</a>支持在基本的 {vendor} Istio 安裝之上進行額外的配置。你可以利用 <a href="https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/" target="_blank" rel="noopener noreferrer nofollow" >IstioOperator API</a> 對所有組件進行更改和添加，並通過此覆蓋 YAML 文件應用這些更改。'
-  description: '{vendor} Istio Helm Chart 為你安裝了一個最小 Istio 配置，以便你進行應用集成。如果你需要獲得有關 Istio 的更多信息，請訪問<a target="_blank" href="https://istio.io/latest/docs/concepts/what-is-istio" rel="noopener noreferrer nofollow"> What Is Istio</a>'
+  description: '{vendor} Istio Helm Chart 為你安裝了一個最小 Istio 配置，以便你進行應用集成。如果你需要獲得有關 Istio 的更多信息，請訪問<a target="_blank" href="https://istio.io/latest/docs/concepts/what-is-istio" rel="noopener noreferrer nofollow">https://istio.io/latest/docs/concepts/what-is-istio/</a>'
   destinationRule:
     title:
       new: 添加目標規則
@@ -7047,7 +7047,7 @@ tableHeaders:
   constraint: 約束
   completions: 完成 Job 歷史數
   count: 數量
-  createdAt: 創建於 
+  createdAt: 創建於
   customVerbs: 自定義操作
   description: 描述
   cpu: CPU
