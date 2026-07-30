@@ -354,7 +354,7 @@ product:
 
 suffix:
   percent: "%"
-  milliCpus: milli CPUs
+  milliCpus: mili CPUs
   cores: Núcleos
   cpus: CPUs
   gpus: GPUs
@@ -1357,15 +1357,15 @@ catalog:
       basics:
         label: Metadados
         subtext: Definir metadados do App
-        description: Este processo vai ajudá-lo {action, select,
-            install { create }
-            upgrade { upgrade }
-            downgrade { upgrade }
-            editVersion { update }
-          } the {existing, select,
-            true { app}
+        description: Este processo vai ajudá-lo a {action, select,
+            install { criar }
+            upgrade { atualizar }
+            downgrade { atualizar }
+            editVersion { atualizar }
+          } o {existing, select,
+            true { aplicativo}
             false { chart}
-          }. Start by setting some basic information used by {vendor} to manage the App.
+          }. Comece definindo algumas informações básicas usadas pelo {vendor} para gerenciar o App.
         nsCreationDescription: "Para instalar o app em um novo namespace, insira o nome no campo Namespace e selecione-o."
         createNamespace: 'O Namespace <code>{namespace}</code> será criado.'
         requiresImagePullSecret: Este Chart requer um Image Pull Secret para que as imagens sejam extraídas com sucesso.
@@ -3144,9 +3144,9 @@ fleet:
     showLabels: Mostrar mais
   clusters:
     harvester: |-
-      There {count, plural,
-      =1 {is 1 Harvester cluster that is hidden as this can not be used with Continuous Delivery}
-      other {are # Harvester clusters that are hidden as these can not be used with Continuous Delivery}
+      {count, plural,
+      =1 {1 cluster Harvester está oculto pois não pode ser usado com Entrega Contínua}
+      other {# clusters Harvester estão ocultos pois não podem ser usados com Entrega Contínua}
       }
   tokens:
     harvester: |-
@@ -4868,7 +4868,7 @@ monitoringReceiver:
       msTeams: MS Teams
       alibabaCloudSms: SMS
   auth:
-    label: Auth
+    label: Autenticação
     authType: Tipo de Autenticação
     username: Nome de usuário
     password: Senha
