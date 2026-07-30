@@ -2,7 +2,7 @@
 # locale: es-es (Spanish - Spain)
 # source-locale: en-us
 # synced-against-en-us-commit: 02a2364 (2026-07-20)
-# last-updated: 2026-07-22
+# last-updated: 2026-07-30
 # ---
 ##############################
 # Special stuff
@@ -378,6 +378,7 @@ suffix:
       =1 { Vez }
       other { Veces }
     }
+
 ##############################
 # Components & Pages
 ##############################
@@ -2373,8 +2374,8 @@ cluster:
         controlPlane: |-
           {count, plural,
             =0 { Un clúster necesita al menos un nodo de plano de control para ser utilizable. }
-            =1 { Un clúster con 1 nodo de plano de control no tiene alta disponibilidad. }
-            other { Un clúster con {count} nodos de plano de control tiene alta disponibilidad. }
+            =1 { Un clúster con un solo nodo de plano de control no es tolerante a fallos. }
+            other {}
           }
         etcd: |-
           {count, plural,
@@ -2391,8 +2392,8 @@ cluster:
         worker: |-
           {count, plural,
             =0 { Un clúster necesita al menos un nodo trabajador para ser utilizable. }
-            =1 { Un clúster con 1 nodo trabajador tiene disponibilidad limitada. }
-            other { Un clúster con {count} nodos trabajadores tiene buena disponibilidad. }
+            =1 { Un clúster con un solo nodo trabajador no es tolerante a fallos. }
+            other {}
           }
     quantity:
       label: Cantidad de máquinas
@@ -2929,6 +2930,7 @@ detailText:
       =1 {+ 1 carácter más}
       other {+ {n, number} caracteres más}
     }
+
 drainNode:
   action: Drenar
   actionStop: Detener drenaje
@@ -3836,6 +3838,7 @@ import:
     =1 {1 recurso}
     other {# recursos}
     }
+
 auditPolicy:
   active: Activo
   inactive: Inactivo
@@ -4569,10 +4572,7 @@ logout:
   error: 'Se produjo un error al cerrar sesión: {msg}'
   specificError:
     unknown: Desconocido.\n\nPor favor contacte a su administrador del sistema.
-    500: |-
-      Error del lado del servidor.
-
-      Contáctese con el administrador del sistema.
+    500: "Error del lado del servidor.\n\nContáctese con el administrador del sistema."
 
 managementNode:
   customName: Nombre personalizado
@@ -5114,6 +5114,7 @@ networkpolicy:
           =1 {1 de {totalNamespaces, number} espacios de nombres: "{sampleNamespaces}"}
           other {{matchedNamespaces, number} de {totalNamespaces, number} espacios de nombres existentes, incluyendo "{sampleNamespaces}"}
         }
+
 node:
   list:
     pool: Grupo
@@ -6398,6 +6399,7 @@ secret:
           =1 {1 Entrada}
           other {{entries} Entradas}
         }
+
   serviceAcct:
     ca: Certificado CA
     token: Token
@@ -8803,6 +8805,7 @@ typeLabel:
       one { Proveedor de Cluster API }
       other { Proveedores de Cluster API }
     }
+
 oidcclient:
   a11y:
     copyText:
