@@ -2,7 +2,7 @@
 # locale: fr-fr (French - France)
 # source-locale: en-us
 # synced-against-en-us-commit: 02a2364 (2026-07-20)
-# last-updated: 2026-07-27
+# last-updated: 2026-07-30
 # ---
 ##############################
 # Special stuff
@@ -603,11 +603,11 @@ authConfig:
       1:
         title: '<a href="https://console.developers.google.com/apis/credentials" target="_blank" rel="noopener noreferrer nofollow">Cliquez ici</a> pour ouvrir les paramètres des applications dans un nouvel onglet'
         body:
-          1: 'Connectez-vous à votre compte. Accédez à "APIs & Services" puis sélectionnez "OAuth consent screen".'
-          2: 'Domaines autorisés :'
-          3: "Lien de la page d’accueil de l’application : "
-          4: 'Sous Scopes pour les APIs Google, activez "email", "profile" et "openid".'
-          5: 'Cliquez sur "Enregistrer".'
+         1: 'Connectez-vous à votre compte. Accédez à "APIs & Services" puis sélectionnez "OAuth consent screen".'
+         2: 'Domaines autorisés :'
+         3: "Lien de la page d’accueil de l’application : "
+         4: 'Sous Scopes pour les APIs Google, activez "email", "profile" et "openid".'
+         5: 'Cliquez sur "Enregistrer".'
         topPrivateDomain: 'Domaine privé de premier niveau de :'
         ariaLabel:
           hostname: Copier le nom d’hôte dans le presse-papiers
@@ -1294,10 +1294,10 @@ catalog:
     chart: Graphique
     warning:
       managed:
-        Warning, {manager} manages deployment and upgrade of the {name} app. Upgrading this app is not supported.<br>
+        Attention, {manager} gère le déploiement et la mise à niveau de l’application {name}. La mise à niveau de cette application n’est pas prise en charge.<br>
         {version, select,
           null { }
-          other { Under most circumstances, no user intervention should be needed to ensure that the {version} version is compatible with the version of Rancher that you are running.}
+          other { Dans la plupart des cas, aucune intervention de l’utilisateur ne devrait être nécessaire pour garantir que la version {version} est compatible avec la version de Rancher que vous utilisez.}
         }
     error:
       requiresFound: '<a href="{url}">{name}</a> doit être installé avant de pouvoir installer ce chart.'
@@ -1840,7 +1840,7 @@ cluster:
       state: Avertissement
       cloudProvider:
         incompatible:
-          You cannot select the Harvester cloud provider as the current Harvester version is not compatible with the selected RKE2 Kubernetes version, click <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">here</a> to see which Kubernetes versions are supported.
+          Vous ne pouvez pas sélectionner le fournisseur cloud Harvester car la version actuelle de Harvester n’est pas compatible avec la version Kubernetes RKE2 sélectionnée, cliquez <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">ici</a> pour voir quelles versions de Kubernetes sont prises en charge.
     clusterWarning: |-
       Il {count, plural,
       =1 {y a 1 cluster Harvester qui n’est pas affiché}
@@ -3619,9 +3619,12 @@ fleet:
     remove:
       warning: "La suppression d’un espace de travail supprime également toutes les ressources qu’il contient. Cela inclut les GitRepos mais aussi les clusters.<br><br>Les clusters supprimés seront retirés de {vendor}, et si {vendor} gère le cycle de vie du cluster, l’infrastructure sous-jacente sera également supprimée."
   restrictions:
-    addTitle: Espaces de noms cibles autorisés
+    addTitle: 'allowedTargetNamespaces'
     addLabel: Ajouter
-    banner: "{count, plural, =0 { Ajouter des espaces de noms ici créera une GitRepoRestriction. } other { Seul le champ <code>allowedTargetNamespaces</code> de la restriction Git Repo est géré ici. Vous pouvez apporter des modifications supplémentaires à la restriction Git Repo.} }"
+    banner: "{count, plural,
+          =0 { Ajouter des espaces de noms ici créera une GitRepoRestriction. }
+          other { Seul le champ <code>allowedTargetNamespaces</code> de la restriction Git Repo est géré ici. Vous pouvez apporter des modifications supplémentaires à la restriction Git Repo}
+        }"
   configMaps:
     label: ConfigMaps
   secrets:
@@ -4587,10 +4590,7 @@ logout:
   error: "Une erreur s’est produite lors de la déconnexion : {msg}"
   specificError:
     unknown: Inconnu.\n\nVeuillez contacter votre administrateur système.
-    500: |-
-      Erreur côté serveur.
-      
-      Veuillez contacter votre administrateur système.
+    500: "Erreur côté serveur.\n\nVeuillez contacter votre administrateur système."
 
 managementNode:
   customName: Nom personnalisé
@@ -6402,8 +6402,8 @@ secret:
     password: Mot de passe
     username: Nom d’utilisateur
   basic:
-      password: Mot de passe
-      username: Nom d’utilisateur
+    password: Mot de passe
+    username: Nom d’utilisateur
   ssh:
     keys: Clés
     keysAndHosts: Clés et hôtes connus
@@ -6939,7 +6939,7 @@ storageClass:
       placeholder: e.g. 32
     repl:
       label: Réplication
-      placeholder: e.g.1; 0 for entire device
+      placeholder: ex. 1 ; 0 pour l’ensemble du périphérique
     ioPriority:
       label: Priorité E/S
       placeholder: e.g. low
