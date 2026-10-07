@@ -9,7 +9,7 @@
     "node": ">=24"
   },
   "dependencies": {
-    "@rancher/shell": "~3.0.12"
+    "@rancher/shell": "~3.0.13"
   },
   "devDependencies": {
     "js-yaml": "4.3.0"
