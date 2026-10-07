@@ -2118,7 +2118,7 @@
   resolved "https://registry.yarnpkg.com/@rancher/icons/-/icons-2.0.62.tgz#42d3aa89d03a2e0e551332e99c8102dfdd422746"
   integrity sha512-ywGk1NSrIdN1zllpbDRU3ESVW/D0ExRZFBz+YPGAo9G08VzWxKIcT5GG5Nd2GXLTcUestlq1JwkKDaVAM8hkmQ==
 
-"@rancher/shell@^3.0.12":
+"@rancher/shell@~3.0.12":
   version "3.0.12"
   resolved "https://registry.yarnpkg.com/@rancher/shell/-/shell-3.0.12.tgz#c5aa75446eccb36344792e1bd72cd36218ab8f03"
   integrity sha512-fAPTUsVG2+eR2YQWvs2tLMSRJrxBuL53r68gS802fAKdTSmhAY72FiM7uQfboqA4j5N6apG/itNm6ARp9iyCrg==
