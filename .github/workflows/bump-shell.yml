@@ -105,7 +105,7 @@ jobs:
           STALE_PINS: ${{ steps.check.outputs.stale-pins }}
           PINS_EDITED: ${{ steps.check.outputs.pins-edited }}
         run: |
-          prefix='bump-shell/'
+          prefix='bump-shell-t2/'
           branch="${prefix}${TARGET}"
 
           # Only branches in this repository: a pull request from a fork that happens to use the same
