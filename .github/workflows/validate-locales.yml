@@ -8,8 +8,9 @@ name: Validate locales
 # Parity is absolute: once reference/en-us.yaml moves, every locale fails on
 # main until /update-language realigns it. A pull request, though, is judged
 # only on the locale files it changes (CHANGED_ONLY), so updating one language
-# is not held red by the others that are still behind; a change to the
-# validator, this workflow or the dependencies is still checked in full. A
+# is not held red by the others that are still behind, and a pull request that
+# changes no locale file (a dependency bump, say) checks none; a change to the
+# validator or this workflow is still checked in full. A
 # change that touches reference/en-us.yaml and no locale file, i.e. the weekly
 # sync, is checked on the English source alone. Both are detected by diffing
 # against BASE_REF, which is why the full history is fetched.

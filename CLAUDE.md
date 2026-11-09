@@ -37,8 +37,8 @@ check runs on every PR.
 
 Parity with `reference/en-us.yaml` is absolute: once en-us changes, every locale fails until
 `/update-language` realigns it. On a PR, CI checks only the locale files that PR changes (full run
-if it touches the validator, its workflow or the dependencies), so each language can be updated in
-its own PR; pushes to `main` check every locale. A PR that touches `reference/en-us.yaml` and no
+if it touches the validator or its workflow; none if it changes no locale file, e.g. a dependency
+bump), so each language can be updated in its own PR; pushes to `main` check every locale. A PR that touches `reference/en-us.yaml` and no
 locale file is checked on the English source alone.
 
 ## Releasing

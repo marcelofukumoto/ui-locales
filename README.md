@@ -93,9 +93,10 @@ The one exception is a pull request that changes `reference/en-us.yaml` **and no
 weekly sync. It cannot keep the translations in step, because it is what puts them out of step, so
 it is checked on the English file alone and told what each language will need afterwards.
 
-The consequence is deliberate: once a sync merges, **every** pull request that is not reference-only
-fails until `/update-language` has realigned each language. Red CI is the reminder that the
-translations are behind.
+The consequence is deliberate: once a sync merges, `main` and every pull request that changes a
+locale file fail until `/update-language` has realigned that language. Red CI is the reminder that
+the translations are behind. A pull request that changes no locale file, such as a dependency bump,
+checks none of them and is not held red.
 
 Failures (the build is blocked):
 
