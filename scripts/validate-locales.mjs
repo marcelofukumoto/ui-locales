@@ -237,13 +237,13 @@ const REFERENCE_ONLY = !!CHANGED
 
 /**
  * Files whose change can alter the verdict for every locale, so a change that
- * touches any of them is always checked in full.
+ * touches any of them is always checked in full. Dependency changes are left
+ * out on purpose: they leave every locale file as it was, and the full run on
+ * the push to main still reports it if a bump changes the verdict.
  */
 const GLOBAL_FILES = [
   'scripts/validate-locales.mjs',
-  '.github/workflows/validate-locales.yml',
-  'package.json',
-  'yarn.lock'
+  '.github/workflows/validate-locales.yml'
 ];
 
 /**
