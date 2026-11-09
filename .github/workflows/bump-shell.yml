@@ -25,6 +25,8 @@ on:
   schedule:
     - cron: '17 5 * * *'
   workflow_dispatch:
+  push:
+    branches: [test-fresh-lock-b]
 
 permissions:
   contents: write
@@ -121,7 +123,7 @@ jobs:
           PINS_EDITED: ${{ steps.check.outputs.pins-edited }}
           FRESH: ${{ steps.lock.outputs.fresh }}
         run: |
-          prefix='bump-shell/'
+          prefix='bump-shell-t3/'
           branch="${prefix}${TARGET}"
 
           # Only branches in this repository: a pull request from a fork that happens to use the same
