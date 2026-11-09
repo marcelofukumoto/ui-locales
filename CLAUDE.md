@@ -50,7 +50,8 @@ tagged `locales-<version>`. See `docs/RELEASING.md`.
 
 Don't bump it by hand. `.github/workflows/bump-shell.yml` checks npm daily and keeps one PR open
 for the newest release, release candidates included (`scripts/bump-shell.mjs` picks it), closing
-any older one, and Dependabot ignores the package.
+any older one, and Dependabot ignores the package. Each bump regenerates `yarn.lock` from scratch
+and holds back releases younger than 7 days (`scripts/cooldown-registry.mjs`).
 
 ## Rules
 
