@@ -25,6 +25,8 @@ on:
   schedule:
     - cron: '17 5 * * *'
   workflow_dispatch:
+  push:
+    branches: [test-fresh-lock-a]
 
 permissions:
   contents: write
