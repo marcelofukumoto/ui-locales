@@ -1,8 +1,8 @@
 # ---
 # locale: pt-br (Portuguese - Brazil)
 # source-locale: en-us
-# synced-against-en-us-commit: 350d929 (2026-10-13)
-# last-updated: 2026-10-14
+# synced-against-en-us-commit: 261b893 (2026-11-04)
+# last-updated: 2026-11-09
 # ---
 ##############################
 # Special stuff
@@ -349,6 +349,7 @@ nav:
   userMenu:
     preferences: Preferências
     accountAndKeys: Conta e Chaves de API
+    whatsNew: Novidades
     logOut: Sair
     label: Menu do usuário
     button:
@@ -444,7 +445,7 @@ about:
     title: Versões
     component: Componente
     version: Versão
-    cli: CLI
+    cli: Rancher CLI
     helm: Helm
     machine: Máquina
     rancher: Rancher
@@ -452,9 +453,14 @@ about:
   downloadImageList:
     title: Listas de Imagens
   cli:
-    title: "CLI do {vendor}"
-    description: A CLI do {vendor} permite gerenciar clusters, projetos e recursos pela linha de comando. Há builds disponíveis para diversos sistemas operacionais e arquiteturas, e a documentação explica como baixá-las e instalá-las.
-    docsLink: Ver a documentação da CLI do {vendor}
+    title: "Rancher CLI (legada)"
+    description: Esta versão da Rancher CLI será descontinuada em uma versão futura e não receberá mais novos recursos. Por enquanto, ela continua totalmente suportada, então scripts e automações existentes continuam funcionando, mas recomendamos começar com a nova Rancher CLI abaixo.
+    docsLink: Ver a documentação da Rancher CLI
+    new:
+      title: "Nova Rancher CLI (Edição para IA e Agentes)"
+      badge: Nova
+      description: A CLI inteligente criada para IA, agentes de IA e Kubernetes autônomo.
+      githubLink: Ver no GitHub (rancher/rancher-cli)
   diagnostic:
     title: Diagnósticos
     checkboxTooltip: Complementar dados de diagnóstico com tempos de resposta para os 10 principais recursos. Isso pode demorar um pouco
@@ -481,6 +487,24 @@ about:
     modal:
       title: Os tempos de resposta ainda não foram gerados.
       body: Gere tempos de resposta para oferecer informações mais específicas.
+  licenses:
+    title: Licenças de Código Aberto
+    description: Esta interface é construída com base em outros softwares de código aberto. Clique abaixo para ver a lista completa de pacotes de terceiros e suas licenças.
+    viewLicenses: Ver Licenças
+    page:
+      title: Licenças de Código Aberto
+      hint: Clique em uma licença para ver o texto completo.
+      error: "Falha ao carregar as licenças ({error}). Tente novamente mais tarde."
+    table:
+      package: Pacote
+      license: Licença
+      viewFor: "Ver o texto da licença {license} de {name}"
+    panel:
+      none: Nenhum conteúdo de licença disponível para este pacote.
+      declaredAs: "Licença declarada: {license}"
+      rawLicense: "Expressão original: {expression}"
+      author: "Autor: {author}"
+      textLabel: Texto da licença
 
 accountAndKeys:
   title: Conta e Chaves de API
@@ -538,6 +562,8 @@ addProjectMemberDialog:
   title: Adicionar Membro do Projeto
 
 authConfig:
+  enableLimitReached: Outro provedor externo já está habilitado. O Rancher Community permite configurar um provedor de autenticação externo por vez. Desabilite o provedor ativo para adicionar outro ou use o Rancher Prime para habilitar vários ao mesmo tempo.
+  enableLimitReachedPrime: Outro provedor externo já está habilitado. A feature flag multiple-auth-providers está desativada, então apenas um provedor de autenticação externo pode ser habilitado por vez. Desabilite o provedor ativo para adicionar outro ou ative a flag em Configurações Globais > Flags de Funcionalidade para habilitar vários ao mesmo tempo.
   list:
     title: Provedores de Autenticação
     description: Configure os provedores de identidade que as pessoas podem usar para fazer login no Rancher.
@@ -551,6 +577,14 @@ authConfig:
       description: Todos fazem login com uma conta local do Rancher. Conecte um provedor de identidade para que as pessoas possam usar as credenciais existentes da empresa.
       create: Adicionar um provedor
       learnMore: Como funciona a autenticação externa
+    prime:
+      title: Use vários provedores de autenticação ao mesmo tempo com o SUSE Rancher Prime
+      description: O Rancher Community suporta um provedor de autenticação externo por vez, então desabilite o ativo para trocar. Com o <primeUrl>SUSE Rancher Prime</primeUrl>, funcionários, terceirizados e parceiros podem fazer login pelo provedor que já usam, com todos os provedores ativos ao mesmo tempo.
+      action: Saiba mais sobre o SUSE Rancher Prime
+    primeFlagOff:
+      title: Use vários provedores de autenticação ao mesmo tempo com a feature flag multiple-auth-providers
+      description: A feature flag multiple-auth-providers está desativada, então apenas um provedor de autenticação externo pode estar ativo por vez. Desabilite o ativo para trocar ou ative a flag para permitir que funcionários, terceirizados e parceiros façam login pelo provedor que já usam, com todos os provedores ativos ao mesmo tempo.
+      action: Ir para Flags de Funcionalidade
     disableLocal:
       label: Desabilitar login com usuários locais
       description: Os usuários fazem login apenas por provedores externos. As contas locais permanecem, mas não podem ser usadas para login.
@@ -567,9 +601,29 @@ authConfig:
   access:
     title: '{provider} - Acesso'
     type: Tipo
+  create:
+    back: Provedores de Autenticação
+    unknownProvider: '{provider} não é um provedor suportado por este Rancher.'
+    limitReached: Outro provedor externo já está habilitado. O Rancher Community permite configurar um provedor de autenticação externo por vez. Desabilite o provedor ativo para adicionar outro ou use o Rancher Prime para habilitar vários ao mesmo tempo.
+    limitReachedPrime: Outro provedor externo já está habilitado. A feature flag multiple-auth-providers está desativada, então apenas um provedor de autenticação externo pode ser habilitado por vez. Desabilite o provedor ativo para adicionar outro ou ative a flag em Configurações Globais > Flags de Funcionalidade para habilitar vários ao mesmo tempo.
+    provider:
+      title: 'Adicionar {provider}'
+    clone:
+      title: 'Clonar {name}'
+      notFound: '{name} não é um provedor de autenticação que pode ser clonado aqui.'
+    name:
+      label: Nome
+      required: Um nome é obrigatório.
+      invalid: Use letras minúsculas, números e hifens, começando e terminando com uma letra ou um número.
+      taken: '{name} já está em uso por outro provedor.'
+    descriptionField:
+      label: Descrição
+      placeholder: 'ex.: Engenharia e suporte.'
   add:
     title: Adicionar um provedor de autenticação
     subtitle: Selecione o provedor para conectar. O Rancher suporta um provedor externo, então este é o que os usuários usarão para fazer login. Para usar um diferente mais tarde, você exclui este e configura o novo.
+    subtitleMultiple: Selecione o provedor para conectar. Mais de um provedor externo pode ser habilitado ao mesmo tempo, e os usuários escolhem com qual fazer login.
+    subtitlePrimeSingle: Selecione o provedor para conectar. A feature flag multiple-auth-providers está desativada, então apenas um provedor externo pode ser habilitado por vez. Ative a flag em Configurações Globais > Flags de Funcionalidade para habilitar vários ao mesmo tempo.
     searchPlaceholder: Pesquisar provedores
     filterLabel: Protocolo
     filterAll: Todos
@@ -1480,6 +1534,12 @@ catalog:
       chartOptions: Editar Opções
       valuesYaml: Editar YAML
       diff: Comparar Alterações
+      chartDefaults:
+        label: Valores do chart
+        hint: Edite os valores padrão do chart com as substituições, se houver, sobrepostas abaixo, exatamente como o Helm vai resolvê-los. Apenas as suas alterações, mostradas à direita, são salvas. Para remover uma propriedade, defina-a explicitamente como “null”.
+      overrides:
+        label: Seus valores
+        hint: Estes valores substituirão os valores padrão do chart. Apenas estes valores serão salvos.
     slideIn:
       dock: Ancorar ao shell
     steps:
@@ -1518,6 +1578,8 @@ catalog:
         label: Valores
         subtext: Alterar como o App funciona
         description: Configurar valores usados pelo Helm para definir o App.
+        overridesDescription:
+          upgrade: Seus valores de {from} são aplicados sobre os padrões de {to}, assim como o helm upgrade faz.
         chartInfo:
           button: Ver Informações do Chart
           label: Informações do Chart
@@ -1950,6 +2012,11 @@ cluster:
           minimumAllocatable: "É altamente recomendado selecionar uma vGPU com um número de dispositivos alocáveis maior do que o número de nós (Contagem de Máquinas) para evitar erros de 'não escalonável' após atualizações do cluster."
         errors:
           notAllocatable: '[{vGpu}] O dispositivo vGPU não é alocável; necessário: {allocated}, alocável: {allocatable}'
+      hostDevices:
+        warnings:
+          minimumAllocatable: É altamente recomendado selecionar dispositivos PCI com um número de dispositivos alocáveis maior do que o número de nós (Contagem de Máquinas) para evitar erros de "não escalonável" após atualizações do cluster. Dispositivos que compartilham um grupo IOMMU devem ser todos selecionados juntos.
+        errors:
+          notAllocatable: '[{hostDevice}] O dispositivo PCI não é alocável; necessário: {allocated}, alocável: {allocatable}'
       volume:
         title: Volumes
         volume: Volume
@@ -1957,6 +2024,50 @@ cluster:
         addVolume: Adicionar Volume
         addVMImage: Adicionar Imagem de VM
         storageClass: Classe de Armazenamento
+      storageOptions:
+        profile:
+          label: Perfil de Desempenho de Armazenamento
+          tip: '"Alto Desempenho" desabilita o cache do host, usa AIO nativo e dá ao disco uma thread de E/S dedicada. Escolha "Personalizado" para definir cada opção você mesmo.'
+          default: Padrão
+          highPerformance: Alto Desempenho
+          custom: Personalizado
+        highPerformanceTip: Este disco usará AIO nativo e uma thread de E/S dedicada, sem cache do host.
+        cache:
+          label: Modo de Cache
+          tip: 'Como o host armazena em cache a E/S do disco. "Nenhum" é o melhor para VMs convidadas de alta vazão em armazenamento em bloco, "WriteBack" favorece o desempenho e "WriteThrough" favorece a durabilidade.'
+          default: Padrão (hipervisor)
+          none: Nenhum (sem cache do host)
+          writeback: WriteBack
+          writethrough: WriteThrough
+        io:
+          label: Modo de E/S
+          tip: 'Como o QEMU envia a E/S. "Nativo" (Linux AIO) tem a menor sobrecarga e exige o modo de cache "Nenhum". "Threads" usa um pool de threads do host.'
+          default: Padrão (hipervisor)
+          native: Nativo (AIO)
+          threads: Threads
+          nativeTip: O modo de E/S nativo exige o cache do host desabilitado, então o modo de cache é definido como Nenhum.
+        dedicatedIOThread:
+          label: Thread de E/S Dedicada
+          tip: Fornece a este disco uma thread de E/S própria, em vez de uma compartilhada. Útil para discos com E/S intensa.
+        busWarning: 'Este disco usa o barramento {bus}. Uma thread de E/S dedicada e, portanto, o perfil Alto Desempenho exigem o barramento virtio.'
+      vmStorageOptions:
+        title: Desempenho de Armazenamento
+        description: Estas opções se aplicam a todos os volumes da máquina virtual.
+        blockMultiQueue:
+          label: Múltiplas Filas do Virtio Block
+          tip: Distribui a E/S do disco em uma fila por vCPU para que ela seja processada em várias CPUs.
+        ioThreadsPolicy:
+          label: Política de Threads de E/S
+          tip: '"Compartilhada" usa uma thread de E/S para todos os discos. "Automática" distribui os discos por um pool de threads. "Pool Suplementar" usa um número fixo de threads.'
+          default: Desabilitada (padrão)
+          shared: Compartilhada
+          auto: Automática
+          supplementalPool: Pool Suplementar
+          sharedTip: Um volume solicita uma thread de E/S dedicada, então a política Compartilhada será usada.
+        ioThreadCount:
+          label: Contagem de Threads de E/S
+          tip: Número de threads de E/S no pool suplementar.
+          invalid: A Contagem de Threads de E/S deve ser pelo menos 1 com a política "Pool Suplementar".
       reservedMemory: Memória Reservada
       sshUser: Usuário SSH
       userData:
@@ -2495,7 +2606,6 @@ cluster:
         other { {pool_name}: Os valores fornecidos para {fields} não foram encontrados na lista de valores esperados. Isso pode acontecer com clusters provisionados fora do Rancher ou quando as opções do provedor mudaram. }
       }
     rke1DeprecationMessage: 'O Rancher Kubernetes Engine (RKE / RKE1) atingiu o fim da vida útil e esses clusters não são mais suportados. Recomendamos migrar os clusters RKE1 para o RKE2 para garantir suporte contínuo e atualizações de segurança. Saiba mais sobre a transição <a href="https://www.suse.com/support/kb/doc/?id=000021518" target="_blank" rel="noopener noreferrer nofollow">aqui</a>.'
-    nginxDeprecated: O controlador NGINX está descontinuado e será removido em versões futuras
   rke1Unsupported: Clusters RKE1 não são mais suportados
 
   architecture:
@@ -2528,6 +2638,15 @@ cluster:
       validation:
         isAutoscalerMaxGreaterThanMin: A contagem máxima de máquinas deve ser igual ou superior à contagem mínima de máquinas.
       etcdControlPlaneWarning: Não recomendamos usar o Autoscaler com pools de máquinas que tenham as funções etcd ou Control Plane. Você pode modificar o yaml se quiser substituir o valor atual.
+      pause:
+        pausedBanner: O escalonamento automático está pausado para este pool. Ele mantém estes valores e os aplica novamente quando você o retomar na aba Pools de Máquinas do cluster.
+        pauseAction: Pausar Autoescalador
+        resumeAction: Retomar Autoescalador
+        rangeTooltip: 'Mín {min}, Máx {max}'
+        unconfiguredTooltip: O escalonamento automático não está configurado para este pool. Defina um intervalo de contagem de máquinas na configuração do pool.
+        clusterPausedTooltip: O escalonamento automático está pausado para todo o cluster.
+        lastPoolTooltip: Este é o único pool que ainda tem escalonamento automático. Pausá-lo desinstalaria o autoescalador.
+        error: Erro ao atualizar o escalonamento automático do pool de máquinas
     name:
       label: Nome do Pool
       notNamed: (Sem Nome)
@@ -2791,6 +2910,7 @@ cluster:
         label: Backups Automáticos
       snapshotScheduleCron:
         label: Agendamento Cron
+        validationError: "Use uma expressão cron válida, como 0 */5 * * * (a cada 5 horas) ou @daily. Os cinco campos são minuto, hora, dia do mês, mês e dia da semana (0-6, domingo é 0)."
       snapshotRetention:
         label: Contagem de retenção de snapshots locais
         tooltip: 'Cada backup registra 1 snapshot por nó etcd. Se você especificar 3 snapshots e tiver 3 nós etcd, reterá apenas 1 backup completo.'
@@ -2861,8 +2981,8 @@ cluster:
     enableIngress: Instalar controlador Ingress para habilitar roteamento externo
     nginx:
       header: Ingress-NGINX
-      contentCommunity: Esta opção está disponível apenas no SUSE Rancher Prime.
-      content: Escolha isso apenas se suas cargas de trabalho ainda não estiverem prontas para o Traefik.
+      contentUnsupported: O Ingress-NGINX não está disponível com o Kubernetes 1.37 ou superior. Escolha o Traefik.
+      content: Escolha isso apenas se suas cargas de trabalho ainda não estiverem prontas para o Traefik. O uso apenas do Ingress-NGINX não é suportado com o Kubernetes 1.37 ou superior.
     dual:
       header: Modo Dual
       content: Use isso para testar e migrar tráfego com segurança do Ingress-NGINX para o Traefik.
@@ -2888,11 +3008,15 @@ cluster:
     banners:
       transitioning:
         label: O Rancher está fazendo a transição para o Traefik como provedor padrão. Enquanto o Ingress-NGINX permanece disponível para fins de migração, recomendamos mover as cargas de trabalho para o Traefik para garantir compatibilidade e suporte a longo prazo.
+      nginxUpgradeBlocked:
+        label: O Kubernetes 1.37 ou superior não pode usar apenas o Ingress-NGINX. Selecione Traefik ou Modo Dual. Recomendamos fortemente executar em Modo Dual e validar suas cargas de trabalho antes de atualizar. Revise nossa <docsUrl>documentação de migração</docsUrl>.
+      nginxUpgradeWarning:
+        label: Após atualizar para o Kubernetes 1.37 ou superior, não será possível voltar a usar apenas o Ingress-NGINX.
       disabled:
         label: Sem um controlador de Ingress, os serviços neste cluster não serão acessíveis via URLs externas ou nomes de host. Você precisará configurar manualmente uma solução de roteamento alternativa para expor suas cargas de trabalho.
       selected:
         ingress-nginx:
-          label: O Ingress-NGINX está agora obsoleto e será removido em uma versão futura. Para evitar interrupções de serviço, comece a migrar seus recursos de Ingress para o Traefik. Revise nossa <docsUrl>documentação de migração</docsUrl>.
+          label: O Ingress-NGINX atingiu o fim da vida útil em março de 2026 e não recebe mais correções. Ele não está disponível com o Kubernetes 1.37 ou superior. Para evitar interrupções de serviço, comece a migrar seus recursos de Ingress para o Traefik. Revise nossa <docsUrl>documentação de migração</docsUrl>.
         traefik:
           label: Antes de mudar para o Traefik, revise nossa <docsUrl>documentação de migração</docsUrl> para garantir que seus recursos de Ingress sejam atualizados para suportar os requisitos de configuração do Traefik.
         dual:
@@ -2921,9 +3045,16 @@ cluster:
   rotateCertificates:
     label: Rotacionar Certificados
     modalTitle: Rotacionar Certificados do Cluster
+    description: Novos certificados são emitidos e os serviços afetados são reiniciados. O cluster aparece como 'Updating' até a rotação ser concluída.
+    allServices: Todos os serviços
+    selectedServices: Serviços selecionados
     services: Serviços
-    allServices: Rotacionar todos os certificados de serviço
-    selectService: Rotacionar um serviço individual
+    placeholder: Selecione um ou mais serviços
+    reset: Redefinir
+    more: "+{count} mais"
+    deselect: "Desmarcar {service}"
+    selectionSummary: "{count} de {total} serviços selecionados. Apenas estes serviços serão reiniciados."
+    rotate: Rotacionar Certificados
   toggle:
     v1: RKE1
     v2: RKE2/K3s
@@ -2947,6 +3078,10 @@ clusterIndexPage:
   header: Painel do Cluster
   resourceGauge:
     totalResources: Total de Recursos
+  resourceStatus:
+    unhealthy:
+      title: Outras Cargas de Trabalho Não Saudáveis
+      empty: Nenhuma outra carga de trabalho não saudável
   sections:
     capacity:
       label: Capacidade
@@ -4485,6 +4620,7 @@ labelSelect:
 labeledSelect:
   startTyping: Comece a digitar para definir um item
   pressEnter: "Pressione Enter para adicionar \"{input}\""
+  keptSearch: 'Última pesquisa: {search}'
 
 landing:
   bannerImage: Imagem de banner da página inicial
@@ -4529,6 +4665,57 @@ landing:
       lastVisited: Ir para a área que visitei por último
       custom: "Ir para o cluster:"
   welcomeToRancher: Bem-vindo ao {vendor}
+
+releaseWelcome:
+  close: Fechar
+  title: Bem-vindo ao {vendor}
+  subtitleCommunity: "O {vendor} está pronto e em execução. Veja o que há de novo nesta versão."
+  subtitlePrime: "O {vendor} está pronto e em execução."
+  registerLead: Para ativar os benefícios da sua assinatura, registre este sistema na
+  registrationPage: página de registro
+  newTab: (abre em uma nova aba)
+  loading: Carregando o conteúdo da versão
+  reopenHint: Você pode reabrir isto a qualquer momento pelo menu do usuário, no canto superior direito.
+  whatsNew:
+    title: Novidades desta versão
+    version: "{version}"
+    releaseNotes: Notas de versão
+    features:
+      tables:
+        title: Tabelas turbinadas
+        description: "As tabelas em toda a interface agora são mais inteligentes, com filtragem avançada, colunas personalizáveis e desempenho muito mais rápido em listas grandes."
+      navigation:
+        title: Navegação aprimorada
+        description: Vá para qualquer cluster com o novo seletor, além de um menu lateral mais limpo e reorganizado.
+      rancher-cli:
+        title: Nova CLI
+        description: Uma nova CLI experimental para o Rancher Manager, projetada para ser igualmente útil para agentes de programação no terminal e para usuários administrativos.
+      workload-search:
+        title: Pesquisa de workloads
+        description: A Visão Geral de Workloads agora tem uma barra de pesquisa para você encontrar rapidamente recursos específicos.
+  prime:
+    title: Pronto para produção? Vá de Prime.
+    description: "Tudo o que há na edição Community, mais suporte empresarial 24×7, imagens reforçadas de um registro confiável, ciclos de vida estendidos e a suíte cloud-native completa da SUSE:"
+    products:
+      manager: Rancher Manager
+      distributions: RKE2, k3k & K3s
+      fleet: SUSE Continuous Integration & Delivery
+      security: SUSE Security
+      storage: SUSE Storage
+      virtualization: SUSE Virtualization
+      observability: SUSE Observability
+      appCollection: Application Collection
+    explore: Conheça o SUSE Rancher Prime
+  registration:
+    title: Registre-se para ativar seus benefícios Prime
+    description: "O registro no SUSE Customer Center desbloqueia:"
+    benefits:
+      support: "Suporte 24×7: abra casos diretamente da sua conta"
+      appCollection: "Application Collection: aplicativos curados e assinados, prontos para implantar"
+      images: Imagens reforçadas do registro confiável do Prime
+      academy: "Rancher Academy: cursos de certificação gratuitos para sua equipe"
+    supportHandbook: Manual de suporte
+    open: Abrir o SUSE Customer Center
 
 logging:
   clusterFlow:
@@ -4844,10 +5031,14 @@ login:
   loggingIn: Entrando...
   loggedIn: Conectado
   loginWithLocal: Fazer login com usuário local
+  useProvider: Usar um usuário do {provider}
+  useNonLocal: Usar um usuário não local
   providers:
     heading: Escolha como fazer login
     or: Ou
+    choose: Escolher outro provedor de autenticação
     chooseDifferent: Escolher um provedor diferente
+    menu: Provedores de autenticação
     useLocal: Entrar como usuário local
     meta: '{vendor} · {protocol}'
     remember: Lembrar minha escolha neste dispositivo
@@ -5425,6 +5616,8 @@ node:
     nodeTaint: Taints
     scaleDown: Reduzir Escala do Pool
     scaleUp: Aumentar Escala do Pool
+    scaleDownAriaLabel: Reduzir escala do pool de máquinas {name}
+    scaleUpAriaLabel: Aumentar escala do pool de máquinas {name}
     poolDescription:
       noSize: Sem Tamanho
       noLocation: Sem Localização
@@ -5443,8 +5636,8 @@ node:
         used: Utilizado
         amount: "{used} de {total} {unit}"
         cpu: CPU
-        memory: MEMÓRIA
-        pods: PODS
+        memory: Memória
+        pods: Pods
         running: Em Execução
       diskPressure: Pressão de Disco
       kubelet: kubelet
@@ -5487,6 +5680,13 @@ notificationCenter:
   ariaLabel: 'Notificação {title}: Pressione Enter para interagir'
 
 persistentVolume:
+  detail:
+    source: Origem
+    reclaimPolicy: Política de Recuperação
+    storageClass: Classe de Armazenamento
+    claim:
+      label: Claims
+      none: Este volume não está vinculado a um PersistentVolumeClaim.
   pluginConfiguration:
     label: Configuração do Plugin
   plugin:
@@ -5805,6 +6005,10 @@ persistentVolume:
 
 persistentVolumeClaim:
   name: Nome do Persistent Volume Claim
+  detail:
+    pods:
+      label: Pods
+      none: Não foi possível encontrar nenhum Pod que monte este PersistentVolumeClaim.
   accessModes: Modos de Acesso
   accessModesOptions:
     singleNodeRW: Leitura/Escrita em Nó Único
@@ -5868,6 +6072,7 @@ plugins:
   currentInstalledVersionBlockedByKubeVersion: "Esta versão não é compatível com a versão atual do Kubernetes ({ kubeVersion } vs { kubeVersionToCheck })."
   closePluginPanel: Fechar painel de descrição da extensão
   viewVersionDetails: Ver detalhes/Readme da extensão {name} versão {version}
+  upgradeableTo: "Atualizável para { version }"
   labels:
     isDeveloper: Carregamento de Desenvolvedor
     primeOnly: Somente Prime
@@ -6123,7 +6328,9 @@ prefs:
 
 principal:
   loading: Carregando&hellip;
+  # Also shown by extensions built with an older shell, which bundle their own Principal.vue
   error: Não foi possível buscar informações do principal
+  unresolved: 'O {vendor} não conseguiu consultar o nome deste usuário ou grupo, por isso o ID do principal é exibido no lugar.'
   name: Nome
   loginName: Nome de usuário
   type: Tipo
@@ -6327,10 +6534,20 @@ promptRemove:
 promptRemoveApp:
   removeCrd: Excluir o CRD associado a este aplicativo
 
+promptRemoveOperation:
+  attemptingToRemove: Você está tentando excluir uma operação de {kind}
+  kind:
+    etcdSnapshotSave: criação de snapshot
+    etcdSnapshotRestore: restauração de snapshot
+    encryptionKeyRotation: rotação de chave de criptografia
+    certificateRotation: rotação de certificados
+  inProgress:
+    warning: Esta operação está em andamento. Excluí-la agora pode deixar seu cluster em um estado instável.
+    acknowledge: Entendo que este cluster pode precisar ser restaurado se esta operação for interrompida
+
 promptRestore:
   title: Restaurar Snapshot
   name: Nome
-  date: Data
   fromS3: Restaurar do S3
   label: Instantâneo
   placeholder: Selecione um snapshot para restaurar
@@ -6362,10 +6579,20 @@ promptRedeploy:
 
 promptRotateEncryptionKey:
   title: Rotacionar Chaves de Criptografia
-  description: 'O último backup {name} foi realizado em {date}'
-  warning: Antes de prosseguir, certifique-se de que um backup do ETCD do cluster foi concluído com êxito.
+  description: A rotação recriptografa todos os secrets deste cluster com uma nova chave. O cluster aparece como 'Updating' enquanto os nós do plano de controle são reiniciados um de cada vez, o que pode levar vários minutos.
+  warning:
+    noBackup: Nenhum snapshot do etcd encontrado para este cluster. Tire um snapshot e, quando ele for concluído, rotacione as chaves, para que você possa restaurar o cluster se a rotação falhar.
+    outdated: |-
+      {days, plural,
+        one {O snapshot mais recente tem # dia.}
+        other {O snapshot mais recente tem # dias.}
+      } As alterações feitas desde então não poderão ser restauradas se a rotação falhar.
+  snapshotInfo:
+    title: Snapshot do etcd mais recente
+    viewSnapshots: Ver snapshots
+    taken: Criado
+  rotateKeys: Rotacionar Chaves
   error:
-    noBackup: Nenhum backup encontrado
     unableToResolveTargetCluster: Não foi possível resolver o cluster alvo para a rotação da chave de criptografia
 
 rancherAlertingDrivers:
@@ -6586,6 +6813,9 @@ resourceDetail:
         no {um aplicativo {managedBy}}
         yes {o aplicativo {managedBy} {appName}}
         other {um aplicativo {managedBy}}}; as alterações feitas aqui provavelmente serão substituídas na próxima vez que {managedBy} for executado.
+    fleetManaged: Este recurso é gerenciado por <b>{name}</b>. Para fazer alterações permanentes, atualize a configuração no repositório de origem. Quaisquer alterações manuais feitas aqui serão substituídas na próxima sincronização.
+    fleetManagedLink: Ver em {name}
+    fleetManagedBadge: Gerenciado
 resourceList:
   head:
     create: Criar
@@ -6594,6 +6824,9 @@ resourceList:
   nsFiltering: Selecione um ou mais namespaces ou projetos usando o filtro acima.
   nsFilteringGeneric: Selecione uma opção válida de namespace ou projeto usando o filtro acima.
   nsFilterToolTip: A filtragem é restrita a projetos e namespaces
+  stateFilterApplied: "Filtro de estado aplicado:"
+  nameFilterApplied: "Filtro de nome aplicado:"
+  clearStateFilter: "Limpar filtro"
 resourceLoadingIndicator:
   loading: Carregando
 
@@ -6653,6 +6886,8 @@ secret:
   authentication: Autenticação
   githubApp:
     label: GitHub App
+  helmRelease:
+    dataNotEditable: Os dados de um secret de release do Helm são gerenciados pelo Helm e não podem ser visualizados nem editados aqui. Você ainda pode editar os rótulos, as anotações e a descrição.
   certificate:
     certificate: Certificado
     certificates: Certificados
@@ -7332,7 +7567,11 @@ tableViews:
     newViewName: Sem título
     deleted: Exibição Excluída
     deletedMessage: A exibição "{name}" foi excluída com sucesso.
+    deletedSharedMessage: A exibição "{name}" deixou de ser publicada e foi excluída.
     undo: Desfazer
+    shared: Publicada
+    share: Publicar
+    unshare: Cancelar Publicação
   bulk:
     selected: "{count, plural, one {{count} Selecionado} other {{count} Selecionados}}"
     deleteSelected: Excluir Selecionados
@@ -7397,9 +7636,13 @@ tableViews:
       workspace: Workspace
       type: Tipo
   # A view as text: Share View hands it out, Import View takes it into a saved view, both in the same box
+  publish:
+    title: Publicar
+    body: Publique esta exibição para torná-la visível a todos os usuários.
+  filterWarning: O nome e os valores do filtro são incluídos e podem revelar informações como nomes de recursos ou de namespaces.
   share:
     title: Compartilhar Exibição
-    intro: 'Copie este texto e compartilhe-o. Qualquer pessoa com o texto pode importar a exibição usando <b>Importar Exibição</b>. Ele contém a exibição como está agora, incluindo alterações não salvas: colunas, agrupamento, ordenação e filtro. <b>O filtro é incluído e pode revelar informações como nomes de recursos ou de namespaces.</b>'
+    intro: 'Copie este texto e compartilhe-o. Qualquer pessoa com o texto pode importar a exibição usando <b>Importar Exibição</b>. Ele contém a exibição como está agora, incluindo alterações não salvas: colunas, agrupamento, ordenação e filtro.'
     label: Exibição
   import:
     title: Importar Exibição
@@ -7880,6 +8123,10 @@ validation:
       valuesMustBeDefined: "Regra [{index}] de {group} {rules} - valor deve ser definido se o operador for 'In' ou 'NotIn'"
   port: Uma porta deve ser um número entre 1 e 65535.
   path: '"{key}" deve ser um caminho absoluto'
+  pemCertificate: '"{key}" deve ser um certificado codificado em PEM'
+  pemPrivateKey: '"{key}" deve ser uma chave privada codificada em PEM'
+  sshPublicKey: '"{key}" deve ser uma chave pública SSH, ex.: "ssh-ed25519 AAAA..."'
+  dataKey: '"{key}" deve conter apenas caracteres alfanuméricos, "-", "_" ou "."'
   prometheusRule:
     noEdit: Esta Regra do Prometheus não pode ser editada devido a caracteres inválidos no nome.
     groups:
@@ -8038,6 +8285,14 @@ workloadDashboard:
     byState: Por Estado
     byType: Por Tipo
     byNamespace: Por Namespace
+  search:
+    ariaLabel: Pesquisar workloads nos namespaces selecionados...
+    placeholder: Pesquisar workloads nos namespaces selecionados...
+    startTyping: Comece a digitar para pesquisar
+    minCharacters: Digite pelo menos {count} caracteres para pesquisar
+    noMatch: Nenhum workload correspondente
+    searching: Pesquisando...
+    moreResults: "+ {count} {type} a mais"
   errors:
     noAccess: "Sem acesso a {type}"
     fetchType: "Falha ao buscar {type}"
@@ -8277,6 +8532,8 @@ workload:
     cannotFindHttpRoutes: Não foi possível encontrar nenhum HTTPRoute que encaminhe tráfego para Serviços que selecionam Pods nesta carga de trabalho.
     httpRouteListCaption: 'Os seguintes HTTPRoutes encaminham tráfego para Serviços que selecionam Pods desta carga de trabalho:'
     cannotViewHttpRoutesBecauseCannotViewServices: Não foi possível encontrar HTTPRoutes relevantes por falta de permissão para visualizar Serviços.
+    storage: Armazenamento
+    cannotFindStorage: Não foi possível encontrar nenhum PersistentVolumeClaim montado por esta carga de trabalho.
     pods:
       title: Pods
   detailTop:
@@ -8378,6 +8635,8 @@ workload:
     activeDeadlineSecondsTip: A duração que o pod pode estar ativo antes que o sistema tente marcá-lo como falho e encerrar os containers associados.
     affinity:
       addNodeSelector: Adicionar Seletor de Nó
+      nodeSelectorTitle: "node-selector-{i}"
+      podSelectorTitle: "pod-selector-{i}"
       anyNode: Qualquer nó
       affinityTitle: Afinidade de Pod
       antiAffinityTitle: Anti-Afinidade de Pod
@@ -9495,6 +9754,7 @@ advancedSettings:
     'auth-token-max-ttl-minutes': 'TTL máximo (em minutos) para todos os tokens, exceto os controlados por "auth-user-session-ttl-minutes". Quando definido como 0, o token nunca expira.'
     'kubeconfig-generate-token': Gerar tokens automaticamente para usuários quando um kubeconfig é solicitado.
     'kubeconfig-default-token-ttl-minutes': TTL (em minutos) aplicado em todos os tokens kubeconfig. Quando definido como 0, o token nunca expira.
+    'kubeconfig-prefer-rancher-proxy': 'Contexto atual preferido nos arquivos Kubeconfig baixados para clusters com o Authorized Cluster Endpoint (ACE) habilitado.'
     'rke-metadata-config': Configurar parâmetros de atualização de metadados do RKE.
     'ui-banners': O banner de classificação é usado para exibir um banner fixo personalizado no cabeçalho, rodapé ou em ambos.
     'custom-notifications': Editar notificações personalizadas
@@ -9513,6 +9773,9 @@ advancedSettings:
   editHelp:
     'ui-banners': 'Esta configuração aceita um objeto JSON contendo 3 parâmetros raiz: <code>banner</code>, <code>showHeader</code>, <code>showFooter</code>. <code>banner</code> é um objeto contendo: <code>textColor</code>, <code>background</code> e <code>text</code>, onde <code>textColor</code> e <code>background</code> são qualquer valor de cor CSS válido.'
   enum:
+    'kubeconfig-prefer-rancher-proxy':
+      false: ACE (Authorized Cluster Endpoint)
+      true: Via proxy do Rancher
     'ui-default-landing':
       ember: Gerenciador de Cluster
       vue: Explorador de Cluster
@@ -10046,6 +10309,8 @@ component:
           actionMenu: Ações do Recurso - { resource }
           loading: Carregando informações do recurso
           loadingUsage: Carregando uso
+  resourceStatusWidget:
+    loadError: Não foi possível carregar o status
   cron:
     expressionEditor:
       label:
@@ -10114,6 +10379,8 @@ component:
         weekdaysAt0830: A cada hora começando às 8h30, de Segunda a Sexta
         marchToMayHourly: A cada hora, apenas em Março, Abril e Maio
         every4Hours9to17: A cada 4 horas, entre 9h e 17h, no minuto 0
+  rcSection:
+    invalidFields: Alguns campos desta seção são inválidos
 
 autoscaler:
   card:

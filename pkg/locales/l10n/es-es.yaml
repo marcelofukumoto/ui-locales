@@ -1,8 +1,8 @@
 # ---
 # locale: es-es (Spanish - Spain)
 # source-locale: en-us
-# synced-against-en-us-commit: 350d929 (2026-10-13)
-# last-updated: 2026-10-14
+# synced-against-en-us-commit: 261b893 (2026-11-04)
+# last-updated: 2026-11-09
 # ---
 ##############################
 # Special stuff
@@ -349,6 +349,7 @@ nav:
   userMenu:
     preferences: Preferencias
     accountAndKeys: Cuenta y claves de API
+    whatsNew: Novedades
     logOut: Cerrar sesión
     label: Menú de usuario
     button:
@@ -444,7 +445,7 @@ about:
     title: Versiones
     component: Componente
     version: Versión
-    cli: CLI
+    cli: Rancher CLI
     helm: Helm
     machine: Máquina
     rancher: Rancher
@@ -452,9 +453,14 @@ about:
   downloadImageList:
     title: Listas de imágenes
   cli:
-    title: "CLI de {vendor}"
-    description: La CLI de {vendor} le permite gestionar clústeres, proyectos y recursos desde la línea de comandos. Hay compilaciones disponibles para diversos sistemas operativos y arquitecturas, y la documentación explica cómo descargarlas e instalarlas.
-    docsLink: Ver la documentación de la CLI de {vendor}
+    title: "Rancher CLI (heredada)"
+    description: Esta versión de Rancher CLI quedará obsoleta en una versión futura y ya no recibirá nuevas funciones. Por ahora sigue teniendo soporte completo, por lo que los scripts y la automatización existentes siguen funcionando, pero le recomendamos empezar a usar la nueva Rancher CLI que aparece a continuación.
+    docsLink: Ver la documentación de Rancher CLI
+    new:
+      title: "Nueva Rancher CLI (edición para IA y agentes)"
+      badge: Nueva
+      description: La CLI inteligente creada para la IA, los agentes de IA y Kubernetes autónomo.
+      githubLink: Ver en GitHub (rancher/rancher-cli)
   diagnostic:
     title: Diagnósticos
     checkboxTooltip: Complementar los datos de diagnóstico con tiempos de respuesta para los 10 recursos principales. Esto puede tardar un tiempo.
@@ -481,6 +487,24 @@ about:
     modal:
       title: Los tiempos de respuesta aún no se han generado.
       body: Genere tiempos de respuesta para ofrecer información más específica.
+  licenses:
+    title: Licencias de código abierto
+    description: Este panel se basa en otro software de código abierto. Haga clic a continuación para ver la lista completa de paquetes de terceros y sus licencias.
+    viewLicenses: Ver licencias
+    page:
+      title: Licencias de código abierto
+      hint: Haga clic en una licencia para ver su texto completo.
+      error: "No se pudieron cargar las licencias ({error}). Inténtelo de nuevo más tarde."
+    table:
+      package: Paquete
+      license: Licencia
+      viewFor: "Ver el texto de la licencia {license} de {name}"
+    panel:
+      none: No hay contenido de licencia disponible para este paquete.
+      declaredAs: "Licencia declarada: {license}"
+      rawLicense: "Expresión original: {expression}"
+      author: "Autor: {author}"
+      textLabel: Texto de la licencia
 
 accountAndKeys:
   title: Cuenta y claves de API
@@ -538,6 +562,8 @@ addProjectMemberDialog:
   title: Agregar miembro del proyecto
 
 authConfig:
+  enableLimitReached: Ya hay otro proveedor externo habilitado. Rancher Community permite configurar un solo proveedor de autenticación externo a la vez. Deshabilite el proveedor activo para agregar otro, o use Rancher Prime para tener varios activos a la vez.
+  enableLimitReachedPrime: Ya hay otro proveedor externo habilitado. El indicador de función multiple-auth-providers está desactivado, por lo que solo se puede habilitar un proveedor de autenticación externo a la vez. Deshabilite el proveedor activo para agregar otro, o active el indicador en Configuración global > Indicadores de función para usar varios a la vez.
   list:
     title: Proveedores de autenticación
     description: Configure los proveedores de identidad que las personas pueden usar para iniciar sesión en Rancher.
@@ -551,6 +577,14 @@ authConfig:
       description: Todos inician sesión con una cuenta local de Rancher. Conecte un proveedor de identidad para que las personas puedan usar sus credenciales corporativas existentes.
       create: Agregar un proveedor
       learnMore: Cómo funciona la autenticación externa
+    prime:
+      title: Use varios proveedores de autenticación a la vez con SUSE Rancher Prime
+      description: Rancher Community admite un solo proveedor de autenticación externo a la vez, por lo que debe deshabilitar el activo para cambiar a otro. Con <primeUrl>SUSE Rancher Prime</primeUrl>, empleados, contratistas y socios pueden iniciar sesión cada uno a través del proveedor que ya usan, con todos los proveedores activos a la vez.
+      action: Más información sobre SUSE Rancher Prime
+    primeFlagOff:
+      title: Use varios proveedores de autenticación a la vez con el indicador de función multiple-auth-providers
+      description: El indicador de función multiple-auth-providers está desactivado, por lo que solo puede haber un proveedor de autenticación externo activo a la vez. Deshabilite el activo para cambiar a otro, o active el indicador para que empleados, contratistas y socios puedan iniciar sesión cada uno a través del proveedor que ya usan, con todos los proveedores activos a la vez.
+      action: Ir a Indicadores de función
     disableLocal:
       label: Deshabilitar el inicio de sesión con usuarios locales
       description: Los usuarios inician sesión únicamente a través de proveedores externos. Las cuentas locales se mantienen, pero no se pueden usar para iniciar sesión.
@@ -567,9 +601,29 @@ authConfig:
   access:
     title: '{provider} - Acceso'
     type: Tipo
+  create:
+    back: Proveedores de autenticación
+    unknownProvider: '{provider} no es un proveedor compatible con este Rancher.'
+    limitReached: Ya hay otro proveedor externo habilitado. Rancher Community permite configurar un solo proveedor de autenticación externo a la vez. Deshabilite el proveedor activo para agregar otro, o use Rancher Prime para tener varios activos a la vez.
+    limitReachedPrime: Ya hay otro proveedor externo habilitado. El indicador de función multiple-auth-providers está desactivado, por lo que solo se puede habilitar un proveedor de autenticación externo a la vez. Deshabilite el proveedor activo para agregar otro, o active el indicador en Configuración global > Indicadores de función para usar varios a la vez.
+    provider:
+      title: 'Agregar {provider}'
+    clone:
+      title: 'Clonar {name}'
+      notFound: '{name} no es un proveedor de autenticación que se pueda clonar desde aquí.'
+    name:
+      label: Nombre
+      required: El nombre es obligatorio.
+      invalid: Use letras minúsculas, números y guiones, y empiece y termine con una letra o un número.
+      taken: 'Otro proveedor ya usa el nombre {name}.'
+    descriptionField:
+      label: Descripción
+      placeholder: p. ej. Ingeniería y soporte.
   add:
     title: Agregar un proveedor de autenticación
     subtitle: Seleccione el proveedor que desea conectar. Rancher admite un proveedor externo, por lo que será el que usarán los usuarios para iniciar sesión. Para usar otro más adelante, elimine este y configure el nuevo.
+    subtitleMultiple: Seleccione el proveedor que desea conectar. Se puede habilitar más de un proveedor externo a la vez y los usuarios eligen con cuál iniciar sesión.
+    subtitlePrimeSingle: Seleccione el proveedor que desea conectar. El indicador de función multiple-auth-providers está desactivado, por lo que solo se puede habilitar un proveedor externo a la vez. Active el indicador en Configuración global > Indicadores de función para usar varios a la vez.
     searchPlaceholder: Buscar proveedores
     filterLabel: Protocolo
     filterAll: Todos
@@ -1481,6 +1535,12 @@ catalog:
       chartOptions: Editar opciones
       valuesYaml: Editar YAML
       diff: Comparar cambios
+      chartDefaults:
+        label: Valores del gráfico
+        hint: Edite los valores predeterminados del gráfico con las anulaciones, si las hay, superpuestas debajo, exactamente como Helm los resolverá. Solo se guardan sus cambios, que se muestran a la derecha. Para quitar una propiedad, establézcala explícitamente en “null”.
+      overrides:
+        label: Sus valores
+        hint: Estos valores anularán los valores predeterminados del gráfico. Solo se guardarán estos valores.
     slideIn:
       dock: Anclar al shell
     steps:
@@ -1519,6 +1579,8 @@ catalog:
         label: Valores
         subtext: Cambiar cómo funciona la Aplicación
         description: Configurar los Valores usados por Helm que ayudan a definir la Aplicación.
+        overridesDescription:
+          upgrade: Sus valores de {from} se aplican sobre los valores predeterminados de {to}, igual que hace helm upgrade.
         chartInfo:
           button: Ver Información del Gráfico
           label: Información del Gráfico
@@ -1951,6 +2013,11 @@ cluster:
           minimumAllocatable: Se recomienda seleccionar una vGPU con un número de dispositivos asignables mayor que el número de nodos (número de máquinas) para evitar errores de "no programable" después de las actualizaciones del clúster.
         errors:
           notAllocatable: 'El dispositivo vGPU [{vGpu}] no es asignable; requerido: {allocated}, asignable: {allocatable}'
+      hostDevices:
+        warnings:
+          minimumAllocatable: Se recomienda encarecidamente seleccionar dispositivos PCI con un número de dispositivos asignables mayor que el número de nodos (número de máquinas) para evitar errores de "no programable" después de las actualizaciones del clúster. Los dispositivos que comparten un grupo IOMMU deben seleccionarse todos juntos.
+        errors:
+          notAllocatable: 'El dispositivo PCI [{hostDevice}] no es asignable; requerido: {allocated}, asignable: {allocatable}'
       volume:
         title: Volúmenes
         volume: Volumen
@@ -1958,6 +2025,50 @@ cluster:
         addVolume: Agregar volumen
         addVMImage: Agregar imagen de VM
         storageClass: Clase de almacenamiento
+      storageOptions:
+        profile:
+          label: Perfil de rendimiento de almacenamiento
+          tip: '"Alto rendimiento" deshabilita la caché del host, usa AIO nativo y asigna al disco un hilo de E/S dedicado. Elija "Personalizado" para configurar cada opción usted mismo.'
+          default: Predeterminado
+          highPerformance: Alto rendimiento
+          custom: Personalizado
+        highPerformanceTip: Este disco usará AIO nativo y un hilo de E/S dedicado, sin caché del host.
+        cache:
+          label: Modo de caché
+          tip: 'Cómo almacena el host en caché la E/S del disco. "Ninguno" es lo más adecuado para invitados con un alto caudal de datos en almacenamiento en bloque, "WriteBack" prioriza el rendimiento y "WriteThrough" prioriza la durabilidad.'
+          default: Predeterminado (hipervisor)
+          none: Ninguno (sin caché del host)
+          writeback: WriteBack
+          writethrough: WriteThrough
+        io:
+          label: Modo de E/S
+          tip: 'Cómo envía QEMU la E/S. "Nativo" (Linux AIO) tiene la menor sobrecarga y requiere el modo de caché "Ninguno". "Hilos" usa un grupo de hilos del host.'
+          default: Predeterminado (hipervisor)
+          native: Nativo (AIO)
+          threads: Hilos
+          nativeTip: El modo de E/S nativo requiere deshabilitar la caché del host, por lo que el modo de caché se establece en Ninguno.
+        dedicatedIOThread:
+          label: Hilo de E/S dedicado
+          tip: Asigne a este disco su propio hilo de E/S en lugar de compartir uno. Útil para discos con mucha E/S.
+        busWarning: 'Este disco usa el bus {bus}. Un hilo de E/S dedicado, y por tanto el perfil Alto rendimiento, requiere el bus virtio.'
+      vmStorageOptions:
+        title: Rendimiento de almacenamiento
+        description: Estas opciones se aplican a todos los volúmenes de la máquina virtual.
+        blockMultiQueue:
+          label: Multicola de bloques Virtio
+          tip: Distribuye la E/S del disco en una cola por vCPU para que se procese en varias CPU.
+        ioThreadsPolicy:
+          label: Política de hilos de E/S
+          tip: '"Compartida" usa un hilo de E/S para todos los discos. "Auto" distribuye los discos en un grupo de hilos. "Grupo suplementario" usa un número fijo de hilos.'
+          default: Deshabilitada (predeterminada)
+          shared: Compartida
+          auto: Auto
+          supplementalPool: Grupo suplementario
+          sharedTip: Un volumen solicita un hilo de E/S dedicado, por lo que se usará la política Compartida.
+        ioThreadCount:
+          label: Número de hilos de E/S
+          tip: Número de hilos de E/S del grupo suplementario.
+          invalid: El número de hilos de E/S debe ser al menos 1 con la política "Grupo suplementario".
       reservedMemory: Memoria reservada
       sshUser: Usuario SSH
       userData:
@@ -2497,7 +2608,6 @@ cluster:
         other { {pool_name}: Los valores proporcionados para {fields} no fueron encontrados o se proporcionaron cadenas de consulta no válidas. }
       }
     rke1DeprecationMessage: Rancher Kubernetes Engine (RKE / RKE1) ha llegado al fin de su vida útil y estos clústeres ya no tienen soporte. Se recomienda migrar los clústeres RKE1 a RKE2 para garantizar soporte continuo y actualizaciones de seguridad. Obtenga más información sobre la transición <a href="https://www.suse.com/support/kb/doc/?id=000021518" target="_blank" rel="noopener noreferrer nofollow">aquí</a>.
-    nginxDeprecated: El controlador NGINX está obsoleto y se eliminará en versiones futuras
   rke1Unsupported: Los clústeres RKE1 ya no son compatibles
 
   architecture:
@@ -2530,6 +2640,15 @@ cluster:
       validation:
         isAutoscalerMaxGreaterThanMin: El recuento máximo de máquinas debe ser igual o superior al recuento mínimo de máquinas.
       etcdControlPlaneWarning: No recomendamos usar el escalador automático con grupos de máquinas que tienen los roles etcd o plano de control. Puede modificar el yaml si desea anular el valor actual.
+      pause:
+        pausedBanner: El escalado automático está en pausa para este grupo. Conserva estos valores y los vuelve a aplicar cuando lo reanude en la pestaña Grupos de máquinas del clúster.
+        pauseAction: Pausar escalador automático
+        resumeAction: Reanudar escalador automático
+        rangeTooltip: 'Mín {min}, Máx {max}'
+        unconfiguredTooltip: El escalado automático no está configurado para este grupo. Establezca un rango de número de máquinas en la configuración del grupo.
+        clusterPausedTooltip: El escalado automático está en pausa para todo el clúster.
+        lastPoolTooltip: Este es el único grupo que queda con escalado automático. Pausarlo desinstalaría el escalador automático.
+        error: Error al actualizar el escalado automático del grupo de máquinas
     name:
       label: Nombre del grupo
       notNamed: (Sin nombre)
@@ -2793,6 +2912,7 @@ cluster:
         label: Copias de seguridad automáticas
       snapshotScheduleCron:
         label: Programación cron
+        validationError: "Use una expresión cron válida, como 0 */5 * * * (cada 5 horas) o @daily. Los cinco campos son minuto, hora, día del mes, mes y día de la semana (0-6, el domingo es 0)."
       snapshotRetention:
         label: Recuento de retención de instantáneas locales
         tooltip: Cada copia de seguridad registra 1 instantánea por nodo etcd. Si especifica 3 instantáneas y tiene 3 nodos etcd, solo conservará 1 copia de seguridad completa.
@@ -2863,8 +2983,8 @@ cluster:
     enableIngress: Instalar controlador de Ingress para habilitar el enrutamiento externo
     nginx:
       header: Ingress-NGINX
-      contentCommunity: Esta opción solo está disponible en SUSE Rancher Prime.
-      content: Elija esto solo si sus cargas de trabajo aún no están listas para Traefik.
+      contentUnsupported: Ingress-NGINX no está disponible con Kubernetes 1.37 o posterior. Elija Traefik en su lugar.
+      content: Elija esto solo si sus cargas de trabajo aún no están listas para Traefik. Ingress-NGINX independiente no es compatible con Kubernetes 1.37 o posterior.
     dual:
       header: Modo Dual
       content: Use esto para probar y migrar el tráfico de Ingress-NGINX a Traefik de manera segura.
@@ -2890,11 +3010,15 @@ cluster:
     banners:
       transitioning:
         label: Rancher está haciendo la transición a Traefik como proveedor predeterminado. Mientras que Ingress-NGINX sigue disponible para migración.
+      nginxUpgradeBlocked:
+        label: Kubernetes 1.37 o posterior no puede usar Ingress-NGINX independiente. Seleccione Traefik o Modo Dual. Le recomendamos encarecidamente ejecutar en Modo Dual y comprobar sus cargas de trabajo antes de actualizar. Revise nuestra <docsUrl>documentación de migración</docsUrl>.
+      nginxUpgradeWarning:
+        label: Después de actualizar a Kubernetes 1.37 o posterior, no podrá volver a Ingress-NGINX independiente.
       disabled:
         label: Sin un controlador de Ingress, los servicios de este clúster no serán accesibles mediante URLs o nombres de host externos. Deberá configurar manualmente una solución de enrutamiento alternativa para exponer sus cargas de trabajo.
       selected:
         ingress-nginx:
-          label: "Ingress-NGINX está ahora obsoleto y será eliminado en una versión futura. Para evitar interrupciones del servicio, comience a migrar sus recursos de Ingress a Traefik. Revise nuestra <docsUrl>documentación de migración</docsUrl>."
+          label: Ingress-NGINX llegó al final de su vida útil en marzo de 2026 y ya no recibe correcciones. No está disponible con Kubernetes 1.37 o posterior. Para evitar interrupciones del servicio, comience a migrar sus recursos de Ingress a Traefik. Revise nuestra <docsUrl>documentación de migración</docsUrl>.
         traefik:
           label: Antes de cambiar a Traefik, revise nuestra <docsUrl>documentación de migración</docsUrl> para garantizar que sus recursos de Ingress sean compatibles.
         dual:
@@ -2923,9 +3047,16 @@ cluster:
   rotateCertificates:
     label: Rotar certificados
     modalTitle: Rotar certificados del clúster
+    description: Se emiten certificados nuevos y los servicios afectados se reinician. El clúster aparece como "Updating" hasta que finaliza la rotación.
+    allServices: Todos los servicios
+    selectedServices: Servicios seleccionados
     services: Servicios
-    allServices: Rotar todos los certificados de servicio
-    selectService: Rotar un servicio individual
+    placeholder: Seleccionar uno o más servicios
+    reset: Restablecer
+    more: "+{count} más"
+    deselect: "Deseleccionar {service}"
+    selectionSummary: "{count} de {total} servicios seleccionados. Solo se reinician estos servicios."
+    rotate: Rotar certificados
   toggle:
     v1: RKE1
     v2: RKE2/K3s
@@ -2949,6 +3080,10 @@ clusterIndexPage:
   header: Tablero del clúster
   resourceGauge:
     totalResources: Total de recursos
+  resourceStatus:
+    unhealthy:
+      title: Otras cargas de trabajo no saludables
+      empty: No hay otras cargas de trabajo no saludables
   sections:
     capacity:
       label: Capacidad
@@ -4490,6 +4625,7 @@ labelSelect:
 labeledSelect:
   startTyping: Empiece a escribir para definir un elemento
   pressEnter: Presione Entrar para agregar "{input}"
+  keptSearch: 'Última búsqueda: {search}'
 
 landing:
   bannerImage: Imagen del banner de la página de inicio
@@ -4534,6 +4670,57 @@ landing:
       lastVisited: Llevarme al área que visité por última vez
       custom: 'Llevarme al clúster:'
   welcomeToRancher: Bienvenido a {vendor}
+
+releaseWelcome:
+  close: Cerrar
+  title: Bienvenido a {vendor}
+  subtitleCommunity: "{vendor} está en funcionamiento. Estas son las novedades de esta versión."
+  subtitlePrime: "{vendor} está en funcionamiento."
+  registerLead: Para activar las ventajas de su suscripción, registre este sistema en la
+  registrationPage: página de registro
+  newTab: (se abre en una pestaña nueva)
+  loading: Cargando el contenido de la versión
+  reopenHint: Puede volver a abrir esto en cualquier momento desde el menú de usuario, en la parte superior derecha.
+  whatsNew:
+    title: Novedades de esta versión
+    version: "{version}"
+    releaseNotes: Notas de la versión
+    features:
+      tables:
+        title: Tablas más potentes
+        description: "Las tablas de toda la interfaz son ahora más inteligentes, con filtrado avanzado, columnas personalizables y un rendimiento mucho mayor en listas grandes."
+      navigation:
+        title: Navegación mejorada
+        description: Acceda a cualquier clúster con el nuevo selector, además de un menú lateral más claro y reorganizado.
+      rancher-cli:
+        title: Nueva CLI
+        description: Una nueva CLI experimental para Rancher Manager, diseñada para ser igual de útil para los agentes de programación en terminal y para los usuarios administradores.
+      workload-search:
+        title: Búsqueda de cargas de trabajo
+        description: El Resumen de cargas de trabajo ahora tiene una barra de búsqueda para que pueda encontrar rápidamente recursos específicos.
+  prime:
+    title: ¿Listo para producción? Pásese a Prime.
+    description: "Todo lo de la edición de la comunidad, más soporte empresarial 24×7, imágenes reforzadas de un registro de confianza, ciclos de vida ampliados y toda la suite nativa de la nube de SUSE:"
+    products:
+      manager: Rancher Manager
+      distributions: RKE2, k3k y K3s
+      fleet: SUSE Continuous Integration & Delivery
+      security: SUSE Security
+      storage: SUSE Storage
+      virtualization: SUSE Virtualization
+      observability: SUSE Observability
+      appCollection: Application Collection
+    explore: Descubra SUSE Rancher Prime
+  registration:
+    title: Regístrese para activar las ventajas de Prime
+    description: "Registrarse en SUSE Customer Center le da acceso a:"
+    benefits:
+      support: "Soporte 24×7: abra casos directamente desde su cuenta"
+      appCollection: "Application Collection: aplicaciones seleccionadas y firmadas, listas para desplegar"
+      images: Imágenes reforzadas del registro de confianza de Prime
+      academy: "Rancher Academy: cursos de certificación gratuitos para su equipo"
+    supportHandbook: Manual de soporte
+    open: Abrir SUSE Customer Center
 
 logging:
   clusterFlow:
@@ -4849,10 +5036,14 @@ login:
   loggingIn: Iniciando sesión...
   loggedIn: Sesión iniciada
   loginWithLocal: Iniciar sesión con usuario local
+  useProvider: Usar un usuario de {provider}
+  useNonLocal: Usar un usuario no local
   providers:
     heading: Elija cómo iniciar sesión
     or: O
+    choose: Elegir otro proveedor de autenticación
     chooseDifferent: Elegir un proveedor diferente
+    menu: Proveedores de autenticación
     useLocal: Iniciar sesión como usuario local
     meta: "{vendor} · {protocol}"
     remember: Recordar mi elección en este dispositivo
@@ -5427,6 +5618,8 @@ node:
     nodeTaint: Taints
     scaleDown: Reducir grupo
     scaleUp: Ampliar grupo
+    scaleDownAriaLabel: Reducir el grupo de máquinas {name}
+    scaleUpAriaLabel: Ampliar el grupo de máquinas {name}
     poolDescription:
       noSize: Sin Tamaño
       noLocation: Sin Ubicación
@@ -5445,8 +5638,8 @@ node:
         used: Usado
         amount: '{used} de {total} {unit}'
         cpu: CPU
-        memory: MEMORIA
-        pods: PODS
+        memory: Memoria
+        pods: Pods
         running: En ejecución
       diskPressure: Presión de Disco
       kubelet: kubelet
@@ -5489,6 +5682,13 @@ notificationCenter:
   ariaLabel: 'Notificación {title}: Presione Enter para interactuar'
 
 persistentVolume:
+  detail:
+    source: Origen
+    reclaimPolicy: Política de recuperación
+    storageClass: Clase de almacenamiento
+    claim:
+      label: Reclamaciones
+      none: Este volumen no está vinculado a ningún PersistentVolumeClaim.
   pluginConfiguration:
     label: Configuración del complemento
   plugin:
@@ -5807,6 +6007,10 @@ persistentVolume:
 
 persistentVolumeClaim:
   name: Nombre de la reclamación de volumen persistente
+  detail:
+    pods:
+      label: Pods
+      none: No se encontró ningún pod que monte este PersistentVolumeClaim.
   accessModes: Modos de acceso
   accessModesOptions:
     singleNodeRW: Lectura/Escritura de Nodo Único
@@ -5870,6 +6074,7 @@ plugins:
   currentInstalledVersionBlockedByKubeVersion: Esta versión no es compatible con la versión actual de Kubernetes ({ kubeVersion }  Vs  { kubeVersionToCheck }).
   closePluginPanel: Cerrar el panel de descripción del plugin
   viewVersionDetails: Ver detalles/Readme de la versión {version} de la extensión {name}
+  upgradeableTo: "Actualizable a { version }"
   labels:
     isDeveloper: Carga de desarrollador
     primeOnly: Solo Prime
@@ -6125,7 +6330,9 @@ prefs:
 
 principal:
   loading: Cargando&hellip;
+  # Also shown by extensions built with an older shell, which bundle their own Principal.vue
   error: No se puede obtener la información del principal
+  unresolved: '{vendor} no pudo obtener el nombre de este usuario o grupo, por lo que se muestra su ID de principal en su lugar.'
   name: Nombre
   loginName: Nombre de usuario
   type: Tipo
@@ -6329,10 +6536,20 @@ promptRemove:
 promptRemoveApp:
   removeCrd: Eliminar el CRD asociado con esta aplicación
 
+promptRemoveOperation:
+  attemptingToRemove: Está intentando eliminar una operación de {kind}
+  kind:
+    etcdSnapshotSave: instantánea
+    etcdSnapshotRestore: restauración de instantánea
+    encryptionKeyRotation: rotación de clave de cifrado
+    certificateRotation: rotación de certificados
+  inProgress:
+    warning: Esta operación está en curso. Si la elimina ahora, el clúster podría quedar en un estado inestable.
+    acknowledge: Entiendo que puede ser necesario restaurar este clúster si se interrumpe esta operación
+
 promptRestore:
   title: Restaurar instantánea
   name: Nombre
-  date: Fecha
   fromS3: Restaurar desde S3
   label: Instantánea
   placeholder: Seleccione una instantánea para restaurar
@@ -6364,10 +6581,20 @@ promptRedeploy:
 
 promptRotateEncryptionKey:
   title: Rotar clave de cifrado
-  description: La última copia de seguridad {name} se realizó el {date}
-  warning: Antes de continuar, asegúrese de que se haya completado correctamente una copia de seguridad de ETCD del clúster.
+  description: La rotación vuelve a cifrar todos los secretos de este clúster con una clave nueva. El clúster aparece como "Updating" mientras los nodos del plano de control se reinician de uno en uno, lo que puede tardar varios minutos.
+  warning:
+    noBackup: No se encontró ninguna instantánea de etcd para este clúster. Tome una instantánea y, cuando se haya completado, rote las claves, para poder restaurar el clúster si la rotación falla.
+    outdated: |-
+      {days, plural,
+        one {La última instantánea tiene # día de antigüedad.}
+        other {La última instantánea tiene # días de antigüedad.}
+      } Los cambios realizados desde entonces no se podrán restaurar si la rotación falla.
+  snapshotInfo:
+    title: Última instantánea de etcd
+    viewSnapshots: Ver instantáneas
+    taken: Tomada
+  rotateKeys: Rotar claves
   error:
-    noBackup: No se encontró ninguna copia de seguridad
     unableToResolveTargetCluster: No se pudo resolver el clúster de destino para la rotación de la clave de cifrado
 
 rancherAlertingDrivers:
@@ -6588,6 +6815,9 @@ resourceDetail:
         no {una aplicación {managedBy}}
         yes {la aplicación {managedBy} {appName}}
         other {una aplicación {managedBy}}}; los cambios realizados aquí probablemente se sobrescribirán la próxima vez que se ejecute {managedBy}.
+    fleetManaged: Este recurso está administrado por <b>{name}</b>. Para hacer cambios permanentes, actualice la configuración en el repositorio de origen. Cualquier cambio manual realizado aquí se sobrescribirá en la próxima sincronización.
+    fleetManagedLink: Ver en {name}
+    fleetManagedBadge: Administrado
 resourceList:
   head:
     create: Crear
@@ -6596,6 +6826,9 @@ resourceList:
   nsFiltering: Seleccione uno o más espacios de nombres o proyectos usando el filtro de arriba.
   nsFilteringGeneric: Seleccione una opción válida de espacio de nombres o proyecto usando el filtro de arriba.
   nsFilterToolTip: El filtrado está restringido a proyectos y espacios de nombres
+  stateFilterApplied: "Filtro de estado aplicado:"
+  nameFilterApplied: "Filtro de nombre aplicado:"
+  clearStateFilter: "Limpiar filtro"
 resourceLoadingIndicator:
   loading: Cargando
 
@@ -6655,6 +6888,8 @@ secret:
   authentication: Autenticación
   githubApp:
     label: GitHub App
+  helmRelease:
+    dataNotEditable: Helm administra los datos de un secreto de versión de Helm, por lo que no se pueden ver ni editar aquí. Aún puede editar las etiquetas, las anotaciones y la descripción.
   certificate:
     certificate: Certificado
     certificates: Certificados
@@ -7335,7 +7570,11 @@ tableViews:
     newViewName: Sin título
     deleted: Vista eliminada
     deletedMessage: La vista "{name}" se ha eliminado correctamente.
+    deletedSharedMessage: Se ha anulado la publicación de la vista "{name}" y se ha eliminado.
     undo: Deshacer
+    shared: Publicada
+    share: Publicar
+    unshare: Anular publicación
   bulk:
     selected: "{count} seleccionados"
     deleteSelected: Eliminar seleccionados
@@ -7400,9 +7639,13 @@ tableViews:
       workspace: Espacio de trabajo
       type: Tipo
   # A view as text: Share View hands it out, Import View takes it into a saved view, both in the same box
+  publish:
+    title: Publicar
+    body: Publique esta vista para que sea visible para todos los usuarios.
+  filterWarning: El nombre y los valores del filtro se incluyen y pueden revelar información como nombres de recursos o de espacios de nombres.
   share:
     title: Compartir vista
-    intro: 'Copie este texto y compártalo. Cualquier persona que tenga el texto puede importar la vista con <b>Importar vista</b>. Contiene la vista tal como está ahora, incluidos los cambios sin guardar: columnas, agrupación, ordenación y filtro. <b>El filtro está incluido y puede revelar información como nombres de recursos o de espacios de nombres.</b>'
+    intro: 'Copie este texto y compártalo. Cualquier persona que tenga el texto puede importar la vista con <b>Importar vista</b>. Contiene la vista tal como está ahora, incluidos los cambios sin guardar: columnas, agrupación, ordenación y filtro.'
     label: Vista
   import:
     title: Importar vista
@@ -7883,6 +8126,10 @@ validation:
       valuesMustBeDefined: Regla [{index}] de {group} {rules} - el valor debe estar definido si el operador es 'In' o 'NotIn'
   port: Un puerto debe ser un número entre 1 y 65535.
   path: '"{key}" debe ser una ruta absoluta'
+  pemCertificate: '"{key}" debe ser un certificado codificado en PEM'
+  pemPrivateKey: '"{key}" debe ser una clave privada codificada en PEM'
+  sshPublicKey: '"{key}" debe ser una clave pública SSH, p. ej. "ssh-ed25519 AAAA..."'
+  dataKey: '"{key}" debe constar de caracteres alfanuméricos, "-", "_" o "."'
   prometheusRule:
     noEdit: Esta regla de Prometheus no se puede editar debido a caracteres no válidos en el nombre.
     groups:
@@ -8041,6 +8288,14 @@ workloadDashboard:
     byState: Por estado
     byType: Por tipo
     byNamespace: Por espacio de nombres
+  search:
+    ariaLabel: Buscar cargas de trabajo en los espacios de nombres seleccionados...
+    placeholder: Buscar cargas de trabajo en los espacios de nombres seleccionados...
+    startTyping: Empiece a escribir para buscar
+    minCharacters: Escriba al menos {count} caracteres para buscar
+    noMatch: No hay cargas de trabajo coincidentes
+    searching: Buscando...
+    moreResults: "+ {count} {type} más"
   errors:
     noAccess: "Sin acceso a {type}"
     fetchType: "Error al obtener {type}"
@@ -8280,6 +8535,8 @@ workload:
     cannotFindHttpRoutes: No se pudo encontrar ningún HTTPRoute que reenvíe tráfico a los Services que seleccionan los Pods de esta carga de trabajo.
     httpRouteListCaption: "Los siguientes HTTPRoutes reenvían tráfico a los Services que seleccionan los Pods de esta carga de trabajo:"
     cannotViewHttpRoutesBecauseCannotViewServices: No se pudieron encontrar los HTTPRoutes relevantes por falta de permiso para ver los Services.
+    storage: Almacenamiento
+    cannotFindStorage: No se encontró ningún PersistentVolumeClaim montado por esta carga de trabajo.
     pods:
       title: Pods
   detailTop:
@@ -8381,6 +8638,8 @@ workload:
     activeDeadlineSecondsTip: La duración que el pod puede estar activo antes de que el sistema intente marcarlo como fallido y matar los contenedores asociados.
     affinity:
       addNodeSelector: Agregar selector de nodo
+      nodeSelectorTitle: "node-selector-{i}"
+      podSelectorTitle: "pod-selector-{i}"
       anyNode: Ejecutar pods en cualquier nodo disponible
       affinityTitle: Ejecutar pods en nodos con pods que coincidan con estos selectores
       antiAffinityTitle: Ejecutar pods en nodos sin pods que coincidan con estos selectores
@@ -9498,6 +9757,7 @@ advancedSettings:
     'auth-token-max-ttl-minutes': TTL máximo (en minutos) para todos los tokens excepto los controlados por "auth-user-session-ttl-minutes".
     'kubeconfig-generate-token': Generar automáticamente tokens para los usuarios cuando se solicita un kubeconfig.
     'kubeconfig-default-token-ttl-minutes': TTL (en minutos) aplicado en todos los tokens de kubeconfig. Cuando se establece en 0, el token nunca expira.
+    'kubeconfig-prefer-rancher-proxy': 'Contexto actual preferido en los archivos Kubeconfig descargados para los clústeres que tienen habilitado el punto de enlace de clúster autorizado (ACE).'
     'rke-metadata-config': Configurar los parámetros de actualización de metadatos de RKE.
     'ui-banners': El banner de clasificación se usa para mostrar un banner fijo personalizado en el encabezado, pie de página o ambos.
     'custom-notifications': Editar notificaciones personalizadas
@@ -9516,6 +9776,9 @@ advancedSettings:
   editHelp:
     'ui-banners': 'Esta configuración acepta un objeto JSON con 3 parámetros raíz: <code>banner</code>, <code>showHeader</code>, <code>showFooter</code>. <code>banner</code> es un objeto que contiene: <code>textColor</code>, <code>background</code> y <code>text</code>, donde <code>textColor</code> y <code>background</code> son cualquier valor de color CSS válido.'
   enum:
+    'kubeconfig-prefer-rancher-proxy':
+      false: ACE (punto de enlace de clúster autorizado)
+      true: Mediante proxy de Rancher
     'ui-default-landing':
       ember: Administrador de Clústeres
       vue: Explorador de Clústeres
@@ -10049,6 +10312,8 @@ component:
           actionMenu: Acciones de Recurso - { resource }
           loading: Cargando información del recurso
           loadingUsage: Cargando uso
+  resourceStatusWidget:
+    loadError: No se pudo cargar el estado
   cron:
     expressionEditor:
       label:
@@ -10117,6 +10382,8 @@ component:
         weekdaysAt0830: A los 30 minutos de la hora, cada 1 hora, empezando a las 08:00 AM, de lunes a viernes
         marchToMayHourly: Cada hora, solo en marzo, abril y mayo
         every4Hours9to17: A los 0 minutos de la hora, cada 4 horas, entre las 09:00 AM y las 05:00 PM
+  rcSection:
+    invalidFields: Algunos campos de esta sección no son válidos
 
 autoscaler:
   card:
