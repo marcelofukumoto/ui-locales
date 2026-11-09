@@ -50,7 +50,9 @@ tagged `locales-<version>`. See `docs/RELEASING.md`.
 
 Don't bump it by hand. `.github/workflows/bump-shell.yml` checks npm daily and keeps one PR open
 for the newest release, release candidates included (`scripts/bump-shell.mjs` picks it), closing
-any older one, and Dependabot ignores the package.
+any older one, and Dependabot ignores the package. Each bump starts `yarn.lock` and the
+`resolutions` from rancher/dashboard's at the `shell-pkg-v<version>` tag, so the shell's
+dependencies match what dashboard ships.
 
 ## Rules
 
