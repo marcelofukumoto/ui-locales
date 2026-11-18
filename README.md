@@ -122,8 +122,8 @@ Advisories (reported, never fail the build) — these are about the *wording*, n
 | **sync-locales** | Weekly / manual | Fetches the latest `en-us.yaml` from `rancher/dashboard` and opens a PR if it changed, closing any sync PR it supersedes |
 | **validate-locales** | Every PR | Runs `yarn validate-locales` |
 | **build-extensions-test** | Every PR | Verifies the extension still builds |
-| **build-extension-charts** | Release, manual | Publishes the Helm chart to the `gh-pages` branch, then verifies a bundle actually landed |
-| **build-extension-catalog** | Release, manual | Publishes the extension catalog image to `ghcr.io` |
+| **build-extension-charts** | Release, or by hand from a release tag | Publishes the Helm chart to the `gh-pages` branch, then verifies a bundle actually landed |
+| **build-extension-catalog** | Release, or by hand from a release tag | Publishes the extension catalog image to `ghcr.io` |
 
 `sync-locales` is an [agentic workflow](https://github.com/github/gh-aw). Edit `sync-locales.md`
 and run `gh aw compile` — never edit `sync-locales.lock.yml` by hand.
